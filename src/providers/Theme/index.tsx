@@ -48,6 +48,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     document.documentElement.setAttribute('data-theme', themeToSet)
+    // localStorage / matchMedia are browser-only; resolve preferred theme after mount and sync to state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setThemeState(themeToSet)
   }, [])
 
