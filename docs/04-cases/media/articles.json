@@ -1,0 +1,187 @@
+{
+  "$schema": "./SCHEMA.md",
+  "lastUpdated": "2026-05-04",
+  "subject": {
+    "name": "류남경",
+    "hanja": "柳南敬",
+    "barClass": "사법연수원 35기",
+    "examYear": 2002,
+    "office": {
+      "firm": "법무법인 인유",
+      "branch": "창원사무소",
+      "address": "경남 창원시 성산구 창이대로689번길 4-24, 5층 504호",
+      "phone": "010-7552-0301",
+      "blog": "https://blog.naver.com/inyou2025"
+    }
+  },
+  "articles": [
+    {
+      "id": "2024-04-18-lawtimes-inyou-recruit",
+      "title": "법무법인 인유, 류남경 前 부부장검사 영입",
+      "url": "https://www.lawtimes.co.kr/news/197630",
+      "publisher": "법률신문",
+      "publishedAt": "2024-04-18",
+      "lang": "ko",
+      "category": "firm-news",
+      "mention": "primary",
+      "description": "법무법인 인유(대표 정인창·최현석)가 류남경 전 대구지검 부부장검사를 창원사무소 대표변호사로 영입했다는 보도. 광주 동아여고·전남대 법학과 졸업, 사법시험 44회·연수원 35기. 광주지검·전주지검·부산지검·창원지검 검사, 창원지검·부산지검(서민다중피해범죄)·대구지검(금융·경제범죄) 부부장검사를 거쳐 2024년 2월 퇴직.",
+      "practiceTags": ["기업·경제범죄", "다중피해범죄", "기술유출"],
+      "verified": "verified",
+      "notes": "본 사건의 원천 1차 자료. 학력·경력·합류시점이 한 기사에 종합되어 있음. 한자는 본 기사 외 인사 기록과 교차 검증해 '柳南敬'으로 확정."
+    },
+    {
+      "id": "2023-09-20-legaltimes-2023h2-promotion",
+      "title": "[인사] 2023년 하반기 검사 인사",
+      "url": "https://www.legaltimes.co.kr/news/articleView.html?idxno=74888",
+      "publisher": "리걸타임즈",
+      "publishedAt": "2023-09-20",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2023년 하반기 검사 인사 명단. '대구지검 ▲부부장 류남경(柳南敬)' 항목으로 등재. 대구지검 부부장검사로 정식 발령된 시점이 본 인사 기점.",
+      "quote": "대구지검 ▲부부장 류남경(柳南敬)",
+      "practiceTags": ["인사"],
+      "verified": "verified"
+    },
+    {
+      "id": "2022-06-28-lawtimes-2022h2-promotion",
+      "title": "2022년 하반기 검사 인사",
+      "url": "https://m.lawtimes.co.kr/Content/Article?serial=179822",
+      "publisher": "법률신문",
+      "publishedAt": "2022-06-28",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2022년 하반기 검사 인사. 부산서부지청 부부장에서 부산지검 부부장으로 보직 이동.",
+      "quote": "△ 부부장 류남경(柳南敬) → 부산지검 부부장",
+      "practiceTags": ["인사"],
+      "verified": "verified"
+    },
+    {
+      "id": "2019-01-31-fnnews-changwon-appointment",
+      "title": "[인사]창원지방검찰청",
+      "url": "https://www.fnnews.com/news/201901311358031407",
+      "publisher": "파이낸셜뉴스",
+      "publishedAt": "2019-01-31",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2019년 상반기 검사 정기 인사. 부산서부지청에서 창원지검 검사로 전보. 창원지검 검사 명단에 류남경 포함.",
+      "practiceTags": ["인사"],
+      "verified": "verified"
+    },
+    {
+      "id": "2017-02-13-busan-busanseobu-appointment",
+      "title": "[인사] 법무부 外",
+      "url": "https://www.busan.com/view/busan/view.php?code=20170213000333",
+      "publisher": "부산일보",
+      "publishedAt": "2017-02-13",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2017년 2월 법무부 인사. 부산서부지청 검사 명단에 류남경 등재 — '검사 김원호 강석철 최명규 이영화 정지은 류남경'. 부산서부지청 첫 부임 시점.",
+      "quote": "【부산서부지청】 △지청장 김재구 △차장 윤재필 △형사1부장 위성국 △형사2부장 김정호 △형사3부장 이승호 △검사 김원호 강석철 최명규 이영화 정지은 류남경",
+      "practiceTags": ["인사"],
+      "verified": "verified",
+      "notes": "본인이 처음 정리한 '부산지방검찰청 서부지청 검사(2017~2019)' 시기와 정합."
+    },
+    {
+      "id": "lawpeople-lawfirm-inyou-directory",
+      "title": "법무법인 인유 — 한국법조인대관",
+      "url": "https://lawpeople.lawtimes.co.kr/lawman/6897/preview",
+      "publisher": "한국법조인대관 (법률신문)",
+      "publishedAt": "",
+      "lang": "ko",
+      "category": "firm-news",
+      "mention": "named",
+      "description": "법률신문 한국법조인대관 내 법무법인 인유 항목. 구성원·주소·연락처 등 표준 디렉토리. (페이지 본문 미렌더 — 추후 직접 확인 필요)",
+      "practiceTags": ["로펌 디렉토리"],
+      "verified": "unverified",
+      "notes": "WebFetch 시 본문이 비어 옴. 브라우저로 직접 열어 구성원·주소 보강 필요."
+    },
+    {
+      "id": "inyoulaw-official-site",
+      "title": "법무법인 인유 — 공식 사이트",
+      "url": "http://inyoulaw.com/",
+      "publisher": "법무법인 인유",
+      "publishedAt": "",
+      "lang": "ko",
+      "category": "firm-news",
+      "mention": "named",
+      "description": "법무법인 인유 공식 홈페이지. 'inyoulaw.com'. (HTTPS 미지원 / 인증서 만료 상태 — 보안 경고 발생 가능, 본문 직접 확인 필요)",
+      "practiceTags": ["로펌 공식"],
+      "verified": "unverified",
+      "notes": "사이트 인증서 만료. 콘텐츠 확인은 사용자 확인이 필요."
+    },
+    {
+      "id": "naver-blog-inyou2025",
+      "title": "법무법인 인유 창원사무소 / 류남경 변호사 — 공식 블로그",
+      "url": "https://blog.naver.com/inyou2025",
+      "publisher": "법무법인 인유 창원사무소 (네이버 블로그)",
+      "publishedAt": "",
+      "lang": "ko",
+      "category": "firm-news",
+      "mention": "primary",
+      "description": "창원사무소 공식 블로그. `docs/assets/blog-banner.png`(헤드라인 카피·USP·연락처 1차 자료)의 출처. 사무소 주소·취급분야·대표변호사 메시지가 게시됨.",
+      "practiceTags": ["로펌 공식", "마케팅"],
+      "verified": "verified",
+      "notes": "Claude의 직접 fetch가 차단(blog.naver.com 호스트 정책)되어 본문 추출은 사용자 캡처를 통해 보강. URL 자체는 사용자 1차 제공으로 검증."
+    },
+    {
+      "id": "2023-09-20-4th-2023h2-list",
+      "title": "[2023년 하반기 검사 인사 명단] 고검검사급 검사 631명, 일반검사 36명 전보",
+      "url": "https://www.4th.kr/news/articleView.html?idxno=2047888",
+      "publisher": "포쓰저널",
+      "publishedAt": "2023-09-20",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2023년 하반기 검사 인사 종합 명단. 류남경 부부장(대구지검) 포함. 리걸타임즈 기사와 교차검증용 보조 출처.",
+      "practiceTags": ["인사"],
+      "verified": "secondary",
+      "notes": "리걸타임즈 74888과 동일 인사를 다른 매체가 보도한 cross-source. 본문 직접 확인은 추후."
+    },
+    {
+      "id": "2024-01-26-lawtimes-2024h1-resignation",
+      "title": "2024년 상반기 검사 인사(전입청 기준)",
+      "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=195386",
+      "publisher": "법률신문",
+      "publishedAt": "2024-01-26",
+      "lang": "ko",
+      "category": "appointment",
+      "mention": "list-only",
+      "description": "2024년 상반기 검사 인사 명단. **의원면직(사직) 항목**에 '류남경(柳南敬) (대구지검 부부장)' 등재. 검사 사직 시점의 1차 출처.",
+      "quote": "류남경(柳南敬) (대구지검 부부장)",
+      "practiceTags": ["인사", "사직"],
+      "verified": "verified",
+      "notes": "법률신문 영입 보도(2024-04-18)의 '2024년 2월 퇴직' 진술과 정합. 의원면직 발효일은 통상 인사 발령일(2024-02 초순)."
+    }
+  ],
+  "openLeads": [
+    {
+      "lead": "공식 블로그 본문 (구성원·취급분야·약도 등)",
+      "url": "https://blog.naver.com/inyou2025",
+      "blockedBy": "Claude WebFetch가 blog.naver.com 차단. 사용자 캡처/본문 공유 필요"
+    },
+    {
+      "lead": "법무법인 인유 공식 사이트 본문 (구성원·본사 주소·연혁)",
+      "url": "http://inyoulaw.com/contents/02_member/sub01.html",
+      "blockedBy": "인증서 만료 — 사용자 측 확인 필요"
+    },
+    {
+      "lead": "한국법조인대관 인유 항목 (직책·주소·전화 표준 디렉토리)",
+      "url": "https://lawpeople.lawtimes.co.kr/lawman/6897/preview",
+      "blockedBy": "WebFetch 본문 미렌더 — 브라우저 확인 필요"
+    },
+    {
+      "lead": "사무소 좌표(geo lat/lon) — JSON-LD LegalService.geo용",
+      "url": "https://map.kakao.com/?q=경남 창원시 성산구 창이대로689번길 4-24",
+      "blockedBy": "지도 서비스 직접 조회 필요"
+    },
+    {
+      "lead": "검사 재직 중 담당 사건 단독·취재 기사 (성폭력·기술유출·전세사기 등)",
+      "url": "",
+      "blockedBy": "본인 명의 단독 보도가 검색에 노출되지 않음. 검찰 보도자료/판결문 단위 추적 필요"
+    }
+  ]
+}
