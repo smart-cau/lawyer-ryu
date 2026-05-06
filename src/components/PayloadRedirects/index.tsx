@@ -1,5 +1,5 @@
 import type React from 'react'
-import type { Page, Post } from '@/payload-types'
+import type { Post } from '@/payload-types'
 
 import { getCachedDocument } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
@@ -21,22 +21,17 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, url }
       redirect(redirectItem.to.url)
     }
 
-    let redirectUrl: string
+    let redirectUrl: string | undefined
 
     if (typeof redirectItem.to?.reference?.value === 'string') {
       const collection = redirectItem.to?.reference?.relationTo
       const id = redirectItem.to?.reference?.value
 
-      const document = (await getCachedDocument(collection, id)()) as Page | Post
-      redirectUrl = `${redirectItem.to?.reference?.relationTo !== 'pages' ? `/${redirectItem.to?.reference?.relationTo}` : ''}/${
-        document?.slug
-      }`
-    } else {
-      redirectUrl = `${redirectItem.to?.reference?.relationTo !== 'pages' ? `/${redirectItem.to?.reference?.relationTo}` : ''}/${
-        typeof redirectItem.to?.reference?.value === 'object'
-          ? redirectItem.to?.reference?.value?.slug
-          : ''
-      }`
+      const document = (await getCachedDocument(collection, id)()) as Post
+      redirectUrl = document?.slug ? `/posts/${document.slug}` : undefined
+    } else if (typeof redirectItem.to?.reference?.value === 'object') {
+      const slug = redirectItem.to?.reference?.value?.slug
+      redirectUrl = slug ? `/posts/${slug}` : undefined
     }
 
     if (redirectUrl) redirect(redirectUrl)
