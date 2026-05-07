@@ -67,7 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    posts: Post;
+    cases: Case;
     media: Media;
     categories: Category;
     users: User;
@@ -86,7 +86,7 @@ export interface Config {
     };
   };
   collectionsSelect: {
-    posts: PostsSelect<false> | PostsSelect<true>;
+    cases: CasesSelect<false> | CasesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -141,9 +141,9 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
+ * via the `definition` "cases".
  */
-export interface Post {
+export interface Case {
   id: number;
   title: string;
   heroImage?: (number | null) | Media;
@@ -162,7 +162,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (number | Post)[] | null;
+  relatedCases?: (number | Case)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -371,8 +371,8 @@ export interface Redirect {
   to?: {
     type?: ('reference' | 'custom') | null;
     reference?: {
-      relationTo: 'posts';
-      value: number | Post;
+      relationTo: 'cases';
+      value: number | Case;
     } | null;
     url?: string | null;
   };
@@ -390,8 +390,8 @@ export interface Search {
   title?: string | null;
   priority?: number | null;
   doc: {
-    relationTo: 'posts';
-    value: number | Post;
+    relationTo: 'cases';
+    value: number | Case;
   };
   slug?: string | null;
   meta?: {
@@ -527,8 +527,8 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'posts';
-        value: number | Post;
+        relationTo: 'cases';
+        value: number | Case;
       } | null)
     | ({
         relationTo: 'media';
@@ -598,13 +598,13 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
+ * via the `definition` "cases_select".
  */
-export interface PostsSelect<T extends boolean = true> {
+export interface CasesSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
-  relatedPosts?: T;
+  relatedCases?: T;
   categories?: T;
   meta?:
     | T
@@ -909,8 +909,8 @@ export interface TaskSchedulePublish {
     type?: ('publish' | 'unpublish') | null;
     locale?: string | null;
     doc?: {
-      relationTo: 'posts';
-      value: number | Post;
+      relationTo: 'cases';
+      value: number | Case;
     } | null;
     global?: string | null;
     user?: (number | null) | User;

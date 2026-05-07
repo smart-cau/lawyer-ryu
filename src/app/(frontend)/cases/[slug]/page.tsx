@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
+import { RelatedCases } from '@/blocks/RelatedCases/Component'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -8,15 +8,15 @@ import { draftMode } from 'next/headers'
 import { cache } from 'react'
 import RichText from '@/components/RichText'
 
-import { PostHero } from '@/heros/PostHero'
+import { CaseHero } from '@/heros/CaseHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
-  const posts = await payload.find({
-    collection: 'posts',
+  const cases = await payload.find({
+    collection: 'cases',
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
     },
   })
 
-  const params = posts.docs.map(({ slug }) => {
+  const params = cases.docs.map(({ slug }) => {
     return { slug }
   })
 
@@ -39,34 +39,32 @@ type Args = {
   }>
 }
 
-export default async function Post({ params: paramsPromise }: Args) {
+export default async function Case({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const url = '/posts/' + decodedSlug
-  const post = await queryPostBySlug({ slug: decodedSlug })
+  const url = '/cases/' + decodedSlug
+  const caseDoc = await queryCaseBySlug({ slug: decodedSlug })
 
-  if (!post) return <PayloadRedirects url={url} />
+  if (!caseDoc) return <PayloadRedirects url={url} />
 
   return (
     <article className="pt-16 pb-16">
       <PageClient />
 
-      {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      <CaseHero post={caseDoc} />
 
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
+          <RichText className="max-w-[48rem] mx-auto" data={caseDoc.content} enableGutter={false} />
+          {caseDoc.relatedCases && caseDoc.relatedCases.length > 0 && (
+            <RelatedCases
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+              docs={caseDoc.relatedCases.filter((c) => typeof c === 'object')}
             />
           )}
         </div>
@@ -77,20 +75,19 @@ export default async function Post({ params: paramsPromise }: Args) {
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const post = await queryPostBySlug({ slug: decodedSlug })
+  const caseDoc = await queryCaseBySlug({ slug: decodedSlug })
 
-  return generateMeta({ doc: post })
+  return generateMeta({ doc: caseDoc })
 }
 
-const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryCaseBySlug = cache(async ({ slug }: { slug: string }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'posts',
+    collection: 'cases',
     draft,
     limit: 1,
     overrideAccess: draft,

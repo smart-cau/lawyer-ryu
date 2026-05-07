@@ -18,7 +18,7 @@ const sections: { id: string; label: string; title: string; note: string }[] = [
     id: 'practice',
     label: 'F-03',
     title: '전문분야 카드',
-    note: 'S-01·S-02·S-03·S-05·S-08·S-09 6장 카드 → 각 허브 페이지로 연결',
+    note: '',
   },
   {
     id: 'trust',

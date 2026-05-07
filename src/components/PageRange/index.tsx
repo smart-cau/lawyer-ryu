@@ -6,9 +6,9 @@ const defaultLabels = {
 }
 
 const defaultCollectionLabels = {
-  posts: {
-    plural: 'Posts',
-    singular: 'Post',
+  cases: {
+    plural: '성공사례',
+    singular: '성공사례',
   },
 }
 

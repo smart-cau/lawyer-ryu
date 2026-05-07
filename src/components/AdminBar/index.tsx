@@ -15,9 +15,9 @@ import { getClientSideURL } from '@/utilities/getURL'
 const baseClass = 'admin-bar'
 
 const collectionLabels = {
-  posts: {
-    plural: 'Posts',
-    singular: 'Post',
+  cases: {
+    plural: '성공사례',
+    singular: '성공사례',
   },
 }
 
@@ -30,7 +30,7 @@ export const AdminBar: React.FC<{
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
   const collection = (
-    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'posts'
+    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'cases'
   ) as keyof typeof collectionLabels
   const router = useRouter()
 
@@ -57,8 +57,8 @@ export const AdminBar: React.FC<{
           cmsURL={getClientSideURL()}
           collectionSlug={collection}
           collectionLabels={{
-            plural: collectionLabels[collection]?.plural || 'Posts',
-            singular: collectionLabels[collection]?.singular || 'Post',
+            plural: collectionLabels[collection]?.plural || '성공사례',
+            singular: collectionLabels[collection]?.singular || '성공사례',
           }}
           logo={<Title />}
           onAuthChange={onAuthChange}

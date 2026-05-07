@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
-import { Posts } from './collections/Posts'
+import { Cases } from './collections/Cases'
 import { Users } from './collections/Users'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
@@ -60,7 +60,7 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  collections: [Posts, Media, Categories, Users],
+  collections: [Cases, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     ...plugins,

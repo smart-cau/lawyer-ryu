@@ -8,24 +8,24 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
-import { Post } from '@/payload-types'
+import { Case } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const generateTitle: GenerateTitle<Post> = ({ doc }) => {
+const generateTitle: GenerateTitle<Case> = ({ doc }) => {
   return doc?.title
     ? `${doc.title} | 법무법인 인유 창원사무소`
     : '법무법인 인유 창원사무소 | 대표변호사 류남경'
 }
 
-const generateURL: GenerateURL<Post> = ({ doc }) => {
+const generateURL: GenerateURL<Case> = ({ doc }) => {
   const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/posts/${doc.slug}` : url
+  return doc?.slug ? `${url}/cases/${doc.slug}` : url
 }
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['posts'],
+    collections: ['cases'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -55,7 +55,7 @@ export const plugins: Plugin[] = [
     generateURL,
   }),
   searchPlugin({
-    collections: ['posts'],
+    collections: ['cases'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       fields: ({ defaultFields }) => {

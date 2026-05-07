@@ -25,8 +25,8 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const posts = await payload.find({
-    collection: 'posts',
+  const cases = await payload.find({
+    collection: 'cases',
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
@@ -38,24 +38,24 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>성공사례</h1>
         </div>
       </div>
 
       <div className="container mb-8">
         <PageRange
-          collection="posts"
-          currentPage={posts.page}
+          collection="cases"
+          currentPage={cases.page}
           limit={12}
-          totalDocs={posts.totalDocs}
+          totalDocs={cases.totalDocs}
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive posts={cases.docs} />
 
       <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+        {cases?.page && cases?.totalPages > 1 && (
+          <Pagination page={cases.page} totalPages={cases.totalPages} />
         )}
       </div>
     </div>
@@ -65,14 +65,14 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Payload Website Template Posts Page ${pageNumber || ''}`,
+    title: `법무법인 인유 창원사무소 | 성공사례 ${pageNumber || ''}페이지`,
   }
 }
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const { totalDocs } = await payload.count({
-    collection: 'posts',
+    collection: 'cases',
     overrideAccess: false,
   })
 
