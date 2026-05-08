@@ -31,6 +31,7 @@ docs/
 | 공식 브랜드 포지셔닝 (SoT) | `03-firm/brand-positioning.md` | ✅ 작성 |
 | **운영·행동 USP (SoT)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
 | 운영·행동 USP 원문 보존 | `03-firm/usp-source-2026-05-06.md` | ✅ 1차 출처 원문 (가공 전) |
+| **메인 페이지 IA v0.1 (SoT)** | `03-firm/main-ia-v0.1.md` | ✅ 1차 합의 (M-01~M-07, 인터뷰 전 시안) |
 | 언론기사 메타스키마 | `04-cases/media/SCHEMA.md` | ✅ 작성 |
 | 언론기사 머신리더블 | `04-cases/media/articles.json` | ✅ 9건 수집 |
 | 언론기사 인덱스 | `04-cases/media/articles.md` | ✅ 작성 |
@@ -47,10 +48,11 @@ docs/
 1. **`docs/03-firm/brand-positioning.md`** — 공식 메시지·USP·연락처 (블로그 배너 1차 출처)
 2. **`docs/03-firm/usp.md`** — 변호사 본인 구술 기반 **운영·행동 USP** (Practice·Process 본문 카피용)
 3. **`docs/02-services/01-services-ia-v1.md`** — **services IA SoT** (10 leaf · 44 분류, 라우팅·SEO·카피 결정 1순위)
-4. **`docs/04-cases/media/articles.json`** — 검증된 기사 메타데이터
-5. **`docs/01-profile/profile.md`** — 통합 프로필
-6. **`docs/assets/blog-banner.png`** — 공식 브랜드 비주얼
-7. **`docs/assets/contract-page-scope.png`** — 계약서 페이지 범위 원본
+4. **`docs/03-firm/main-ia-v0.1.md`** — **메인 페이지 IA SoT** (M-01~M-07 슬롯 구조, 메인 결정 1순위)
+5. **`docs/04-cases/media/articles.json`** — 검증된 기사 메타데이터
+6. **`docs/01-profile/profile.md`** — 통합 프로필
+7. **`docs/assets/blog-banner.png`** — 공식 브랜드 비주얼
+8. **`docs/assets/contract-page-scope.png`** — 계약서 페이지 범위 원본
 
 ## 참고
 

@@ -1,0 +1,7 @@
+export { HeroSection } from './Hero'
+export { UspSection } from './Usp'
+export { CasesSection } from './Cases'
+export { ServicesSection } from './Services'
+export { ProcessSection } from './Process'
+export { InvestigationSection } from './Investigation'
+export { ContactSection } from './Contact'
