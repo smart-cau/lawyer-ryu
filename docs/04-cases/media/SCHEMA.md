@@ -16,7 +16,7 @@ interface MediaArticle {
   mention: MentionType;        // 류남경의 등장 형태
   description: string;         // 1~3줄 요약 (한국어)
   quote?: string;              // 기사 내 류남경 직접 인용 (있을 때)
-  practiceTags?: string[];     // 분야 태그 — profile/expertise와 매핑
+  practiceTags?: string[];     // 분야 태그 — profile/services와 매핑
   verified: "verified" | "unverified" | "secondary";
   notes?: string;              // 검증 메모 (출처 신뢰도, 동명이인 가능성 등)
 }

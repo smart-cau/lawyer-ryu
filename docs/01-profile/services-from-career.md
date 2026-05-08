@@ -95,11 +95,7 @@
 
 ## 4. SEO·검색어 후보
 
-> **본 §4는 시드(요약)만 유지. 본격 키워드 풀·페이지 IA·구조화 데이터 스펙은 분리됨:**
->
-> - `docs/02-expertise/scope-v1-contract.md` — 페이지 IA·메타·JSON-LD 매핑 (계약 범위)
-> - `docs/02-expertise/seo-keywords.md` — 13개 핵심 키워드와 시드 풀
-> - `docs/02-expertise/structured-data-spec.md` — Person/Attorney/LegalService/Service JSON-LD
+> **본 §4는 시드(요약)만 유지. 본격 키워드 풀·페이지 IA·구조화 데이터 스펙은 인터뷰 후 별도 문서로 재구성 예정.**
 
 ### 시드 (요약)
 - 지역 modifier: 창원 / 마산 / 진해 / 김해 / 양산 / 거제 / 통영 / 부산 / 경남

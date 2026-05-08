@@ -11,7 +11,7 @@
 ```
 docs/
 ├── 01-profile/        # 변호사 프로필 (학력·경력·인적사항)
-├── 02-expertise/      # 전문분야·취급분야 분석
+├── 02-services/       # 업무분야 IA·원문 보존·가공물
 ├── 03-firm/           # 소속 법무법인(인유) 정보
 ├── 04-cases/          # 주요 사건·실적·언론보도
 ├── 05-references/     # 벤치마킹 사이트·기획 참고자료
@@ -25,15 +25,12 @@ docs/
 |------|------|------|
 | 기본 프로필 | `01-profile/profile.md` | ✅ 공식 포지셔닝 반영 |
 | 경력 타임라인 | `01-profile/career-timeline.md` | ✅ 작성 |
-| 전문분야 (공식 4분류 기준) | `01-profile/expertise-from-career.md` | ✅ 공식 분류로 재정렬 |
-| **계약 범위 IA (SoT)** | `02-expertise/scope-v1-contract.md` | ✅ 옵션 D 6분야 + About 통합 임시안 반영 (12단위) |
-| **1차 IA 제안 (변호사 검토용)** | `02-expertise/ia-v1-proposal.md` | ✅ 옵션 D 6분야 + About 단일 long-form 임시안 |
-| **키워드 리서치 보고서** | `02-expertise/keyword-research-report.md` | ✅ 옵션 D 결정 근거 |
-| 키워드 검색량 (실측 CSV) | `02-expertise/keyword-volumes-2026-05-05.csv` | ✅ 1,212 unique |
-| 키워드 분야 분류 (JSON) | `02-expertise/keyword-classified-2026-05-05.json` | ✅ 분야별 집계 |
-| SEO 키워드 풀 | `02-expertise/seo-keywords.md` | ✅ 실측 검색량 컬럼 추가 |
-| JSON-LD 스펙 | `02-expertise/structured-data-spec.md` | ✅ 옵션 D 매핑 |
+| 전문분야 (공식 4분류 기준) | `01-profile/services-from-career.md` | ✅ 공식 분류로 재정렬 |
+| **services 설계 원문 보존** | `02-services/services-source-2026-05-07.md` | ✅ 변호사 1차 청취 + 결정 트래킹 완료 (A1~A12) |
+| **services IA v1.4 (SoT)** | `02-services/01-services-ia-v1.md` | ✅ 변호사 1차 피드백 반영 + 메뉴·URL 정책 (10 leaf · 44 분류, 메뉴 라벨 "업무분야", `/services/<criminal\|non-criminal>/<slug>`) |
 | 공식 브랜드 포지셔닝 (SoT) | `03-firm/brand-positioning.md` | ✅ 작성 |
+| **운영·행동 USP (SoT)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
+| 운영·행동 USP 원문 보존 | `03-firm/usp-source-2026-05-06.md` | ✅ 1차 출처 원문 (가공 전) |
 | 언론기사 메타스키마 | `04-cases/media/SCHEMA.md` | ✅ 작성 |
 | 언론기사 머신리더블 | `04-cases/media/articles.json` | ✅ 9건 수집 |
 | 언론기사 인덱스 | `04-cases/media/articles.md` | ✅ 작성 |
@@ -47,17 +44,13 @@ docs/
 
 홈페이지 카피·디자인 결정 시 우선 참조 순서:
 
-1. **`docs/02-expertise/scope-v1-contract.md`** — 페이지 IA·메타·JSON-LD 매핑 (계약서 F/P/S/M, 옵션 D 6분야 임시안)
-2. **`docs/02-expertise/keyword-research-report.md`** — 옵션 D 결정 근거 (실측 검색량 1,212개)
-3. **`docs/03-firm/brand-positioning.md`** — 공식 메시지·USP·연락처
-4. **`docs/02-expertise/seo-keywords.md`** — 13개 핵심 키워드 + 실측 검색량
-5. **`docs/02-expertise/structured-data-spec.md`** — JSON-LD 템플릿
-6. **`docs/04-cases/media/articles.json`** — 검증된 기사 메타데이터
-7. **`docs/01-profile/profile.md`** — 통합 프로필
-8. **`docs/assets/blog-banner.png`** — 공식 브랜드 비주얼
-9. **`docs/assets/contract-page-scope.png`** — 계약서 페이지 범위 원본
-
-> ⚠ **옵션 D 6분야 + About 단일 페이지는 임시안**. 변호사 인터뷰 후 단일 PR로 SoT 정정 예정.
+1. **`docs/03-firm/brand-positioning.md`** — 공식 메시지·USP·연락처 (블로그 배너 1차 출처)
+2. **`docs/03-firm/usp.md`** — 변호사 본인 구술 기반 **운영·행동 USP** (Practice·Process 본문 카피용)
+3. **`docs/02-services/01-services-ia-v1.md`** — **services IA SoT** (10 leaf · 44 분류, 라우팅·SEO·카피 결정 1순위)
+4. **`docs/04-cases/media/articles.json`** — 검증된 기사 메타데이터
+5. **`docs/01-profile/profile.md`** — 통합 프로필
+6. **`docs/assets/blog-banner.png`** — 공식 브랜드 비주얼
+7. **`docs/assets/contract-page-scope.png`** — 계약서 페이지 범위 원본
 
 ## 참고
 

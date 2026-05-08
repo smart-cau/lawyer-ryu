@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const navItems: { label: string; href: string }[] = [
   { label: '변호사 소개', href: '/profile' },
-  { label: '전문분야', href: '/expertise' },
+  { label: '업무분야', href: '/services' },
   { label: '성공사례', href: '/cases' },
   { label: '상담문의', href: '/contact' },
 ]

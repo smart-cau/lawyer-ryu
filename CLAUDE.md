@@ -26,20 +26,18 @@ A bundled Payload reference skill lives at `.claude/skills/payload/`. **Read `.c
 
 Korean research and content SoT lives under `docs/`. When making copy, IA, metadata, or branding decisions, consult these in order:
 
-1. `docs/02-expertise/scope-v1-contract.md` — page IA, meta templates, JSON-LD plan (1차 계약 범위 사양)
-2. `docs/03-firm/brand-positioning.md` — official messaging, USP, contact info (블로그 배너 1차 출처)
-3. `docs/02-expertise/seo-keywords.md` — 13 priority keywords, intent tagging
-4. `docs/01-profile/profile.md` — attorney bio (career, credentials, expertise)
+1. `docs/03-firm/brand-positioning.md` — official messaging, USP, contact info (블로그 배너 1차 출처)
+2. `docs/01-profile/profile.md` — attorney bio (career, credentials, practice areas)
 
 Full index: `docs/README.md`. The original Payload template README is preserved verbatim at `docs/05-references/payload-template-README.md`.
 
 ## 1차 개발 범위 (Scope v1)
 
-The contracted v1 scope is **13 page units** in 4 groups. Stay inside this scope unless the user explicitly expands it; the SoT spec is `docs/02-expertise/scope-v1-contract.md`.
+The contracted v1 scope is **13 page units** in 4 groups. Stay inside this scope unless the user explicitly expands it.
 
 - **F-01 ~ F-07** — Single landing page, 7 sections (Hero · About summary · Practice cards · Trust signals · Cases highlight · Process · Contact). Currently a placeholder skeleton in `src/app/(frontend)/page.tsx`.
 - **P-01 ~ P-03** — Attorney intro pages (profile, career timeline, message). Implement as static routes under `src/app/(frontend)/profile/`.
-- **S-01 ~ S-05** — Practice area hub pages (1순위: 성범죄 / 특수 / 강력 / 형사 일반 / 기업 재산범죄). Implement as static routes under `src/app/(frontend)/expertise/<slug>/`.
+- **S** — Practice area hub pages. Implement as static routes under `src/app/(frontend)/services/<criminal|non-criminal>/<leaf-slug>/`. Korean header label: **"업무분야"**. Full route map and SEO labels are in `docs/02-services/01-services-ia-v1.md` §10.
 - **M-01 ~ M-04** — Success cases front (list + detail) + admin CMS. Backed by the `Posts` collection.
 
 ## Common commands
