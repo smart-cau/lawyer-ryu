@@ -33,12 +33,12 @@ Full index: `docs/README.md`. The original Payload template README is preserved 
 
 ## 1차 개발 범위 (Scope v1)
 
-The contracted v1 scope is **13 page units** in 4 groups. Stay inside this scope unless the user explicitly expands it.
+The contracted v1 scope is **4 page groups**, each anchored to a top-level route. **Detailed composition within each group (sections, sub-pages, layout) is not yet finalized** — treat this section as a high-level map, not a finalized spec. Stay inside this scope unless the user explicitly expands it.
 
-- **F-01 ~ F-07** — Single landing page, 7 sections (Hero · About summary · Practice cards · Trust signals · Cases highlight · Process · Contact). Currently a placeholder skeleton in `src/app/(frontend)/page.tsx`.
-- **P-01 ~ P-03** — Attorney intro pages (profile, career timeline, message). Implement as static routes under `src/app/(frontend)/profile/`.
-- **S** — Practice area hub pages. Implement as static routes under `src/app/(frontend)/services/<criminal|non-criminal>/<leaf-slug>/`. Korean header label: **"업무분야"**. Full route map and SEO labels are in `docs/02-services/01-services-ia-v1.md` §10.
-- **M-01 ~ M-04** — Success cases front (list + detail) + admin CMS. Backed by the `Posts` collection.
+- **main (랜딩)** — `/`. Single landing page. Section composition **pending**; placeholder skeleton currently lives in `src/app/(frontend)/page.tsx`.
+- **about/lawyer (변호사 소개)** — `/about/lawyer`. Attorney intro page (greeting + career). Internal composition **pending** — depends on the lawyer's story interview, the only outstanding interview item. Reserved for future expansion: `/about/firm` (법무법인 소개) when needed.
+- **services (업무분야)** — `/services/<criminal|non-criminal>/<slug>`. Practice area hub + leaves. **IA locked** (10 leaf · 44 분류, header label "업무분야") in `docs/02-services/01-services-ia-v1.md`.
+- **cases (성공사례)** — `/cases` (list) + `/cases/[slug]` (detail) + admin CMS. Backed by the `Cases` collection. Detailed page composition **pending**.
 
 ## Common commands
 
