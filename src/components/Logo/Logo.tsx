@@ -1,29 +1,42 @@
-import clsx from 'clsx'
-import React from 'react'
+import Image from 'next/image'
 
-interface Props {
+import { cn } from '@/utilities/ui'
+
+type Props = {
   className?: string
-  loading?: 'lazy' | 'eager'
-  priority?: 'auto' | 'high' | 'low'
+  priority?: boolean
+  tone?: 'light' | 'dark'
 }
 
-export const Logo = (props: Props) => {
-  const { loading: loadingFromProps, priority: priorityFromProps, className } = props
-
-  const loading = loadingFromProps || 'lazy'
-  const priority = priorityFromProps || 'low'
-
+export function Logo({ className, priority = false, tone = 'light' }: Props) {
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      alt="Payload Logo"
-      width={193}
-      height={34}
-      loading={loading}
-      fetchPriority={priority}
-      decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
-      src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-logo-light.svg"
-    />
+    <span className={cn('flex items-center gap-3 leading-tight', className)}>
+      <Image
+        src="/brand/inyou-logo.png"
+        alt="법무법인 인유"
+        width={98}
+        height={103}
+        priority={priority}
+        className="h-9 w-auto"
+      />
+      <span className="flex flex-col">
+        <span
+          className={cn(
+            'text-xs tracking-widest',
+            tone === 'dark' ? 'text-white/60' : 'text-muted-foreground',
+          )}
+        >
+          [창원사무소]
+        </span>
+        <span
+          className={cn(
+            'text-lg font-semibold',
+            tone === 'dark' ? 'text-white' : 'text-foreground',
+          )}
+        >
+          법무법인 인유
+        </span>
+      </span>
+    </span>
   )
 }

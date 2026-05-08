@@ -1,35 +1,26 @@
 import Link from 'next/link'
 
-const navItems: { label: string; href: string }[] = [
-  { label: '변호사 소개', href: '/profile' },
-  { label: '업무분야', href: '/services' },
-  { label: '성공사례', href: '/cases' },
-  { label: '상담문의', href: '/contact' },
-]
+import { Logo } from '@/components/Logo/Logo'
+
+import { DesktopNav } from './DesktopNav'
+import { MobileNav } from './MobileNav'
 
 export function Header() {
   return (
-    <header className="container relative z-20">
-      <div className="py-6 flex items-center justify-between gap-6">
-        <Link href="/" className="flex flex-col leading-tight">
-          <span className="text-xs tracking-widest text-muted-foreground">[창원사무소]</span>
-          <span className="text-lg font-semibold">법무법인 인유</span>
-        </Link>
+    <header className="sticky top-0 z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="container">
+        <div className="flex items-center justify-between gap-6 py-6">
+          <Link
+            href="/"
+            aria-label="법무법인 인유 홈"
+            className="transition-opacity hover:opacity-80"
+          >
+            <Logo priority />
+          </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-primary transition-colors">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <a
-          href="tel:010-7552-0301"
-          className="inline-flex items-center rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90"
-        >
-          상담문의 010-7552-0301
-        </a>
+          <DesktopNav />
+          <MobileNav />
+        </div>
       </div>
     </header>
   )
