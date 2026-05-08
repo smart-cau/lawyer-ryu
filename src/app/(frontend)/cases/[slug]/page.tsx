@@ -10,7 +10,6 @@ import RichText from '@/components/RichText'
 
 import { CaseHero } from '@/heros/CaseHero'
 import { generateMeta } from '@/utilities/generateMeta'
-import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
@@ -50,8 +49,6 @@ export default async function Case({ params: paramsPromise }: Args) {
 
   return (
     <article className="pt-16 pb-16">
-      <PageClient />
-
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}

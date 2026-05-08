@@ -3,7 +3,6 @@
 
 @config '../../../tailwind.config.mjs';
 
-@custom-variant dark (&:is([data-theme='dark'] *));
 @custom-variant sm (@media (width >= theme(--breakpoint-sm)));
 @custom-variant md (@media (width >= theme(--breakpoint-md)));
 @custom-variant lg (@media (width >= theme(--breakpoint-lg)));
@@ -43,8 +42,6 @@
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 80rem;
   --breakpoint-2xl: 86rem;
-  --font-mono: var(--font-geist-mono);
-  --font-sans: var(--font-geist-sans);
 }
 
 @layer utilities {
@@ -87,80 +84,136 @@
 }
 
 :root {
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
-  --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
-  --chart-3: oklch(39.8% 0.07 227.392deg);
-  --chart-4: oklch(82.8% 0.189 84.429deg);
-  --chart-5: oklch(76.9% 0.188 70.08deg);
-  --radius: 0.625rem;
-  --sidebar: oklch(98.5% 0 0deg);
-  --sidebar-foreground: oklch(14.5% 0 0deg);
-  --sidebar-primary: oklch(20.5% 0 0deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(97% 0 0deg);
-  --sidebar-accent-foreground: oklch(20.5% 0 0deg);
-  --sidebar-border: oklch(92.2% 0 0deg);
-  --sidebar-ring: oklch(70.8% 0 0deg);
-  --success: oklch(78% 0.08 200deg);
-  --warning: oklch(89% 0.1 75deg);
-  --error: oklch(75% 0.15 25deg);
-}
+  /* ============================================================
+   * Base
+   * ============================================================ */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(220 13% 13%);
 
-[data-theme='dark'] {
-  --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(17% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
-  --popover: oklch(14.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(98.5% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
-  --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
-  --border: oklch(26.9% 0 0deg);
-  --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
-  --chart-3: oklch(76.9% 0.188 70.08deg);
-  --chart-4: oklch(62.7% 0.265 303.9deg);
-  --chart-5: oklch(64.5% 0.246 16.439deg);
-  --sidebar: oklch(20.5% 0 0deg);
-  --sidebar-foreground: oklch(98.5% 0 0deg);
-  --sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground: oklch(98.5% 0 0deg);
-  --sidebar-border: oklch(26.9% 0 0deg);
-  --sidebar-ring: oklch(43.9% 0 0deg);
-  --success: oklch(28% 0.1 200deg);
-  --warning: oklch(35% 0.08 70deg);
-  --error: oklch(45% 0.1 25deg);
+  /* ============================================================
+   * Surfaces
+   * ============================================================ */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(220 13% 13%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(220 13% 13%);
+
+  /* ============================================================
+   * Primary — 브랜드 네이비 (#18437A)
+   * CTA 버튼, 활성 상태, 링크에만 사용
+   * ============================================================ */
+  --primary: hsl(213.7 67.13% 28.63%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  /* ============================================================
+   * Secondary — 옅은 회색-네이비
+   * "두 번째 강도의 액션" 표면 (Cancel, Back 같은 보조 버튼)
+   * ============================================================ */
+  --secondary: hsl(220 27.27% 95.69%);
+  --secondary-foreground: hsl(213.7 67.13% 28.63%);
+
+  /* ============================================================
+   * Muted — secondary와 동일 계열
+   * 비활성 영역 배경 / muted-foreground는 helper text·caption용
+   * ============================================================ */
+  --muted: hsl(220 27.27% 95.69%);
+  --muted-foreground: hsl(220 8.94% 46.08%);
+
+  /* ============================================================
+   * Accent — 호버 표면 (절대 강조색이 아님!)
+   * DropdownMenu, Select, NavigationMenu hover 시 깔리는 배경
+   * ============================================================ */
+  --accent: hsl(224.9 23.54% 93.33%);
+  --accent-foreground: hsl(213.7 67.13% 28.63%);
+
+  /* ============================================================
+   * Destructive — 삭제·위험 액션
+   * ============================================================ */
+  --destructive: hsl(0 72.22% 50.59%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  /* ============================================================
+   * Borders & Focus
+   * ============================================================ */
+  --border: hsl(220.1 18.37% 90.39%);
+  --input: hsl(220.1 18.37% 90.39%);
+  --ring: hsl(213.7 67.13% 28.63%);
+
+  /* ============================================================
+   * Charts — 카테고리형 데이터 시각화
+   * 1: primary navy / 2: deep navy / 3: gold (브랜드 톤 활용)
+   * 4-5: 보조 색상으로 충분한 대비 확보
+   * ============================================================ */
+  --chart-1: hsl(213.7 67.13% 28.63%);
+  --chart-2: hsl(221.25 43.64% 21.57%);
+  --chart-3: hsl(37.66 62.25% 54.31%);
+  --chart-4: hsl(213 60% 50%);
+  --chart-5: hsl(220 15% 65%);
+
+  /* ============================================================
+   * Sidebar — 별도 네임스페이스
+   * 진한 네이비 배경 + 골드 활성 상태 (법무법인 아이덴티티)
+   * 골드의 "지금 여기에 있다" 신호가 가장 잘 작동하는 곳
+   * ============================================================ */
+  --sidebar: hsl(221.25 43.64% 21.57%);
+  --sidebar-foreground: hsl(0 0% 100%);
+  --sidebar-primary: hsl(37.66 62.25% 54.31%);
+  --sidebar-primary-foreground: hsl(220 13% 13%);
+  --sidebar-accent: hsl(220 35% 28%);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(220 30% 32%);
+  --sidebar-ring: hsl(37.66 62.25% 54.31%);
+
+  /* ============================================================
+   * Brand Tokens — shadcn 토큰과 분리된 브랜드 전용 변수
+   * 히어로, 풋터, 핵심 강조 영역에서만 사용
+   * ============================================================ */
+  --brand-deep: hsl(221.25 43.64% 21.57%);
+  --brand-deep-foreground: hsl(0 0% 100%);
+  --brand-gold: hsl(37.66 62.25% 54.31%);
+  --brand-gold-foreground: hsl(0 0% 10.2%);
+
+  /* ============================================================
+   * Status — Banner 블록 호환용 (info/success/warning/error)
+   * 새 컬러 시스템 톤에 맞춰 hsl로 정의
+   * ============================================================ */
+  --success: hsl(150 55% 45%);
+  --warning: hsl(40 90% 55%);
+  --error: hsl(0 75% 55%);
+
+  /* ============================================================
+   * Typography — Pretendard 단일 폰트 (한글+라틴 universal)
+   * 시스템 폰트로 자동 fallback. serif는 시스템 serif 사용.
+   * ============================================================ */
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Malgun Gothic', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, monospace;
+
+  /* ============================================================
+   * Radius
+   * ============================================================ */
+  --radius: 0.5rem;
+
+  /* ============================================================
+   * Shadows
+   * ============================================================ */
+  --shadow-2xs: 0px 1px 2px 0px hsl(220 40% 10% / 0.04);
+  --shadow-xs: 0px 1px 2px 0px hsl(220 40% 10% / 0.05);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
+  --shadow:
+    0px 2px 4px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
+  --shadow-md:
+    0px 4px 6px 0px hsl(220 40% 10% / 0.1), 0px 2px 4px -1px hsl(220 40% 10% / 0.1);
+  --shadow-lg:
+    0px 8px 12px 0px hsl(220 40% 10% / 0.1), 0px 4px 6px -2px hsl(220 40% 10% / 0.05);
+  --shadow-xl:
+    0px 12px 18px 0px hsl(220 40% 10% / 0.1), 0px 8px 10px -3px hsl(220 40% 10% / 0.05);
+  --shadow-2xl: 0px 25px 30px 0px hsl(220 40% 10% / 0.15);
+
+  --tracking-normal: -0.01em;
+  --spacing: 0.25rem;
 }
 
 @theme inline {
@@ -188,10 +241,6 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -200,9 +249,42 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand tokens — bg-brand-deep, text-brand-gold 등으로 사용 */
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-deep-foreground: var(--brand-deep-foreground);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-foreground: var(--brand-gold-foreground);
+
+  /* Status tokens — Banner 블록(info/success/warning/error) 호환 */
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
 }
 
 @layer base {
@@ -211,14 +293,7 @@
   }
   body {
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-normal);
   }
-}
-
-html {
-  opacity: 0;
-}
-
-html[data-theme='dark'],
-html[data-theme='light'] {
-  opacity: initial;
 }
