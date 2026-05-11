@@ -31,8 +31,8 @@ B 채택. 이유:
 
 ## 결과
 
-- `docs/07-development/README.md`에 산출물 매핑 룰을 박아둠 (산출물 5종 → 위치 표, 자주 헷갈리는 케이스).
-- 기존 `docs/` 디렉토리 8개의 성격을 README 표로 정리.
+- `docs/07-development/INDEX.md`에 산출물 매핑 룰을 박아둠 (산출물 5종 → 위치 표, 자주 헷갈리는 케이스).
+- 기존 `docs/` 디렉토리 8개의 성격을 INDEX 표로 정리.
 - lazy 신설 시 정확한 구조 명시: `docs/pages/{main,about,services,cases}/`.
 - lazy 신설 트리거: 페이지 전용 산출물이 ADR·영역 SoT에 안 맞는 형태로 2~3건 쌓일 때.
 

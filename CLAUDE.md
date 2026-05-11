@@ -29,7 +29,7 @@ Korean research and content SoT lives under `docs/`. When making copy, IA, metad
 1. `docs/03-firm/brand-positioning.md` — official messaging, USP, contact info (블로그 배너 1차 출처)
 2. `docs/01-profile/profile.md` — attorney bio (career, credentials, practice areas)
 
-Full index: `docs/README.md`. The original Payload template README is preserved verbatim at `docs/05-references/payload-template-README.md`.
+Full index: `docs/INDEX.md`. The original Payload template README is preserved verbatim at `docs/05-references/payload-template-README.md`.
 
 ## 1차 개발 범위 (Scope v1)
 
