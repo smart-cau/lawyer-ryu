@@ -6,6 +6,10 @@
         "shadcn@latest",
         "mcp"
       ]
+    },
+    "colorsandfonts": {
+      "command": "npx",
+      "args": ["-y", "@colorsandfonts/mcp"]
     }
   }
 }
