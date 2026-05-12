@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`lawyer-ryu` is the homepage project for **법무법인 인유 창원사무소 / 대표변호사 류남경 (Attorney Ryu Nam-kyung)** — a Korean-language law firm site. The current state is a 1차 시안 (v1 working draft) being built **ahead of the lawyer's content interview**, so concrete copy and structural decisions in the codebase represent a working hypothesis grounded in the SoT docs (`docs/`), not finalized content. Expect text and IA to shift after the interview.
+`lawyer-ryu` is the homepage project for **법무법인 인유 창원사무소 / 대표변호사 류남경 (Attorney Ryu Nam-kyung)** — a Korean-language law firm site. The current state is a 1차 시안 (v1 working draft). 코드에 들어 있는 카피·IA·구조 결정은 모두 **작업 가설(working hypothesis)**이며, 확정된 콘텐츠가 아니다. `docs/` 디렉터리는 작업을 위한 **자료조사 메모(research notes)** 모음이지 확정된 카피·IA 원천이 아니다 — 발췌해서 그대로 페이지에 박을 수 있는 권위를 가지지 않는다. 카피·IA 변경은 사용자 확인을 거쳐 결정한다.
 
 Project facts:
 - 사무소: 법무법인 인유 창원사무소 (LAWFIRM IN-YOU, Changwon office)
@@ -22,14 +22,17 @@ Database is **Postgres** via `@payloadcms/db-vercel-postgres` — *not* MongoDB.
 
 A bundled Payload reference skill lives at `.claude/skills/payload/`. **Read `.claude/skills/payload/SKILL.md` before doing non-trivial Payload work** (collections, fields, hooks, access control, queries, plugins). Detailed docs are under `.claude/skills/payload/reference/`.
 
-## Source-of-truth docs
+## 자료조사 메모 (`docs/`)
 
-Korean research and content SoT lives under `docs/`. When making copy, IA, metadata, or branding decisions, consult these in order:
+`docs/`는 홈페이지 개발에 필요한 **자료조사·참고 메모** 모음이다. 카피·IA·브랜딩의 *권위 있는 원천(SoT)이 아니다* — 내용 퀄리티와 확정도가 들쭉날쭉하며, 발췌해서 그대로 페이지에 박을 수 없다. 참조 시 다음을 지킨다.
 
-1. `docs/03-firm/brand-positioning.md` — official messaging, USP, contact info (블로그 배너 1차 출처)
-2. `docs/01-profile/profile.md` — attorney bio (career, credentials, practice areas)
+- 카피·IA·메타데이터 결정에서 `docs/`를 *그대로 발췌*하지 말 것. 참고 자료로 읽고, 실제 문구·구조는 사용자 확인을 거쳐 결정한다.
+- 일부 문서(예: services IA v1.4 `docs/02-services/01-services-ia-v1.md`)는 사용자와 합의가 끝난 *locked* 상태일 수 있으나, **개별 문서 머리말에 명시된 경우에 한해** 그렇게 취급한다. 명시가 없으면 draft·메모로 본다.
+- 입문 진입점:
+  1. `docs/03-firm/brand-positioning.md` — 메시지·USP·연락처 초안
+  2. `docs/01-profile/profile.md` — 변호사 약력 초안
 
-Full index: `docs/INDEX.md`. The original Payload template README is preserved verbatim at `docs/05-references/payload-template-README.md`.
+Full index: `docs/INDEX.md`. 원본 Payload template README는 `docs/05-references/payload-template-README.md`에 보존.
 
 ## 1차 개발 범위 (Scope v1)
 
