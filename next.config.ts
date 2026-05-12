@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
       {
         pathname: '/brand/**',
       },
+      {
+        pathname: '/ryu-profile/**',
+      },
+      {
+        pathname: '/home/**',
+      },
     ],
     qualities: [100],
     remotePatterns: [
