@@ -7,7 +7,6 @@ export type ServiceLeaf = {
 export type ServiceCategory = {
   label: string
   slug: 'criminal' | 'non-criminal'
-  href: string
   leaves: ServiceLeaf[]
 }
 
@@ -21,60 +20,58 @@ export const servicesNav: ServiceCategory[] = [
   {
     label: '형사전문',
     slug: 'criminal',
-    href: '/services/criminal',
     leaves: [
-      { label: '성범죄', slug: 'sex-crime', href: '/services/criminal/sex-crime' },
+      { label: '성범죄', slug: 'sex-crime', href: '/services/sex-crime' },
       {
         label: '기업 관련 범죄',
         slug: 'corporate-crime',
-        href: '/services/criminal/corporate-crime',
+        href: '/services/corporate-crime',
       },
       {
         label: '재산범죄',
         slug: 'property-crime',
-        href: '/services/criminal/property-crime',
+        href: '/services/property-crime',
       },
       {
         label: '음주운전·교통범죄',
         slug: 'traffic-crime',
-        href: '/services/criminal/traffic-crime',
+        href: '/services/traffic-crime',
       },
       {
         label: '아동학대·학교폭력',
         slug: 'school-violence',
-        href: '/services/criminal/school-violence',
+        href: '/services/school-violence',
       },
       {
         label: '일반 형사',
         slug: 'general-criminal',
-        href: '/services/criminal/general-criminal',
+        href: '/services/general-criminal',
       },
       {
         label: '반부패 범죄',
         slug: 'anti-corruption',
-        href: '/services/criminal/anti-corruption',
+        href: '/services/anti-corruption',
       },
       {
         label: '조사·구속 대응',
         slug: 'investigation',
-        href: '/services/criminal/investigation',
+        href: '/services/investigation',
       },
     ],
   },
   {
     label: '민사·가사·행정',
     slug: 'non-criminal',
-    href: '/services/non-criminal',
     leaves: [
       {
         label: '민사·가사',
         slug: 'civil-family',
-        href: '/services/non-criminal/civil-family',
+        href: '/services/civil-family',
       },
       {
         label: '행정',
         slug: 'administrative',
-        href: '/services/non-criminal/administrative',
+        href: '/services/administrative',
       },
     ],
   },

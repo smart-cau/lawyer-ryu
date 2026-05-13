@@ -63,20 +63,11 @@ export function MobileNav() {
                   <AccordionContent className="pb-2">
                     <div className="flex flex-col gap-4 px-4">
                       {servicesNav.map((category) => {
-                        const categoryActive = isActiveRoute(category.href, pathname)
                         return (
                           <div key={category.slug} className="flex flex-col gap-1">
-                            <SheetClose asChild>
-                              <Link
-                                href={category.href}
-                                className={cn(
-                                  'py-2 text-sm font-semibold transition-colors',
-                                  categoryActive ? 'text-primary' : 'text-foreground',
-                                )}
-                              >
-                                {category.label}
-                              </Link>
-                            </SheetClose>
+                            <span className="py-2 text-sm font-semibold text-foreground">
+                              {category.label}
+                            </span>
                             <ul className="flex flex-col">
                               {category.leaves.map((leaf) => {
                                 const leafActive = isActiveRoute(leaf.href, pathname)

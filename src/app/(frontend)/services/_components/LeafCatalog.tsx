@@ -8,11 +8,9 @@ import {
 } from '@/app/(frontend)/services/_data/leaves'
 import { cn } from '@/utilities/ui'
 
-type LeafGroup = 'criminal' | 'non-criminal'
-
-const LeafCard: FC<{ leaf: Leaf; group: LeafGroup }> = ({ leaf, group }) => (
+const LeafCard: FC<{ leaf: Leaf }> = ({ leaf }) => (
   <Link
-    href={`/services/${group}/${leaf.slug}`}
+    href={`/services/${leaf.slug}`}
     className="flex h-full flex-col p-6 transition-colors hover:bg-accent/30"
   >
     <h3 className="text-h3">{leaf.label}</h3>
@@ -29,14 +27,14 @@ const LeafCard: FC<{ leaf: Leaf; group: LeafGroup }> = ({ leaf, group }) => (
   </Link>
 )
 
-const LeafGrid: FC<{ leaves: Leaf[]; group: LeafGroup }> = ({ leaves, group }) => (
+const LeafGrid: FC<{ leaves: Leaf[] }> = ({ leaves }) => (
   <ul className="grid grid-cols-1 border-x border-t lg:grid-cols-2">
     {leaves.map((leaf, idx) => (
       <li
         key={leaf.slug}
         className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}
       >
-        <LeafCard leaf={leaf} group={group} />
+        <LeafCard leaf={leaf} />
       </li>
     ))}
   </ul>
@@ -51,12 +49,12 @@ export const LeafCatalogSection: FC = () => {
     >
       <div className="space-y-6">
         <h2 className="text-h2">형사전문</h2>
-        <LeafGrid leaves={CRIMINAL_LEAVES} group="criminal" />
+        <LeafGrid leaves={CRIMINAL_LEAVES} />
       </div>
 
       <div className="space-y-6">
         <h2 className="text-h2">민사·가사·행정</h2>
-        <LeafGrid leaves={NON_CRIMINAL_LEAVES} group="non-criminal" />
+        <LeafGrid leaves={NON_CRIMINAL_LEAVES} />
       </div>
     </section>
   )

@@ -3,9 +3,10 @@ import type { Metadata } from 'next/types'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
+import { PageTitleBar } from '@/components/PageTitleBar'
+import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -26,31 +27,36 @@ export default async function Page() {
     },
   })
 
+  const title = '성공사례'
+  const route = '/cases'
+
   return (
-    <div className="pt-24 pb-24">
-      <div className="container mb-16">
-        <div className="prose max-w-none">
-          <h1>성공사례</h1>
+    <>
+      <PageTitleBar
+        title={title}
+        breadcrumbs={getBreadcrumbsFromRoute(route, title)}
+        bgImage={getBgImageFromRoute(route)}
+      />
+
+      <div className="py-section">
+        <div className="container mb-8">
+          <PageRange
+            collection="cases"
+            currentPage={cases.page}
+            limit={12}
+            totalDocs={cases.totalDocs}
+          />
+        </div>
+
+        <CollectionArchive posts={cases.docs} />
+
+        <div className="container">
+          {cases.totalPages > 1 && cases.page && (
+            <Pagination page={cases.page} totalPages={cases.totalPages} />
+          )}
         </div>
       </div>
-
-      <div className="container mb-8">
-        <PageRange
-          collection="cases"
-          currentPage={cases.page}
-          limit={12}
-          totalDocs={cases.totalDocs}
-        />
-      </div>
-
-      <CollectionArchive posts={cases.docs} />
-
-      <div className="container">
-        {cases.totalPages > 1 && cases.page && (
-          <Pagination page={cases.page} totalPages={cases.totalPages} />
-        )}
-      </div>
-    </div>
+    </>
   )
 }
 

@@ -30,17 +30,7 @@ function CategoryColumn({
 }) {
   return (
     <div className={cn('flex flex-col gap-3', withDivider && 'border-l border-border pl-8')}>
-      <NavigationMenuLink asChild>
-        <Link
-          href={category.href}
-          className={cn(
-            'text-base font-semibold transition-colors hover:text-primary',
-            isActiveRoute(category.href, pathname) ? 'text-primary' : 'text-foreground',
-          )}
-        >
-          {category.label}
-        </Link>
-      </NavigationMenuLink>
+      <span className="text-base font-semibold text-foreground">{category.label}</span>
       <ul
         className={cn(
           'grid gap-x-2 gap-y-1',

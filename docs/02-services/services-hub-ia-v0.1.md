@@ -4,7 +4,7 @@
 > **상태**: 합의 완료.
 > **관련 자료**: `docs/02-services/01-services-ia-v1.md` (routing IA, 합의 완료 · 1순위 참조) · `docs/03-firm/main-ia-v0.1.md` (M-04 outbound) · `docs/03-firm/usp.md`
 > **연결 코드**: `src/app/(frontend)/services/page.tsx`
-> **본 IA 범위**: services hub `/services` 1개 페이지. 대분류 hub `/services/criminal` · `/services/non-criminal`은 **미생성** — 본 services hub가 catalog 역할 단독 수행.
+> **본 IA 범위**: services hub `/services` 1개 페이지. 대분류(형사전문 / 민사·가사·행정)는 **URL 자체 없음** (UI 그루핑만, 2026-05-13 결정) — 본 services hub가 catalog 역할 단독 수행.
 
 > ⚠ **표현 규약**: 본 IA의 "그리드", "카드 N개" 등 layout 표현은 **콘텐츠 인벤토리 shorthand**일 뿐 배치 형식 약속이 아님. 실제 layout(card grid / 번호 매긴 editorial list / asymmetric / vertical stacked rows 등)은 wireframe 단계 5(배치)에서 옵션 enumerate 후 결정.
 
@@ -52,5 +52,5 @@
 - [ ] **SH-02 그루핑 헤더의 시각 처리** — 형사·비형사 분리 표지 (텍스트 헤더 / 섹션 구분선 / 카드 톤 차이 / 간격 점프). wireframe 단계 5에서 옵션 enumerate
 - [ ] **SH-02 leaf 카드의 정보 단위** — 라벨만 / 라벨+키워드 칩 / 라벨+1~2줄 설명. services IA §3 표 칼럼 보류 결정과 동기
 - [ ] **외부 SEO 진입자가 본 페이지로 직접 들어왔을 때 변호사 USP·시급성·Contact를 만나지 못하는 시나리오 대응** — 글로벌 헤더·푸터 디자인이 그 책임을 충분히 지는지 헤더·푸터 IA 검증 시점에 재검토
-- [ ] **`/services/criminal` · `/services/non-criminal` URL 처리** — 페이지 미생성에 따른 URL 동작: (a) 404, (b) `/services`로 redirect, (c) Next.js 폴더만 두고 `page.tsx` 없이. SEO·UX 관점 결정. services IA §10.3·§10.5 갱신 필요
-- [ ] **글로벌 헤더 2단계 대분류 메뉴 동작** — services IA §10.1은 "헤더 2단계: 형사전문 / 민사·가사·행정" 권장. 페이지 미생성으로 (a) 그루핑 라벨만 (클릭 불가), (b) `/services`로 가서 해당 그루핑 영역으로 스크롤, (c) 메뉴 2단계 자체 제거. 헤더 IA 결정 사항
+- [x] ~~**`/services/criminal` · `/services/non-criminal` URL 처리**~~ — **2026-05-13 결정**: URL segment 자체 제거 (옵션 (d) 신규). leaf URL을 `/services/<leaf-slug>` flat 구조로 변경. services IA §10.2·§10.3 갱신 완료
+- [x] ~~**글로벌 헤더 2단계 대분류 메뉴 동작**~~ — **2026-05-13 결정**: (a) 그루핑 라벨만 (클릭 불가) 채택. nav-data·DesktopNav·MobileNav 반영 완료

@@ -22,7 +22,7 @@ export const ServicesSection: FC = () => {
             className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}
           >
             <Link
-              href={`/services/criminal/${leaf.slug}`}
+              href={`/services/${leaf.slug}`}
               className="flex h-full flex-col p-6 transition-colors hover:bg-accent/30"
             >
               <h3 className="text-h3">{leaf.label}</h3>
