@@ -27,9 +27,9 @@
   - Section rhythm: `--spacing-section`, `--spacing-section-inner` (clamp 기반 반응형)
   - Shadow scale, radius, breakpoint, container max
 - **shadcn primitive 20종 설치** — `src/components/ui/` (button, card, dialog, navigation-menu, sheet, tabs 등)
-- **변호사 1차 인터뷰 완료** — 결과가 SoT에 반영됨
-  - 운영·행동 USP → `docs/03-firm/usp.md`
-  - services IA v1.4 (10 leaf · 44 분류) → `docs/02-services/01-services-ia-v1.md`
+- **변호사 1차 인터뷰 완료** — 결과가 자료조사 메모·합의 완료 IA에 반영됨
+  - 운영·행동 USP → `docs/03-firm/usp.md` (자료조사 메모)
+  - services IA v1.4 (10 leaf · 44 분류) → `docs/02-services/01-services-ia-v1.md` (합의 완료)
 - **메인 IA v0.1 합의** → `docs/03-firm/main-ia-v0.1.md` (M-01~M-07)
 - **라우트·컴포넌트 자리** — main 7섹션 컴포넌트, v1 scope 14 페이지 placeholder
 
@@ -74,7 +74,7 @@
 
 **하위 page group**
 
-- `/about/lawyer` — 인사말 + 경력 타임라인 + 자격증 wireframe (콘텐츠 SoT는 `docs/01-profile/`, `docs/03-firm/usp.md`)
+- `/about/lawyer` — 인사말 + 경력 타임라인 + 자격증 wireframe (콘텐츠 자료조사 메모는 `docs/01-profile/`, `docs/03-firm/usp.md`)
 - `/services/<criminal|non-criminal>/<slug>` — IA locked 상태. hub + leaf 페이지 wireframe (단순 그리드 → 리스트 → 상세 골격)
 - `/cases` (list), `/cases/[slug]` (detail) — UI placeholder만. **CMS 스키마는 Phase 2에서**
 
@@ -105,7 +105,7 @@
 
 ### 3.2 콘텐츠 의존성 (인터뷰 완료 후)
 
-| 페이지 | 콘텐츠 SoT | Phase 1 작업 가능성 |
+| 페이지 | 콘텐츠 자료조사 메모 | Phase 1 작업 가능성 |
 |--------|------------|---------------------|
 | main | `03-firm/main-ia-v0.1.md`, `03-firm/usp.md` | ✅ wireframe 가능 |
 | about/lawyer | `01-profile/profile.md`, `01-profile/career-timeline.md`, `03-firm/usp.md` | ✅ wireframe 가능 (이전 가정과 달리 인터뷰 완료) |
@@ -126,7 +126,7 @@ main의 `Services`, `Cases` 섹션은 결국 하위 페이지 진입 hook이다.
 
 - 디자인 토큰 적용 (이미 `globals.css`에 있음 — `bg-brand-deep`, `text-h1`, `py-section` 등 그대로 사용)
 - shadcn primitive 조합으로 만든 골격 — 신규 컴포넌트는 shadcn skill 참고
-- 섹션 컨테이너 + 제목/부제 (SoT 카피 직접 인용)
+- 섹션 컨테이너 + 제목/부제 (자료조사 메모 카피 후보 직접 인용, 사용자 확인 거친 후 사용)
 - 핵심 레이아웃 — 카드 그리드, 캐러셀 자리, 단계 박스, CTA 위치
 - 섹션 간 vertical rhythm (`space-y-section` 등)
 - 큰 깨짐만 막는 수준의 반응형
@@ -137,7 +137,7 @@ main의 `Services`, `Cases` 섹션은 결국 하위 페이지 진입 hook이다.
 - 실제 이미지 (placeholder div + aspect ratio만)
 - 정확한 타이포 위계, 자간/행간 미세 조정
 - breakpoint별 미세 튜닝
-- 카피 폴리싱 (Phase 1에서는 SoT 직접 인용, Phase 3에서 톤·길이 다듬기)
+- 카피 폴리싱 (Phase 1에서는 자료조사 메모 카피 후보 인용, Phase 3에서 톤·길이 다듬기)
 
 비유 — 그림에서 한 부분부터 채색하지 않고 전체에 옅은 underpainting을 까는 것. 단, 이 프로젝트에선 underpainting의 **색 팔레트는 이미 정해져 있다** (Phase 0).
 
@@ -151,7 +151,7 @@ main의 `Services`, `Cases` 섹션은 결국 하위 페이지 진입 hook이다.
 
 | 항목 | 내용 | 완화 |
 |------|------|------|
-| placeholder가 그대로 굳을 위험 | "SoT 직접 인용 + placeholder 이미지"가 Phase 3에서 교체 안 되고 release될 위험 | Phase 1에서 만든 placeholder는 `// TODO(polish)` 마커 + Phase 3 시작 시 sweeping replace |
+| placeholder가 그대로 굳을 위험 | "자료조사 메모 카피 후보 직접 인용 + placeholder 이미지"가 Phase 3에서 교체 안 되고 release될 위험 | Phase 1에서 만든 placeholder는 `// TODO(polish)` 마커 + Phase 3 시작 시 sweeping replace |
 | 디자인 토큰을 너무 일찍 못박을 위험 | Phase 0에서 정한 토큰이 Phase 1 sweep에서 안 맞는 부분 발견될 수 있음 | 토큰은 "확정"이 아니라 "1차 가설" — Phase 1 sweep 후 검토 회의 (필요 시 globals.css 수정) |
 | services hub 페이지의 IA 깊이 | leaf 44분류는 lock됐지만 hub 페이지의 시각 구성은 미정 | Phase 1에서는 단순 그리드/리스트로 시작, Phase 3에서 디자인 강화 |
 | Cases collection 스키마와 main Cases 섹션의 결합도 | main의 Cases 캐러셀 디자인은 collection 필드에 묶여있음 | Phase 1 main Cases는 정적 더미로, Phase 2에서 schema 확정 후 연결 |
@@ -161,7 +161,7 @@ main의 `Services`, `Cases` 섹션은 결국 하위 페이지 진입 hook이다.
 - **모든 마이크로 인터랙션** — wireframe 단계에서 애니메이션 작업은 sunk cost
 - **이미지 자산 제작** — 사무직원 자료요청(`06-interview/office-staff-asset-request.md`) 회신 후
 - **`components.json` style/baseColor 변경** — CLAUDE.md 정책에 따라 별도 디자인 세션에서만
-- **카피 톤 폴리싱** — Phase 1에선 SoT 그대로 사용, 길이·톤은 Phase 3
+- **카피 톤 폴리싱** — Phase 1에선 자료조사 메모 후보를 사용자 확인 거쳐 그대로 사용, 길이·톤은 Phase 3
 
 ## 8. 합의된 결정 사항 (2026-05-11)
 
@@ -217,10 +217,10 @@ Phase 1a 합의 완료 시 진입:
 - 디자인 시스템
   - `src/app/(frontend)/globals.css` — 토큰 1차 완성
   - `src/components/ui/` — shadcn 20종 설치
-- 콘텐츠 SoT
-  - services IA v1.4 — locked
+- 콘텐츠 자료조사·합의 IA
+  - services IA v1.4 — locked (합의 완료)
   - main IA v0.1 — 합의
-  - 운영·행동 USP — 변호사 본인 구술 1차 정리
+  - 운영·행동 USP — 변호사 본인 구술 1차 정리 (자료조사 메모)
   - 변호사 1차 인터뷰 — 완료
 - 인프라
   - Payload 3 + Next.js 16 + Postgres

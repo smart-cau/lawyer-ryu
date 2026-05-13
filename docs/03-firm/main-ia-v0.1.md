@@ -2,7 +2,7 @@
 
 > **목적**: 법무법인 인유 창원사무소 / 류남경 변호사 홈페이지 메인(`/`) 섹션 구성의 합의된 IA.
 > **상태**: 1차 합의. 카피·이미지 폴리싱은 후속 단계.
-> **연결 SoT**: `docs/03-firm/brand-positioning.md` · `docs/03-firm/usp.md` · `docs/02-services/01-services-ia-v1.md` · `docs/01-profile/profile.md`
+> **관련 자료조사 메모**: `docs/03-firm/brand-positioning.md` · `docs/03-firm/usp.md` · `docs/02-services/01-services-ia-v1.md`(IA 합의 완료) · `docs/01-profile/profile.md`
 > **연결 코드**: `src/app/(frontend)/(home)/page.tsx` · `src/app/(frontend)/(home)/_components/`
 
 ---
@@ -35,7 +35,7 @@
 - **핵심 자격 흡수**: "변협 등록 형사법 전문 / 19년 검사 / 부부장" — 별도 Trust 슬롯을 두지 않고 Hero 안에서 노출
 - **상세 경력**: `/about/lawyer` 페이지에서 처리 (메인 미노출)
 - **지역성 노출**: 형태·문구 미정 (구체 문장으로 적지 않음 — 카피 단계에서 다시 결정)
-- **CTA 버튼**: v1에서 **보류**. SoT는 010-7552-0301 CTA를 권고하지만 메인 Hero에서는 일단 빼고 출시. 시급한 의뢰인은 헤더 메뉴·M-06·M-07로 도달
+- **CTA 버튼**: v1에서 **보류**. 자료조사 메모는 010-7552-0301 CTA를 권고하지만 메인 Hero에서는 일단 빼고 출시. 시급한 의뢰인은 헤더 메뉴·M-06·M-07로 도달
 
 ### M-02 USP — 왜 류남경 변호사인가
 

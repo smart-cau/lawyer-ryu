@@ -452,4 +452,4 @@ ___________________________________________________________
 
 ---
 
-> **인터뷰 종료 후**: 본 파일을 채워서 `interview-result-YYYY-MM-DD.md`로 저장하고, 영향받는 SoT 문서(`brand-positioning.md`, `profile.md`, `services-from-career.md`)를 갱신.
+> **인터뷰 종료 후**: 본 파일을 채워서 `interview-result-YYYY-MM-DD.md`로 저장하고, 영향받는 자료조사 메모(`brand-positioning.md`, `profile.md`, `services-from-career.md`)를 갱신.

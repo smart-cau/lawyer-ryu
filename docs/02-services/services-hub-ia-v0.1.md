@@ -2,7 +2,7 @@
 
 > **목적**: services 카탈로그 hub `/services` 페이지 섹션 구성의 합의된 IA.
 > **상태**: 합의 완료.
-> **연결 SoT**: `docs/02-services/01-services-ia-v1.md` (routing IA · 1순위) · `docs/03-firm/main-ia-v0.1.md` (M-04 outbound) · `docs/03-firm/usp.md`
+> **관련 자료**: `docs/02-services/01-services-ia-v1.md` (routing IA, 합의 완료 · 1순위 참조) · `docs/03-firm/main-ia-v0.1.md` (M-04 outbound) · `docs/03-firm/usp.md`
 > **연결 코드**: `src/app/(frontend)/services/page.tsx`
 > **본 IA 범위**: services hub `/services` 1개 페이지. 대분류 hub `/services/criminal` · `/services/non-criminal`은 **미생성** — 본 services hub가 catalog 역할 단독 수행.
 

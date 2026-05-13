@@ -27,11 +27,11 @@ docs/
 | 경력 타임라인 | `01-profile/career-timeline.md` | ✅ 작성 |
 | 전문분야 (공식 4분류 기준) | `01-profile/services-from-career.md` | ✅ 공식 분류로 재정렬 |
 | **services 설계 원문 보존** | `02-services/services-source-2026-05-07.md` | ✅ 변호사 1차 청취 + 결정 트래킹 완료 (A1~A12) |
-| **services IA v1.4 (SoT)** | `02-services/01-services-ia-v1.md` | ✅ 변호사 1차 피드백 반영 + 메뉴·URL 정책 (10 leaf · 44 분류, 메뉴 라벨 "업무분야", `/services/<criminal\|non-criminal>/<slug>`) |
-| 공식 브랜드 포지셔닝 (SoT) | `03-firm/brand-positioning.md` | ✅ 작성 |
-| **운영·행동 USP (SoT)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
+| **services IA v1.4 (합의 완료)** | `02-services/01-services-ia-v1.md` | ✅ 변호사 1차 피드백 반영 + 메뉴·URL 정책 (10 leaf · 44 분류, 메뉴 라벨 "업무분야", `/services/<criminal\|non-criminal>/<slug>`) |
+| 공식 브랜드 포지셔닝 (자료조사) | `03-firm/brand-positioning.md` | ✅ 작성 |
+| **운영·행동 USP (자료조사)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
 | 운영·행동 USP 원문 보존 | `03-firm/usp-source-2026-05-06.md` | ✅ 1차 출처 원문 (가공 전) |
-| **메인 페이지 IA v0.1 (SoT)** | `03-firm/main-ia-v0.1.md` | ✅ 1차 합의 (M-01~M-07, 인터뷰 전 시안) |
+| **메인 페이지 IA v0.1 (1차 합의)** | `03-firm/main-ia-v0.1.md` | ✅ 1차 합의 (M-01~M-07, 인터뷰 전 시안) |
 | 언론기사 메타스키마 | `04-cases/media/SCHEMA.md` | ✅ 작성 |
 | 언론기사 머신리더블 | `04-cases/media/articles.json` | ✅ 9건 수집 |
 | 언론기사 인덱스 | `04-cases/media/articles.md` | ✅ 작성 |
@@ -41,16 +41,18 @@ docs/
 | **인터뷰 질문지** | `06-interview/interview-script.md` | ✅ 현장용 |
 | **사무직원 자료요청** | `06-interview/office-staff-asset-request.md` | ✅ 사무직원 송부용 |
 
-## 단일 진실 원천 (Source of Truth)
+## 참조 우선순위
 
-홈페이지 카피·디자인 결정 시 우선 참조 순서:
+> ⚠ 본 디렉토리는 홈페이지 개발을 위한 **자료조사·참고 메모** 모음이다. 카피·IA·브랜딩의 권위 있는 원천(SoT)이 아니다 — 그대로 발췌해 페이지에 박지 말 것. 카피·문구는 후보로 추출하고 사용자 확인을 거쳐 확정한다. 예외: 머리말에 *locked* 또는 *합의 완료*가 명시된 항목(예: services IA v1.4의 분류 체계, 메인 IA v0.1 슬롯 구조)만 합의된 단계로 취급한다.
 
-1. **`docs/03-firm/brand-positioning.md`** — 공식 메시지·USP·연락처 (블로그 배너 1차 출처)
-2. **`docs/03-firm/usp.md`** — 변호사 본인 구술 기반 **운영·행동 USP** (Practice·Process 본문 카피용)
-3. **`docs/02-services/01-services-ia-v1.md`** — **services IA SoT** (10 leaf · 44 분류, 라우팅·SEO·카피 결정 1순위)
-4. **`docs/03-firm/main-ia-v0.1.md`** — **메인 페이지 IA SoT** (M-01~M-07 슬롯 구조, 메인 결정 1순위)
+홈페이지 카피·디자인 결정 시 참조 우선순위:
+
+1. **`docs/03-firm/brand-positioning.md`** — 공식 메시지·USP·연락처 자료조사 (블로그 배너 1차 출처)
+2. **`docs/03-firm/usp.md`** — 변호사 본인 구술 기반 **운영·행동 USP 자료조사** (Practice·Process 카피 후보 추출용)
+3. **`docs/02-services/01-services-ia-v1.md`** — **services IA (합의 완료)** (10 leaf · 44 분류, 라우팅·SEO 결정 기준)
+4. **`docs/03-firm/main-ia-v0.1.md`** — **메인 페이지 IA (1차 합의)** (M-01~M-07 슬롯 구조)
 5. **`docs/04-cases/media/articles.json`** — 검증된 기사 메타데이터
-6. **`docs/01-profile/profile.md`** — 통합 프로필
+6. **`docs/01-profile/profile.md`** — 통합 프로필 자료조사
 7. **`docs/assets/blog-banner.png`** — 공식 브랜드 비주얼
 8. **`docs/assets/contract-page-scope.png`** — 계약서 페이지 범위 원본
 
