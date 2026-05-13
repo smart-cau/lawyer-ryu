@@ -2,9 +2,8 @@ import Link from 'next/link'
 import type { FC } from 'react'
 
 import { CRIMINAL_LEAVES } from '@/app/(frontend)/services/_data/leaves'
+import { SectionHeader } from '@/components/SectionHeader'
 import { cn } from '@/utilities/ui'
-
-import { SectionHeader } from './SectionHeader'
 
 export const ServicesSection: FC = () => {
   return (

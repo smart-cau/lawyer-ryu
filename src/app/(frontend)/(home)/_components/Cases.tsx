@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { SectionHeader } from '@/components/SectionHeader'
 import { Card } from '@/components/ui/card'
-
-import { SectionHeader } from './SectionHeader'
 
 const MOCK_CASES = [
   {

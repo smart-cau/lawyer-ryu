@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { SectionHeader } from './SectionHeader'
+import { SectionHeader } from '@/components/SectionHeader'
 
 const USP_ITEMS = [
   {
