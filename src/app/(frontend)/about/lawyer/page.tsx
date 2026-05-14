@@ -1,11 +1,16 @@
-import { PagePlaceholder } from '@/app/(frontend)/_components/PagePlaceholder'
+import { CareerSection, HeroSection, NarrativeSection } from './_components'
+import { NARRATIVES } from './_data/narratives'
 
 export default function LawyerAboutPage() {
   return (
-    <PagePlaceholder
-      route="/about/lawyer"
-      title="변호사 소개"
-      description="변호사 본인 인터뷰 후 IA·콘텐츠 확정 예정. 현재는 라우트만 준비."
-    />
+    <>
+      <HeroSection />
+      <main className="container py-section space-y-section">
+        {NARRATIVES.map((narrative) => (
+          <NarrativeSection key={narrative.id} {...narrative} />
+        ))}
+        <CareerSection />
+      </main>
+    </>
   )
 }

@@ -32,6 +32,7 @@ docs/
 | **운영·행동 USP (자료조사)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
 | 운영·행동 USP 원문 보존 | `03-firm/usp-source-2026-05-06.md` | ✅ 1차 출처 원문 (가공 전) |
 | **메인 페이지 IA v0.1 (1차 합의)** | `03-firm/main-ia-v0.1.md` | ✅ 1차 합의 (M-01~M-07, 인터뷰 전 시안) |
+| **about/lawyer 페이지 IA v0.1 (1차 합의)** | `01-profile/about-lawyer-ia-v0.1.md` | ✅ 1차 합의 (L-01~L-04, narrative+경력 입증 컨셉) |
 | 언론기사 메타스키마 | `04-cases/media/SCHEMA.md` | ✅ 작성 |
 | 언론기사 머신리더블 | `04-cases/media/articles.json` | ✅ 9건 수집 |
 | 언론기사 인덱스 | `04-cases/media/articles.md` | ✅ 작성 |
