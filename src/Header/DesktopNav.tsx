@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import {
   NavigationMenu,
@@ -80,11 +81,30 @@ function ServicesMegaMenu({ pathname }: { pathname: string }) {
   )
 }
 
-export function DesktopNav() {
+const darkToneTrigger =
+  'bg-transparent text-white hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white'
+
+export function DesktopNav({
+  tone = 'light',
+  onMenuOpenChangeAction,
+}: {
+  tone?: 'light' | 'dark'
+  onMenuOpenChangeAction?: (open: boolean) => void
+}) {
   const pathname = usePathname()
+  const isDark = tone === 'dark'
+  const [openValue, setOpenValue] = useState('')
+
+  useEffect(() => {
+    onMenuOpenChangeAction?.(openValue !== '')
+  }, [openValue, onMenuOpenChangeAction])
 
   return (
-    <NavigationMenu className="hidden md:flex">
+    <NavigationMenu
+      className="hidden md:flex"
+      value={openValue}
+      onValueChange={setOpenValue}
+    >
       <NavigationMenuList>
         {primaryNav.map((item) => {
           const active = isActiveRoute(item.href, pathname)
@@ -93,7 +113,11 @@ export function DesktopNav() {
               {item.hasSubmenu ? (
                 <>
                   <NavigationMenuTrigger
-                    className={cn(active && 'text-primary font-semibold')}
+                    className={cn(
+                      'transition-colors',
+                      isDark && darkToneTrigger,
+                      active && (isDark ? 'font-semibold' : 'text-primary font-semibold'),
+                    )}
                   >
                     {item.label}
                   </NavigationMenuTrigger>
@@ -104,7 +128,9 @@ export function DesktopNav() {
                   asChild
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    active && 'text-primary font-semibold',
+                    'transition-colors',
+                    isDark && darkToneTrigger,
+                    active && (isDark ? 'font-semibold' : 'text-primary font-semibold'),
                   )}
                 >
                   <Link href={item.href}>{item.label}</Link>

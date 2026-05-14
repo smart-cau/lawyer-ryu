@@ -25,14 +25,23 @@ import { cn } from '@/utilities/ui'
 import { isActiveRoute } from './nav-utils'
 import { primaryNav, servicesNav } from './nav-data'
 
-export function MobileNav() {
+export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const isDark = tone === 'dark'
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden" aria-label="메뉴 열기">
+        <Button
+          variant="ghost"
+          size="icon"
+          className={cn(
+            'md:hidden transition-colors',
+            isDark && 'text-white hover:bg-white/10 hover:text-white',
+          )}
+          aria-label="메뉴 열기"
+        >
           <Menu />
         </Button>
       </SheetTrigger>
