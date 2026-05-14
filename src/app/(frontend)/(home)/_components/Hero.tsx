@@ -19,66 +19,73 @@ export const HeroSection: FC = () => {
     <section
       id="hero"
       aria-label="대표변호사 류남경 소개"
-      className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12"
+      className="relative -mt-[6rem] overflow-hidden bg-brand-deep text-white"
     >
-      <div className="lg:col-span-7">
-        <h1 className="text-display">
-          19년 검사 경력으로 수사하고
-          <br />
-          증거를 찾아주는 변호사
-        </h1>
-
-        <p className="mt-6 text-body-lg text-muted-foreground">
-          수사기관을 대신하여
-          <br />
-          억울함을 풀어드립니다
-        </p>
-
-        <div className="mt-10 flex items-center gap-4">
-          <span aria-hidden className="h-px w-8 bg-border" />
-          <span className="text-caption font-medium tracking-wide">
-            류남경 대표변호사
-          </span>
-        </div>
-
-        <ul className="mt-6 space-y-3">
-          {HERO_CREDENTIALS.map((item) => (
-            <li
-              key={item}
-              className="flex items-start gap-3 text-body text-muted-foreground"
-            >
-              <Check
-                aria-hidden
-                className="mt-1 h-4 w-4 shrink-0 text-foreground"
-              />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-10">
-          <Button asChild size="lg">
-            <a
-              href={PHONE_HREF}
-              aria-label={`대표변호사 즉시상담 ${PHONE_DISPLAY}`}
-            >
-              <Phone data-icon="inline-start" />
-              대표변호사 즉시상담
-            </a>
-          </Button>
-        </div>
+      {/* 우측 사진 — 배경처럼 처리 */}
+      <div
+        aria-hidden
+        className="absolute inset-y-0 right-0 hidden w-1/2 lg:block"
+      >
+        <Image
+          src="/ryu-profile/1.png"
+          alt=""
+          fill
+          priority
+          sizes="50vw"
+          className="object-cover object-center"
+        />
+        {/* 좌측 fade — 사진을 배경에 자연 블렌드 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/40 to-transparent" />
       </div>
 
-      <div className="lg:col-span-5">
-        <div className="relative mx-auto aspect-[5/7] w-full max-w-md overflow-hidden rounded-lg bg-muted">
-          <Image
-            src="/ryu-profile/1.png"
-            alt="대표변호사 류남경"
-            fill
-            priority
-            sizes="(min-width: 1024px) 40vw, (min-width: 640px) 60vw, 100vw"
-            className="object-cover"
-          />
+      {/* 좌측 텍스트 */}
+      <div className="container relative z-10 pt-[10rem] pb-[6rem] lg:pt-[12rem] lg:pb-[8rem]">
+        <div className="max-w-2xl">
+          <h1 className="text-display">
+            19년 검사 경력으로 수사하고
+            <br />
+            증거를 찾아주는 변호사
+          </h1>
+
+          <p className="mt-6 text-body-lg text-white/80">
+            수사기관을 대신하여
+            <br />
+            억울함을 풀어드립니다
+          </p>
+
+          <div className="mt-10 flex items-center gap-4">
+            <span aria-hidden className="h-px w-8 bg-white/30" />
+            <span className="text-caption font-medium tracking-wide text-white/80">
+              법무법인 인유 창원사무소 | 류남경 대표변호사
+            </span>
+          </div>
+
+          <ul className="mt-6 space-y-3">
+            {HERO_CREDENTIALS.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-body text-white/80"
+              >
+                <Check
+                  aria-hidden
+                  className="mt-1 h-4 w-4 shrink-0 text-brand-gold"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10">
+            <Button asChild size="lg">
+              <a
+                href={PHONE_HREF}
+                aria-label={`대표변호사 즉시상담 ${PHONE_DISPLAY}`}
+              >
+                <Phone data-icon="inline-start" />
+                대표변호사 즉시상담
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

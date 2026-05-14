@@ -10,14 +10,16 @@ import {
 
 export default function HomePage() {
   return (
-    <main className="container py-16 space-y-16">
+    <>
       <HeroSection />
-      <UspSection />
-      <CasesSection />
-      <ServicesSection />
-      <ProcessSection />
-      <InvestigationSection />
-      <ContactSection />
-    </main>
+      <main className="container py-16 space-y-16">
+        <UspSection />
+        <CasesSection />
+        <ServicesSection />
+        <ProcessSection />
+        <InvestigationSection />
+        <ContactSection />
+      </main>
+    </>
   )
 }
