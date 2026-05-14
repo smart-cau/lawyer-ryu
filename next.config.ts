@@ -31,6 +31,9 @@ const nextConfig: NextConfig = {
       {
         pathname: '/home/**',
       },
+      {
+        pathname: '/trust/**',
+      },
     ],
     qualities: [100],
     remotePatterns: [
