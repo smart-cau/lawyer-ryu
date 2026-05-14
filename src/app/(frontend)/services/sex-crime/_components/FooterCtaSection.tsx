@@ -14,8 +14,8 @@ export const FooterCtaSection: FC = () => {
       className="mx-auto max-w-2xl space-y-8 text-center"
     >
       <div className="space-y-3">
-        <h2 className="text-h2">성범죄 수사, 혼자 대응하지 마세요</h2>
-        <p className="text-body-lg text-muted-foreground">
+        <h2 className="text-title-1 font-semibold">성범죄 수사, 혼자 대응하지 마세요</h2>
+        <p className="text-headline-1 font-medium text-muted-foreground">
           대표변호사 류남경이 직접 상담합니다.
         </p>
       </div>

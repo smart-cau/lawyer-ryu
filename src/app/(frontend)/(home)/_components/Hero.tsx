@@ -41,13 +41,13 @@ export const HeroSection: FC = () => {
       {/* 좌측 텍스트 */}
       <div className="container relative z-10 pt-[10rem] pb-[6rem] lg:pt-[12rem] lg:pb-[8rem]">
         <div className="max-w-2xl">
-          <h1 className="text-display">
+          <h1 className="text-display-1 font-bold">
             19년 검사 경력으로 수사하고
             <br />
             증거를 찾아주는 변호사
           </h1>
 
-          <p className="mt-6 text-body-lg text-white/80">
+          <p className="mt-6 text-headline-1 font-medium text-white/80">
             수사기관을 대신하여
             <br />
             억울함을 풀어드립니다
@@ -55,7 +55,7 @@ export const HeroSection: FC = () => {
 
           <div className="mt-10 flex items-center gap-4">
             <span aria-hidden className="h-px w-8 bg-white/30" />
-            <span className="text-caption font-medium tracking-wide text-white/80">
+            <span className="text-label-1 text-white/80">
               법무법인 인유 창원사무소 | 류남경 대표변호사
             </span>
           </div>
@@ -64,7 +64,7 @@ export const HeroSection: FC = () => {
             {HERO_CREDENTIALS.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 text-body text-white/80"
+                className="flex items-start gap-3 text-body-1 text-white/80"
               >
                 <Check
                   aria-hidden

@@ -45,8 +45,8 @@ export const UspSection: FC = () => {
               </span>
             </div>
             <div className="lg:col-span-10">
-              <h3 className="text-h2">{item.heading}</h3>
-              <p className="mt-3 text-body text-muted-foreground">{item.body}</p>
+              <h3 className="text-title-3 font-semibold">{item.heading}</h3>
+              <p className="mt-3 text-body-1 text-muted-foreground">{item.body}</p>
             </div>
           </li>
         ))}

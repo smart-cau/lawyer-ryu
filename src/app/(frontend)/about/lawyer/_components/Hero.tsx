@@ -35,13 +35,13 @@ export const HeroSection: FC = () => {
       {/* 좌측 텍스트 */}
       <div className="container relative z-10 pt-[10rem] pb-[6rem] lg:pt-[12rem] lg:pb-[8rem]">
         <div className="max-w-2xl">
-          <p className="text-caption font-medium tracking-wide text-brand-gold">
+          <p className="text-label-1 text-brand-gold">
             법무법인 인유 창원사무소
           </p>
 
-          <h1 className="mt-4 text-display">대표 변호사 류남경</h1>
+          <h1 className="text-display-1 font-bold">대표 변호사 류남경</h1>
 
-          <p className="mt-6 text-body-lg text-white/80">
+          <p className="mt-6 text-headline-1 font-medium text-white/80">
             변호사를 설명하는 인상적인 한마디
           </p>
 
@@ -50,7 +50,7 @@ export const HeroSection: FC = () => {
               <a
                 href={PHONE_HREF}
                 aria-label={`사무소 전화 ${CONTACT.office}`}
-                className="inline-flex items-center gap-3 text-body text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                className="inline-flex items-center gap-3 text-body-1 text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
                 <Phone aria-hidden className="h-5 w-5 shrink-0 text-brand-gold" />
                 <span>{CONTACT.office}</span>
@@ -60,7 +60,7 @@ export const HeroSection: FC = () => {
               <a
                 href={MAIL_HREF}
                 aria-label={`이메일 ${CONTACT.email}`}
-                className="inline-flex items-center gap-3 text-body text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                className="inline-flex items-center gap-3 text-body-1 text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
                 <Mail aria-hidden className="h-5 w-5 shrink-0 text-brand-gold" />
                 <span>{CONTACT.email}</span>
@@ -70,7 +70,7 @@ export const HeroSection: FC = () => {
               <a
                 href={VCARD_HREF}
                 aria-label="대표변호사 연락처 저장 (vCard)"
-                className="inline-flex items-center gap-3 text-body text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                className="inline-flex items-center gap-3 text-body-1 text-white/90 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
                 <UserPlus aria-hidden className="h-5 w-5 shrink-0 text-brand-gold" />
                 <span>연락처 저장</span>

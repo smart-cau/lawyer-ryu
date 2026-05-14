@@ -18,11 +18,11 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
   return (
     <header className="mx-auto max-w-2xl text-center">
       {overline && (
-        <p className="text-overline text-muted-foreground">{overline}</p>
+        <p className="text-label-1 text-muted-foreground">{overline}</p>
       )}
-      <h2 className={cn('text-h2', overline && 'mt-3')}>{title}</h2>
+      <h2 className={cn('text-title-1 font-semibold', overline && 'mt-3')}>{title}</h2>
       {lead && (
-        <p className="mt-4 text-body-lg text-muted-foreground">{lead}</p>
+        <p className="mt-4 text-headline-1 font-medium text-muted-foreground">{lead}</p>
       )}
       {children}
     </header>

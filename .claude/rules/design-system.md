@@ -97,21 +97,13 @@ paths: src/**/*.{tsx,css}
 
 > **현 상태: wireframe 단계** (2026-05-14). serif 적용 범위는 컴포넌트 단위로 검토하며 확정. 패턴이 굳으면(예: "모든 페이지 타이틀은 serif") 토큰에 박아 자동 적용으로 승격.
 
-#### Legacy 토큰 (호환 alias)
+#### 라벨 통일 정책
 
-기존 컴포넌트(Hero/Usp/Services/Contact/Process/Cases)는 아래 토큰을 그대로 사용 중이며, **신규 스케일로 매핑된 값**으로 자동 반영된다. 신규 컴포넌트는 신규 토큰을 사용한다.
+섹션 카테고리(예: "원칙", "분야"), M-XX 식별자(M-05/M-06), 브랜드 라벨(법무법인 인유 창원사무소) 등 *오버라인 성격* 라벨은 모두 `text-label-1`을 사용한다. 시각 강조가 필요하면 color 토큰(`text-brand-gold` / `text-muted-foreground` 등)이나 `font-medium`으로 분화 — 별도 사이즈/tracking 토큰은 두지 않는다.
 
-| Legacy | → 매핑 | size |
-|---|---|---|
-| `text-display` | Display 1 | 56px (weight 600) |
-| `text-h1` | Display 2 | 40px (weight 600) |
-| `text-h2` | Title 2 | 28px (weight 600) |
-| `text-h3` | Heading 2 | 20px (weight 600) |
-| `text-h4` | Headline 2 | 17px (weight 600) |
-| `text-body-lg` | Headline 1 | 18px |
-| `text-body` | Body 1/Normal | 16px / lh 24 |
-| `text-caption` | Label 1/Normal | 14px / lh 20 |
-| `text-overline` | (별도 유지) | 12px / tracking 0.1em / weight 500 — 신규 스케일의 caption과 의미 다름 |
+#### Legacy 토큰
+
+2026-05-14 모든 사용처(약 74곳)를 신규 토큰으로 마이그레이션 완료. legacy alias 9개(`text-display`/`text-h1`~`text-h4`/`text-body-lg`/`text-body`/`text-caption`/`text-overline`) 모두 globals.css에서 제거됨. 신규 컴포넌트·기존 컴포넌트 모두 신규 토큰만 사용한다.
 
 ### Spacing Scale — 4px base (2026-05-14 명문화)
 
@@ -235,8 +227,7 @@ Typography 값은 **도메인 best practice + 한국어 가독성**에서 나왔
 | line-height는 px (비율 아님) | 한국형 시스템 컨벤션. 자모 밀도가 높은 한국어는 px 고정이 시각 일관성 안정 |
 | 자간: 큰 글자 음수 → 작은 글자 양수로 자연 변화 | 큰 사이즈는 글자가 떠보여 조여주고, 작은 사이즈는 가독성을 위해 살짝 벌림 — typographic best practice |
 | 토큰에 weight 미포함 | 한국 컨벤션. 사용처에서 `font-medium/semibold/bold`로 결정 — 같은 size에 weight만 바꿔 강조 위계 다양화 |
-| overline tracking **0.1em** + weight 500 (별도 유지) | Material Design / iOS HIG overline 컨벤션. 신규 스케일의 caption-1과 의미 다름 (caption은 부가설명, overline은 라벨) |
-| overline에 `uppercase` 미포함 | 한국어엔 대문자 개념이 없음 — 사용처에서 영문 라벨에만 별도 추가 |
+| 오버라인 라벨도 label-1로 통일 (별도 overline 토큰 폐기) | 시스템 단순화 — 사이즈/tracking 차이로 분화하지 않고 color·weight·context로 분화. 오버라인 의미는 사용처에서 `text-brand-gold` 또는 `text-muted-foreground` color로 신호 |
 | section 64→96px / section-inner 48→80px | corporate 표준 (Stripe·Linear·Vercel 데스크톱 96-128px) — 권위감·여백 신호 |
 | section clamp() 반응형 | 모바일에서 호흡 압축, 데스크톱에서 확장 — 같은 컴포넌트로 자연 스케일 |
 | breakpoint Tailwind 표준 (2xl=1536, 3xl=1920) + container-max 별도 (1376) | breakpoint(미디어 쿼리 분기점)와 콘텐츠 폭 상한이 의미가 다름 — 한 토큰으로 묶으면 둘 중 하나는 양보해야 함. 분리해서 둘 다 만족 |
@@ -253,7 +244,7 @@ Typography 값은 **도메인 best practice + 한국어 가독성**에서 나왔
 - [x] ~~3xl 브레이크포인트 정합 + 의미 분리~~ — 2026-05-10 완료 (`--breakpoint-3xl` 추가, `--container-max` 분리, cssVariables.js 자동 sync)
 - [ ] **Card 합성 패턴 정립** — 인터뷰 후 사례·업무분야 카드 디자인 결정되면 shadcn Card 위에 변형 컴포넌트 작성
 - [ ] **기존 컴포넌트 마이그레이션** — Hero / Footer / Header / home placeholder들의 ad-hoc Tailwind utility를 semantic class로 일괄 교체
-- [ ] **Legacy alias 점진 제거** — `text-display/h1~h4/body-lg/body/caption` 사용처를 신규 토큰(`text-display-1/title-2/heading-2/...`)으로 마이그레이션 후 alias 삭제. wireframe 단계에서는 alias 유지로 호환 확보
+- [x] ~~Legacy alias 점진 제거~~ — 2026-05-14 완료. 모든 사용처 신규 토큰으로 마이그레이션 후 globals.css의 9개 토큰(`text-display`/`text-h1`~`text-h4`/`text-body-lg`/`text-body`/`text-caption`/`text-overline`) 일괄 제거. 오버라인 라벨은 `text-label-1`로 통일
 
 ---
 

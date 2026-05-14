@@ -43,7 +43,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
         <div className="flex min-h-[15rem] items-center justify-center md:min-h-[22.5rem]">
           <h1
             id="page-title-bar-title"
-            className="text-center text-h1 font-semibold text-white"
+            className="text-center text-display-2 font-bold text-white"
           >
             {title}
           </h1>
@@ -53,7 +53,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
           aria-label="breadcrumb"
           className="pb-6 md:absolute md:right-0 md:bottom-6 md:px-8 md:pb-0"
         >
-          <ol className="flex flex-wrap items-center justify-center gap-2 text-caption text-white/70 md:justify-end">
+          <ol className="flex flex-wrap items-center justify-center gap-2 text-label-1 text-white/70 md:justify-end">
             {breadcrumbs.map((bc, i) => {
               const isLast = i === breadcrumbs.length - 1
               return (

@@ -78,12 +78,6 @@ export const CAREER_ENTRIES: readonly CareerEntry[] = [
   { from: 2006, office: '광주지방검찰청' },
 ] as const
 
-export const CAREER_HEAD_STATS = [
-  { value: '19년', label: '검사 재직' },
-  { value: '7개', label: '검찰청 근무' },
-  { value: '13년', label: '영남권 근무' },
-] as const
-
 // 표 밑 별도 1행
 export const CAREER_QUALIFICATIONS = [
   { year: 2006, text: '사법연수원 35기 수료' },

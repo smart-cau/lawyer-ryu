@@ -30,8 +30,8 @@ export const WhyAttorneySection: FC = () => {
             />
           </div>
           <div className="space-y-1">
-            <h3 className="text-h2">{ATTORNEY_PROFILE.name}</h3>
-            <p className="text-caption text-muted-foreground">
+            <h3 className="text-title-3 font-semibold">{ATTORNEY_PROFILE.name}</h3>
+            <p className="text-label-1 text-muted-foreground">
               {ATTORNEY_PROFILE.affiliation}
             </p>
           </div>
@@ -47,8 +47,8 @@ export const WhyAttorneySection: FC = () => {
                 {String(idx + 1).padStart(2, '0')}
               </span>
               <div className="space-y-3">
-                <h4 className="text-h3">{item.heading}</h4>
-                <p className="text-body text-muted-foreground">{item.body}</p>
+                <h4 className="text-heading-2 font-semibold">{item.heading}</h4>
+                <p className="text-body-1 text-muted-foreground">{item.body}</p>
               </div>
             </li>
           ))}
@@ -58,7 +58,7 @@ export const WhyAttorneySection: FC = () => {
       <div className="text-center">
         <Link
           href="/about/lawyer"
-          className="text-body font-medium underline-offset-4 hover:underline"
+          className="text-body-1 font-medium underline-offset-4 hover:underline"
         >
           변호사 소개 자세히 보기 →
         </Link>

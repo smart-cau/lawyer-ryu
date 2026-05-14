@@ -25,10 +25,10 @@ export const FaqSection: FC = () => {
       >
         {FAQ_ITEMS.map((item, idx) => (
           <AccordionItem key={item.question} value={String(idx)}>
-            <AccordionTrigger className="py-6 text-left text-body-lg">
+            <AccordionTrigger className="py-6 text-left text-headline-1 font-medium">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="pb-6 text-body text-muted-foreground">
+            <AccordionContent className="pb-6 text-body-1 text-muted-foreground">
               {item.answer}
             </AccordionContent>
           </AccordionItem>

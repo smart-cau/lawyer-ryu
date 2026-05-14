@@ -17,8 +17,8 @@ type InfoRowProps = {
 
 const InfoRow: FC<InfoRowProps> = ({ label, children }) => (
   <div className="grid grid-cols-[64px_1fr] items-baseline gap-x-6 py-2 sm:grid-cols-[80px_1fr]">
-    <dt className="text-caption text-muted-foreground">{label}</dt>
-    <dd className="text-body">{children}</dd>
+    <dt className="text-label-1 text-muted-foreground">{label}</dt>
+    <dd className="text-body-1">{children}</dd>
   </div>
 )
 
@@ -27,7 +27,7 @@ export const ContactSection: FC = () => {
     <section id="contact" aria-label="오시는 길">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
         <div>
-          <h2 className="text-h2">오시는 길</h2>
+          <h2 className="text-title-1 font-semibold">오시는 길</h2>
 
           <Separator className="mt-8" />
 
@@ -60,7 +60,7 @@ export const ContactSection: FC = () => {
             <InfoRow label="토/일/공휴일">휴무</InfoRow>
           </dl>
 
-          <div className="mt-8 flex items-start gap-3 rounded-md border border-border bg-muted/40 px-4 py-3 text-caption text-muted-foreground">
+          <div className="mt-8 flex items-start gap-3 rounded-md border border-border bg-muted/40 px-4 py-3 text-caption-1 text-muted-foreground">
             <Info aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
             <span>{CONTACT.hoursWarning.replace(/^\*\s*/, '')}</span>
           </div>

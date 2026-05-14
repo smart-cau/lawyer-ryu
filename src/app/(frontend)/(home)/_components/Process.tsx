@@ -110,9 +110,9 @@ export const ProcessSection: FC = () => {
     >
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-24">
-          <p className="text-overline text-muted-foreground">M-05 · PROCESS</p>
-          <h2 className="mt-3 text-h2">수임하면, 이렇게 진행됩니다.</h2>
-          <p className="mt-6 text-body-lg text-muted-foreground">
+          <p className="text-label-1 text-muted-foreground">M-05 · PROCESS</p>
+          <h2 className="mt-3 text-title-1 font-semibold">수임하면, 이렇게 진행됩니다.</h2>
+          <p className="mt-6 text-headline-1 font-medium text-muted-foreground">
             변호사가 직접 — 사실·증거·법리를 9단계로 — 사건을 풀어갑니다.
           </p>
         </div>
@@ -148,13 +148,13 @@ export const ProcessSection: FC = () => {
 
               <div className={isLast ? '' : 'pb-10'}>
                 {item.kind === 'phase' && (
-                  <p className="pt-2 text-overline text-muted-foreground">
+                  <p className="pt-2 text-label-1 text-muted-foreground">
                     {item.label}
                   </p>
                 )}
                 {item.kind === 'step' && (
                   <>
-                    <h3 className="text-h3">
+                    <h3 className="text-heading-2 font-semibold">
                       <span className="sr-only">{`Step ${item.number}: `}</span>
                       {item.title}
                     </h3>
@@ -163,7 +163,7 @@ export const ProcessSection: FC = () => {
                         {item.bullets.map((bullet) => (
                           <li
                             key={bullet}
-                            className="text-body text-muted-foreground"
+                            className="text-body-1 text-muted-foreground"
                           >
                             {bullet}
                           </li>
@@ -173,7 +173,7 @@ export const ProcessSection: FC = () => {
                   </>
                 )}
                 {item.kind === 'branch' && (
-                  <div className="inline-flex rounded-full border border-dashed border-border bg-muted/40 px-4 py-2 text-caption text-muted-foreground">
+                  <div className="inline-flex rounded-full border border-dashed border-border bg-muted/40 px-4 py-2 text-label-1 text-muted-foreground">
                     {item.label}
                   </div>
                 )}

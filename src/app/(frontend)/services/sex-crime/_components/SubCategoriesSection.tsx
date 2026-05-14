@@ -19,11 +19,11 @@ export const SubCategoriesSection: FC = () => {
             className="grid grid-cols-12 gap-x-8 gap-y-4 py-12 first:pt-0 last:pb-0"
           >
             <div className="col-span-12 lg:col-span-4">
-              <h3 className="text-h3">{sub.label}</h3>
+              <h3 className="text-title-3 font-semibold">{sub.label}</h3>
             </div>
 
             <div className="col-span-12 lg:col-span-8">
-              <p className="text-body">
+              <p className="text-body-1">
                 <strong className="font-semibold text-foreground">
                   {sub.definition}
                 </strong>{' '}

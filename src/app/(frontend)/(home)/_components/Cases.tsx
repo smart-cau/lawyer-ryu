@@ -42,7 +42,7 @@ export const CasesSection: FC = () => {
         lead="수임 사건의 상당수가 수사단계에서 해결됩니다"
       >
         {isMock && (
-          <p className="mt-3 text-caption italic text-muted-foreground">
+          <p className="mt-3 text-caption-1 italic text-muted-foreground">
             ※ 아래는 wireframe sample. 실 데이터 등록 시 자동 교체됩니다.
           </p>
         )}
@@ -57,9 +57,9 @@ export const CasesSection: FC = () => {
                 aria-label="사례 이미지 placeholder"
               />
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-caption text-muted-foreground">{item.category}</p>
-                <h3 className="mt-2 text-h3">{item.title}</h3>
-                <p className="mt-3 text-body text-muted-foreground">{item.description}</p>
+                <p className="text-label-1 text-muted-foreground">{item.category}</p>
+                <h3 className="mt-2 text-heading-2 font-semibold">{item.title}</h3>
+                <p className="mt-3 text-body-1 text-muted-foreground">{item.description}</p>
               </div>
             </Card>
           </li>
@@ -69,7 +69,7 @@ export const CasesSection: FC = () => {
       <div className="mt-10 text-center lg:mt-12">
         <Link
           href="/cases"
-          className="text-body font-medium underline-offset-4 hover:underline"
+          className="text-body-1 font-medium underline-offset-4 hover:underline"
         >
           전체 사례 보기 →
         </Link>
