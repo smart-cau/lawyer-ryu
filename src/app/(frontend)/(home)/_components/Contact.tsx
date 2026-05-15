@@ -7,7 +7,7 @@ import { CONTACT, NAVER_MAP_URL } from '@/lib/constants'
 
 import NaverMap from './NaverMap'
 
-const PHONE_HREF = `tel:${CONTACT.phone.replace(/-/g, '')}`
+const PHONE_HREF = `tel:${CONTACT.office.replace(/-/g, '')}`
 const EMAIL_HREF = `mailto:${CONTACT.email}`
 
 type InfoRowProps = {
@@ -38,9 +38,9 @@ export const ContactSection: FC = () => {
               <a
                 href={PHONE_HREF}
                 className="underline-offset-4 hover:underline"
-                aria-label={`대표 전화 ${CONTACT.phone}`}
+                aria-label={`대표 전화 ${CONTACT.office}`}
               >
-                {CONTACT.phone}
+                {CONTACT.office}
               </a>
             </InfoRow>
             <InfoRow label="이메일">

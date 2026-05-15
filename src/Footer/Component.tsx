@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { Logo } from '@/components/Logo/Logo'
 import { Separator } from '@/components/ui/separator'
 import { primaryNav } from '@/Header/nav-data'
+import { CONTACT } from '@/lib/constants'
 
-const PHONE_DISPLAY = '010-7552-0301'
+const PHONE_DISPLAY = CONTACT.office
 const PHONE_HREF = `tel:${PHONE_DISPLAY.replace(/-/g, '')}`
 const ADDRESS = '경남 창원시 성산구 창이대로689번길 4-24, 5층 504호'
 const BLOG_URL = 'https://blog.naver.com/inyou2025'

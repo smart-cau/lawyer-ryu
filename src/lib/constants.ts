@@ -8,7 +8,6 @@ export const NAVER_MAP_URL = `https://map.naver.com/v5/search/${OFFICE_LOCATION.
 
 export const CONTACT = {
     office: '055-719-0302',
-    phone: '010-7552-0301',
     email: 'cwinyou@naver.com',
     address: '경상남도 창원시 성산구 창이대로689번길 4-24',
     addressSub: '(사파동 더원2빌딩 504호)',
