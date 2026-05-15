@@ -9,7 +9,6 @@ export const ServicesSection: FC = () => {
   return (
     <section id="services" aria-label="업무분야" className="mx-auto max-w-5xl">
       <SectionHeader
-        overline="분야"
         title="업무분야"
         lead="성폭력·기업·재산·교통·학교·반부패까지 — 형사 전 범위"
       />

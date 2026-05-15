@@ -37,7 +37,6 @@ export const CasesSection: FC = () => {
   return (
     <section id="cases" aria-label="대표 사례" className="mx-auto max-w-5xl">
       <SectionHeader
-        overline="사례"
         title="대표 사례"
         lead="수임 사건의 상당수가 수사단계에서 해결됩니다"
       >
