@@ -3,6 +3,7 @@ import { Check, Phone } from 'lucide-react'
 import type { FC } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { CONTACT } from '@/lib/constants'
 
 const HERO_CREDENTIALS = [
   '대한변협 등록 형사법 전문 변호사',
@@ -11,7 +12,7 @@ const HERO_CREDENTIALS = [
   '사법시험 44회 / 사법연수원 35기',
 ]
 
-const PHONE_DISPLAY = '010-7552-0301'
+const PHONE_DISPLAY = CONTACT.office
 const PHONE_HREF = `tel:${PHONE_DISPLAY.replace(/-/g, '')}`
 
 export const HeroSection: FC = () => {
@@ -41,6 +42,10 @@ export const HeroSection: FC = () => {
       {/* 좌측 텍스트 */}
       <div className="container relative z-10 pt-[10rem] pb-[6rem] lg:pt-[12rem] lg:pb-[8rem]">
         <div className="max-w-2xl">
+        <p className="text-body-2 text-brand-gold">
+            법무법인 인유 창원사무소
+          </p>
+
           <h1 className="text-display-1 font-bold">
             19년 검사 경력으로 수사하고
             <br />
@@ -48,15 +53,13 @@ export const HeroSection: FC = () => {
           </h1>
 
           <p className="mt-6 text-headline-1 font-medium text-white/80">
-            수사기관을 대신하여
-            <br />
-            억울함을 풀어드립니다
+            변호사를 설명하는 인상적인 한마디
           </p>
 
           <div className="mt-10 flex items-center gap-4">
             <span aria-hidden className="h-px w-8 bg-white/30" />
-            <span className="text-label-1 text-white/80">
-              법무법인 인유 창원사무소 | 류남경 대표변호사
+            <span className="text-headline-1 text-white/80">
+              류남경 대표변호사
             </span>
           </div>
 
