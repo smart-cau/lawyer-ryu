@@ -47,7 +47,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
       </SheetTrigger>
       <SheetContent side="right" className="w-80 sm:max-w-sm p-0">
         <SheetHeader className="border-b border-border/60 px-6 py-4">
-          <SheetTitle className="text-base">전체 메뉴</SheetTitle>
+          <SheetTitle className="text-body-1">전체 메뉴</SheetTitle>
         </SheetHeader>
 
         <nav className="flex flex-col px-2 py-4">
@@ -63,7 +63,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                 <AccordionItem value={item.href} className="border-b-0">
                   <AccordionTrigger
                     className={cn(
-                      'px-4 py-3 text-base font-medium hover:no-underline',
+                      'px-4 py-3 text-body-1 font-medium hover:no-underline',
                       active && 'text-primary font-semibold',
                     )}
                   >
@@ -74,7 +74,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                       {servicesNav.map((category) => {
                         return (
                           <div key={category.slug} className="flex flex-col gap-1">
-                            <span className="py-2 text-sm font-semibold text-foreground">
+                            <span className="py-2 text-label-1 font-semibold text-foreground">
                               {category.label}
                             </span>
                             <ul className="flex flex-col">
@@ -86,7 +86,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                                       <Link
                                         href={leaf.href}
                                         className={cn(
-                                          'block rounded-md py-2 pl-3 text-sm transition-colors hover:bg-accent hover:text-accent-foreground',
+                                          'block rounded-md py-2 pl-3 text-label-1 transition-colors hover:bg-accent hover:text-accent-foreground',
                                           leafActive
                                             ? 'bg-accent/60 text-accent-foreground font-medium'
                                             : 'text-muted-foreground',
@@ -111,7 +111,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                 <Link
                   href={item.href}
                   className={cn(
-                    'rounded-md px-4 py-3 text-base font-medium transition-colors hover:bg-accent hover:text-accent-foreground',
+                    'rounded-md px-4 py-3 text-body-1 font-medium transition-colors hover:bg-accent hover:text-accent-foreground',
                     active && 'text-primary font-semibold',
                   )}
                 >

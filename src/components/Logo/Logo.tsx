@@ -41,7 +41,7 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
       <span className="flex flex-col">
         <span
           className={cn(
-            'text-xs tracking-widest transition-colors duration-200 ease-out',
+            'text-caption-1 tracking-widest transition-colors duration-200 ease-out',
             isDark ? 'text-white/70' : 'text-muted-foreground',
           )}
         >
@@ -49,7 +49,7 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
         </span>
         <span
           className={cn(
-            'text-lg font-semibold transition-colors duration-200 ease-out',
+            'text-headline-1 font-semibold transition-colors duration-200 ease-out',
             isDark ? 'text-white' : 'text-foreground',
           )}
         >

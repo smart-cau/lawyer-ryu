@@ -31,7 +31,7 @@ function CategoryColumn({
 }) {
   return (
     <div className={cn('flex flex-col gap-3', withDivider && 'border-l border-border pl-8')}>
-      <span className="text-base font-semibold text-foreground">{category.label}</span>
+      <span className="text-body-1 font-semibold text-foreground">{category.label}</span>
       <ul
         className={cn(
           'grid gap-x-2 gap-y-1',
@@ -46,7 +46,7 @@ function CategoryColumn({
                 <Link
                   href={leaf.href}
                   className={cn(
-                    'block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground',
+                    'block rounded-md px-3 py-2 text-label-1 transition-colors hover:bg-accent hover:text-accent-foreground',
                     active
                       ? 'bg-accent/60 text-accent-foreground font-medium'
                       : 'text-muted-foreground',
@@ -114,7 +114,7 @@ export function DesktopNav({
                 <>
                   <NavigationMenuTrigger
                     className={cn(
-                      'transition-colors',
+                      'text-body-1 transition-colors',
                       isDark && darkToneTrigger,
                       active && (isDark ? 'font-semibold' : 'text-primary font-semibold'),
                     )}
@@ -128,7 +128,7 @@ export function DesktopNav({
                   asChild
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    'transition-colors',
+                    'text-body-1 transition-colors',
                     isDark && darkToneTrigger,
                     active && (isDark ? 'font-semibold' : 'text-primary font-semibold'),
                   )}
