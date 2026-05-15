@@ -14,8 +14,6 @@ export const InvestigationSection: FC = () => {
       aria-label="시급성 후크 — 첫 경찰 조사 대응"
       className="text-center"
     >
-      <p className="text-label-1 text-muted-foreground">M-06 · 시급성</p>
-
       <h2 className="mx-auto mt-3 max-w-3xl text-title-1 font-semibold">
         경찰 조사를 앞두고 계신가요?
         <br />

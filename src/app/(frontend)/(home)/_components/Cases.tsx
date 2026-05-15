@@ -30,7 +30,6 @@ const MOCK_CASES = [
 
 export const CasesSection: FC = () => {
   const items = MOCK_CASES
-  const isMock = true
 
   if (items.length === 0) return null
 
@@ -40,11 +39,6 @@ export const CasesSection: FC = () => {
         title="대표 사례"
         lead="수임 사건의 상당수가 수사단계에서 해결됩니다"
       >
-        {isMock && (
-          <p className="mt-3 text-caption-1 italic text-muted-foreground">
-            ※ 아래는 wireframe sample. 실 데이터 등록 시 자동 교체됩니다.
-          </p>
-        )}
       </SectionHeader>
 
       <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
