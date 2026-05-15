@@ -4,10 +4,9 @@ import {
   CAREER_ENTRIES,
   CAREER_QUALIFICATIONS,
 } from '../_data/career'
-import { SectionHeader } from '@/components/SectionHeader'
 
 const formatPeriod = (from: number, to?: number) =>
-  to ? `${from}–${to}` : String(from)
+  to ? `${from}~${to}` : String(from)
 
 export const CareerSection: FC = () => {
   return (
@@ -16,12 +15,15 @@ export const CareerSection: FC = () => {
       aria-labelledby="career-title"
       className="mx-auto max-w-3xl"
     >
-      <SectionHeader title="주요 경력" />
+      
+      <h2 id="career-title" className="mt-4 text-title-2 font-semibold">
+        주요 경력
+            </h2>
 
       <div className="mt-12 space-y-12">
         {/* 자격 */}
         <div>
-          <p className="text-label-1 text-brand-gold">자격</p>
+          <p className="text-heading-1 text-brand-gold">자격</p>
           <dl className="mt-4 space-y-3 text-body-1">
             {CAREER_QUALIFICATIONS.map((q) => (
               <div key={q.year} className="flex gap-6">
@@ -36,7 +38,7 @@ export const CareerSection: FC = () => {
 
         {/* 검사 경력 */}
         <div>
-          <p className="text-label-1 text-brand-gold">검사 경력</p>
+          <p className="text-heading-1 text-brand-gold">검사 경력</p>
           <dl className="mt-4 space-y-3 text-body-1">
             {CAREER_ENTRIES.map((entry) => (
               <div
