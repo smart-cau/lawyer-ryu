@@ -432,4 +432,19 @@
   a[aria-disabled='true'] {
     cursor: not-allowed;
   }
+
+  /* ============================================================
+   * Heading-tier 토큰 → serif-kr 기본 적용 (2026-05-14 승격)
+   * Display / Title / Heading / Headline 은 노출 시점부터 serif.
+   * Body / Label / Caption 은 그대로 sans 기본.
+   * 개별 사용처에서 `font-sans` utility 로 override 가능.
+   * ============================================================ */
+  :is(
+    .text-display-1, .text-display-2, .text-display-3,
+    .text-title-1, .text-title-2, .text-title-3,
+    .text-heading-1, .text-heading-2,
+    .text-headline-1, .text-headline-2
+  ) {
+    font-family: var(--font-serif-kr);
+  }
 }
