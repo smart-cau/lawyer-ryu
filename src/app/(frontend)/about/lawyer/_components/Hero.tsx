@@ -7,7 +7,20 @@ import { CONTACT } from '@/lib/constants'
 const PHONE_HREF = `tel:${CONTACT.office.replace(/-/g, '')}`
 const MAIL_HREF = `mailto:${CONTACT.email}`
 // vCard 자산 미확보 — wireframe 단계 placeholder (자산 확보 시 href 교체)
-const VCARD_HREF = '#'
+const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
+  [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:류;남경;;;',
+    'FN:류남경',
+    'ORG:법무법인 인유 창원사무소',
+    'TITLE:대표변호사',
+    `TEL;TYPE=WORK,VOICE:${CONTACT.office}`,
+    `EMAIL;TYPE=WORK:${CONTACT.email}`,
+    `ADR;TYPE=WORK:;;${CONTACT.address} ${CONTACT.addressSub};창원시;경상남도;;;대한민국`,
+    'END:VCARD',
+  ].join('\n'),
+)}`
 
 export const HeroSection: FC = () => {
   return (
@@ -40,10 +53,6 @@ export const HeroSection: FC = () => {
           </p>
 
           <h1 className="text-display-1 font-bold">대표 변호사 류남경</h1>
-
-          <p className="mt-6 text-headline-1 font-medium text-white/80">
-            변호사를 설명하는 인상적인 한마디
-          </p>
 
           <ul className="mt-10 space-y-3">
             <li>
