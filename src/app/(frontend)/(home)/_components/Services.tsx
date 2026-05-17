@@ -10,7 +10,7 @@ export const ServicesSection: FC = () => {
     <section id="services" aria-label="업무분야" className="mx-auto max-w-5xl">
       <SectionHeader
         title="업무분야"
-        lead="성폭력·기업·재산·교통·학교·반부패까지 — 형사 전 범위"
+        lead="형사 전 분야에 걸친 깊이있는 경험과 전문성"
       />
 
       <ul className="mt-12 grid grid-cols-1 border-x border-t lg:mt-16 lg:grid-cols-2">

@@ -47,13 +47,13 @@ export const HeroSection: FC = () => {
           </p>
 
           <h1 className="text-display-1 font-bold">
-            19년 검사 경력으로 수사하고
+            검사 19년 경력으로 수사하고
             <br />
             증거를 찾아주는 변호사
           </h1>
 
           <p className="mt-6 text-headline-1 font-medium text-white/80">
-            변호사를 설명하는 인상적인 한마디
+            수사기관을 대신하여 억울함을 풀어드리겠습니다
           </p>
 
           <div className="mt-10 flex items-center gap-4">
