@@ -22,11 +22,14 @@ const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
   ].join('\n'),
 )}`
 
-const INTRO_PARAGRAPHS = [
-  '검사가 되겠다고 마음먹은 이유는 단순했습니다. 억울한 사람이 죄를 뒤집어쓰지 않게 하고, 죄가 있는 일에는 그에 맞는 책임이 따르도록 기록과 증거를 끝까지 살피는 사람이 필요하다고 믿었습니다.',
-  '검사로 19년을 일하며 수사의 흐름과 공판의 기준을 배웠습니다. 동시에 사건의 한가운데 선 사람에게는 기소 여부가 정해지기 전, 첫 조사와 첫 진술의 순간부터 곁에서 함께 판단해 줄 변호인이 필요하다는 사실도 보았습니다.',
-  '검사 출신 변호사로서의 제 원칙은 분명합니다. 수사기관의 시선으로 쟁점을 읽되, 의뢰인의 자리에서 말과 기록을 다시 정리합니다. 사건마다 다른 사실관계를 차분히 살피고, 다툴 지점과 설명할 지점을 구분해 변론합니다.',
-] as const
+const INTRO = {
+  title: '사건의 시작부터, 의뢰인의 자리에서 함께 봅니다',
+  paragraphs: [
+    '검사가 되겠다고 마음먹은 이유는 단순했습니다. 억울한 사람이 죄를 뒤집어쓰지 않게 하고, 죄가 있는 일에는 그에 맞는 책임이 따르도록 기록과 증거를 끝까지 살피는 사람이 필요하다고 믿었습니다.',
+    '검사로 19년을 일하며 수사의 흐름과 공판의 기준을 배웠습니다. 동시에 사건의 한가운데 선 사람에게는 기소 여부가 정해지기 전, 첫 조사와 첫 진술의 순간부터 곁에서 함께 판단해 줄 변호인이 필요하다는 사실도 보았습니다.',
+    '검사 출신 변호사로서의 제 원칙은 분명합니다. 수사기관의 시선으로 쟁점을 읽되, 의뢰인의 자리에서 말과 기록을 다시 정리합니다. 사건마다 다른 사실관계를 차분히 살피고, 다툴 지점과 설명할 지점을 구분해 변론합니다.',
+  ],
+} as const
 
 export const HeroSection: FC = () => {
   return (
@@ -99,7 +102,11 @@ export const HeroSection: FC = () => {
         </div>
 
         <div className="space-y-6 text-body-1-reading font-light text-brand-deep-foreground/90 md:self-center md:text-body-2-reading lg:space-y-7 lg:pl-2 lg:text-headline-1">
-          {INTRO_PARAGRAPHS.map((paragraph) => (
+          <h2 className="break-keep text-headline-1 font-medium text-brand-deep-foreground before:mb-5 before:block before:h-1 before:w-16 before:bg-brand-gold before:content-[''] md:text-display-3">
+            {INTRO.title}
+          </h2>
+
+          {INTRO.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
