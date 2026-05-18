@@ -446,5 +446,8 @@
     .text-headline-1, .text-headline-2
   ) {
     font-family: var(--font-serif-kr);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
 }
