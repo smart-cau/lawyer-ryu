@@ -1,0 +1,6 @@
+interface:
+  display_name: "Service Leaf Copy Planner"
+  short_description: "로펌 서비스 분야 카피 기획"
+  default_prompt: "Use $service-leaf-copy-planner to plan and implement helpful SEO-aware service leaf subcategory copy."
+policy:
+  allow_implicit_invocation: true
