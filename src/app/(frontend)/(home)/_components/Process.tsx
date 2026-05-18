@@ -11,36 +11,36 @@ type Stage = {
 
 const STAGES: Stage[] = [
   {
-    title: '상담 단계',
+    title: '상담·사건 파악 단계',
     iconSrc: '/trust/consultation.png',
     iconAlt: '상담 단계 아이콘',
     bullets: [
-      '형사전문변호사와 대면·비대면 상담',
-      '사건 검토 후 맞춤형 전략 수립',
-      '사건 유형 기반 경력 다수 부장급 변호사 배정',
-      '형사변호사 및 사안별 특수분야 전문가 TF 구성',
+      '류남경 대표변호사 직접 상담',
+      '사건 경위와 조사 일정 확인',
+      '의뢰인 진술과 확보 자료 검토',
+      '수사 단계별 대응 방향 안내',
     ],
   },
   {
-    title: '경찰조사 단계',
+    title: '경찰 조사 단계',
     iconSrc: '/trust/police-ci.svg',
     iconAlt: '경찰 CI',
     bullets: [
-      '경찰조사 사전 시뮬레이션',
-      '경찰조사 동행 및 입회',
-      '조사 이후 수사기관 소통·대응',
-      '쟁점별 의견서 및 증거 제출',
+      '예상 신문 사항과 답변 방향 정리',
+      '조사 출석 전 진술 내용 점검',
+      '경찰 조사 동행 및 변호인 참여',
+      '조사 후 조서와 추가 자료 검토',
     ],
   },
   {
-    title: '검찰조사 단계',
+    title: '검찰 단계',
     iconSrc: '/trust/prosecution-ci.svg',
     iconAlt: '검찰 CI',
     bullets: [
-      '사건 송치 시 검찰조사 동행·입회',
-      '증거조사·디지털포렌식 증거분석',
-      '법리적 논거 확립 및 의견 제출',
-      '기소 시 공판 단계 대비 전략 수립',
+      '송치 후 기록과 보완수사 쟁점 검토',
+      '혐의와 증거관계에 대한 의견서 제출',
+      '검찰 처분 전 의견 진술 방향 검토',
+      '기소 가능성에 대비한 공판 쟁점 정리',
     ],
   },
   {
@@ -48,20 +48,20 @@ const STAGES: Stage[] = [
     iconSrc: '/trust/court-ci.svg',
     iconAlt: '법원 CI',
     bullets: [
-      '구속 시 구속적부심, 보석 전략 수립',
-      '수사단계 누락·미진한 내용 파악',
-      '증거능력 확인·양형 요소 소명 등 재판 준비',
-      '공판 변론 진행·상소심 등 검토',
+      '증거기록 검토와 추가 서면 준비',
+      '피고인 신문·증인신문 대비',
+      '양형자료와 정상관계 자료 정리',
+      '공판 출석·변론 및 상소 여부 검토',
     ],
   },
 ]
 
 export const ProcessSection: FC = () => {
   return (
-    <section id="process" aria-label="형사변호사의 단계별 조력 시스템">
+    <section id="process" aria-label="류남경 변호사의 단계별 조력">
       <SectionHeader
-        title="형사변호사의 단계별 조력 시스템"
-        lead="의뢰인이 바라는 결과를 받기까지, 형사전문변호사가 체계적인 밀착 대응을 약속합니다"
+        title="류남경 변호사의 단계별 조력"
+        lead="의뢰인의 권익을 보호하기 위해, 형사전문 변호사가 체계적인 전문지원을 제공합니다."
       />
 
       <div className="mt-12 rounded-2xl border border-border bg-card px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
