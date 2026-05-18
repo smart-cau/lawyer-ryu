@@ -48,7 +48,11 @@ export const WhyAttorneySection: FC = () => {
               </span>
               <div className="space-y-3">
                 <h4 className="text-heading-2 font-semibold">{item.heading}</h4>
-                <p className="text-body-1 text-muted-foreground">{item.body}</p>
+                <div className="space-y-4 text-body-1 text-muted-foreground">
+                  {item.body.map((paragraph, pIdx) => (
+                    <p key={pIdx}>{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </li>
           ))}
