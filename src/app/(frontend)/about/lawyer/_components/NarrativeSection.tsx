@@ -1,28 +1,52 @@
+import Image from 'next/image'
 import type { FC } from 'react'
 
 import { NARRATIVES } from '../_data/narratives'
 
 export const NarrativeSection: FC = () => {
+  const [capability, region] = NARRATIVES
+
   return (
-    <section aria-label="변호사 이야기" className="mx-auto max-w-3xl space-y-section-inner">
-      {NARRATIVES.map((narrative) => {
-        const titleId = `${narrative.id}-title`
-        return (
-          <article key={narrative.id} id={narrative.id} aria-labelledby={titleId}>
-            <p className="text-label-1 text-brand-gold">{narrative.overline}</p>
-
-            <h2 id={titleId} className="mt-4 text-title-2 font-semibold">
-              {narrative.title}
+    <section
+      id="experience"
+      aria-labelledby="experience-title"
+      className="relative overflow-visible bg-[#f7f8f8] py-section text-foreground before:absolute before:inset-0 before:bg-[repeating-linear-gradient(116deg,transparent_0,transparent_34px,rgba(16,20,38,0.025)_35px,transparent_38px)] before:content-['']"
+    >
+      <div className="container relative z-10 lg:max-w-[calc(71.25rem+4rem)]">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.84fr)] md:items-end md:gap-x-16 md:gap-y-12 lg:gap-x-24">
+          <div className="md:col-start-1 md:row-start-1 md:pb-2">
+            <h2
+              id="experience-title"
+              className="break-keep text-display-1 font-medium before:mb-6 before:block before:h-1 before:w-20 before:bg-brand-gold before:content-['']"
+            >
+              {capability.title}
             </h2>
+          </div>
 
-            <div className="mt-10 space-y-6 text-body-1-reading">
-              {narrative.paragraphs.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
+          <div className="relative mx-auto aspect-[0.842] w-full max-w-[24rem] overflow-hidden md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-none md:self-center">
+            <Image
+              src="/ryu-profile/4.png"
+              alt="류남경 대표변호사"
+              fill
+              sizes="(min-width: 1024px) 30rem, (min-width: 768px) 38vw, 100vw"
+              className="object-contain object-bottom"
+            />
+          </div>
+
+          <div className="grid gap-10 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 md:gap-6 lg:text-headline-2">
+            <div className="space-y-6">
+              {capability.paragraphs.slice(0, 2).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-          </article>
-        )
-      })}
+
+            <div className="space-y-6">
+              <p>{region.paragraphs[0]}</p>
+              <p>{capability.paragraphs[4]}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

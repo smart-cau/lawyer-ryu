@@ -4,7 +4,7 @@ export default function LawyerAboutPage() {
   return (
     <>
       <HeroSection />
-      <main className="container py-section space-y-section">
+      <main id="main" className="overflow-visible">
         <NarrativeSection />
         <CareerSection />
       </main>

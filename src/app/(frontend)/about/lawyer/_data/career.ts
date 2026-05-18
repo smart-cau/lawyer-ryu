@@ -5,6 +5,17 @@ export type CareerEntry = {
   fields?: readonly string[]
 }
 
+export type CareerQualification = {
+  year: number | '현재'
+  text: string
+}
+
+export const CAREER_CURRENT_POSITION = {
+  from: 2024,
+  office: '법무법인 인유 창원사무소',
+  role: '대표변호사',
+} as const
+
 // 최근 → 과거 역순. 출처: docs/01-profile/career-timeline.md
 // 2013–2014 공백 기간은 wireframe 단계에서 일단 생략 (IA 보류)
 export const CAREER_ENTRIES: readonly CareerEntry[] = [
@@ -44,28 +55,13 @@ export const CAREER_ENTRIES: readonly CareerEntry[] = [
     from: 2017,
     to: 2019,
     office: '부산지방검찰청 서부지청',
-    fields: [
-      '성폭력',
-      '가정폭력',
-      '아동·청소년보호',
-      '금융',
-      '조세',
-      '기술유출',
-      '영장',
-    ],
+    fields: ['성폭력', '가정폭력', '아동·청소년보호', '금융', '조세', '기술유출', '영장'],
   },
   {
     from: 2015,
     to: 2017,
     office: '부산지방검찰청',
-    fields: [
-      '성폭력 합의부 공판',
-      '국민참여재판',
-      '조세',
-      '금융',
-      '다중피해범죄',
-      '영장',
-    ],
+    fields: ['성폭력 합의부 공판', '국민참여재판', '조세', '금융', '다중피해범죄', '영장'],
   },
   { from: 2012, office: '전주지방검찰청' },
   {
@@ -79,7 +75,10 @@ export const CAREER_ENTRIES: readonly CareerEntry[] = [
 ] as const
 
 // 표 밑 별도 1행
-export const CAREER_QUALIFICATIONS = [
+export const CAREER_QUALIFICATIONS: readonly CareerQualification[] = [
+  { year: '현재', text: '대한변협 등록 형사법 전문 변호사' },
   { year: 2006, text: '사법연수원 35기 수료' },
   { year: 2002, text: '사법시험 제44회 합격' },
 ] as const
+
+export const CAREER_EDUCATION = ['전남대학교 법학과', '광주 동아여자고등학교'] as const
