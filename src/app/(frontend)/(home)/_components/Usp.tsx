@@ -42,7 +42,7 @@ export const UspSection: FC = () => {
             믿을 수 있는 이유
           </>
         }
-        lead="검사의 시선으로, 의뢰인의 권리를 보호합니다."
+        lead="19년 검사 경력으로 의뢰인의 권리를 보호합니다."
       />
 
       <ol className="mt-16 space-y-20 lg:mt-24 lg:space-y-32">

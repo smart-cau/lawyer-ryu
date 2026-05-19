@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import type { FC } from 'react'
 
-import { NARRATIVES } from '../_data/narratives'
+import { NARRATIVE_SECTION } from '../_data/narratives'
 
 export const NarrativeSection: FC = () => {
-  const [capability, region] = NARRATIVES
-
   return (
     <section
       id="experience"
@@ -17,9 +15,9 @@ export const NarrativeSection: FC = () => {
           <div className="md:col-start-1 md:row-start-1 md:pb-2">
             <h2
               id="experience-title"
-              className="break-keep text-display-1 font-medium before:mb-6 before:block before:h-1 before:w-20 before:bg-brand-gold before:content-['']"
+              className="text-display-2 before:mb-6 before:block before:h-1 before:w-20 before:bg-brand-gold before:content-['']"
             >
-              {capability.title}
+              {NARRATIVE_SECTION.title}
             </h2>
           </div>
 
@@ -33,17 +31,10 @@ export const NarrativeSection: FC = () => {
             />
           </div>
 
-          <div className="grid gap-10 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 md:gap-6 lg:text-headline-2">
-            <div className="space-y-6">
-              {capability.paragraphs.slice(0, 2).map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-
-            <div className="space-y-6">
-              <p>{region.paragraphs[0]}</p>
-              <p>{capability.paragraphs[4]}</p>
-            </div>
+          <div className="space-y-6 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 lg:text-headline-2">
+            {NARRATIVE_SECTION.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>
