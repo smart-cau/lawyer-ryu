@@ -71,6 +71,19 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                   </AccordionTrigger>
                   <AccordionContent className="pb-2">
                     <div className="flex flex-col gap-4 px-4">
+                      <SheetClose asChild>
+                        <Link
+                          href={item.href}
+                          className={cn(
+                            'rounded-md border border-border px-3 py-2 text-label-1 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground',
+                            pathname === item.href
+                              ? 'bg-accent/60 text-accent-foreground'
+                              : 'text-foreground',
+                          )}
+                        >
+                          {item.overviewLabel ?? item.label}
+                        </Link>
+                      </SheetClose>
                       {servicesNav.map((category) => {
                         return (
                           <div key={category.slug} className="flex flex-col gap-1">

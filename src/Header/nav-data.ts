@@ -14,6 +14,7 @@ export type PrimaryNavItem = {
   label: string
   href: string
   hasSubmenu?: boolean
+  overviewLabel?: string
 }
 
 export const servicesNav: ServiceCategory[] = [
@@ -79,6 +80,6 @@ export const servicesNav: ServiceCategory[] = [
 
 export const primaryNav: PrimaryNavItem[] = [
   { label: '변호사 소개', href: '/about/lawyer' },
-  { label: '업무분야', href: '/services', hasSubmenu: true },
+  { label: '업무분야', href: '/services', hasSubmenu: true, overviewLabel: '전체 업무분야 보기' },
   { label: '성공사례', href: '/cases' },
 ]

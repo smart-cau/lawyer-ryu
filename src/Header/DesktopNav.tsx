@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
 
 import {
   NavigationMenu,
@@ -18,14 +19,28 @@ import { primaryNav, servicesNav, type ServiceCategory } from './nav-data'
 
 type NavTone = 'light' | 'dark'
 
-const navUnderline =
-  "relative after:absolute after:h-px after:origin-left after:scale-x-0 after:bg-brand-gold after:content-[''] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100"
+const navTextUnderline =
+  "relative inline-block after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-px after:origin-left after:scale-x-0 after:bg-brand-gold after:content-[''] after:transition-transform after:duration-300 after:ease-out group-hover/nav-link:after:scale-x-100 group-focus-visible/nav-link:after:scale-x-100 group-data-[state=open]/nav-link:after:scale-x-100"
 
 const topLevelNavItem =
-  "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent after:left-4 after:right-4 after:bottom-1 data-[state=open]:after:scale-x-100"
+  'group/nav-link bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent'
 
 const dropdownLink =
-  "block rounded-none px-3 py-2 text-label-1 transition-colors after:left-3 after:right-3 after:bottom-1.5"
+  'group/nav-link block rounded-none px-3 py-2 text-label-1 transition-colors'
+
+function UnderlinedText({
+  children,
+  active,
+}: {
+  children: ReactNode
+  active?: boolean
+}) {
+  return (
+    <span className={cn(navTextUnderline, active && 'after:scale-x-100')}>
+      {children}
+    </span>
+  )
+}
 
 function CategoryColumn({
   category,
@@ -66,17 +81,16 @@ function CategoryColumn({
                 <Link
                   href={leaf.href}
                   className={cn(
-                    navUnderline,
                     dropdownLink,
                     isDark ? 'hover:text-white' : 'hover:text-foreground',
                     active &&
                       (isDark
-                        ? 'text-white font-medium after:scale-x-100'
-                        : 'text-foreground font-medium after:scale-x-100'),
+                        ? 'text-white font-medium'
+                        : 'text-foreground font-medium'),
                     !active && (isDark ? 'text-white/70' : 'text-muted-foreground'),
                   )}
                 >
-                  {leaf.label}
+                  <UnderlinedText active={active}>{leaf.label}</UnderlinedText>
                 </Link>
               </NavigationMenuLink>
             </li>
@@ -87,20 +101,52 @@ function CategoryColumn({
   )
 }
 
-function ServicesMegaMenu({ pathname, tone }: { pathname: string; tone: NavTone }) {
+function ServicesMegaMenu({
+  pathname,
+  tone,
+  overviewHref,
+  overviewLabel,
+}: {
+  pathname: string
+  tone: NavTone
+  overviewHref: string
+  overviewLabel: string
+}) {
+  const isDark = tone === 'dark'
+  const overviewActive = pathname === overviewHref
+
   return (
     <NavigationMenuContent>
-      <div className="grid w-[680px] grid-cols-[1.6fr_1fr] gap-8 p-6">
-        {servicesNav.map((category, idx) => (
-          <CategoryColumn
-            key={category.slug}
-            category={category}
-            pathname={pathname}
-            columns={category.slug === 'criminal' ? 2 : 1}
-            withDivider={idx > 0}
-            tone={tone}
-          />
-        ))}
+      <div className="w-[680px] p-6">
+        <NavigationMenuLink asChild>
+          <Link
+            href={overviewHref}
+            className={cn(
+              'group/nav-link mb-5 block border-b pb-4 text-body-1 font-semibold transition-colors',
+              isDark
+                ? 'border-white/15 text-white/90 hover:text-white'
+                : 'border-border text-foreground hover:text-primary',
+              overviewActive &&
+                (isDark
+                  ? 'text-white'
+                  : 'text-primary'),
+            )}
+          >
+            <UnderlinedText active={overviewActive}>{overviewLabel}</UnderlinedText>
+          </Link>
+        </NavigationMenuLink>
+        <div className="grid grid-cols-[1.6fr_1fr] gap-8">
+          {servicesNav.map((category, idx) => (
+            <CategoryColumn
+              key={category.slug}
+              category={category}
+              pathname={pathname}
+              columns={category.slug === 'criminal' ? 2 : 1}
+              withDivider={idx > 0}
+              tone={tone}
+            />
+          ))}
+        </div>
       </div>
     </NavigationMenuContent>
   )
@@ -133,7 +179,6 @@ export function DesktopNav({
                 <>
                   <NavigationMenuTrigger
                     className={cn(
-                      navUnderline,
                       topLevelNavItem,
                       'text-body-1 transition-colors',
                       isDark
@@ -141,19 +186,23 @@ export function DesktopNav({
                         : 'hover:text-primary focus:text-primary',
                       active &&
                         (isDark
-                          ? 'font-semibold after:scale-x-100'
-                          : 'text-primary font-semibold after:scale-x-100'),
+                          ? 'font-semibold'
+                          : 'text-primary font-semibold'),
                     )}
                   >
-                    {item.label}
+                    <UnderlinedText active={active}>{item.label}</UnderlinedText>
                   </NavigationMenuTrigger>
-                  <ServicesMegaMenu pathname={pathname} tone={tone} />
+                  <ServicesMegaMenu
+                    pathname={pathname}
+                    tone={tone}
+                    overviewHref={item.href}
+                    overviewLabel={item.overviewLabel ?? item.label}
+                  />
                 </>
               ) : (
                 <NavigationMenuLink
                   asChild
                   className={cn(
-                    navUnderline,
                     topLevelNavItem,
                     'inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-body-1 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50',
                     isDark
@@ -161,11 +210,13 @@ export function DesktopNav({
                       : 'text-foreground hover:text-primary focus:text-primary',
                     active &&
                       (isDark
-                        ? 'font-semibold after:scale-x-100'
-                        : 'text-primary font-semibold after:scale-x-100'),
+                        ? 'font-semibold'
+                        : 'text-primary font-semibold'),
                   )}
                 >
-                  <Link href={item.href}>{item.label}</Link>
+                  <Link href={item.href}>
+                    <UnderlinedText active={active}>{item.label}</UnderlinedText>
+                  </Link>
                 </NavigationMenuLink>
               )}
             </NavigationMenuItem>
