@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     loadPaths: ['./node_modules/@payloadcms/ui/dist/scss/'],
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 85, 90, 100],
     localPatterns: [
       {
         pathname: '/api/media/file/**',
@@ -35,7 +37,6 @@ const nextConfig: NextConfig = {
         pathname: '/trust/**',
       },
     ],
-    qualities: [100],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
         const url = new URL(item)

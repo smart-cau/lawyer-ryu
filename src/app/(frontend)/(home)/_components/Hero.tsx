@@ -62,10 +62,11 @@ export const HeroSection: FC = () => {
           />
           <div className="relative h-[23rem] overflow-hidden md:h-[28rem] lg:h-[40rem]">
             <Image
-              src="/ryu-profile/1.png"
+              src="/ryu-profile/1.webp"
               alt="대표변호사 류남경 프로필 사진"
               fill
               priority
+              quality={90}
               sizes="(min-width: 1280px) 34rem, (min-width: 1024px) 38vw, (min-width: 768px) 23rem, 92vw"
               className="object-contain object-bottom drop-shadow-[0_24px_38px_rgba(0,0,0,0.36)]"
             />

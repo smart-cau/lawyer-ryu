@@ -23,9 +23,10 @@ export const NarrativeSection: FC = () => {
 
           <div className="relative mx-auto aspect-[0.842] w-full max-w-[24rem] overflow-hidden md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-none md:self-center">
             <Image
-              src="/ryu-profile/4.png"
+              src="/ryu-profile/4.webp"
               alt="류남경 대표변호사"
               fill
+              quality={90}
               sizes="(min-width: 1024px) 30rem, (min-width: 768px) 38vw, 100vw"
               className="object-contain object-bottom"
             />

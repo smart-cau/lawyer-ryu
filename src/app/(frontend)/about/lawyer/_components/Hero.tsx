@@ -45,10 +45,11 @@ export const HeroSection: FC = () => {
         <div className="flex flex-col items-center md:items-start">
           <div className="relative h-[25rem] w-full max-w-[21rem] overflow-hidden md:h-[27rem] md:w-[18rem] md:max-w-none lg:h-[34rem] lg:w-[24rem]">
             <Image
-              src="/ryu-profile/2-crop.png"
+              src="/ryu-profile/2-crop.webp"
               alt="대표변호사 류남경"
               fill
               priority
+              quality={90}
               sizes="(min-width: 1024px) 24rem, (min-width: 768px) 18rem, 21rem"
               className="object-contain object-bottom md:object-left-bottom"
             />

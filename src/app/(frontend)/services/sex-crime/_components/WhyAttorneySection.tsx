@@ -25,6 +25,8 @@ export const WhyAttorneySection: FC = () => {
               alt={ATTORNEY_PROFILE.photo.alt}
               width={ATTORNEY_PROFILE.photo.width}
               height={ATTORNEY_PROFILE.photo.height}
+              quality={90}
+              sizes="(min-width: 1024px) 22rem, (min-width: 640px) 28rem, 100vw"
               className="h-full w-full object-cover"
               priority={false}
             />
