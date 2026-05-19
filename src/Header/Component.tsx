@@ -13,8 +13,6 @@ const SCROLL_THRESHOLD = 16
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [hovered, setHovered] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -23,7 +21,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', update)
   }, [])
 
-  const light = scrolled || hovered || menuOpen
+  const light = scrolled
   const tone = light ? 'light' : 'dark'
 
   return (
@@ -36,11 +34,7 @@ export function Header() {
       )}
     >
       <div className="container">
-        <div
-          className="flex items-center justify-between gap-6 py-6"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
+        <div className="flex items-center justify-between gap-6 py-6">
           <Link
             href="/"
             aria-label="법무법인 인유 홈"
@@ -49,7 +43,7 @@ export function Header() {
             <Logo priority tone={tone} />
           </Link>
 
-          <DesktopNav tone={tone} onMenuOpenChangeAction={setMenuOpen} />
+          <DesktopNav tone={tone} />
           <MobileNav tone={tone} />
         </div>
       </div>
