@@ -2,6 +2,7 @@ import { Info, Navigation } from 'lucide-react'
 import type { FC, ReactNode } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { SectionContainer } from '@/components/SectionContainer'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT, NAVER_MAP_URL } from '@/lib/constants'
 
@@ -24,7 +25,7 @@ const InfoRow: FC<InfoRowProps> = ({ label, children }) => (
 
 export const ContactSection: FC = () => {
   return (
-    <section id="contact" aria-label="오시는 길">
+    <SectionContainer id="contact" aria-label="오시는 길">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
         <div>
           <h2 className="text-title-1 font-semibold">오시는 길</h2>
@@ -81,6 +82,6 @@ export const ContactSection: FC = () => {
           </Button>
         </div>
       </div>
-    </section>
+    </SectionContainer>
   )
 }

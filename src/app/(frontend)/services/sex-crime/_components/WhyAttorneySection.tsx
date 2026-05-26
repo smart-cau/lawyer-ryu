@@ -6,14 +6,22 @@ import {
   ATTORNEY_PROFILE,
   WHY_ATTORNEY_ITEMS,
 } from '@/app/(frontend)/services/sex-crime/_data/why-attorney'
+import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 
 export const WhyAttorneySection: FC = () => {
   return (
-    <section
+    <SectionContainer
       id="why-attorney"
       aria-label="변호사 소개"
-      className="space-y-12"
+      className="overflow-hidden bg-[#f7f8f8]"
+      innerClassName="space-y-12"
+      background={
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(116deg,transparent_0,transparent_34px,rgba(16,20,38,0.025)_35px,transparent_38px)]"
+        />
+      }
     >
       <SectionHeader title="변호사 소개" />
 
@@ -69,6 +77,6 @@ export const WhyAttorneySection: FC = () => {
           변호사 소개 자세히 보기 →
         </Link>
       </div>
-    </section>
+    </SectionContainer>
   )
 }

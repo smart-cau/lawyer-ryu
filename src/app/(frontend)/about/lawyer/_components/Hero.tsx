@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Mail, Phone, UserPlus } from 'lucide-react'
 import type { FC } from 'react'
 
+import { SectionContainer } from '@/components/SectionContainer'
 import { CONTACT } from '@/lib/constants'
 
 const PHONE_HREF = `tel:${CONTACT.office.replace(/-/g, '')}`
@@ -33,85 +34,95 @@ const INTRO = {
 
 export const HeroSection: FC = () => {
   return (
-    <section
+    <SectionContainer
       id="banner"
       aria-label="대표변호사 류남경"
       className="relative -mt-[6rem] overflow-hidden bg-[#111426] text-brand-deep-foreground"
+      innerClassName="grid gap-12 pt-36 pb-28 md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] md:items-end md:gap-10 md:pt-40 md:pb-36 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:max-w-[calc(71.25rem+4rem)] lg:gap-24 lg:pt-44 lg:pb-44"
+      padded={false}
+      background={
+        <>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,22,0.12)_0%,rgba(17,20,38,0)_36%,#111426_100%)]" />
+          <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(90deg,rgba(17,20,38,0.34)_0%,rgba(17,20,38,0)_100%)] md:block" />
+        </>
+      }
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,22,0.12)_0%,rgba(17,20,38,0)_36%,#111426_100%)]" />
-      <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(90deg,rgba(17,20,38,0.34)_0%,rgba(17,20,38,0)_100%)] md:block" />
-
-      <div className="container relative z-10 grid gap-12 pt-36 pb-28 md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] md:items-end md:gap-10 md:pt-40 md:pb-36 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:max-w-[calc(71.25rem+4rem)] lg:gap-24 lg:pt-44 lg:pb-44">
-        <div className="flex flex-col items-center md:items-start">
-          <div className="relative h-[25rem] w-full max-w-[21rem] overflow-hidden md:h-[27rem] md:w-[18rem] md:max-w-none lg:h-[34rem] lg:w-[24rem]">
-            <Image
-              src="/ryu-profile/2-crop.webp"
-              alt="대표변호사 류남경"
-              fill
-              priority
-              quality={90}
-              sizes="(min-width: 1024px) 24rem, (min-width: 768px) 18rem, 21rem"
-              className="object-contain object-bottom md:object-left-bottom"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(17,20,38,0)_0%,rgba(17,20,38,0.68)_56%,#111426_100%)] md:h-32 lg:h-40"
-            />
-          </div>
-
-          <div className="relative z-10 -mt-14 w-full text-center md:-mt-14 md:text-left lg:-mt-20">
-            <h1 className="text-display-1 font-medium">
-              류남경
-            </h1>
-            <p className="mt-5 text-label-1 font-medium text-brand-gold md:text-headline-2">
-              대표변호사
-            </p>
-
-            <ul className="text-body-1 mx-auto mt-7 w-fit space-y-4 text-left font-light text-brand-deep-foreground/90 md:mx-0 md:text-headline-1">
-              <li>
-                <a
-                  href={PHONE_HREF}
-                  aria-label={`사무소 전화 ${CONTACT.office}`}
-                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
-                >
-                  <Phone aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
-                  <span>{CONTACT.office}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={MAIL_HREF}
-                  aria-label={`이메일 ${CONTACT.email}`}
-                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
-                >
-                  <Mail aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
-                  <span>{CONTACT.email}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={VCARD_HREF}
-                  aria-label="대표변호사 연락처 저장 (vCard)"
-                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
-                >
-                  <UserPlus aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
-                  <span>연락처 저장</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+      <div className="flex flex-col items-center md:items-start">
+        <div className="relative h-[25rem] w-full max-w-[21rem] overflow-hidden md:h-[27rem] md:w-[18rem] md:max-w-none lg:h-[34rem] lg:w-[24rem]">
+          <Image
+            src="/ryu-profile/2-crop.webp"
+            alt="대표변호사 류남경"
+            fill
+            priority
+            quality={90}
+            sizes="(min-width: 1024px) 24rem, (min-width: 768px) 18rem, 21rem"
+            className="object-contain object-bottom md:object-left-bottom"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(17,20,38,0)_0%,rgba(17,20,38,0.68)_56%,#111426_100%)] md:h-32 lg:h-40"
+          />
         </div>
 
-        <div className="space-y-6 text-body-1-reading font-light text-brand-deep-foreground/90 md:self-center md:text-body-2-reading lg:space-y-7 lg:pl-2 lg:text-headline-1">
-          <h2 className="break-keep text-headline-1 font-medium text-brand-deep-foreground before:mb-5 before:block before:h-1 before:w-16 before:bg-brand-gold before:content-[''] md:text-display-3">
-            {INTRO.title}
-          </h2>
+        <div className="relative z-10 -mt-14 w-full text-center md:-mt-14 md:text-left lg:-mt-20">
+          <h1 className="text-display-1 font-medium">류남경</h1>
+          <p className="mt-5 text-label-1 font-medium text-brand-gold md:text-headline-2">
+            대표변호사
+          </p>
 
-          {INTRO.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <ul className="text-body-1 mx-auto mt-7 w-fit space-y-4 text-left font-light text-brand-deep-foreground/90 md:mx-0 md:text-headline-1">
+            <li>
+              <a
+                href={PHONE_HREF}
+                aria-label={`사무소 전화 ${CONTACT.office}`}
+                className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+              >
+                <Phone
+                  aria-hidden
+                  className="h-4 w-4 shrink-0 text-brand-gold"
+                />
+                <span>{CONTACT.office}</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={MAIL_HREF}
+                aria-label={`이메일 ${CONTACT.email}`}
+                className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+              >
+                <Mail
+                  aria-hidden
+                  className="h-4 w-4 shrink-0 text-brand-gold"
+                />
+                <span>{CONTACT.email}</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={VCARD_HREF}
+                aria-label="대표변호사 연락처 저장 (vCard)"
+                className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+              >
+                <UserPlus
+                  aria-hidden
+                  className="h-4 w-4 shrink-0 text-brand-gold"
+                />
+                <span>연락처 저장</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
+
+      <div className="space-y-6 text-body-1-reading font-light text-brand-deep-foreground/90 md:self-center md:text-body-2-reading lg:space-y-7 lg:pl-2 lg:text-headline-1">
+        <h2 className="break-keep text-headline-1 font-medium text-brand-deep-foreground before:mb-5 before:block before:h-1 before:w-16 before:bg-brand-gold before:content-[''] md:text-display-3">
+          {INTRO.title}
+        </h2>
+
+        {INTRO.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+    </SectionContainer>
   )
 }

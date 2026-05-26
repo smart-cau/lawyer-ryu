@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 import { Card } from '@/components/ui/card'
 
@@ -34,25 +35,48 @@ export const CasesSection: FC = () => {
   if (items.length === 0) return null
 
   return (
-    <section id="cases" aria-label="대표 사례" className="mx-auto max-w-5xl">
-      <SectionHeader
-        title="대표 사례"
-        lead="의뢰인들의 억울함을 해결해드린 사례입니다."
-      >
-      </SectionHeader>
+    <SectionContainer
+      id="cases"
+      aria-label="대표 사례"
+      backgroundImage="url('/texture-bg.jpg')"
+      className="isolate overflow-hidden bg-[#071525] text-white"
+      innerClassName="max-w-5xl"
+      background={
+        <>
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#071525]/80 to-transparent"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#071525]/70 to-transparent"
+          />
+        </>
+      }
+    >
+      <div className="[&_h2]:text-white [&_p]:text-white/72">
+        <SectionHeader
+          title="대표 사례"
+          lead="의뢰인들의 억울함을 해결해드린 사례입니다."
+        />
+      </div>
 
       <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
         {items.map((item) => (
           <li key={item.id}>
-            <Card className="flex h-full flex-col overflow-hidden">
+            <Card className="flex h-full flex-col overflow-hidden border-white/12 bg-white/[0.92] shadow-[0_24px_64px_rgba(1,8,18,0.32)]">
               <div
-                className="aspect-[4/3] w-full bg-muted"
+                className="aspect-[4/3] w-full bg-[linear-gradient(135deg,rgba(7,21,37,0.12),rgba(143,117,72,0.18))]"
                 aria-label="사례 이미지 placeholder"
               />
               <div className="flex flex-1 flex-col p-6">
-                <p className="text-label-1 text-muted-foreground">{item.category}</p>
-                <h3 className="mt-2 text-heading-2 font-semibold">{item.title}</h3>
-                <p className="mt-3 text-body-1 text-muted-foreground">{item.description}</p>
+                <p className="text-label-1 text-brand-gold">{item.category}</p>
+                <h3 className="mt-2 text-heading-2 font-semibold text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-body-1 text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             </Card>
           </li>
@@ -62,11 +86,11 @@ export const CasesSection: FC = () => {
       <div className="mt-10 text-center lg:mt-12">
         <Link
           href="/cases"
-          className="text-body-1 font-medium underline-offset-4 hover:underline"
+          className="text-body-1 font-medium text-white underline-offset-4 hover:underline"
         >
           전체 사례 보기 →
         </Link>
       </div>
-    </section>
+    </SectionContainer>
   )
 }

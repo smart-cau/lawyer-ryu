@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 
+import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 
 type Stage = {
@@ -58,7 +59,12 @@ const STAGES: Stage[] = [
 
 export const ProcessSection: FC = () => {
   return (
-    <section id="process" aria-label="류남경 변호사의 단계별 조력">
+    <SectionContainer
+      id="process"
+      aria-label="류남경 변호사의 단계별 조력"
+      backgroundImage="url('/intro-bg.jpg')"
+      className="bg-top"
+    >
       <SectionHeader
         title="류남경 변호사의 단계별 조력"
         lead="의뢰인의 권익을 보호하기 위해, 형사전문 변호사가 체계적인 전문지원을 제공합니다."
@@ -70,7 +76,10 @@ export const ProcessSection: FC = () => {
           {STAGES.map((stage, idx) => {
             const isLast = idx === STAGES.length - 1
             return (
-              <li key={stage.title} className="grid grid-cols-[5rem_1fr] gap-x-5">
+              <li
+                key={stage.title}
+                className="grid grid-cols-[5rem_1fr] gap-x-5"
+              >
                 <div className="flex flex-col items-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -162,6 +171,6 @@ export const ProcessSection: FC = () => {
           ))}
         </ol>
       </div>
-    </section>
+    </SectionContainer>
   )
 }

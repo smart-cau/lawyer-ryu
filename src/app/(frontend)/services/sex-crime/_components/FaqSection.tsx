@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import { FAQ_ITEMS } from '@/app/(frontend)/services/sex-crime/_data/faq'
+import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 import {
   Accordion,
@@ -11,10 +12,10 @@ import {
 
 export const FaqSection: FC = () => {
   return (
-    <section
+    <SectionContainer
       id="faq"
       aria-label="자주 묻는 질문"
-      className="space-y-12"
+      innerClassName="space-y-12"
     >
       <SectionHeader title="자주 묻는 질문" />
 
@@ -34,6 +35,6 @@ export const FaqSection: FC = () => {
           </AccordionItem>
         ))}
       </Accordion>
-    </section>
+    </SectionContainer>
   )
 }

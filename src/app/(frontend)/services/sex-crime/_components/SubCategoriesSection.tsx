@@ -4,6 +4,7 @@ import {
   SEX_CRIME_SUBS,
   type SexCrimeSubCategory,
 } from '@/app/(frontend)/services/sex-crime/_data/sub-categories'
+import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 
 const DETAIL_GROUPS = [
@@ -21,10 +22,10 @@ const DETAIL_GROUPS = [
 
 export const SubCategoriesSection: FC = () => {
   return (
-    <section
+    <SectionContainer
       id="sub-categories"
       aria-label="성범죄 사건 유형"
-      className="space-y-12"
+      innerClassName="space-y-12"
     >
       <SectionHeader
         title="사건 유형"
@@ -86,6 +87,6 @@ export const SubCategoriesSection: FC = () => {
           </li>
         ))}
       </ol>
-    </section>
+    </SectionContainer>
   )
 }
