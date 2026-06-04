@@ -1,0 +1,1 @@
+export { propertyCrimeLeafContent } from './content'
