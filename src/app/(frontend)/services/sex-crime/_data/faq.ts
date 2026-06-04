@@ -1,14 +1,13 @@
+import type { ServiceFaqItem } from '@/app/(frontend)/services/_data/service-leaf'
+
 // 성범죄 leaf — FAQ 데이터.
 //
 // 1차 가설 카피. 카피 단계에서 변호사 확인 후 확정한다.
 // 진입자 절박성 순서로 정렬 (신고 직후 → 진행 → 후속 처분 → 선임 시점 → 조사 동행 → 피해자).
 
-export type FaqItem = {
-  question: string
-  answer: string
-}
+export type FaqItem = ServiceFaqItem
 
-export const FAQ_ITEMS: FaqItem[] = [
+export const FAQ_ITEMS: ServiceFaqItem[] = [
   {
     question: '신고당했습니다. 가장 먼저 무엇을 해야 하나요?',
     answer:

@@ -1,33 +1,7 @@
-import { PageTitleBar } from '@/components/PageTitleBar'
-import {
-  getBgImageFromRoute,
-  getBreadcrumbsFromRoute,
-} from '@/utilities/page-title-bar'
+import { ServiceLeafPage } from '@/app/(frontend)/services/_components'
 
-import {
-  FaqSection,
-  FooterCtaSection,
-  SubCategoriesSection,
-  WhyAttorneySection,
-} from './_components'
+import { sexCrimeLeafContent } from './_data'
 
 export default function SexCrimeLeafPage() {
-  const title = '성범죄'
-  const route = '/services/sex-crime'
-
-  return (
-    <>
-      <PageTitleBar
-        title={title}
-        breadcrumbs={getBreadcrumbsFromRoute(route, title)}
-        bgImage={getBgImageFromRoute(route)}
-      />
-      <main className="bg-white">
-        <SubCategoriesSection />
-        <WhyAttorneySection />
-        <FaqSection />
-        <FooterCtaSection />
-      </main>
-    </>
-  )
+  return <ServiceLeafPage content={sexCrimeLeafContent} />
 }

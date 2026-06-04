@@ -1,6 +1,5 @@
 import type { FC } from 'react'
 
-import { FAQ_ITEMS } from '@/app/(frontend)/services/sex-crime/_data/faq'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 import {
@@ -10,21 +9,27 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
-export const FaqSection: FC = () => {
+import type { ServiceLeafContent } from '../_data/service-leaf'
+
+type FaqSectionProps = {
+  data: ServiceLeafContent['faq']
+}
+
+export const FaqSection: FC<FaqSectionProps> = ({ data }) => {
   return (
     <SectionContainer
       id="faq"
-      aria-label="자주 묻는 질문"
+      aria-label={data.title}
       innerClassName="space-y-12"
     >
-      <SectionHeader title="자주 묻는 질문" />
+      <SectionHeader title={data.title} />
 
       <Accordion
         type="single"
         collapsible
         className="mx-auto w-full max-w-4xl"
       >
-        {FAQ_ITEMS.map((item, idx) => (
+        {data.items.map((item, idx) => (
           <AccordionItem key={item.question} value={String(idx)}>
             <AccordionTrigger className="py-6 text-left text-headline-1 font-medium">
               {item.question}

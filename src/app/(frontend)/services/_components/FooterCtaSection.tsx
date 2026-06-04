@@ -5,9 +5,15 @@ import type { FC } from 'react'
 import { SectionContainer } from '@/components/SectionContainer'
 import { Button } from '@/components/ui/button'
 
+import type { ServiceLeafContent } from '../_data/service-leaf'
+
 const PHONE_HREF = 'tel:01075520301'
 
-export const FooterCtaSection: FC = () => {
+type FooterCtaSectionProps = {
+  data: ServiceLeafContent['footerCta']
+}
+
+export const FooterCtaSection: FC<FooterCtaSectionProps> = ({ data }) => {
   return (
     <SectionContainer
       id="footer-cta"
@@ -36,10 +42,10 @@ export const FooterCtaSection: FC = () => {
     >
       <div className="space-y-3">
         <h2 className="text-title-1 font-semibold text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.74)]">
-          성범죄 수사, 혼자 대응하지 마세요
+          {data.title}
         </h2>
         <p className="text-headline-1 font-medium text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.82)]">
-          대표변호사 류남경이 직접 상담합니다.
+          {data.lead}
         </p>
       </div>
 
@@ -48,9 +54,9 @@ export const FooterCtaSection: FC = () => {
         size="lg"
         className="gap-2 border border-white/35 bg-black/28 text-white shadow-lg shadow-black/25 backdrop-blur-sm hover:border-white/55 hover:bg-black/38"
       >
-        <Link href={PHONE_HREF}>
+        <Link href={data.phoneHref ?? PHONE_HREF}>
           <Phone className="h-4 w-4" />
-          전화 상담
+          {data.buttonLabel ?? '전화 상담'}
         </Link>
       </Button>
     </SectionContainer>

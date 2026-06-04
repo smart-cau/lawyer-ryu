@@ -1,14 +1,11 @@
+import type { AttorneyStrength } from '@/app/(frontend)/services/_data/service-leaf'
+
 // 성범죄 leaf — Why Attorney 섹션 데이터.
 //
 // 메인 페이지 Usp.tsx의 4 USP를 성범죄 맥락으로 변주한 카피.
 // 카피는 메모리의 「한국어 카피 자연스러움」·「신뢰지표는 텍스트로 직조」·
 // 「변호사광고에관한규정 준수」 피드백을 반영해 작성됨.
 // body는 단락 배열 — 시각적 호흡을 위해 각 element가 별도 <p>로 렌더링된다.
-
-export type AttorneyStrength = {
-  heading: string
-  body: string[]
-}
 
 export const WHY_ATTORNEY_ITEMS: AttorneyStrength[] = [
   {

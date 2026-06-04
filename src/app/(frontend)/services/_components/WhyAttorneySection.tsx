@@ -2,18 +2,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { FC } from 'react'
 
-import {
-  ATTORNEY_PROFILE,
-  WHY_ATTORNEY_ITEMS,
-} from '@/app/(frontend)/services/sex-crime/_data/why-attorney'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 
-export const WhyAttorneySection: FC = () => {
+import type { ServiceLeafContent } from '../_data/service-leaf'
+
+type WhyAttorneySectionProps = {
+  data: ServiceLeafContent['whyAttorney']
+}
+
+export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data }) => {
   return (
     <SectionContainer
       id="why-attorney"
-      aria-label="변호사 소개"
+      aria-label={data.title}
       className="overflow-hidden bg-[#f7f8f8]"
       innerClassName="space-y-12"
       background={
@@ -23,16 +25,16 @@ export const WhyAttorneySection: FC = () => {
         />
       }
     >
-      <SectionHeader title="변호사 소개" />
+      <SectionHeader title={data.title} />
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="space-y-5 lg:col-span-4">
           <div className="aspect-[5/7] w-full overflow-hidden bg-muted">
             <Image
-              src={ATTORNEY_PROFILE.photo.src}
-              alt={ATTORNEY_PROFILE.photo.alt}
-              width={ATTORNEY_PROFILE.photo.width}
-              height={ATTORNEY_PROFILE.photo.height}
+              src={data.profile.photo.src}
+              alt={data.profile.photo.alt}
+              width={data.profile.photo.width}
+              height={data.profile.photo.height}
               quality={90}
               sizes="(min-width: 1024px) 22rem, (min-width: 640px) 28rem, 100vw"
               className="h-full w-full object-cover"
@@ -40,15 +42,15 @@ export const WhyAttorneySection: FC = () => {
             />
           </div>
           <div className="space-y-1">
-            <h3 className="text-title-3 font-semibold">{ATTORNEY_PROFILE.name}</h3>
+            <h3 className="text-title-3 font-semibold">{data.profile.name}</h3>
             <p className="text-label-1 text-muted-foreground">
-              {ATTORNEY_PROFILE.affiliation}
+              {data.profile.affiliation}
             </p>
           </div>
         </div>
 
         <ol className="space-y-10 lg:col-span-8 lg:space-y-14">
-          {WHY_ATTORNEY_ITEMS.map((item, idx) => (
+          {data.items.map((item, idx) => (
             <li key={item.heading} className="flex gap-5 lg:gap-6">
               <span
                 aria-hidden="true"
@@ -71,10 +73,10 @@ export const WhyAttorneySection: FC = () => {
 
       <div className="text-center">
         <Link
-          href="/about/lawyer"
+          href={data.detailHref ?? '/about/lawyer'}
           className="text-body-1 font-medium underline-offset-4 hover:underline"
         >
-          변호사 소개 자세히 보기 →
+          {data.detailLabel ?? '변호사 소개 자세히 보기 →'}
         </Link>
       </div>
     </SectionContainer>

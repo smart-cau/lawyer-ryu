@@ -1,0 +1,1 @@
+export { sexCrimeLeafContent } from './content'

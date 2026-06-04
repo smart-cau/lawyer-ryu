@@ -1,3 +1,5 @@
+import type { ServiceSubCategory } from '@/app/(frontend)/services/_data/service-leaf'
+
 // 성범죄 leaf — 7 사건 유형 데이터.
 //
 // label·keywords: services IA v1 §3.1 합의 표 그대로.
@@ -5,25 +7,9 @@
 // 목적: 검색 유입 의뢰인이 자기 사건을 분류하고, 수사 초기 대응 방향을 판단하도록 돕는다.
 // 법률 판단·처분 가능성은 개별 사실관계에 따라 달라지므로 변호사 검수 후 확정한다.
 
-export type SexCrimeSubCategory = {
-  slug: string
-  label: string
-  keywords: string[]
-  // 굵게 처리될 정의 문장 — 검색 의도에 대한 첫 답변.
-  definition: string
-  // "내 사건도 여기에 해당하나?"를 판단하게 하는 대표 장면.
-  commonSituations: string[]
-  // 수사기관·법원이 실제로 보는 다툼 지점.
-  keyIssues: string[]
-  // 경찰 조사 전후에 조심해야 할 행동과 준비 자료.
-  firstResponse: string[]
-  // 변호사가 필요한 이유를 절차·증거·진술·합의 관점으로 설명.
-  attorneyRole: string[]
-  // 본문 반복용이 아니라 검색 의도·범위 점검용 키워드.
-  relatedKeywords?: string[]
-}
+export type SexCrimeSubCategory = ServiceSubCategory
 
-export const SEX_CRIME_SUBS: SexCrimeSubCategory[] = [
+export const SEX_CRIME_SUBS: ServiceSubCategory[] = [
   {
     slug: 'assault',
     label: '강제추행·일반 성범죄',
