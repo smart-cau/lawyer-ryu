@@ -5,6 +5,7 @@ import { Noto_Serif_KR } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
+import { StickyCtaBar } from '@/components/StickyCtaBar'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Header />
         {children}
         <Footer />
+        <StickyCtaBar />
       </body>
     </html>
   )
