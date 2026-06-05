@@ -2,7 +2,7 @@ export type ServiceSubCategory = {
   slug: string
   label: string
   keywords: string[]
-  // Bold definition sentence rendered before the detail groups.
+  // Bold definition phrase rendered before the detail groups.
   definition: string
   commonSituations: string[]
   keyIssues: string[]
