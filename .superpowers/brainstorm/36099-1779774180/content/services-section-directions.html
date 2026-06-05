@@ -1,0 +1,352 @@
+<style>
+  .service-direction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 980px) {
+    .service-direction-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .service-direction {
+    cursor: pointer;
+    border: 1px solid #d6dde7;
+    background: #fff;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    min-height: 610px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-direction:hover {
+    transform: translateY(-2px);
+    border-color: #9ba9ba;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  }
+
+  .service-direction.selected {
+    border-color: #111827;
+    box-shadow: 0 0 0 2px #111827 inset, 0 18px 45px rgba(15, 23, 42, 0.08);
+  }
+
+  .direction-preview {
+    padding: 18px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f8fafc;
+    min-height: 430px;
+  }
+
+  .direction-copy {
+    padding: 18px;
+  }
+
+  .direction-copy h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+
+  .direction-copy p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .mini-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .mini-eyebrow {
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 5px;
+  }
+
+  .mini-heading {
+    font-size: 21px;
+    line-height: 1.12;
+    color: #111827;
+    font-weight: 720;
+  }
+
+  .mini-link {
+    font-size: 11px;
+    white-space: nowrap;
+    color: #111827;
+  }
+
+  .featured-card {
+    background: #111827;
+    color: #fff;
+    padding: 18px;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .featured-card p,
+  .featured-card span {
+    color: #cbd5e1;
+  }
+
+  .mini-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 1px solid #dbe3ef;
+    border-top: 1px solid #dbe3ef;
+  }
+
+  .mini-card {
+    min-height: 92px;
+    background: #fff;
+    border-right: 1px solid #dbe3ef;
+    border-bottom: 1px solid #dbe3ef;
+    padding: 13px;
+  }
+
+  .mini-card strong {
+    display: block;
+    color: #111827;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .mini-card span,
+  .mini-card li {
+    color: #64748b;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .mini-card ul {
+    padding-left: 13px;
+    margin: 0;
+  }
+
+  .mosaic {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 10px;
+  }
+
+  .mosaic-main {
+    background: #fff;
+    border: 1px solid #dbe3ef;
+    padding: 18px;
+    min-height: 230px;
+  }
+
+  .mosaic-side {
+    display: grid;
+    gap: 10px;
+  }
+
+  .accent-line {
+    width: 38px;
+    height: 2px;
+    background: #991b1b;
+    margin: 12px 0;
+  }
+
+  .mosaic-tile {
+    background: #fff;
+    border: 1px solid #dbe3ef;
+    padding: 14px;
+    min-height: 110px;
+  }
+
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    border: 1px solid #dbe3ef;
+    background: #fff;
+  }
+
+  .stat-strip div {
+    padding: 10px;
+    border-right: 1px solid #dbe3ef;
+    min-height: 56px;
+  }
+
+  .stat-strip div:last-child {
+    border-right: 0;
+  }
+
+  .stat-strip strong {
+    display: block;
+    color: #111827;
+    font-size: 15px;
+  }
+
+  .stat-strip span {
+    color: #64748b;
+    font-size: 9px;
+  }
+
+  .guided-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .guided-tab {
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #475569;
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  .guided-tab.active {
+    background: #111827;
+    color: #fff;
+    border-color: #111827;
+  }
+
+  .guided-panel {
+    background: #fff;
+    border: 1px solid #dbe3ef;
+    padding: 16px;
+    min-height: 210px;
+  }
+
+  .issue-list {
+    margin-top: 12px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .issue-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #e5e7eb;
+    color: #475569;
+    font-size: 11px;
+  }
+
+  .issue-row span:last-child {
+    color: #111827;
+  }
+</style>
+
+<h2>업무분야 섹션 개선 방향</h2>
+<p class="subtitle">현재의 평면적인 2열 목록을 어떻게 더 설득력 있게 바꿀지 비교해보세요. 마음에 드는 방향을 클릭해 선택할 수 있습니다.</p>
+
+<div class="service-direction-grid">
+  <div class="service-direction" data-choice="featured-grid" onclick="toggleSelect(this)">
+    <div class="direction-preview">
+      <div class="mini-section-title">
+        <div>
+          <div class="mini-eyebrow">Practice Areas</div>
+          <div class="mini-heading">형사 사건의 핵심 쟁점을 먼저 봅니다</div>
+        </div>
+        <div class="mini-link">전체 보기</div>
+      </div>
+
+      <div class="featured-card">
+        <div>
+          <strong>성범죄</strong>
+          <p style="font-size:11px;line-height:1.6;margin:8px 0 0;">진술, 디지털 증거, 관계의 특수성이 쟁점이 되는 사건.</p>
+        </div>
+        <span style="font-size:11px;">강제추행 · 디지털 성범죄 · 피해자 보호</span>
+      </div>
+
+      <div class="mini-card-grid">
+        <div class="mini-card"><strong>재산범죄</strong><ul><li>투자사기</li><li>금융사기</li></ul></div>
+        <div class="mini-card"><strong>기업 관련 범죄</strong><ul><li>횡령·배임</li><li>영업비밀</li></ul></div>
+        <div class="mini-card"><strong>조사·구속 대응</strong><ul><li>경찰 조사</li><li>영장 대응</li></ul></div>
+        <div class="mini-card"><strong>음주·교통범죄</strong><ul><li>음주운전</li><li>교통사고</li></ul></div>
+      </div>
+    </div>
+    <div class="direction-copy">
+      <h3>A. 대표 분야를 강조하는 비대칭 그리드</h3>
+      <p>한두 개 핵심 분야를 크게 보여주고 나머지는 촘촘히 정리합니다. 현재 구조보다 시선 흐름이 강하고 랜딩 페이지의 전환 섹션처럼 보입니다.</p>
+    </div>
+  </div>
+
+  <div class="service-direction" data-choice="strategic-mosaic" onclick="toggleSelect(this)">
+    <div class="direction-preview">
+      <div class="mini-section-title">
+        <div>
+          <div class="mini-eyebrow">Criminal Defense</div>
+          <div class="mini-heading">검사 출신 형사전문 변호사의 사건 분류</div>
+        </div>
+      </div>
+
+      <div class="mosaic">
+        <div class="mosaic-main">
+          <div style="font-size:10px;color:#991b1b;font-weight:700;">중점 대응</div>
+          <div class="accent-line"></div>
+          <strong style="font-size:18px;">조사·구속 대응</strong>
+          <p style="font-size:11px;color:#64748b;line-height:1.65;">경찰·검찰 조사, 체포, 구속영장 단계에서 진술과 자료 제출을 정리합니다.</p>
+          <div style="font-size:11px;margin-top:22px;color:#111827;">자세히 보기 →</div>
+        </div>
+        <div class="mosaic-side">
+          <div class="mosaic-tile"><strong>성범죄</strong><br><span>디지털 증거 · 진술 쟁점</span></div>
+          <div class="mosaic-tile"><strong>재산범죄</strong><br><span>거래자료 · 피해회복</span></div>
+        </div>
+      </div>
+
+      <div class="stat-strip">
+        <div><strong>8</strong><span>형사 대분류</span></div>
+        <div><strong>44</strong><span>세부 업무</span></div>
+        <div><strong>19년</strong><span>검사 경력</span></div>
+      </div>
+    </div>
+    <div class="direction-copy">
+      <h3>B. 경력·전문성을 묶는 전략형 모자이크</h3>
+      <p>업무분야 목록을 단순 나열하지 않고 “검사 출신 형사전문” 포지션과 연결합니다. 신뢰감은 가장 강하지만 카피 톤을 더 신중히 잡아야 합니다.</p>
+    </div>
+  </div>
+
+  <div class="service-direction" data-choice="guided-selector" onclick="toggleSelect(this)">
+    <div class="direction-preview">
+      <div class="mini-section-title">
+        <div>
+          <div class="mini-eyebrow">Find Your Issue</div>
+          <div class="mini-heading">내 사건과 가까운 업무분야 찾기</div>
+        </div>
+      </div>
+
+      <div class="guided-tabs">
+        <div class="guided-tab active">조사 전</div>
+        <div class="guided-tab">고소·피해</div>
+        <div class="guided-tab">기업</div>
+      </div>
+
+      <div class="guided-panel">
+        <strong style="font-size:17px;">처음 조사를 앞둔 경우</strong>
+        <p style="font-size:11px;color:#64748b;line-height:1.7;">출석요구, 압수수색, 체포·구속영장 등 절차 단계에 따라 필요한 준비가 달라집니다.</p>
+        <div class="issue-list">
+          <div class="issue-row"><span>경찰 조사 대응</span><span>보기 →</span></div>
+          <div class="issue-row"><span>검찰 조사 대응</span><span>보기 →</span></div>
+          <div class="issue-row"><span>체포·구속영장 대응</span><span>보기 →</span></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+        <div class="mini-card"><strong>성범죄</strong><span>진술과 증거가 민감한 사건</span></div>
+        <div class="mini-card"><strong>재산범죄</strong><span>거래와 피해회복이 얽힌 사건</span></div>
+      </div>
+    </div>
+    <div class="direction-copy">
+      <h3>C. 사용자의 상황에서 출발하는 안내형 UI</h3>
+      <p>분류명을 모르는 방문자도 자신의 절차 단계나 상황으로 진입할 수 있습니다. 가장 친절하지만 탭/필터 인터랙션이 필요합니다.</p>
+    </div>
+  </div>
+</div>

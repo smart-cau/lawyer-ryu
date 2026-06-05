@@ -1,0 +1,339 @@
+<style>
+  .revision-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  .icon-layout-wrap {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .icon-layout-option {
+    cursor: pointer;
+    border: 1px solid #d6dde7;
+    background: #ffffff;
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  .icon-layout-option:hover {
+    transform: translateY(-2px);
+    border-color: #9ba9ba;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .icon-layout-option.selected {
+    border-color: #111827;
+    box-shadow: 0 0 0 2px #111827 inset, 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .layout-comparison {
+    display: grid;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap: 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  @media (max-width: 980px) {
+    .layout-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .before-pane,
+  .after-pane {
+    padding: 22px;
+    background: #f8fafc;
+  }
+
+  .before-pane {
+    border-right: 1px solid #e5e7eb;
+    opacity: .68;
+  }
+
+  @media (max-width: 980px) {
+    .before-pane {
+      border-right: 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  }
+
+  .pane-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+
+  .mini-current-grid,
+  .mini-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 1px solid #dbe3ef;
+    border-top: 1px solid #dbe3ef;
+    background: #ffffff;
+  }
+
+  .mini-current-card,
+  .mini-icon-card {
+    min-height: 148px;
+    border-right: 1px solid #dbe3ef;
+    border-bottom: 1px solid #dbe3ef;
+    background: #ffffff;
+    padding: 18px;
+  }
+
+  .mini-current-card strong {
+    display: block;
+    color: #111827;
+    font-size: 15px;
+    margin-bottom: 9px;
+  }
+
+  .mini-current-card p,
+  .mini-current-card li {
+    color: #64748b;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .mini-current-card ul {
+    margin: 10px 0 0;
+    padding-left: 14px;
+  }
+
+  .mini-icon-card {
+    position: relative;
+    min-height: 174px;
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 160ms ease;
+  }
+
+  .mini-icon-card:hover {
+    background: #fbfcfe;
+  }
+
+  .mini-icon-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .line-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    color: #111827;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+  }
+
+  .line-icon svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mini-icon-card strong {
+    display: block;
+    color: #111827;
+    font-size: 17px;
+    line-height: 1.2;
+    margin-bottom: 7px;
+  }
+
+  .mini-icon-card p {
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .mini-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .mini-chip {
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 10px;
+    line-height: 1;
+    padding: 6px 7px;
+  }
+
+  .mini-card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 12px;
+    margin-top: 2px;
+    border-top: 1px solid #edf2f7;
+    color: #111827;
+    font-size: 11px;
+    font-weight: 650;
+  }
+
+  .option-body {
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 26px;
+  }
+
+  @media (max-width: 860px) {
+    .option-body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .option-body h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  .option-body p,
+  .option-body li {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .option-body ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+</style>
+
+<h2>업무분야 섹션 개선 방향 v2</h2>
+<p class="subtitle">B, C안은 제외하고, 기존 2열 레이아웃을 유지한 채 아이콘과 카드 내부 리듬을 추가하는 새 안입니다.</p>
+<div class="revision-note">현재 구조의 안정감은 유지하고, 각 분야가 한눈에 구분되도록 시각 신호를 보강합니다.</div>
+
+<div class="icon-layout-wrap">
+  <div class="icon-layout-option" data-choice="existing-grid-with-icons" onclick="toggleSelect(this)">
+    <div class="layout-comparison">
+      <div class="before-pane">
+        <div class="pane-label"><span>Before</span><span>flat list</span></div>
+        <div class="mini-current-grid">
+          <div class="mini-current-card">
+            <strong>성범죄</strong>
+            <p>동의 여부, 디지털 증거, 관계의 특수성이 쟁점이 되는 사건.</p>
+            <ul><li>강제추행</li><li>디지털 성범죄</li><li>성범죄 피해자 보호</li></ul>
+          </div>
+          <div class="mini-current-card">
+            <strong>기업 관련 범죄</strong>
+            <p>회사 운영 과정에서 대표·임원 책임으로 번질 수 있는 형사 리스크.</p>
+            <ul><li>중대산업재해</li><li>횡령·배임</li></ul>
+          </div>
+          <div class="mini-current-card">
+            <strong>재산범죄</strong>
+            <p>투자·금융·거래 과정에서 발생한 피해 회복과 혐의 방어.</p>
+            <ul><li>투자사기</li><li>금융사기</li></ul>
+          </div>
+          <div class="mini-current-card">
+            <strong>조사·구속 대응</strong>
+            <p>경찰·검찰 조사, 체포, 구속영장 단계의 절차 대응.</p>
+            <ul><li>경찰 조사 대응</li><li>영장 대응</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="after-pane">
+        <div class="pane-label"><span>After</span><span>same layout + icons</span></div>
+        <div class="mini-icon-grid">
+          <div class="mini-icon-card">
+            <div class="mini-icon-head">
+              <div>
+                <strong>성범죄</strong>
+                <p>진술, 관계, 디지털 증거가 함께 다뤄지는 민감한 사건.</p>
+              </div>
+              <div class="line-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.8-2.9 8.2-7 10-4.1-1.8-7-5.2-7-10V6l7-3z"/><path d="M9.5 12l1.7 1.7 3.6-4"/></svg>
+              </div>
+            </div>
+            <div class="mini-chip-row"><span class="mini-chip">강제추행</span><span class="mini-chip">디지털 증거</span><span class="mini-chip">피해자 보호</span></div>
+            <div class="mini-card-cta"><span>자세히 보기</span><span>→</span></div>
+          </div>
+
+          <div class="mini-icon-card">
+            <div class="mini-icon-head">
+              <div>
+                <strong>기업 관련 범죄</strong>
+                <p>대표·임원 책임으로 번질 수 있는 회사 운영상 형사 리스크.</p>
+              </div>
+              <div class="line-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 21V7.5A2.5 2.5 0 0 1 11.5 5h1A2.5 2.5 0 0 1 15 7.5V21"/><path d="M4 21h16"/><path d="M6 21V9h12v12"/><path d="M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg>
+              </div>
+            </div>
+            <div class="mini-chip-row"><span class="mini-chip">횡령·배임</span><span class="mini-chip">영업비밀</span><span class="mini-chip">규제 형사</span></div>
+            <div class="mini-card-cta"><span>자세히 보기</span><span>→</span></div>
+          </div>
+
+          <div class="mini-icon-card">
+            <div class="mini-icon-head">
+              <div>
+                <strong>재산범죄</strong>
+                <p>거래자료, 자금 흐름, 피해 회복이 쟁점이 되는 사건.</p>
+              </div>
+              <div class="line-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 7h16v11H4z"/><path d="M7 10h4"/><path d="M17 15a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M4 10h2M18 18v2M6 18v2"/></svg>
+              </div>
+            </div>
+            <div class="mini-chip-row"><span class="mini-chip">투자사기</span><span class="mini-chip">금융사기</span><span class="mini-chip">횡령·절도</span></div>
+            <div class="mini-card-cta"><span>자세히 보기</span><span>→</span></div>
+          </div>
+
+          <div class="mini-icon-card">
+            <div class="mini-icon-head">
+              <div>
+                <strong>조사·구속 대응</strong>
+                <p>출석요구부터 체포·구속영장까지 절차 단계별 대응.</p>
+              </div>
+              <div class="line-icon">
+                <svg viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><path d="M6 11h12v10H6z"/><path d="M12 15v2"/></svg>
+              </div>
+            </div>
+            <div class="mini-chip-row"><span class="mini-chip">경찰 조사</span><span class="mini-chip">검찰 조사</span><span class="mini-chip">영장 대응</span></div>
+            <div class="mini-card-cta"><span>자세히 보기</span><span>→</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-body">
+      <div>
+        <h3>D. 기존 레이아웃 + 라인 아이콘 카드</h3>
+        <p>현재 2열 그리드는 유지하되, 카드마다 분야를 상징하는 라인 아이콘을 넣고 하위 항목은 긴 bullet 대신 chip으로 정리합니다.</p>
+      </div>
+      <ul>
+        <li>장점: 기존 IA와 레이아웃을 크게 흔들지 않아 구현 부담이 낮습니다.</li>
+        <li>장점: 분야별 구분감이 생겨 “밋밋한 표” 느낌이 줄어듭니다.</li>
+        <li>주의: 아이콘이 장식으로만 보이지 않도록 모든 카드의 아이콘 스타일을 엄격히 통일해야 합니다.</li>
+      </ul>
+    </div>
+  </div>
+</div>

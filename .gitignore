@@ -24,3 +24,6 @@ node_modules/
 
 .history
 tsconfig.tsbuildinfo
+
+# Superpowers runtime state
+.superpowers/**/state/
