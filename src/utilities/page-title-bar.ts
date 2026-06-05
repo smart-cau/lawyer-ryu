@@ -6,6 +6,12 @@ const PLACEHOLDER_BG = {
   about: 'https://placehold.co/1920x600?text=About+Background',
 } as const
 
+const SERVICE_BG_BY_ROUTE: Record<string, string> = {
+  '/services/sex-crime': '/services/title-bars/sex-crime.png',
+  '/services/corporate-crime': '/services/title-bars/corporate-crime.png',
+  '/services/property-crime': '/services/title-bars/property-crime.png',
+}
+
 const SEGMENT_LABELS: Record<string, string> = {
   services: '업무분야',
   cases: '성공사례',
@@ -39,5 +45,6 @@ export function getBreadcrumbsFromRoute(
 export function getBgImageFromRoute(route: string): string {
   if (route.startsWith('/cases')) return PLACEHOLDER_BG.cases
   if (route.startsWith('/about')) return PLACEHOLDER_BG.about
+  if (route in SERVICE_BG_BY_ROUTE) return SERVICE_BG_BY_ROUTE[route]
   return PLACEHOLDER_BG.services
 }
