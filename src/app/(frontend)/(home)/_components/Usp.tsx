@@ -31,7 +31,7 @@ const USP_ITEMS = [
     heading: '영장·체포·압수수색 단계에 직접 대응합니다',
     body: '영장 청구·체포·압수수색은 의뢰인의 자유와 일상에 가장 큰 영향을 주는 단계입니다. 창원지검과 부산지검 등에서 검사로 근무하며 강제수사 절차를 직접 다뤄 온 경험을 바탕으로, 요건과 한계를 정확히 검토합니다. 의뢰인의 권리를 보호할 수 있도록 필요한 대응을 진행합니다.',
     image: {
-      src: '/home/usp/usp03.png',
+      src: '/backgrounds/interrogation-room-handcuffs.png',
       alt: '조사실 테이블 위 수갑',
     },
   },

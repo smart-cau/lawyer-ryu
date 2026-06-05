@@ -14,7 +14,7 @@ export const InvestigationSection: FC = () => {
     <SectionContainer
       id="investigation"
       aria-label="시급성 후크 — 첫 경찰 조사 대응"
-      backgroundImage="linear-gradient(180deg, rgba(5, 9, 15, 0.28) 0%, rgba(5, 9, 15, 0.42) 46%, rgba(5, 9, 15, 0.62) 100%), url('/invesigation.png')"
+      backgroundImage="linear-gradient(180deg, rgba(5, 9, 15, 0.28) 0%, rgba(5, 9, 15, 0.42) 46%, rgba(5, 9, 15, 0.62) 100%), url('/backgrounds/interrogation-room-handcuffs.png')"
       className="isolate overflow-hidden text-center text-white"
       innerClassName="max-w-[86rem] py-20 sm:py-24 lg:py-28"
       background={
