@@ -29,7 +29,7 @@ export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data }) => {
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="space-y-5 lg:col-span-4">
-          <div className="aspect-[5/7] w-full overflow-hidden bg-muted">
+          <div className="aspect-[5/7] w-full overflow-hidden bg-[#f7f8f8]">
             <Image
               src={data.profile.photo.src}
               alt={data.profile.photo.alt}
@@ -37,7 +37,7 @@ export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data }) => {
               height={data.profile.photo.height}
               quality={90}
               sizes="(min-width: 1024px) 22rem, (min-width: 640px) 28rem, 100vw"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover mask-b-from-80%"
               priority={false}
             />
           </div>

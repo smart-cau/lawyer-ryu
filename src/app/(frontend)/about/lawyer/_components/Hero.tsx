@@ -42,6 +42,14 @@ export const HeroSection: FC = () => {
       padded={false}
       background={
         <>
+          <Image
+            src="/blue-bg.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="-scale-x-100 object-cover object-center"
+          />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,22,0.12)_0%,rgba(17,20,38,0)_36%,#111426_100%)]" />
           <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(90deg,rgba(17,20,38,0.34)_0%,rgba(17,20,38,0)_100%)] md:block" />
         </>
@@ -56,11 +64,7 @@ export const HeroSection: FC = () => {
             priority
             quality={90}
             sizes="(min-width: 1024px) 24rem, (min-width: 768px) 18rem, 21rem"
-            className="object-contain object-bottom md:object-left-bottom"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(17,20,38,0)_0%,rgba(17,20,38,0.68)_56%,#111426_100%)] md:h-32 lg:h-40"
+            className="object-contain object-bottom mask-b-from-72% md:object-left-bottom"
           />
         </div>
 

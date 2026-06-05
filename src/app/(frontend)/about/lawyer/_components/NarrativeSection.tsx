@@ -36,7 +36,7 @@ export const NarrativeSection: FC = () => {
             fill
             quality={90}
             sizes="(min-width: 1024px) 30rem, (min-width: 768px) 38vw, 100vw"
-            className="object-contain object-bottom"
+            className="object-contain object-bottom mask-b-from-80%"
           />
         </div>
 
