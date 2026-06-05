@@ -20,21 +20,11 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 85, 90, 100],
+    // 로컬(자기 오리진) 이미지는 전부 허용. 폴더 추가할 때마다 allowlist를
+    // 갱신할 필요가 없도록 catch-all. SSRF 방어는 아래 remotePatterns가 담당.
     localPatterns: [
       {
-        pathname: '/api/media/file/**',
-      },
-      {
-        pathname: '/brand/**',
-      },
-      {
-        pathname: '/ryu-profile/**',
-      },
-      {
-        pathname: '/home/**',
-      },
-      {
-        pathname: '/trust/**',
+        pathname: '/**',
       },
     ],
     remotePatterns: [
