@@ -4,7 +4,7 @@ import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
 import { Plugin } from 'payload'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
-import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
+import { GenerateImage, GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
@@ -21,6 +21,13 @@ const generateURL: GenerateURL<Case> = ({ doc }) => {
   const url = getServerSideURL()
 
   return doc?.slug ? `${url}/cases/${doc.slug}` : url
+}
+
+const generateImage: GenerateImage<Case> = ({ doc }) => {
+  const hero = doc?.heroImage
+  if (typeof hero === 'number') return hero
+  if (hero && typeof hero === 'object' && 'id' in hero) return hero.id
+  return ''
 }
 
 export const plugins: Plugin[] = [
@@ -53,6 +60,8 @@ export const plugins: Plugin[] = [
   seoPlugin({
     generateTitle,
     generateURL,
+    generateImage,
+    uploadsCollection: 'media',
   }),
   searchPlugin({
     collections: ['cases'],
