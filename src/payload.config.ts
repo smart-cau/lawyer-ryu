@@ -2,6 +2,7 @@ import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
+import { ko } from '@payloadcms/translations/languages/ko'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -52,6 +53,11 @@ export default buildConfig({
         },
       ],
     },
+  },
+  // admin UI를 한국어로 고정 — 지원 언어를 ko로 제한하고 fallback도 ko로 지정
+  i18n: {
+    supportedLanguages: { ko },
+    fallbackLanguage: 'ko',
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,

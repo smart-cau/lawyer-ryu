@@ -70,6 +70,7 @@ export const Cases: CollectionConfig<'cases'> = {
   fields: [
     {
       name: 'title',
+      label: '제목',
       type: 'text',
       required: true,
     },
@@ -80,6 +81,7 @@ export const Cases: CollectionConfig<'cases'> = {
           fields: [
             {
               name: 'heroImage',
+              label: '대표 이미지',
               type: 'upload',
               relationTo: 'media',
             },
@@ -87,8 +89,11 @@ export const Cases: CollectionConfig<'cases'> = {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
+                features: ({ defaultFeatures, rootFeatures }) => {
                   return [
+                    // defaultFeatures: 리스트·정렬·들여쓰기·인용구 등 Lexical 전체 기본 세트
+                    // rootFeatures: defaultLexical의 cases 내부 링크 커스텀 설정을 덮어써서 보존
+                    ...defaultFeatures,
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
@@ -103,12 +108,13 @@ export const Cases: CollectionConfig<'cases'> = {
               required: true,
             },
           ],
-          label: 'Content',
+          label: '본문',
         },
         {
           fields: [
             {
               name: 'relatedCases',
+              label: '관련 사례',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -125,6 +131,7 @@ export const Cases: CollectionConfig<'cases'> = {
             },
             {
               name: 'categories',
+              label: '분류',
               type: 'relationship',
               admin: {
                 position: 'sidebar',
@@ -133,7 +140,7 @@ export const Cases: CollectionConfig<'cases'> = {
               relationTo: 'categories',
             },
           ],
-          label: 'Meta',
+          label: '분류·연결',
         },
         {
           name: 'meta',
@@ -164,6 +171,7 @@ export const Cases: CollectionConfig<'cases'> = {
     },
     {
       name: 'publishedAt',
+      label: '게시일',
       type: 'date',
       admin: {
         date: {
@@ -184,6 +192,7 @@ export const Cases: CollectionConfig<'cases'> = {
     },
     {
       name: 'authors',
+      label: '작성자',
       type: 'relationship',
       admin: {
         position: 'sidebar',

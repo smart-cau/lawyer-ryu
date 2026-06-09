@@ -34,6 +34,10 @@ export const plugins: Plugin[] = [
   redirectsPlugin({
     collections: ['cases'],
     overrides: {
+      labels: {
+        singular: '리디렉션',
+        plural: '리디렉션',
+      },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -41,7 +45,7 @@ export const plugins: Plugin[] = [
             return {
               ...field,
               admin: {
-                description: 'You will need to rebuild the website when changing this field.',
+                description: '이 필드를 변경하면 웹사이트를 다시 빌드해야 합니다.',
               },
             }
           }
@@ -67,6 +71,10 @@ export const plugins: Plugin[] = [
     collections: ['cases'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      labels: {
+        singular: '검색 색인',
+        plural: '검색 색인',
+      },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
       },

@@ -8,16 +8,21 @@ import {
 
 export const Banner: Block = {
   slug: 'banner',
+  labels: {
+    singular: '배너',
+    plural: '배너',
+  },
   fields: [
     {
       name: 'style',
+      label: '스타일',
       type: 'select',
       defaultValue: 'info',
       options: [
-        { label: 'Info', value: 'info' },
-        { label: 'Warning', value: 'warning' },
-        { label: 'Error', value: 'error' },
-        { label: 'Success', value: 'success' },
+        { label: '정보', value: 'info' },
+        { label: '주의', value: 'warning' },
+        { label: '오류', value: 'error' },
+        { label: '성공', value: 'success' },
       ],
       required: true,
     },
