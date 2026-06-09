@@ -5,18 +5,8 @@ import type { ReactNode } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
-import {
-  KAKAO_TALK_CHAT_URL,
-  NAVER_BLOG_URL,
-  PHONE_DISPLAY,
-  PHONE_HREF,
-} from '@/lib/contact-links'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { KAKAO_TALK_CHAT_URL, NAVER_BLOG_URL, PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 import { cn } from '@/utilities/ui'
 
 type StickyCtaAction = {
@@ -41,12 +31,12 @@ const actions: StickyCtaAction[] = [
     href: PHONE_HREF,
     tooltip: `상담전화 ${PHONE_DISPLAY}`,
     icon: (
-      <span className="flex size-10 items-center justify-center rounded-full bg-brand-gold/15 text-brand-deep ring-1 ring-brand-gold/30">
+      <span className="flex size-11 items-center justify-center rounded-full bg-brand-gold/15 text-brand-deep ring-1 ring-brand-gold/30">
         <PhoneCall aria-hidden data-icon="inline-start" />
       </span>
     ),
     mobileIcon: (
-      <span className="flex size-8 items-center justify-center rounded-full bg-brand-gold/15 text-brand-deep ring-1 ring-brand-gold/30">
+      <span className="flex size-9 items-center justify-center rounded-full bg-brand-gold/15 text-brand-deep ring-1 ring-brand-gold/30">
         <PhoneCall aria-hidden data-icon="inline-start" />
       </span>
     ),
@@ -62,13 +52,13 @@ const actions: StickyCtaAction[] = [
       ? '카카오톡 상담으로 이동'
       : '카카오톡 채널 링크 확인 후 연결 예정',
     icon: (
-      <span className="flex size-10 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
-        <Image src="/social/kakaotalk.png" alt="" width={34} height={35} className="size-8" />
+      <span className="flex size-11 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
+        <Image src="/social/kakaotalk.png" alt="" width={38} height={38} className="size-9" />
       </span>
     ),
     mobileIcon: (
-      <span className="flex size-8 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
-        <Image src="/social/kakaotalk.png" alt="" width={28} height={28} className="size-7" />
+      <span className="flex size-9 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
+        <Image src="/social/kakaotalk.png" alt="" width={32} height={32} className="size-8" />
       </span>
     ),
   },
@@ -81,40 +71,36 @@ const actions: StickyCtaAction[] = [
     tooltip: '네이버 공식 블로그',
     external: true,
     icon: (
-      <span className="flex size-10 items-center justify-center rounded-full bg-white ring-1 ring-border">
-        <Image src="/social/naver-blog.png" alt="" width={26} height={26} className="size-6" />
+      <span className="flex size-11 items-center justify-center rounded-full bg-white ring-1 ring-border">
+        <Image src="/social/naver-blog.png" alt="" width={30} height={30} className="size-7" />
       </span>
     ),
     mobileIcon: (
-      <span className="flex size-8 items-center justify-center rounded-full bg-white ring-1 ring-border">
-        <Image src="/social/naver-blog.png" alt="" width={22} height={22} className="size-5" />
+      <span className="flex size-9 items-center justify-center rounded-full bg-white ring-1 ring-border">
+        <Image src="/social/naver-blog.png" alt="" width={26} height={26} className="size-6" />
       </span>
     ),
   },
 ]
 
 const desktopActionClass =
-  'flex w-24 flex-col items-center justify-center gap-2 px-2 py-3 text-center text-foreground transition-[background-color,transform,color] duration-200 [letter-spacing:0] hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
+  'flex w-30 flex-col items-center justify-center gap-2.5 px-3 py-3.5 text-center text-foreground transition-[background-color,transform,color] duration-200 [letter-spacing:0] hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
 
 const mobileActionClass =
-  'flex w-18 flex-col items-center justify-center gap-1 px-1.5 py-2 text-caption-1 font-semibold [letter-spacing:0] transition-[background-color,transform,color] duration-200 hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
+  'flex min-h-18 w-full flex-col items-center justify-center gap-1.5 px-2 py-2.5 text-label-2 font-semibold [letter-spacing:0] transition-[background-color,transform,color] duration-200 hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
 
-function ActionContent({
-  action,
-  mobile = false,
-}: {
-  action: StickyCtaAction
-  mobile?: boolean
-}) {
+function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mobile?: boolean }) {
   return (
     <>
       {mobile && action.mobileIcon ? action.mobileIcon : action.icon}
       <span className="flex flex-col items-center gap-0.5">
-        <span className="text-caption-1 font-semibold leading-none">
+        <span
+          className={cn(mobile ? 'text-label-2' : 'text-label-1', 'font-semibold leading-none')}
+        >
           {mobile ? action.mobileLabel : action.label}
         </span>
         {!mobile && action.value ? (
-          <span className="font-mono text-[0.7rem] font-semibold leading-tight text-muted-foreground">
+          <span className="font-mono text-caption-1 font-semibold leading-tight text-muted-foreground">
             {action.value}
           </span>
         ) : null}
@@ -208,15 +194,16 @@ export function StickyCtaBar() {
 
         <aside
           aria-label="빠른 상담 링크"
-          className="fixed right-0 top-[58dvh] z-40 -translate-y-1/2 overflow-hidden rounded-l-lg border border-r-0 border-border/80 bg-background/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-border/80 bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-12px_32px_rgba(15,23,42,0.14)] backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:hidden"
         >
-          <nav className="flex flex-col divide-y divide-border/80" aria-label="빠른 상담">
+          <nav className="grid grid-cols-3 divide-x divide-border/80" aria-label="빠른 상담">
             {actions.map((action) => (
               <MobileAction key={action.id} action={action} />
             ))}
           </nav>
         </aside>
       </TooltipProvider>
+      <div aria-hidden className="h-[calc(4.5rem+env(safe-area-inset-bottom))] lg:hidden" />
     </>
   )
 }
