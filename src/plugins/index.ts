@@ -2,6 +2,7 @@ import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
+import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { Plugin } from 'payload'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateImage, GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
@@ -77,6 +78,22 @@ export const plugins: Plugin[] = [
       },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
+      },
+    },
+  }),
+  mcpPlugin({
+    collections: {
+      cases: {
+        enabled: { find: true, create: true, update: true, delete: true },
+        description: '법무법인 인유 창원사무소 성공사례(Cases) — 제목/슬러그/본문/SEO 메타를 가진 사례 콘텐츠',
+      },
+      categories: {
+        enabled: { find: true, create: true, update: true, delete: true },
+        description: '콘텐츠 분류 카테고리(Categories)',
+      },
+      media: {
+        enabled: { find: true, create: true, update: true, delete: true },
+        description: '업로드된 이미지/파일 미디어(Media) 메타데이터',
       },
     },
   }),
