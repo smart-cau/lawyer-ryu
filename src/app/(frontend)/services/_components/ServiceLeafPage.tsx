@@ -1,8 +1,5 @@
 import { PageTitleBar } from '@/components/PageTitleBar'
-import {
-  getBgImageFromRoute,
-  getBreadcrumbsFromRoute,
-} from '@/utilities/page-title-bar'
+import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
 
 import type { ServiceLeafContent } from '../_data/service-leaf'
 import { FaqSection } from './FaqSection'
@@ -24,7 +21,7 @@ export function ServiceLeafPage({ content }: ServiceLeafPageProps) {
       />
       <main className="bg-white">
         <SubCategoriesSection data={content.subCategories} />
-        <WhyAttorneySection data={content.whyAttorney} />
+        <WhyAttorneySection data={content.whyAttorney} serviceTitle={content.title} />
         <FaqSection data={content.faq} />
         <FooterCtaSection data={content.footerCta} />
       </main>
