@@ -37,21 +37,22 @@ export const HeroSection: FC = () => {
     <SectionContainer
       id="banner"
       aria-label="대표변호사 류남경"
-      className="relative -mt-[6rem] overflow-hidden bg-[#111426] text-brand-deep-foreground"
+      className="relative isolate -mt-[6rem] overflow-hidden bg-[#070b11] text-brand-deep-foreground"
       innerClassName="grid gap-12 pt-36 pb-28 md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] md:items-end md:gap-10 md:pt-40 md:pb-36 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:max-w-[calc(71.25rem+4rem)] lg:gap-24 lg:pt-44 lg:pb-44"
       padded={false}
       background={
         <>
           <Image
-            src="/blue-bg.png"
+            src="/backgrounds/justice.png"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="-scale-x-100 object-cover object-center"
+            className="scale-[1.035] object-cover object-left-center blur-[2px] brightness-[0.78] contrast-[1.04] saturate-[0.88]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,22,0.12)_0%,rgba(17,20,38,0)_36%,#111426_100%)]" />
-          <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[linear-gradient(90deg,rgba(17,20,38,0.34)_0%,rgba(17,20,38,0)_100%)] md:block" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,11,17,0.68)_0%,rgba(7,11,17,0.5)_34%,rgba(7,11,17,0.76)_62%,rgba(7,11,17,0.9)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_22%_58%,rgba(7,11,17,0.18)_0%,rgba(7,11,17,0.44)_58%,rgba(7,11,17,0.7)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-[linear-gradient(180deg,rgba(7,11,17,0)_0%,#070b11_100%)]" />
         </>
       }
     >
@@ -81,10 +82,7 @@ export const HeroSection: FC = () => {
                 aria-label={`사무소 전화 ${CONTACT.office}`}
                 className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
-                <Phone
-                  aria-hidden
-                  className="h-4 w-4 shrink-0 text-brand-gold"
-                />
+                <Phone aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
                 <span>{CONTACT.office}</span>
               </a>
             </li>
@@ -94,10 +92,7 @@ export const HeroSection: FC = () => {
                 aria-label={`이메일 ${CONTACT.email}`}
                 className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
-                <Mail
-                  aria-hidden
-                  className="h-4 w-4 shrink-0 text-brand-gold"
-                />
+                <Mail aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
                 <span>{CONTACT.email}</span>
               </a>
             </li>
@@ -107,10 +102,7 @@ export const HeroSection: FC = () => {
                 aria-label="대표변호사 연락처 저장 (vCard)"
                 className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
-                <UserPlus
-                  aria-hidden
-                  className="h-4 w-4 shrink-0 text-brand-gold"
-                />
+                <UserPlus aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
                 <span>연락처 저장</span>
               </a>
             </li>
