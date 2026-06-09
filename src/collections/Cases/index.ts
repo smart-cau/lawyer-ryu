@@ -18,6 +18,7 @@ import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidateCase } from './hooks/revalidateCase'
+import { CASE_RESULT_CUSTOM, CASE_RESULT_OPTIONS } from './resultOptions'
 
 import {
   MetaDescriptionField,
@@ -111,38 +112,6 @@ export const Cases: CollectionConfig<'cases'> = {
           label: '본문',
         },
         {
-          fields: [
-            {
-              name: 'relatedCases',
-              label: '관련 사례',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              filterOptions: ({ id }) => {
-                return {
-                  id: {
-                    not_in: [id],
-                  },
-                }
-              },
-              hasMany: true,
-              relationTo: 'cases',
-            },
-            {
-              name: 'categories',
-              label: '분류',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
-            },
-          ],
-          label: '분류·연결',
-        },
-        {
           name: 'meta',
           label: 'SEO',
           fields: [
@@ -170,6 +139,64 @@ export const Cases: CollectionConfig<'cases'> = {
       ],
     },
     {
+      name: 'result',
+      label: '핵심 결과',
+      type: 'select',
+      required: true,
+      admin: {
+        position: 'sidebar',
+        description: '카드·상세에 강조 표시되는 처분·판결 결과.',
+      },
+      options: [...CASE_RESULT_OPTIONS],
+    },
+    {
+      name: 'resultCustom',
+      label: '핵심 결과 (직접 입력)',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+        description: '위에서 "기타(직접 입력)"를 선택한 경우에만 입력합니다.',
+        condition: (_, siblingData) => siblingData?.result === CASE_RESULT_CUSTOM,
+      },
+      validate: (
+        value: string | null | undefined,
+        { siblingData }: { siblingData?: { result?: string | null } },
+      ) => {
+        if (siblingData?.result === CASE_RESULT_CUSTOM && !value?.trim()) {
+          return '"기타(직접 입력)"를 선택한 경우 결과를 입력해 주세요.'
+        }
+        return true
+      },
+    },
+    {
+      name: 'categories',
+      label: '분류',
+      type: 'relationship',
+      required: true,
+      admin: {
+        position: 'sidebar',
+      },
+      hasMany: true,
+      relationTo: 'categories',
+    },
+    {
+      name: 'relatedCases',
+      label: '관련 사례',
+      type: 'relationship',
+      admin: {
+        position: 'sidebar',
+      },
+      filterOptions: ({ id }) => {
+        return {
+          id: {
+            not_in: [id],
+          },
+        }
+      },
+      hasMany: true,
+      relationTo: 'cases',
+    },
+    {
       name: 'publishedAt',
       label: '게시일',
       type: 'date',
@@ -191,13 +218,13 @@ export const Cases: CollectionConfig<'cases'> = {
       },
     },
     {
-      name: 'authors',
+      name: 'author',
       label: '작성자',
       type: 'relationship',
+      required: true,
       admin: {
         position: 'sidebar',
       },
-      hasMany: true,
       relationTo: 'users',
     },
     {

@@ -183,8 +183,6 @@ export interface Case {
     };
     [k: string]: unknown;
   };
-  relatedCases?: (number | Case)[] | null;
-  categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -193,8 +191,31 @@ export interface Case {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * 카드·상세에 강조 표시되는 처분·판결 결과.
+   */
+  result:
+    | 'no-charge'
+    | 'no-suspicion'
+    | 'no-referral'
+    | 'suspended-indictment'
+    | 'not-guilty'
+    | 'suspended-sentence'
+    | 'probation'
+    | 'warrant-dismissed'
+    | 'full-win'
+    | 'partial-win'
+    | 'claim-dismissed'
+    | 'mediation'
+    | 'custom';
+  /**
+   * 위에서 "기타(직접 입력)"를 선택한 경우에만 입력합니다.
+   */
+  resultCustom?: string | null;
+  categories: (number | Category)[];
+  relatedCases?: (number | Case)[] | null;
   publishedAt?: string | null;
-  authors?: (number | User)[] | null;
+  author: number | User;
   populatedAuthors?:
     | {
         id?: string | null;
@@ -720,8 +741,6 @@ export interface CasesSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
   content?: T;
-  relatedCases?: T;
-  categories?: T;
   meta?:
     | T
     | {
@@ -729,8 +748,12 @@ export interface CasesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  result?: T;
+  resultCustom?: T;
+  categories?: T;
+  relatedCases?: T;
   publishedAt?: T;
-  authors?: T;
+  author?: T;
   populatedAuthors?:
     | T
     | {
