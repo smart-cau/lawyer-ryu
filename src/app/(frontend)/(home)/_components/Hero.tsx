@@ -61,7 +61,7 @@ export const HeroSection: FC = () => {
         <div className="relative z-10 w-full max-w-160 lg:w-[52%]">
           {/* Cluster 1 — 헤드라인 메시지 (eyebrow · h1 · 보조 설명) */}
           <div>
-            <p className="text-label-1 font-bold tracking-[0.04em] text-brand-gold">
+            <p className="text-body-1 font-bold tracking-[0.04em] text-brand-gold">
               검사 출신 형사법 전문 변호사
             </p>
 
@@ -73,7 +73,7 @@ export const HeroSection: FC = () => {
               찾습니다
             </h1>
 
-            <p className="mt-5 max-w-lg text-body-1-reading font-medium text-white/80 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
+            <p className="mt-5 max-w-lg text-headline-1 font-medium text-white/80 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
               수사기록과 진술을 다시 살피고,
               <br />
               빠진 사실과 유리한 증거를 찾아 대응 방향을 세웁니다.
@@ -84,14 +84,14 @@ export const HeroSection: FC = () => {
           <div>
             <div className="mt-6 flex w-fit max-w-full items-baseline gap-2.5 border-t border-brand-gold/55 pt-4">
               <strong className="font-sans text-title-3 font-extrabold text-white">류남경</strong>
-              <span className="text-label-1 font-semibold text-white/75">대표변호사</span>
+              <span className="text-body-1 font-semibold text-white/75">대표변호사</span>
             </div>
 
             <ul className="mt-5 space-y-2 pr-[44%] sm:pr-[40%] lg:pr-0">
               {HERO_CREDENTIALS.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2 text-label-1-reading text-white/85 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]"
+                  className="flex items-start gap-2 text-body-1-reading text-white/85 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]"
                 >
                   <span
                     aria-hidden

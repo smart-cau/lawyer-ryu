@@ -110,12 +110,23 @@ function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mo
 }
 
 function DesktopAction({ action }: { action: StickyCtaAction }) {
-  const disabled = !action.href
+  const href = action.href
 
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        {disabled ? (
+        {href ? (
+          <Button asChild variant="ghost" size="clear" className={desktopActionClass}>
+            <Link
+              href={href}
+              aria-label={action.ariaLabel}
+              target={action.external ? '_blank' : undefined}
+              rel={action.external ? 'noopener noreferrer' : undefined}
+            >
+              <ActionContent action={action} />
+            </Link>
+          </Button>
+        ) : (
           <span
             role="link"
             aria-disabled="true"
@@ -125,17 +136,6 @@ function DesktopAction({ action }: { action: StickyCtaAction }) {
           >
             <ActionContent action={action} />
           </span>
-        ) : (
-          <Button asChild variant="ghost" size="clear" className={desktopActionClass}>
-            <Link
-              href={action.href}
-              aria-label={action.ariaLabel}
-              target={action.external ? '_blank' : undefined}
-              rel={action.external ? 'noopener noreferrer' : undefined}
-            >
-              <ActionContent action={action} />
-            </Link>
-          </Button>
         )}
       </TooltipTrigger>
       <TooltipContent side="left">{action.tooltip}</TooltipContent>
@@ -144,9 +144,9 @@ function DesktopAction({ action }: { action: StickyCtaAction }) {
 }
 
 function MobileAction({ action }: { action: StickyCtaAction }) {
-  const disabled = !action.href
+  const href = action.href
 
-  if (disabled) {
+  if (!href) {
     return (
       <span
         role="link"
@@ -163,7 +163,7 @@ function MobileAction({ action }: { action: StickyCtaAction }) {
   return (
     <Button asChild variant="ghost" size="clear" className={mobileActionClass}>
       <Link
-        href={action.href}
+        href={href}
         aria-label={action.ariaLabel}
         target={action.external ? '_blank' : undefined}
         rel={action.external ? 'noopener noreferrer' : undefined}

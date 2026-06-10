@@ -26,7 +26,7 @@ const topLevelNavItem =
   'group/nav-link bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent'
 
 const dropdownLink =
-  'group/nav-link block rounded-none px-3 py-2 text-label-1 transition-colors'
+  'group/nav-link block rounded-none px-3 py-2 text-body-2 transition-colors'
 
 function UnderlinedText({
   children,
@@ -180,7 +180,7 @@ export function DesktopNav({
                   <NavigationMenuTrigger
                     className={cn(
                       topLevelNavItem,
-                      'text-body-1 transition-colors',
+                      'text-headline-1 transition-colors',
                       isDark
                         ? darkToneTrigger
                         : 'hover:text-primary focus:text-primary',
@@ -204,7 +204,7 @@ export function DesktopNav({
                   asChild
                   className={cn(
                     topLevelNavItem,
-                    'inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-body-1 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50',
+                    'inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-headline-1 font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50',
                     isDark
                       ? darkToneTrigger
                       : 'text-foreground hover:text-primary focus:text-primary',

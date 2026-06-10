@@ -1,8 +1,8 @@
 import type { PageTitleBarBreadcrumb } from '@/components/PageTitleBar'
 
-const PLACEHOLDER_BG = {
+const DEFAULT_TITLE_BAR_BG = {
   services: 'https://placehold.co/1920x600?text=Services+Background',
-  cases: 'https://placehold.co/1920x600?text=Cases+Background',
+  cases: '/texture-bg.jpg',
   about: 'https://placehold.co/1920x600?text=About+Background',
 } as const
 
@@ -43,8 +43,8 @@ export function getBreadcrumbsFromRoute(
 }
 
 export function getBgImageFromRoute(route: string): string {
-  if (route.startsWith('/cases')) return PLACEHOLDER_BG.cases
-  if (route.startsWith('/about')) return PLACEHOLDER_BG.about
+  if (route.startsWith('/cases')) return DEFAULT_TITLE_BAR_BG.cases
+  if (route.startsWith('/about')) return DEFAULT_TITLE_BAR_BG.about
   if (route in SERVICE_BG_BY_ROUTE) return SERVICE_BG_BY_ROUTE[route]
-  return PLACEHOLDER_BG.services
+  return DEFAULT_TITLE_BAR_BG.services
 }

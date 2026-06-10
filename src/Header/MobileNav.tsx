@@ -99,7 +99,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                                       <Link
                                         href={leaf.href}
                                         className={cn(
-                                          'block rounded-md py-2 pl-3 text-label-1 transition-colors hover:bg-accent hover:text-accent-foreground',
+                                          'block rounded-md py-2 pl-3 text-body-2 transition-colors hover:bg-accent hover:text-accent-foreground',
                                           leafActive
                                             ? 'bg-accent/60 text-accent-foreground font-medium'
                                             : 'text-muted-foreground',
