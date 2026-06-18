@@ -1,7 +1,7 @@
 import { CONTACT } from '@/lib/constants'
 
-export const PHONE_DISPLAY = CONTACT.office
-export const PHONE_HREF = `tel:${PHONE_DISPLAY.replace(/-/g, '')}`
+export const PHONE_DISPLAY = `${CONTACT.office} / ${CONTACT.phone}`
+export const PHONE_HREF = `tel:${CONTACT.phone.replace(/-/g, '')}`
 
 export const NAVER_BLOG_URL = 'https://blog.naver.com/inyou2025'
 

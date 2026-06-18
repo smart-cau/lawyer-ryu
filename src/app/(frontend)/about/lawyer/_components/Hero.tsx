@@ -3,9 +3,9 @@ import { Mail, Phone, UserPlus } from 'lucide-react'
 import type { FC } from 'react'
 
 import { SectionContainer } from '@/components/SectionContainer'
+import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 import { CONTACT } from '@/lib/constants'
 
-const PHONE_HREF = `tel:${CONTACT.office.replace(/-/g, '')}`
 const MAIL_HREF = `mailto:${CONTACT.email}`
 // vCard 자산 미확보 — wireframe 단계 placeholder (자산 확보 시 href 교체)
 const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
@@ -16,7 +16,7 @@ const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
     'FN:류남경',
     'ORG:법무법인 인유 창원사무소',
     'TITLE:대표변호사',
-    `TEL;TYPE=WORK,VOICE:${CONTACT.office}`,
+    `TEL;TYPE=WORK,VOICE:${CONTACT.phone}`,
     `EMAIL;TYPE=WORK:${CONTACT.email}`,
     `ADR;TYPE=WORK:;;${CONTACT.address} ${CONTACT.addressSub};창원시;경상남도;;;대한민국`,
     'END:VCARD',
@@ -26,7 +26,7 @@ const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
 const INTRO = {
   title: '당신의 억울함을 풀어드리겠습니다',
   paragraphs: [
-    '검사로 일하는 동안 많은 피해자들의 이야기를 들었습니다. 누군가에게는 한 번의 사건이 평생의 상처가 되기도 하고, 말로 다 설명하지 못한 억울함이 기록 몇 장 안에 담기기도 했습니다. 그 억울함을 법의 절차 안에서 살피고, 필요한 책임을 묻는 일이 제 역할이었습니다.',
+    '검사로 일하는 동안 많은 피해자들의 이야기를 들었습니다. 누군가에게는 한 번의 사건이 평생의 상처로 남기도 하고, 말로 다 설명하지 못한 억울함이 기록 몇 장 안에 담기기도 했습니다. 저는 그 내용을 법의 절차 안에서 살피고, 필요한 책임을 묻는 일을 해왔습니다.',
     '하지만 사건을 오래 마주할수록 알게 된 것도 있습니다. 피의자나 피고인의 자리에도 억울함이 있을 수 있다는 사실입니다. 혐의가 먼저 앞서면 미처 설명되지 못한 사정이 묻히고, 한 사람의 삶이 사건명 하나로만 판단되는 순간도 생깁니다.',
     '이제 저는 변호사의 자리에서 사건을 봅니다. 피해자의 억울함도, 피의자와 피고인의 억울함도 가볍게 넘기지 않겠습니다. 기록에 남은 사실과 기록에 다 담기지 못한 사정까지 함께 살피며, 의뢰인이 자신의 이야기를 제대로 전할 수 있도록 돕겠습니다.',
   ],
@@ -79,11 +79,11 @@ export const HeroSection: FC = () => {
             <li>
               <a
                 href={PHONE_HREF}
-                aria-label={`사무소 전화 ${CONTACT.office}`}
+                aria-label={`사무소 전화 ${PHONE_DISPLAY}`}
                 className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
               >
                 <Phone aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
-                <span>{CONTACT.office}</span>
+                <span>{PHONE_DISPLAY}</span>
               </a>
             </li>
             <li>

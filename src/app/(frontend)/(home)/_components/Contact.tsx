@@ -4,11 +4,11 @@ import type { FC, ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { SectionContainer } from '@/components/SectionContainer'
 import { Separator } from '@/components/ui/separator'
+import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 import { CONTACT, NAVER_MAP_URL } from '@/lib/constants'
 
 import NaverMap from './NaverMap'
 
-const PHONE_HREF = `tel:${CONTACT.office.replace(/-/g, '')}`
 const EMAIL_HREF = `mailto:${CONTACT.email}`
 
 type InfoRowProps = {
@@ -39,9 +39,9 @@ export const ContactSection: FC = () => {
               <a
                 href={PHONE_HREF}
                 className="underline-offset-4 hover:underline"
-                aria-label={`대표 전화 ${CONTACT.office}`}
+                aria-label={`대표 전화 ${PHONE_DISPLAY}`}
               >
-                {CONTACT.office}
+                {PHONE_DISPLAY}
               </a>
             </InfoRow>
             <InfoRow label="이메일">

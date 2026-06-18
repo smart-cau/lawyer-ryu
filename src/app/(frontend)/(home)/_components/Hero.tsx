@@ -3,7 +3,7 @@ import { Phone } from 'lucide-react'
 import type { FC } from 'react'
 
 import { Button } from '@/components/ui/button'
-import { CONTACT } from '@/lib/constants'
+import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 
 const HERO_CREDENTIALS = [
   '대한변협 형사전문 변호사',
@@ -16,9 +16,6 @@ const HERO_CREDENTIALS = [
 
 // 핵심 경력은 사진 캡션으로 강조하되, 캡션이 숨는 lg 미만에서는 bullet로 보존한다.
 const MOBILE_ONLY_CREDENTIAL = '창원지검·부산지검 등 총 19년 검사 재직, 2024년 부부장 검사 퇴직'
-
-const PHONE_DISPLAY = CONTACT.office
-const PHONE_HREF = `tel:${PHONE_DISPLAY.replace(/-/g, '')}`
 
 export const HeroSection: FC = () => {
   return (
@@ -91,7 +88,10 @@ export const HeroSection: FC = () => {
             </p>
 
             <h1 className="mt-3.5 text-display-1 font-bold text-white [text-shadow:0_3px_20px_rgba(0,0,0,0.62)]">
-              <span className="text-success underline">19년 검사 경력</span>으로
+              <span className="text-success underline underline-offset-[0.2em]">
+                19년 검사 경력
+              </span>
+              {'으로'}
               <br />
               수사하고 증거를 찾아
               <br />
