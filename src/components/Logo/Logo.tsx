@@ -13,6 +13,7 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
 
   return (
     <span className={cn('flex items-center gap-3 leading-tight', className)}>
+      {/* 류변호사 피드백으로 항상 금색 로고 보이게. 나중에 변심할 수 있으니 우선 주석처리. */}
       <span className="relative inline-block h-9 w-[34px] shrink-0">
         <Image
           src="/brand/inyou-logo.png"
@@ -22,10 +23,10 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
           sizes="34px"
           className={cn(
             'object-contain transition-opacity duration-200 ease-out',
-            isDark ? 'opacity-0' : 'opacity-100',
+            // isDark ? 'opacity-0' : 'opacity-100',
           )}
         />
-        <Image
+        {/* <Image
           src="/brand/inyou-logo-white.png"
           alt=""
           fill
@@ -36,7 +37,7 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
             'object-contain transition-opacity duration-200 ease-out',
             isDark ? 'opacity-100' : 'opacity-0',
           )}
-        />
+        /> */}
       </span>
       <span className="flex flex-col">
         <span
