@@ -1,11 +1,7 @@
-import { PagePlaceholder } from '@/app/(frontend)/_components/PagePlaceholder'
+import { ServiceLeafPage } from '@/app/(frontend)/services/_components'
+
+import { schoolViolenceLeafContent } from './_data'
 
 export default function SchoolViolenceLeafPage() {
-  return (
-    <PagePlaceholder
-      route="/services/school-violence"
-      title="아동학대·학교폭력"
-      description="2 분류: 아동학대 / 학교폭력. 페르소나 분기: 교사 / 학부모 / 학생 / 보호자."
-    />
-  )
+  return <ServiceLeafPage content={schoolViolenceLeafContent} />
 }

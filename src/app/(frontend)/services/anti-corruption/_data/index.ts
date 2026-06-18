@@ -1,0 +1,1 @@
+export { antiCorruptionLeafContent } from './content'

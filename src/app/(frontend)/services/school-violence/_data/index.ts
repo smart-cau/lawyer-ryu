@@ -1,0 +1,1 @@
+export { schoolViolenceLeafContent } from './content'
