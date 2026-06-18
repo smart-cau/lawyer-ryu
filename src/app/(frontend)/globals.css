@@ -179,7 +179,7 @@
    * Status — Banner 블록 호환용 (info/success/warning/error)
    * 새 컬러 시스템 톤에 맞춰 hsl로 정의
    * ============================================================ */
-  --success: hsl(150 55% 45%);
+  --success: hsl(217, 42%, 53%);
   --warning: hsl(40 90% 55%);
   --error: hsl(0 75% 55%);
 
@@ -190,10 +190,12 @@
    * - heading 토큰에는 font-family 박지 않음 (wireframe 단계 — 적용 범위 미확정).
    *   패턴이 굳으면 그때 토큰에 박아 자동 적용으로 승격.
    * ============================================================ */
-  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
-    'Malgun Gothic', sans-serif;
-  --font-serif-kr: var(--font-noto-serif-kr), 'Noto Serif KR', 'Nanum Myeongjo',
-    'Apple SD Gothic Neo', 'Malgun Gothic', ui-serif, serif;
+  --font-sans:
+    'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic',
+    sans-serif;
+  --font-serif-kr:
+    var(--font-noto-serif-kr), 'Noto Serif KR', 'Nanum Myeongjo', 'Apple SD Gothic Neo',
+    'Malgun Gothic', ui-serif, serif;
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, monospace;
 
@@ -216,16 +218,11 @@
    * ============================================================ */
   --shadow-2xs: 0px 1px 2px 0px hsl(220 40% 10% / 0.04);
   --shadow-xs: 0px 1px 2px 0px hsl(220 40% 10% / 0.05);
-  --shadow-sm:
-    0px 1px 3px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
-  --shadow:
-    0px 2px 4px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
-  --shadow-md:
-    0px 4px 6px 0px hsl(220 40% 10% / 0.1), 0px 2px 4px -1px hsl(220 40% 10% / 0.1);
-  --shadow-lg:
-    0px 8px 12px 0px hsl(220 40% 10% / 0.1), 0px 4px 6px -2px hsl(220 40% 10% / 0.05);
-  --shadow-xl:
-    0px 12px 18px 0px hsl(220 40% 10% / 0.1), 0px 8px 10px -3px hsl(220 40% 10% / 0.05);
+  --shadow-sm: 0px 1px 3px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
+  --shadow: 0px 2px 4px 0px hsl(220 40% 10% / 0.08), 0px 1px 2px -1px hsl(220 40% 10% / 0.08);
+  --shadow-md: 0px 4px 6px 0px hsl(220 40% 10% / 0.1), 0px 2px 4px -1px hsl(220 40% 10% / 0.1);
+  --shadow-lg: 0px 8px 12px 0px hsl(220 40% 10% / 0.1), 0px 4px 6px -2px hsl(220 40% 10% / 0.05);
+  --shadow-xl: 0px 12px 18px 0px hsl(220 40% 10% / 0.1), 0px 8px 10px -3px hsl(220 40% 10% / 0.05);
   --shadow-2xl: 0px 25px 30px 0px hsl(220 40% 10% / 0.15);
 
   --tracking-normal: -0.01em;
@@ -440,10 +437,16 @@
    * 개별 사용처에서 `font-sans` utility 로 override 가능.
    * ============================================================ */
   :is(
-    .text-display-1, .text-display-2, .text-display-3,
-    .text-title-1, .text-title-2, .text-title-3,
-    .text-heading-1, .text-heading-2,
-    .text-headline-1, .text-headline-2
+    .text-display-1,
+    .text-display-2,
+    .text-display-3,
+    .text-title-1,
+    .text-title-2,
+    .text-title-3,
+    .text-heading-1,
+    .text-heading-2,
+    .text-headline-1,
+    .text-headline-2
   ) {
     font-family: var(--font-serif-kr);
     word-break: keep-all;

@@ -1,38 +1,37 @@
 import Link from 'next/link'
-import type { FC } from 'react'
 
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+
+import { Card } from '@/components/Card'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
-import { Card } from '@/components/ui/card'
 
-const MOCK_CASES = [
-  {
-    id: 'sample-1',
-    category: '특수·경제',
-    title: '준사기 혐의 — 수사단계 무혐의',
-    description:
-      '의뢰인 측 계좌·거래내역과 디지털 증거를 직접 분석해 사기 고의 부재를 입증한 사례.',
-  },
-  {
-    id: 'sample-2',
-    category: '강력·성',
-    title: '성폭력 혐의 — 검찰 단계 불기소',
-    description:
-      '참고인을 사무소로 불러 신문하고 사건 현장을 직접 검증해 사실관계를 재구성한 사례.',
-  },
-  {
-    id: 'sample-3',
-    category: '기업 재산범죄',
-    title: '업무상 배임 — 기소유예',
-    description:
-      '구성요건을 정밀 분해해 가장 약한 한 점을 식별하고 사실 단서로 흠결을 입증한 사례.',
-  },
-]
+// 홈에 노출할 대표 사례 개수
+const HOME_CASE_LIMIT = 3
 
-export const CasesSection: FC = () => {
-  const items = MOCK_CASES
+export const CasesSection = async () => {
+  const payload = await getPayload({ config: configPromise })
 
-  if (items.length === 0) return null
+  // cases/page.tsx 와 동일한 fetch 로직 — overrideAccess:false 로 게시된 사례만 노출
+  const cases = await payload.find({
+    collection: 'cases',
+    depth: 1,
+    limit: HOME_CASE_LIMIT,
+    overrideAccess: false,
+    sort: '-publishedAt',
+    select: {
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+      publishedAt: true,
+      result: true,
+      resultCustom: true,
+    },
+  })
+
+  if (cases.docs.length === 0) return null
 
   return (
     <SectionContainer
@@ -61,27 +60,12 @@ export const CasesSection: FC = () => {
         />
       </div>
 
-      <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
-        {items.map((item) => (
-          <li key={item.id}>
-            <Card className="flex h-full flex-col overflow-hidden border-white/12 bg-white/[0.92] shadow-[0_24px_64px_rgba(1,8,18,0.32)]">
-              <div
-                className="aspect-[4/3] w-full bg-[linear-gradient(135deg,rgba(7,21,37,0.12),rgba(143,117,72,0.18))]"
-                aria-label="사례 이미지 placeholder"
-              />
-              <div className="flex flex-1 flex-col p-6">
-                <p className="text-label-1 text-brand-gold">{item.category}</p>
-                <h3 className="mt-2 text-heading-2 font-semibold text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-body-1 text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            </Card>
-          </li>
+      {/* CollectionArchive 와 동일한 Card 렌더 — SectionContainer 가 이미 container 라 grid 만 인라인 */}
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+        {cases.docs.map((result, index) => (
+          <Card key={index} className="h-full" doc={result} relationTo="cases" showCategories />
         ))}
-      </ul>
+      </div>
 
       <div className="mt-10 text-center lg:mt-12">
         <Link

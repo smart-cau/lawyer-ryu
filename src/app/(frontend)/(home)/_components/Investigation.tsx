@@ -40,7 +40,7 @@ export const InvestigationSection: FC = () => {
         {DESCRIPTIONS.map((text, index) => (
           <p
             key={index}
-            className="text-headline-1 font-medium text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.82)]"
+            className="text-body-1 font-medium text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.82)]"
           >
             {text}
           </p>
