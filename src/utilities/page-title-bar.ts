@@ -1,7 +1,7 @@
 import type { PageTitleBarBreadcrumb } from '@/components/PageTitleBar'
 
 const DEFAULT_TITLE_BAR_BG = {
-  services: 'https://placehold.co/1920x600?text=Services+Background',
+  services: '/services/title-bars/services.png',
   cases: '/texture-bg.jpg',
   about: 'https://placehold.co/1920x600?text=About+Background',
 } as const
@@ -10,6 +10,13 @@ const SERVICE_BG_BY_ROUTE: Record<string, string> = {
   '/services/sex-crime': '/services/title-bars/sex-crime.png',
   '/services/corporate-crime': '/services/title-bars/corporate-crime.png',
   '/services/property-crime': '/services/title-bars/property-crime.png',
+  '/services/traffic-crime': '/services/title-bars/traffic-crime.png',
+  '/services/school-violence': '/services/title-bars/school-violence.png',
+  '/services/general-criminal': '/services/title-bars/general-criminal.png',
+  '/services/anti-corruption': '/services/title-bars/anti-corruption.png',
+  '/services/investigation': '/services/title-bars/investigation.png',
+  '/services/civil-family': '/services/title-bars/civil-family.png',
+  '/services/administrative': '/services/title-bars/administrative.png',
 }
 
 const SEGMENT_LABELS: Record<string, string> = {
