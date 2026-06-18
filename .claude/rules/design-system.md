@@ -43,31 +43,33 @@ paths: src/**/*.{tsx,css}
 
 #### 스케일
 
+> **2026-06-11 전체 ×1.125 확대** — 평균 연령 50대 이상 사용자 가독성 피드백 반영. 모든 토큰을 균일 ×1.125 후 정수 px 반올림. 위계 비율·letter-spacing(em, 자동 비례)은 그대로 유지. 본문 16→18px(노안 가독성 권장선).
+
 | 클래스 | size (mobile → desktop) | line-height | letter-spacing |
 |---|---|---|---|
-| `text-display-1` | **32 → 56px** (clamp) | 1.286 | -0.0319em |
-| `text-display-2` | **28 → 40px** (clamp) | 1.3 | -0.0282em |
-| `text-display-3` | **26 → 36px** (clamp) | 1.334 | -0.027em |
-| `text-title-1` | 32px | 44 (1.375) | -0.0253em |
-| `text-title-2` | 28px | 38 (1.358) | -0.0236em |
-| `text-title-3` | 24px | 32 (1.334) | -0.023em |
-| `text-heading-1` | 22px | 30 (1.364) | -0.0194em |
-| `text-heading-2` | 20px | 28 (1.4) | -0.012em |
-| `text-headline-1` | 18px | 26 (1.445) | -0.002em |
-| `text-headline-2` | 17px | 24 (1.412) | 0em |
-| `text-body-1` | 16px | 24 (1.5) | 0.0057em |
-| `text-body-1-reading` | 16px | 26 (1.625) | 0.0057em |
-| `text-body-2` | 15px | 22 (1.467) | 0.0096em |
-| `text-body-2-reading` | 15px | 24 (1.6) | 0.0096em |
-| `text-label-1` | 14px | 20 (1.429) | 0.0145em |
-| `text-label-1-reading` | 14px | 22 (1.571) | 0.0145em |
-| `text-label-2` | 13px | 18 (1.385) | 0.0194em |
-| `text-caption-1` | 12px | 16 (1.334) | 0.0252em |
-| `text-caption-2` | 11px | 14 (1.273) | 0.0311em |
+| `text-display-1` | **36 → 63px** (clamp) | 1.286 | -0.0319em |
+| `text-display-2` | **32 → 45px** (clamp) | 1.3 | -0.0282em |
+| `text-display-3` | **29 → 40px** (clamp) | 1.334 | -0.027em |
+| `text-title-1` | 36px | 50 (1.389) | -0.0253em |
+| `text-title-2` | 32px | 43 (1.344) | -0.0236em |
+| `text-title-3` | 27px | 36 (1.334) | -0.023em |
+| `text-heading-1` | 25px | 34 (1.36) | -0.0194em |
+| `text-heading-2` | 23px | 32 (1.391) | -0.012em |
+| `text-headline-1` | 20px | 29 (1.45) | -0.002em |
+| `text-headline-2` | 19px | 27 (1.421) | 0em |
+| `text-body-1` | 18px | 27 (1.5) | 0.0057em |
+| `text-body-1-reading` | 18px | 29 (1.611) | 0.0057em |
+| `text-body-2` | 17px | 25 (1.471) | 0.0096em |
+| `text-body-2-reading` | 17px | 27 (1.588) | 0.0096em |
+| `text-label-1` | 16px | 23 (1.438) | 0.0145em |
+| `text-label-1-reading` | 16px | 25 (1.563) | 0.0145em |
+| `text-label-2` | 15px | 20 (1.334) | 0.0194em |
+| `text-caption-1` | 14px | 18 (1.286) | 0.0252em |
+| `text-caption-2` | 12px | 16 (1.334) | 0.0311em |
 
-**Display 만 clamp 적용** — 모바일에서 줄바꿈 위험이 큰 사이즈대. Title 이하(≤32px)는 모바일 viewport(375px)에서도 안전한 사이즈라 고정.
+**Display 만 clamp 적용** — 모바일에서 줄바꿈 위험이 큰 사이즈대. Title 이하(≤36px)는 모바일 viewport(375px)에서도 안전한 사이즈라 고정.
 - Display의 line-height는 *ratio*로 표기 — size가 viewport 따라 변하므로 lh도 자동 비례
-- transition 구간: Display 1은 ~1400px에서 max hit / Display 2는 ~1430px / Display 3은 ~1440px (각 vw 계수에서 도출)
+- transition 구간: Display 1은 ~1400px에서 max hit / Display 2는 ~1430px / Display 3은 ~1420px (각 vw 계수에서 도출)
 
 **Body·Label의 Normal vs Reading**:
 - Normal — UI 본문, 짧은 단락, 리스트 (조밀한 줄간격)
@@ -174,10 +176,12 @@ Tailwind v4 base scale `--spacing: 0.25rem` (4px). 모든 spacing 정수 utility
 
 | 영역 | 도구 | 적용 위치 |
 |---|---|---|
-| 사용자/CMS 생성 긴 본문 (Posts·Cases 본문, 변호사 인사말 등) | `prose` (`@tailwindcss/typography`) | RichText 렌더 wrapper |
+| 사용자/CMS 생성 긴 본문 (Posts·Cases 본문, 변호사 인사말 등) | `prose-lg` (`@tailwindcss/typography`) | RichText 렌더 wrapper |
 | 개발자 작성 UI (Hero, 섹션, 카드, 네비, 푸터) | semantic class (`text-h1` 등) | 컴포넌트 내부 |
 
 prose 안에 UI 컴포넌트(Banner, MediaBlock 등)가 들어가면 `not-prose` wrapper로 prose 스타일을 차단한다.
+
+> **2026-06-11 prose 크기 `prose-lg`로 확정** — 50대 이상 가독성 피드백. 긴 본문 base 18px(`prose-lg`)로, semantic 토큰 `body-1`(18px)과 정합. 이전엔 `prose md:prose-md`였으나 `prose-md`는 typography 플러그인에 없는 무효 클래스라 실질 16px로 렌더되고 있었음 (`src/components/RichText/index.tsx`).
 
 ### Typography: ad-hoc 유틸리티 지양
 - ❌ `text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight`
