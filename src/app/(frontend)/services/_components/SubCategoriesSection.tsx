@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { FC } from 'react'
 
 import { SectionContainer } from '@/components/SectionContainer'
@@ -70,7 +71,7 @@ export const SubCategoriesSection: FC<SubCategoriesSectionProps> = ({ data }) =>
                 {DETAIL_GROUPS.map((group) => (
                   <section key={group.key} className="space-y-3">
                     <h4 className="text-label-1 font-semibold text-foreground">
-                      {group.title}
+                      {data.detailLabels?.[group.key] ?? group.title}
                     </h4>
                     <ul className="list-disc space-y-2 pl-5 marker:text-muted-foreground/50">
                       {sub[group.key].map((item) => (
@@ -85,6 +86,15 @@ export const SubCategoriesSection: FC<SubCategoriesSectionProps> = ({ data }) =>
                   </section>
                 ))}
               </div>
+
+              {sub.relatedLink ? (
+                <Link
+                  href={sub.relatedLink.href}
+                  className="inline-flex min-h-10 items-center text-body-2 font-medium text-primary underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+                >
+                  {sub.relatedLink.label}
+                </Link>
+              ) : null}
             </div>
           </li>
         ))}

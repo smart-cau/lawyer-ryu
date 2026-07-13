@@ -2,6 +2,7 @@ import type { Metadata } from 'next/types'
 import type { Where } from 'payload'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { MotionReveal } from '@/components/MotionReveal'
 import { Pagination } from '@/components/Pagination'
 import { PageTitleBar } from '@/components/PageTitleBar'
 import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
@@ -87,30 +88,31 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         title={title}
         breadcrumbs={getBreadcrumbsFromRoute(route, title)}
         bgImage={getBgImageFromRoute(route)}
+        className="motion-entrance-fade"
       />
 
       <div className="py-section">
-        <div className="container mb-8">
+        <MotionReveal className="container mb-8">
           <CasesToolbar categories={categories} />
-        </div>
+        </MotionReveal>
 
         {cases.totalDocs > 0 ? (
-          <CollectionArchive posts={cases.docs} />
+          <CollectionArchive animate posts={cases.docs} />
         ) : (
-          <div className="container">
+          <MotionReveal className="container">
             <p className="text-muted-foreground text-body-1">
               {isFiltered
                 ? '조건에 맞는 사례가 없습니다. 다른 분야나 검색어로 다시 시도해 주세요.'
                 : '등록된 사례가 아직 없습니다.'}
             </p>
-          </div>
+          </MotionReveal>
         )}
 
         {/* searchParams 기반 페이지네이션 — 분야·검색어 상태를 보존 */}
         {cases.totalPages > 1 && cases.page && (
-          <div className="container">
+          <MotionReveal className="container">
             <Pagination page={cases.page} totalPages={cases.totalPages} />
-          </div>
+          </MotionReveal>
         )}
       </div>
     </>

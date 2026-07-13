@@ -6,6 +6,7 @@ import {
   NON_CRIMINAL_LEAVES,
   type Leaf,
 } from '@/app/(frontend)/services/_data/leaves'
+import { MotionReveal } from '@/components/MotionReveal'
 import { cn } from '@/utilities/ui'
 
 const LeafCard: FC<{ leaf: Leaf }> = ({ leaf }) => (
@@ -30,32 +31,27 @@ const LeafCard: FC<{ leaf: Leaf }> = ({ leaf }) => (
 const LeafGrid: FC<{ leaves: Leaf[] }> = ({ leaves }) => (
   <ul className="grid grid-cols-1 border-x border-t lg:grid-cols-2">
     {leaves.map((leaf, idx) => (
-      <li
-        key={leaf.slug}
-        className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}
-      >
-        <LeafCard leaf={leaf} />
-      </li>
+      <MotionReveal key={leaf.slug} asChild delay={(idx % 2) * 70}>
+        <li className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}>
+          <LeafCard leaf={leaf} />
+        </li>
+      </MotionReveal>
     ))}
   </ul>
 )
 
 export const LeafCatalogSection: FC = () => {
   return (
-    <section
-      id="leaf-catalog"
-      aria-label="업무분야 카탈로그"
-      className="space-y-16"
-    >
-      <div className="space-y-6">
+    <section id="leaf-catalog" aria-label="업무분야 카탈로그" className="space-y-16">
+      <MotionReveal className="space-y-6">
         <h2 className="text-title-1 font-semibold">형사전문</h2>
         <LeafGrid leaves={CRIMINAL_LEAVES} />
-      </div>
+      </MotionReveal>
 
-      <div className="space-y-6">
+      <MotionReveal className="space-y-6">
         <h2 className="text-title-1 font-semibold">민사·가사·행정</h2>
         <LeafGrid leaves={NON_CRIMINAL_LEAVES} />
-      </div>
+      </MotionReveal>
     </section>
   )
 }

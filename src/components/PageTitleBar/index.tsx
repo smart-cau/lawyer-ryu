@@ -1,17 +1,20 @@
 import Link from 'next/link'
 
+import { cn } from '@/utilities/ui'
+
 export type PageTitleBarBreadcrumb = {
   label: string
   href?: string
 }
 
 type Props = {
+  className?: string
   title: string
   breadcrumbs: PageTitleBarBreadcrumb[]
   bgImage: string
 }
 
-export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
+export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -28,7 +31,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
   return (
     <section
       aria-labelledby="page-title-bar-title"
-      className="relative -mt-[6rem] overflow-hidden"
+      className={cn('relative -mt-[6rem] overflow-hidden', className)}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -41,10 +44,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
 
       <div className="container relative pt-[6rem]">
         <div className="flex min-h-[15rem] items-center justify-center md:min-h-[22.5rem]">
-          <h1
-            id="page-title-bar-title"
-            className="text-center text-display-2 font-bold text-white"
-          >
+          <h1 id="page-title-bar-title" className="text-center text-display-2 font-bold text-white">
             {title}
           </h1>
         </div>
@@ -63,10 +63,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
                       {bc.label}
                     </Link>
                   ) : (
-                    <span
-                      aria-current={isLast ? 'page' : undefined}
-                      className="text-white"
-                    >
+                    <span aria-current={isLast ? 'page' : undefined} className="text-white">
                       {bc.label}
                     </span>
                   )}
@@ -82,10 +79,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage }: Props) {
         </nav>
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdHtml }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
     </section>
   )
 }

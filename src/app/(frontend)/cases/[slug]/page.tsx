@@ -9,6 +9,7 @@ import { cache } from 'react'
 import RichText from '@/components/RichText'
 
 import { PageTitleBar } from '@/components/PageTitleBar'
+import { MotionReveal } from '@/components/MotionReveal'
 import { Badge } from '@/components/ui/badge'
 import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
 import { formatAuthors } from '@/utilities/formatAuthors'
@@ -79,67 +80,74 @@ export default async function Case({ params: paramsPromise }: Args) {
         title={sectionTitle}
         breadcrumbs={getBreadcrumbsFromRoute('/cases/' + decodedSlug, title)}
         bgImage={getBgImageFromRoute('/cases')}
+        className="motion-entrance-fade"
       />
 
       <div className="container py-section">
-        <header className="max-w-[48rem] mx-auto mb-12">
-          {/* 핵심 결과 + 분류 — 카드와 동일한 배지 패턴으로 통일 */}
-          {(resultLabel || hasCategories) && (
-            <div className="mb-5 flex flex-wrap items-center gap-1.5">
-              {resultLabel && (
-                <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-label-1 font-semibold">
-                  {resultLabel}
-                </Badge>
-              )}
-              {categories?.map((category, index) => {
-                if (typeof category === 'object' && category !== null) {
-                  return (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-label-1 font-medium"
-                    >
-                      {category.title || '미분류'}
-                    </Badge>
-                  )
-                }
-                return null
-              })}
-            </div>
-          )}
+        <MotionReveal asChild>
+          <header className="max-w-[48rem] mx-auto mb-12">
+            {/* 핵심 결과 + 분류 — 카드와 동일한 배지 패턴으로 통일 */}
+            {(resultLabel || hasCategories) && (
+              <div className="mb-5 flex flex-wrap items-center gap-1.5">
+                {resultLabel && (
+                  <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-label-1 font-semibold">
+                    {resultLabel}
+                  </Badge>
+                )}
+                {categories?.map((category, index) => {
+                  if (typeof category === 'object' && category !== null) {
+                    return (
+                      <Badge
+                        key={index}
+                        variant="outline"
+                        className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-label-1 font-medium"
+                      >
+                        {category.title || '미분류'}
+                      </Badge>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            )}
 
-          <h1 className="text-title-1 font-bold text-foreground">{title}</h1>
+            <h1 className="text-title-1 font-bold text-foreground">{title}</h1>
 
-          {/* 작성자·게시일 — 라벨을 명시해 어떤 항목인지 분명히 */}
-          {(hasAuthors || publishedLabel) && (
-            <dl className="border-border mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 border-t pt-6">
-              {hasAuthors && (
-                <div className="flex items-center gap-2">
-                  <dt className="text-label-1 text-muted-foreground">작성자</dt>
-                  <dd className="text-body-1 text-foreground font-medium">
-                    {formatAuthors(populatedAuthors)}
-                  </dd>
-                </div>
-              )}
-              {publishedLabel && (
-                <div className="flex items-center gap-2">
-                  <dt className="text-label-1 text-muted-foreground">게시일</dt>
-                  <dd className="text-body-1 text-foreground font-medium">
-                    <time dateTime={publishedAt ?? undefined}>{publishedLabel}</time>
-                  </dd>
-                </div>
-              )}
-            </dl>
-          )}
-        </header>
+            {/* 작성자·게시일 — 라벨을 명시해 어떤 항목인지 분명히 */}
+            {(hasAuthors || publishedLabel) && (
+              <dl className="border-border mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 border-t pt-6">
+                {hasAuthors && (
+                  <div className="flex items-center gap-2">
+                    <dt className="text-label-1 text-muted-foreground">작성자</dt>
+                    <dd className="text-body-1 text-foreground font-medium">
+                      {formatAuthors(populatedAuthors)}
+                    </dd>
+                  </div>
+                )}
+                {publishedLabel && (
+                  <div className="flex items-center gap-2">
+                    <dt className="text-label-1 text-muted-foreground">게시일</dt>
+                    <dd className="text-body-1 text-foreground font-medium">
+                      <time dateTime={publishedAt ?? undefined}>{publishedLabel}</time>
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            )}
+          </header>
+        </MotionReveal>
 
-        <RichText className="max-w-[48rem] mx-auto" data={caseDoc.content} enableGutter={false} />
+        <MotionReveal>
+          <RichText className="max-w-[48rem] mx-auto" data={caseDoc.content} enableGutter={false} />
+        </MotionReveal>
 
         {caseDoc.relatedCases && caseDoc.relatedCases.length > 0 && (
-          <RelatedCases
-            className="mt-16 max-w-[52rem] mx-auto"
-            docs={caseDoc.relatedCases.filter((c) => typeof c === 'object')}
-          />
+          <MotionReveal>
+            <RelatedCases
+              className="mt-16 max-w-[52rem] mx-auto"
+              docs={caseDoc.relatedCases.filter((c) => typeof c === 'object')}
+            />
+          </MotionReveal>
         )}
       </div>
     </article>

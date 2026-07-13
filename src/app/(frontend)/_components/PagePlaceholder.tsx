@@ -16,17 +16,16 @@ export const PagePlaceholder: FC<Props> = ({ route, title, description }) => {
         title={title}
         breadcrumbs={getBreadcrumbsFromRoute(route, title)}
         bgImage={getBgImageFromRoute(route)}
+        className="motion-entrance-fade"
       />
       <main className="container py-section">
         <section
           aria-label={title}
-          className="border border-dashed border-border rounded-md p-8"
+          className="motion-entrance rounded-md border border-dashed border-border p-8 [--motion-delay:140ms]"
         >
           <p className="text-xs uppercase tracking-widest text-muted-foreground">{route}</p>
           <h2 className="mt-2 text-title-1 font-semibold">{title}</h2>
-          {description ? (
-            <p className="mt-2 text-sm text-muted-foreground">{description}</p>
-          ) : null}
+          {description ? <p className="mt-2 text-sm text-muted-foreground">{description}</p> : null}
         </section>
       </main>
     </>

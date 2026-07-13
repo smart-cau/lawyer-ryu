@@ -1,5 +1,6 @@
 export { FaqSection } from './FaqSection'
 export { FooterCtaSection } from './FooterCtaSection'
+export { ImmediateActionsSection } from './ImmediateActionsSection'
 export { LeafCatalogSection } from './LeafCatalog'
 export { ServiceLeafPage } from './ServiceLeafPage'
 export { SubCategoriesSection } from './SubCategoriesSection'

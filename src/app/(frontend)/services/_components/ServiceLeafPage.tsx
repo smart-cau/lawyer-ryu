@@ -1,9 +1,11 @@
 import { PageTitleBar } from '@/components/PageTitleBar'
+import { MotionReveal } from '@/components/MotionReveal'
 import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
 
 import type { ServiceLeafContent } from '../_data/service-leaf'
 import { FaqSection } from './FaqSection'
 import { FooterCtaSection } from './FooterCtaSection'
+import { ImmediateActionsSection } from './ImmediateActionsSection'
 import { SubCategoriesSection } from './SubCategoriesSection'
 import { WhyAttorneySection } from './WhyAttorneySection'
 
@@ -18,12 +20,26 @@ export function ServiceLeafPage({ content }: ServiceLeafPageProps) {
         title={content.title}
         breadcrumbs={getBreadcrumbsFromRoute(content.route, content.title)}
         bgImage={getBgImageFromRoute(content.route)}
+        className="motion-entrance-fade"
       />
       <main className="bg-white">
-        <SubCategoriesSection data={content.subCategories} />
-        <WhyAttorneySection data={content.whyAttorney} serviceTitle={content.title} />
-        <FaqSection data={content.faq} />
-        <FooterCtaSection data={content.footerCta} />
+        {content.immediateActions ? (
+          <MotionReveal>
+            <ImmediateActionsSection data={content.immediateActions} />
+          </MotionReveal>
+        ) : null}
+        <MotionReveal>
+          <SubCategoriesSection data={content.subCategories} />
+        </MotionReveal>
+        <MotionReveal direction="left">
+          <WhyAttorneySection data={content.whyAttorney} serviceTitle={content.title} />
+        </MotionReveal>
+        <MotionReveal direction="right">
+          <FaqSection data={content.faq} />
+        </MotionReveal>
+        <MotionReveal>
+          <FooterCtaSection data={content.footerCta} />
+        </MotionReveal>
       </main>
     </>
   )
