@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type { FC } from 'react'
 
 import { SectionContainer } from '@/components/SectionContainer'
+import { cn } from '@/utilities/ui'
 
 import { NARRATIVE_SECTION } from '../_data/narratives'
 
@@ -41,9 +42,16 @@ export const NarrativeSection: FC = () => {
         </div>
 
         <div className="space-y-6 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 lg:text-headline-2">
-          {NARRATIVE_SECTION.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          {NARRATIVE_SECTION.paragraphs.map((paragraph) => {
+            const text = typeof paragraph === 'string' ? paragraph : paragraph.text
+            const emphasized = typeof paragraph !== 'string' && paragraph.emphasis
+
+            return (
+              <p key={text} className={cn(emphasized && 'font-semibold text-foreground')}>
+                {text}
+              </p>
+            )
+          })}
         </div>
       </div>
     </SectionContainer>

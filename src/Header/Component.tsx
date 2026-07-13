@@ -1,12 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 
 import { Logo } from '@/components/Logo/Logo'
 import { cn } from '@/utilities/ui'
 
 import { DesktopNav } from './DesktopNav'
+import {
+  getForcedHeaderToneServerSnapshot,
+  getForcedHeaderToneSnapshot,
+  subscribeForcedHeaderTone,
+} from './heroToneStore'
 import { MobileNav } from './MobileNav'
 
 const SCROLL_THRESHOLD = 16
@@ -21,7 +26,13 @@ export function Header() {
     return () => window.removeEventListener('scroll', update)
   }, [])
 
-  const light = scrolled
+  // 밝은 히어로 페이지가 헤더 tone을 강제하면 스크롤과 무관하게 그 값을 따른다.
+  const forcedTone = useSyncExternalStore(
+    subscribeForcedHeaderTone,
+    getForcedHeaderToneSnapshot,
+    getForcedHeaderToneServerSnapshot,
+  )
+  const light = forcedTone ? forcedTone === 'light' : scrolled
   const tone = light ? 'light' : 'dark'
 
   return (
