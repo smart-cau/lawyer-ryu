@@ -9,7 +9,7 @@ export const corporateCrimeLeafContent = {
   route: '/services/corporate-crime',
   subCategories: {
     title: '사건 유형',
-    lead: '기업 형사 사건은 대표 개인의 책임과 회사의 자료 제출, 행정기관 대응, 임직원 조사가 동시에 움직입니다.',
+    lead: '기관의 연락이나 사고 발생 직후부터 회사의 자료 제출과 임직원 진술이 기록됩니다. 법인과 대표·임원의 책임 범위를 나누고, 행정조사와 형사절차를 함께 살펴야 합니다.',
     items: CORPORATE_CRIME_SUBS,
   },
   whyAttorney: {
@@ -17,15 +17,15 @@ export const corporateCrimeLeafContent = {
     profile: ATTORNEY_PROFILE,
     items: WHY_ATTORNEY_ITEMS,
     detailHref: '/about/lawyer',
-    detailLabel: '변호사 소개 자세히 보기 →',
+    detailLabel: '류남경 대표변호사 경력 확인하기 →',
   },
   faq: {
     title: '자주 묻는 질문',
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '회사와 임원의 대응 방향을 함께 정리해야 합니다',
-    lead: '대표변호사 류남경이 사건 구조를 직접 검토합니다.',
+    title: '회사와 대표·임원의 대응을 한 흐름으로 검토합니다',
+    lead: '기관의 연락 내용과 제출 기한, 현재 보유한 자료를 확인해 상담을 준비해 주세요.',
     phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },

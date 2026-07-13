@@ -1,0 +1,1 @@
+export { investigationLeafContent } from './content'

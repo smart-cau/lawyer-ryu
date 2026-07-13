@@ -1,0 +1,1 @@
+export { administrativeLeafContent } from './content'

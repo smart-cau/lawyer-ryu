@@ -13,6 +13,7 @@ export default function ServicesHubPage() {
         title={title}
         breadcrumbs={getBreadcrumbsFromRoute(route, title)}
         bgImage={getBgImageFromRoute(route)}
+        className="motion-entrance-fade"
       />
       <main className="container py-section space-y-section">
         <LeafCatalogSection />

@@ -9,6 +9,10 @@ export type ServiceSubCategory = {
   firstResponse: string[]
   attorneyRole: string[]
   relatedKeywords?: string[]
+  relatedLink?: {
+    href: `/services/${string}`
+    label: string
+  }
 }
 
 export type AttorneyStrength = {
@@ -32,12 +36,26 @@ export type ServiceFaqItem = {
   answer: string
 }
 
+export type ImmediateActionItem = {
+  heading: string
+  body: string
+}
+
 export type ServiceLeafContent = {
   title: string
   route: `/services/${string}`
+  immediateActions?: {
+    title: string
+    lead: string
+    items: ImmediateActionItem[]
+    note?: string
+  }
   subCategories: {
     title: string
     lead?: string
+    detailLabels?: Partial<
+      Record<'commonSituations' | 'keyIssues' | 'firstResponse' | 'attorneyRole', string>
+    >
     items: ServiceSubCategory[]
   }
   whyAttorney: {

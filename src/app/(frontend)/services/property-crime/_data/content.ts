@@ -9,7 +9,7 @@ export const propertyCrimeLeafContent = {
   route: '/services/property-crime',
   subCategories: {
     title: '사건 유형',
-    lead: '재산범죄는 돈이 오간 경위, 당시 설명, 계좌 흐름, 피해 회복 가능성에 따라 고소와 방어의 방향이 달라집니다.',
+    lead: '투자사기와 금융사기 같은 재산범죄는 돈을 보내기 전 어떤 설명을 들었는지, 이후 자금이 어디로 이동했는지를 함께 살펴야 합니다. 피해를 입은 경우와 혐의를 받는 경우에 따라 준비할 자료도 달라집니다.',
     items: PROPERTY_CRIME_SUBS,
   },
   whyAttorney: {
@@ -17,15 +17,15 @@ export const propertyCrimeLeafContent = {
     profile: ATTORNEY_PROFILE,
     items: WHY_ATTORNEY_ITEMS,
     detailHref: '/about/lawyer',
-    detailLabel: '변호사 소개 자세히 보기 →',
+    detailLabel: '류남경 대표변호사 경력 확인하기 →',
   },
   faq: {
     title: '자주 묻는 질문',
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '돈이 오간 기록부터 사건의 방향을 정리해야 합니다',
-    lead: '대표변호사 류남경이 사건 구조를 직접 검토합니다.',
+    title: '송금 전 설명과 송금 후 자금 흐름을 함께 살펴야 합니다',
+    lead: '류남경 대표변호사가 피해 자료와 조사 대응 내용을 직접 검토합니다.',
     phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },

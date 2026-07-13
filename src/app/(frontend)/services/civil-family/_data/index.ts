@@ -1,0 +1,1 @@
+export { civilFamilyLeafContent } from './content'

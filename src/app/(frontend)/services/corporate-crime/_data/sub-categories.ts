@@ -27,7 +27,7 @@ export const CORPORATE_CRIME_SUBS: ServiceSubCategory[] = [
     ],
     firstResponse: [
       '사고 직후 현장 사진, CCTV, 작업지시서, 안전교육 자료, 점검표를 원본 상태로 보존해야 합니다.',
-      '관계자별 진술이 엇갈리지 않도록 회사 내부 보고와 수사기관 제출 자료를 분리해 정리해야 합니다.',
+      '관계자별 기억과 업무 범위를 객관 자료에 비추어 정리하고, 확인되지 않은 내용을 하나의 설명으로 맞추지 않아야 합니다.',
     ],
     attorneyRole: [
       '경영책임자, 안전보건관리책임자, 현장 담당자의 책임 범위를 증거 기준으로 나누어 정리합니다.',
@@ -39,6 +39,10 @@ export const CORPORATE_CRIME_SUBS: ServiceSubCategory[] = [
       '경영책임자 조사',
       '산재 사망 사고',
     ],
+    relatedLink: {
+      href: '/services/investigation',
+      label: '압수수색·임직원 조사 대응 함께 보기 →',
+    },
   },
   {
     slug: 'fraud-finance',
@@ -58,7 +62,7 @@ export const CORPORATE_CRIME_SUBS: ServiceSubCategory[] = [
     ],
     keyIssues: [
       '자금 흐름, 이사회·주주총회 의사록, 계약서, 회계 자료, 투자자 설명자료의 실제 내용',
-      '개인 이익 취득 여부, 회사 손해 발생 여부, 투자 권유 방식과 금융당국 조사 가능성',
+      '개인 이익 취득 여부, 회사 손해 발생 여부, 투자 권유 방식과 금융당국 조사·형사절차의 연결',
     ],
     firstResponse: [
       '계좌 내역, 회계 장부, 투자 제안서, 공시·메신저 자료를 삭제하거나 사후 수정하지 말아야 합니다.',
@@ -74,6 +78,10 @@ export const CORPORATE_CRIME_SUBS: ServiceSubCategory[] = [
       '유사수신 법인',
       '자본시장법 위반',
     ],
+    relatedLink: {
+      href: '/services/property-crime',
+      label: '개인 피해·피의 사건의 재산범죄 안내 보기 →',
+    },
   },
   {
     slug: 'ip-technology-leak',
@@ -121,11 +129,11 @@ export const CORPORATE_CRIME_SUBS: ServiceSubCategory[] = [
       '하도급·담합 의혹, 수입신고·세금계산서 문제, 임금체불·산업안전 이슈가 형사 고발로 이어진 경우',
     ],
     keyIssues: [
-      '행정기관 조사 자료와 형사 진술이 서로 다르게 남지 않도록 사실관계와 제출 범위를 맞추는 일',
+      '행정기관 제출 자료와 형사 진술의 내용이 다를 때 그 원인과 근거를 설명할 수 있는지 여부',
       '대표자·실무자·법인의 책임 구분, 고의성, 내부 승인 절차, 사후 시정 조치의 객관 자료',
     ],
     firstResponse: [
-      '기관 요구 자료를 급히 제출하기 전 원본, 작성 경위, 담당자, 설명 가능한 범위를 먼저 확인해야 합니다.',
+      '기관 요구 자료를 급히 제출하기 전 원본, 작성 경위, 담당자, 설명할 수 있는 범위를 먼저 확인해야 합니다.',
       '직원 면담, 내부 감사, 거래처 연락은 수사기관 진술과 연결될 수 있어 기록 관리가 필요합니다.',
     ],
     attorneyRole: [

@@ -9,7 +9,8 @@ export const generalCriminalLeafContent = {
   route: '/services/general-criminal',
   subCategories: {
     title: '사건 유형',
-    lead: '죄명은 달라도 고소·신고 접수, 경찰 조사, 송치 여부 결정으로 이어지는 절차는 같습니다. 유형별로 쟁점과 첫 대응이 다릅니다.',
+    lead:
+      '명예훼손이나 폭행처럼 일상에서 시작된 분쟁도 고소장이 접수되면 형사절차로 이어집니다. 경찰 연락을 받았다면 사건 유형에 맞춰 사실관계와 자료부터 정리해야 합니다.',
     items: GENERAL_CRIMINAL_SUBS,
   },
   whyAttorney: {
@@ -25,8 +26,8 @@ export const generalCriminalLeafContent = {
   },
   footerCta: {
     title: '조사 날짜가 잡혔다면 그 전에 준비해야 합니다',
-    lead: '대표변호사 류남경이 직접 상담합니다.',
-    phoneHref: 'tel:01075520301',
+    lead: '류남경 대표변호사가 사건 경위와 조사 일정을 직접 듣고 상담합니다.',
+    phoneHref: 'tel:0557190302',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent
