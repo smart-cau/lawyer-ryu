@@ -55,6 +55,15 @@ Standard scripts (`dev`, `build`, `start`, `lint(:fix)`, `test(:int|:e2e)`) live
 
 `NODE_OPTIONS=--no-deprecation` is prefixed onto every script via `cross-env` — keep that pattern when adding new scripts that touch Payload/Next CLIs.
 
+## Development server reuse
+
+Before starting a development server, first determine whether a healthy `pnpm dev` / Next.js process for this repository is already running.
+
+- Identify its listening port and verify it serves this project with a lightweight request.
+- Reuse a healthy existing server; do not start a duplicate server.
+- Start a new server only when no healthy project-owned server is running.
+- Never stop, restart, or otherwise modify an existing development server unless the user explicitly asks.
+
 ## Architecture
 
 ### Two route groups, one Next.js app
@@ -122,3 +131,5 @@ Project-specific decisions (not covered by the skill):
 - `cn()` lives at `@/utilities/ui` (not the default `@/lib/utils`); this is set as the `utils` alias in `components.json`.
 - `src/components/ui/button.tsx` has a project-specific `size: 'clear'` variant that `CMSLink` depends on — do **not** let `shadcn add` overwrite it.
 - Existing custom wrappers (`src/components/Card`, `src/components/Link`) **predate this policy** — when you touch them, compose on top of shadcn primitives rather than re-styling from scratch.
+
+## Imported Claude Cowork project instructions

@@ -33,6 +33,7 @@ docs/
 | 전문분야 (공식 4분류 기준) | `01-profile/services-from-career.md` | ✅ 공식 분류로 재정렬 |
 | **services 설계 원문 보존** | `02-services/services-source-2026-05-07.md` | ✅ 변호사 1차 청취 + 결정 트래킹 완료 (A1~A12) |
 | **services IA v1.4 (합의 완료)** | `02-services/01-services-ia-v1.md` | ✅ 변호사 1차 피드백 반영 + 메뉴·URL 정책 (10 leaf · 44 분류, 메뉴 라벨 "업무분야", `/services/<criminal\|non-criminal>/<slug>`) |
+| **services SEO 키워드 맵** | `02-services/02-services-seo-keyword-map.md` | ✅ 공통 원칙 합의 완료 · 페이지별 키워드는 leaf 작업 전 개별 합의 |
 | 공식 브랜드 포지셔닝 (자료조사) | `03-firm/brand-positioning.md` | ✅ 작성 |
 | **운영·행동 USP (자료조사)** | `03-firm/usp.md` | ✅ 변호사 본인 구술 1차 정리 |
 | 운영·행동 USP 원문 보존 | `03-firm/usp-source-2026-05-06.md` | ✅ 1차 출처 원문 (가공 전) |

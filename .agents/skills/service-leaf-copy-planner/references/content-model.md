@@ -1,6 +1,6 @@
 # Content Model
 
-Use this model for each service leaf subcategory unless the existing codebase has a stronger local pattern.
+Use this model for each service leaf subcategory unless the existing codebase has a stronger local pattern. The model is a storage contract, not a writing template: fields may share a purpose without sharing sentence rhythm.
 
 ```ts
 export type ServiceLeafSubCategory = {
@@ -37,6 +37,14 @@ Each subcategory should help the visitor:
 - avoid a harmful immediate action,
 - see why lawyer involvement changes the process.
 
+Across the whole leaf, also require:
+
+- one primary search intent and a page-specific introduction;
+- a distinct evidence/procedure profile rather than sibling-page noun swaps;
+- a relevant, supportable connection between attorney experience and the work described;
+- unique title and meta description candidates;
+- useful internal links with descriptive anchor text.
+
 Avoid:
 
 - generic “초기 대응이 중요합니다” without saying what response,
@@ -44,6 +52,35 @@ Avoid:
 - outcome claims such as “불기소 가능”, “구속을 피할 수 있습니다”,
 - fear-heavy lists of penalties unless the user asks and official sources are checked,
 - copying the same rhythm across every subcategory.
+
+## Page-level Planning Artifact
+
+Plan this alongside the TypeScript data. Adapt field names to the existing Next.js implementation rather than forcing a new runtime type.
+
+```ts
+type ServiceLeafPlan = {
+  primaryIntent: string
+  supportingIntents: string[]
+  primaryAudience: string
+  uniqueValue: string
+  title: string
+  h1: string
+  description: string
+  profileClaims: Array<{
+    claim: string
+    status: 'verified' | 'approval-needed' | 'inferred' | 'conflicted'
+    source: string
+    placement?: string
+  }>
+  internalLinks: Array<{
+    href: string
+    anchorIntent: string
+    reason: string
+  }>
+}
+```
+
+Do not publish the plan object unless the application has a reason to consume it. It is a drafting and review artifact.
 
 ## Renderer Pattern
 
@@ -54,4 +91,3 @@ For this project, prefer a restrained service-page row layout:
 - Right column: bold `definition`, then four small labeled groups.
 - Avoid nested cards. Do not make a landing-page-like section.
 - If content is too long, consider accordion only after keeping label and definition visible.
-
