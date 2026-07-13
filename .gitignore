@@ -27,3 +27,7 @@ tsconfig.tsbuildinfo
 
 # Superpowers runtime state
 .superpowers/**/state/
+
+# 카피 검토용 임시 스크립트와 그 산출물
+scripts/
+review-pdf/
