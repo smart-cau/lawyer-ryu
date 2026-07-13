@@ -1,9 +1,26 @@
 import Image from 'next/image'
-import { Phone } from 'lucide-react'
+import { Mail, Phone, UserPlus } from 'lucide-react'
 import type { FC } from 'react'
 
-import { Button } from '@/components/ui/button'
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
+import { CONTACT } from '@/lib/constants'
+
+const MAIL_HREF = `mailto:${CONTACT.email}`
+// vCard 자산 미확보 — wireframe 단계 placeholder (자산 확보 시 href 교체)
+const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
+  [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:류;남경;;;',
+    'FN:류남경',
+    'ORG:법무법인 인유 창원사무소',
+    'TITLE:대표변호사',
+    `TEL;TYPE=WORK,VOICE:${CONTACT.phone}`,
+    `EMAIL;TYPE=WORK:${CONTACT.email}`,
+    `ADR;TYPE=WORK:;;${CONTACT.address} ${CONTACT.addressSub};창원시;경상남도;;;대한민국`,
+    'END:VCARD',
+  ].join('\n'),
+)}`
 
 const HERO_CREDENTIALS = [
   '대한변협 형사전문 변호사',
@@ -134,7 +151,7 @@ export const HeroSection: FC = () => {
               ))}
             </ul>
 
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <Button
                 asChild
                 size="lg"
@@ -145,7 +162,40 @@ export const HeroSection: FC = () => {
                   대표변호사 즉시상담
                 </a>
               </Button>
-            </div>
+            </div> */}
+
+            <ul className="text-body-1 mt-6 w-fit border-t border-brand-gold/55 pt-4 pr-[44%] text-left font-light text-white/90 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)] sm:pr-[40%] md:text-headline-1 lg:pr-0 [&>li+li]:mt-4">
+              <li>
+                <a
+                  href={PHONE_HREF}
+                  aria-label={`사무소 전화 ${PHONE_DISPLAY}`}
+                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                >
+                  <Phone aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
+                  <span>{PHONE_DISPLAY}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={MAIL_HREF}
+                  aria-label={`이메일 ${CONTACT.email}`}
+                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                >
+                  <Mail aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
+                  <span>{CONTACT.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={VCARD_HREF}
+                  aria-label="대표변호사 연락처 저장 (vCard)"
+                  className="inline-flex items-center justify-start gap-3 transition-colors hover:text-brand-gold hover:underline hover:underline-offset-4"
+                >
+                  <UserPlus aria-hidden className="h-4 w-4 shrink-0 text-brand-gold" />
+                  <span>연락처 저장</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
