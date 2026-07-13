@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
 import { Card } from '@/components/Card'
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 
@@ -53,17 +54,16 @@ export const CasesSection = async () => {
         </>
       }
     >
-      <div className="[&_h2]:text-white [&_p]:text-white/72">
-        <SectionHeader
-          title="대표 사례"
-          lead="의뢰인들의 억울함을 해결해드린 사례입니다."
-        />
-      </div>
+      <MotionReveal className="[&_h2]:text-white [&_p]:text-white/72">
+        <SectionHeader title="대표 사례" lead="의뢰인들의 억울함을 해결해드린 사례입니다." />
+      </MotionReveal>
 
       {/* CollectionArchive 와 동일한 Card 렌더 — SectionContainer 가 이미 container 라 grid 만 인라인 */}
       <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
         {cases.docs.map((result, index) => (
-          <Card key={index} className="h-full" doc={result} relationTo="cases" showCategories />
+          <MotionReveal key={result.id} delay={index * 70}>
+            <Card className="h-full" doc={result} relationTo="cases" showCategories />
+          </MotionReveal>
         ))}
       </div>
 

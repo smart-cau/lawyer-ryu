@@ -2,6 +2,7 @@ import type { FC } from 'react'
 
 import Image from 'next/image'
 
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 import { cn } from '@/utilities/ui'
@@ -69,37 +70,36 @@ export const UspSection: FC = () => {
           const isReversed = idx % 2 === 0
 
           return (
-            <li
-              key={item.heading}
-              className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-16"
-            >
-              <div className={cn('lg:col-span-6', isReversed && 'lg:col-start-7')}>
-                <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
-                  <Image
-                    src={item.image.src}
-                    alt={item.image.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    priority={idx === 0}
-                  />
+            <MotionReveal key={item.heading} asChild direction={isReversed ? 'left' : 'right'}>
+              <li className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-16">
+                <div className={cn('lg:col-span-6', isReversed && 'lg:col-start-7')}>
+                  <div className="relative aspect-[3/2] w-full overflow-hidden bg-muted">
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      priority={idx === 0}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Text */}
-              <div
-                className={cn(
-                  'lg:col-span-5',
-                  isReversed ? 'lg:col-start-1 lg:row-start-1' : 'lg:col-start-8',
-                )}
-              >
-                <p className="text-label-1 font-medium uppercase tracking-[0.18em] text-brand-gold">
-                  {item.eyebrow}
-                </p>
-                <h3 className="mt-4 text-title-2 font-semibold">{item.heading}</h3>
-                <p className="mt-6 text-body-1-reading text-muted-foreground">{item.body}</p>
-              </div>
-            </li>
+                {/* Text */}
+                <div
+                  className={cn(
+                    'lg:col-span-5',
+                    isReversed ? 'lg:col-start-1 lg:row-start-1' : 'lg:col-start-8',
+                  )}
+                >
+                  <p className="text-label-1 font-medium uppercase tracking-[0.18em] text-brand-gold">
+                    {item.eyebrow}
+                  </p>
+                  <h3 className="mt-4 text-title-2 font-semibold">{item.heading}</h3>
+                  <p className="mt-6 text-body-1-reading text-muted-foreground">{item.body}</p>
+                </div>
+              </li>
+            </MotionReveal>
           )
         })}
       </ol>

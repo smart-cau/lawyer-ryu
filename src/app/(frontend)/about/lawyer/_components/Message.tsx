@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Mail, Phone, UserPlus } from 'lucide-react'
 import type { FC } from 'react'
 
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 import { CONTACT } from '@/lib/constants'
@@ -56,7 +57,7 @@ export const MessageSection: FC = () => {
         </>
       }
     >
-      <div className="flex flex-col items-center md:items-start">
+      <MotionReveal className="flex flex-col items-center md:items-start" direction="left">
         <div className="relative h-[25rem] w-full max-w-[21rem] overflow-hidden md:h-[27rem] md:w-[18rem] md:max-w-none lg:h-[34rem] lg:w-[24rem]">
           <Image
             src="/ryu-profile/2-crop.webp"
@@ -108,9 +109,13 @@ export const MessageSection: FC = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </MotionReveal>
 
-      <div className="space-y-6 text-body-1-reading font-light text-brand-deep-foreground/90 md:self-center md:text-body-2-reading lg:space-y-7 lg:pl-2 lg:text-headline-1">
+      <MotionReveal
+        className="space-y-6 text-body-1-reading font-light text-brand-deep-foreground/90 md:self-center md:text-body-2-reading lg:space-y-7 lg:pl-2 lg:text-headline-1"
+        direction="right"
+        delay={100}
+      >
         <h2 className="break-keep text-headline-1 font-medium text-brand-deep-foreground before:mb-5 before:block before:h-1 before:w-16 before:bg-brand-gold before:content-[''] md:text-display-3">
           {INTRO.title}
         </h2>
@@ -118,7 +123,7 @@ export const MessageSection: FC = () => {
         {INTRO.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
-      </div>
+      </MotionReveal>
     </SectionContainer>
   )
 }

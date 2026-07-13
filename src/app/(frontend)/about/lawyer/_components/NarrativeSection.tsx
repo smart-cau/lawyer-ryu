@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { FC } from 'react'
 
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { cn } from '@/utilities/ui'
 
@@ -21,16 +22,20 @@ export const NarrativeSection: FC = () => {
       }
     >
       <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.84fr)] md:items-end md:gap-x-16 md:gap-y-12 lg:gap-x-24">
-        <div className="md:col-start-1 md:row-start-1 md:pb-2">
+        <MotionReveal className="md:col-start-1 md:row-start-1 md:pb-2" direction="left">
           <h2
             id="experience-title"
             className="text-display-2 before:mb-6 before:block before:h-1 before:w-20 before:bg-brand-gold before:content-['']"
           >
             {NARRATIVE_SECTION.title}
           </h2>
-        </div>
+        </MotionReveal>
 
-        <div className="relative mx-auto aspect-[0.842] w-full max-w-[24rem] overflow-hidden md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-none md:self-center">
+        <MotionReveal
+          className="relative mx-auto aspect-[0.842] w-full max-w-[24rem] overflow-hidden md:col-start-2 md:row-span-2 md:row-start-1 md:max-w-none md:self-center"
+          direction="right"
+          delay={80}
+        >
           <Image
             src="/ryu-profile/4.webp"
             alt="류남경 대표변호사"
@@ -39,9 +44,13 @@ export const NarrativeSection: FC = () => {
             sizes="(min-width: 1024px) 30rem, (min-width: 768px) 38vw, 100vw"
             className="object-contain object-bottom mask-b-from-80%"
           />
-        </div>
+        </MotionReveal>
 
-        <div className="space-y-6 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 lg:text-headline-2">
+        <MotionReveal
+          className="space-y-6 break-keep text-body-1-reading text-foreground/90 md:col-start-1 md:row-start-2 lg:text-headline-2"
+          direction="left"
+          delay={100}
+        >
           {NARRATIVE_SECTION.paragraphs.map((paragraph) => {
             const text = typeof paragraph === 'string' ? paragraph : paragraph.text
             const emphasized = typeof paragraph !== 'string' && paragraph.emphasis
@@ -52,7 +61,7 @@ export const NarrativeSection: FC = () => {
               </p>
             )
           })}
-        </div>
+        </MotionReveal>
       </div>
     </SectionContainer>
   )

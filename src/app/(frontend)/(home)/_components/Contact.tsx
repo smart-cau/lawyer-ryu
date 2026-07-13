@@ -2,6 +2,7 @@ import { Info, Navigation } from 'lucide-react'
 import type { FC, ReactNode } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { Separator } from '@/components/ui/separator'
 import { PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
@@ -27,7 +28,7 @@ export const ContactSection: FC = () => {
   return (
     <SectionContainer id="contact" aria-label="오시는 길">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
-        <div>
+        <MotionReveal direction="left">
           <h2 className="text-title-1 font-semibold">오시는 길</h2>
 
           <Separator className="mt-8" />
@@ -45,10 +46,7 @@ export const ContactSection: FC = () => {
               </a>
             </InfoRow>
             <InfoRow label="이메일">
-              <a
-                href={EMAIL_HREF}
-                className="underline-offset-4 hover:underline"
-              >
+              <a href={EMAIL_HREF} className="underline-offset-4 hover:underline">
                 {CONTACT.email}
               </a>
             </InfoRow>
@@ -65,9 +63,9 @@ export const ContactSection: FC = () => {
             <Info aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
             <span>{CONTACT.hoursWarning.replace(/^\*\s*/, '')}</span>
           </div>
-        </div>
+        </MotionReveal>
 
-        <div className="flex flex-col">
+        <MotionReveal className="flex flex-col" direction="right" delay={80}>
           <NaverMap className="aspect-[4/3] w-full overflow-hidden rounded-md border border-border bg-muted lg:aspect-auto lg:flex-1" />
           <Button asChild variant="outline" size="lg" className="mt-3">
             <a
@@ -80,7 +78,7 @@ export const ContactSection: FC = () => {
               길찾기
             </a>
           </Button>
-        </div>
+        </MotionReveal>
       </div>
     </SectionContainer>
   )

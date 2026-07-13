@@ -12,10 +12,8 @@ import {
 } from 'lucide-react'
 import type { FC } from 'react'
 
-import {
-  CRIMINAL_LEAVES,
-  type Leaf,
-} from '@/app/(frontend)/services/_data/leaves'
+import { CRIMINAL_LEAVES, type Leaf } from '@/app/(frontend)/services/_data/leaves'
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
 import { cn } from '@/utilities/ui'
@@ -40,17 +38,11 @@ const ServiceCard: FC<{ leaf: Leaf }> = ({ leaf }) => {
       className="group flex h-full flex-col p-6 transition-colors hover:bg-accent/30 focus-visible:bg-accent/30"
     >
       <div className="flex items-center gap-2.5">
-        <Icon
-          aria-hidden
-          strokeWidth={1.75}
-          className="size-[1.25rem] shrink-0 text-foreground"
-        />
+        <Icon aria-hidden strokeWidth={1.75} className="size-[1.25rem] shrink-0 text-foreground" />
         <h3 className="text-heading-2 font-semibold">{leaf.label}</h3>
       </div>
 
-      <p className="mt-2 text-body-1 text-muted-foreground">
-        {leaf.description}
-      </p>
+      <p className="mt-2 text-body-1 text-muted-foreground">{leaf.description}</p>
 
       <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">
         {leaf.subs.map((sub) => (
@@ -72,24 +64,16 @@ const ServiceCard: FC<{ leaf: Leaf }> = ({ leaf }) => {
 
 export const ServicesSection: FC = () => {
   return (
-    <SectionContainer
-      id="services"
-      aria-label="업무분야"
-      innerClassName="max-w-5xl"
-    >
-      <SectionHeader
-        title="업무분야"
-        lead="형사 전 분야에 걸친 깊이있는 경험과 전문성"
-      />
+    <SectionContainer id="services" aria-label="업무분야" innerClassName="max-w-5xl">
+      <SectionHeader title="업무분야" lead="형사 전 분야에 걸친 깊이있는 경험과 전문성" />
 
       <ul className="mt-12 grid grid-cols-1 border-x border-t lg:mt-16 lg:grid-cols-2">
         {CRIMINAL_LEAVES.map((leaf, idx) => (
-          <li
-            key={leaf.slug}
-            className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}
-          >
-            <ServiceCard leaf={leaf} />
-          </li>
+          <MotionReveal key={leaf.slug} asChild delay={(idx % 2) * 70}>
+            <li className={cn('border-b', idx % 2 === 0 && 'lg:border-r')}>
+              <ServiceCard leaf={leaf} />
+            </li>
+          </MotionReveal>
         ))}
       </ul>
 

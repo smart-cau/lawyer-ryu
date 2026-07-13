@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { FC } from 'react'
 
+import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 
 const DESCRIPTIONS = [
@@ -30,31 +31,32 @@ export const InvestigationSection: FC = () => {
         </>
       }
     >
-      <h2 className="mx-auto max-w-3xl text-title-1 font-semibold text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.74)]">
-        경찰 조사를 앞두고 계신가요?
-        <br />
-        첫 진술 전, 형사 전문 변호사와 상의하세요.
-      </h2>
+      <MotionReveal>
+        <h2 className="mx-auto max-w-3xl text-title-1 font-semibold text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.74)]">
+          경찰 조사를 앞두고 계신가요?
+          <br />첫 진술 전, 형사 전문 변호사와 상의하세요.
+        </h2>
 
-      <div className="mx-auto mt-6 max-w-3xl space-y-2">
-        {DESCRIPTIONS.map((text, index) => (
-          <p
-            key={index}
-            className="text-body-1 font-medium text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.82)]"
+        <div className="mx-auto mt-6 max-w-3xl space-y-2">
+          {DESCRIPTIONS.map((text) => (
+            <p
+              key={text}
+              className="text-body-1 font-medium text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.82)]"
+            >
+              {text}
+            </p>
+          ))}
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href="/services/investigation"
+            className="inline-flex items-center justify-center rounded-md border border-white/35 bg-black/28 px-5 py-3 text-body-1 font-semibold text-white shadow-lg shadow-black/25 backdrop-blur-sm transition duration-200 hover:border-white/55 hover:bg-black/38 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
-            {text}
-          </p>
-        ))}
-      </div>
-
-      <div className="mt-8">
-        <Link
-          href="/services/investigation"
-          className="inline-flex items-center justify-center rounded-md border border-white/35 bg-black/28 px-5 py-3 text-body-1 font-semibold text-white shadow-lg shadow-black/25 backdrop-blur-sm transition duration-200 hover:border-white/55 hover:bg-black/38 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-        >
-          조사·구속 대응 상세 보기 →
-        </Link>
-      </div>
+            조사·구속 대응 상세 보기 →
+          </Link>
+        </div>
+      </MotionReveal>
     </SectionContainer>
   )
 }

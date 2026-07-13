@@ -65,7 +65,7 @@ export const HeroSection: FC = () => {
       <div className="relative mx-auto min-h-144 w-full max-w-7xl px-6 pt-32 pb-16 sm:px-8 lg:flex lg:min-h-176 lg:items-center lg:px-12 lg:pt-40 lg:pb-24 xl:px-16">
         {/* Portrait — bottom-right corner accent (bleeds off the edge) on mobile,
             absolute right on lg. Sits behind the copy so text/CTA stay legible. */}
-        <div className="pointer-events-none absolute bottom-5 -right-4 z-0 h-[60%] w-[50%] max-w-72 sm:-right-6 lg:right-0 lg:top-24 lg:h-auto lg:w-[46%] lg:max-w-130">
+        <div className="motion-entrance-fade pointer-events-none absolute bottom-5 -right-4 z-0 h-[60%] w-[50%] max-w-72 [--motion-delay:80ms] sm:-right-6 lg:right-0 lg:top-24 lg:h-auto lg:w-[46%] lg:max-w-130">
           <Image
             src="/ryu-profile/1.webp"
             alt="대표변호사 류남경 프로필 사진"
@@ -99,7 +99,7 @@ export const HeroSection: FC = () => {
         {/* Copy — fills the surface; lower items kept left of the portrait on mobile */}
         <div className="relative z-10 w-full max-w-160 lg:w-[52%]">
           {/* Cluster 1 — 헤드라인 메시지 (eyebrow · h1 · 보조 설명) */}
-          <div>
+          <div className="motion-entrance [--motion-delay:140ms]">
             <p className="text-title-3 font-bold tracking-[0.04em] text-brand-gold">
               창원·부산 검사 출신 형사 전문 변호사
             </p>
@@ -123,7 +123,7 @@ export const HeroSection: FC = () => {
           </div>
 
           {/* Cluster 2 — 변호사 신원·약력·CTA (이름 · credentials · 상담 버튼) */}
-          <div>
+          <div className="motion-entrance [--motion-delay:300ms]">
             <div className="mt-6 flex w-fit max-w-full items-baseline gap-2.5 border-t border-brand-gold/55 pt-4">
               <strong className="font-sans text-title-3 font-extrabold text-white">류남경</strong>
               <span className="text-body-1 font-semibold text-white/75">대표변호사</span>

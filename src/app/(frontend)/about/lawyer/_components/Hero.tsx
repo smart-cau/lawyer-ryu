@@ -86,7 +86,7 @@ export const HeroSection: FC = () => {
         </>
       }
     >
-      <div className="flex flex-col items-center md:items-start">
+      <div className="motion-entrance-fade flex flex-col items-center [--motion-delay:80ms] md:items-start">
         <div className="relative h-[25rem] w-full max-w-[21rem] overflow-hidden md:h-[27rem] md:w-[18rem] md:max-w-none lg:h-[38rem] lg:w-[28rem]">
           <Image
             src="/profile-white-bg-remove.png"
@@ -99,7 +99,7 @@ export const HeroSection: FC = () => {
           />
         </div>
 
-        <div className="relative z-10 -mt-14 w-full text-center md:-mt-14 md:text-left lg:-mt-20">
+        <div className="motion-entrance relative z-10 -mt-14 w-full text-center [--motion-delay:180ms] md:-mt-14 md:text-left lg:-mt-20">
           <div className="flex flex-wrap items-baseline justify-center gap-x-3 md:justify-start">
             <h1 className="text-display-1 font-medium">류남경</h1>
             <p className="text-label-1 font-medium text-brand-gold md:text-headline-2">
@@ -117,7 +117,7 @@ export const HeroSection: FC = () => {
         </div>
       </div>
 
-      <div className="space-y-6 lg:space-y-7 lg:pl-2">
+      <div className="motion-entrance space-y-6 [--motion-delay:260ms] lg:space-y-7 lg:pl-2">
         <h2 className="break-keep text-headline-1 font-medium before:mb-5 before:block before:h-1 before:w-16 before:bg-brand-gold before:content-[''] md:text-display-3">
           주요 경력
         </h2>
