@@ -8,9 +8,9 @@ import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGra
 
 import { HeaderLightTone, HeroSection, MessageSection, NarrativeSection } from './_components'
 
-const title = '류남경 변호사 소개 | 창원·부산 19년 검사 출신 형사전문변호사'
+const title = '창원 검사 출신 변호사 류남경 | 형사전문변호사'
 const description =
-  '창원지검·부산지검 등에서 19년간 검사로 수사와 공판을 담당한 류남경 대표변호사입니다. 대한변협 등록 형사법 전문 변호사로서 창원·부산 형사사건을 직접 상담하고 변론합니다.'
+  '창원 검사 출신 변호사 류남경 대표변호사입니다. 창원지검·부산지검 등에서 19년간 수사와 공판을 담당했으며, 대한변협 등록 형사법 전문 변호사로서 창원 형사사건을 직접 상담하고 변론합니다.'
 
 export const metadata: Metadata = {
   title,
