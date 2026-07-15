@@ -89,6 +89,17 @@ Use the model in `references/content-model.md`. Vary evidence, procedure, mistak
 
 At page level, make the visible introduction, subcategories, attorney section, FAQ, CTA, title, and description tell the same story. Profile proof belongs where it explains a relevant capability; it must not be pasted into every section.
 
+#### Footer CTA direction
+
+Treat `footerCta` as the visitor's next-action section, not as a final summary of the page.
+
+- Write the title as a recognizable case or procedural moment followed by one direct, calm action cue.
+- Use the lead to state that the representative attorney consults directly and, when useful, name one page-specific item to review such as the investigation date, notice date, documents, or evidence.
+- Keep this conversion grammar consistent across sibling leaves while varying the situation, urgency, and review object. Do not reuse one sentence mechanically.
+- Calibrate urgency to the matter. Investigation-stage criminal pages may say `조사 전에 상담하세요` or `혼자 대응하지 마세요`; civil, family, corporate, and administrative pages should name the actual deadline or decision point without manufacturing fear.
+- Keep credentials, regional keywords, legal explanations, and repeated body summaries out of the CTA unless they are necessary for the immediate decision.
+- Make the button label describe the actual action. Do not imply a free consultation, guaranteed result, or compulsory retention of counsel.
+
 ### 5. Apply SEO as a coherence check
 
 Read `references/seo-page-quality.md`. Require:

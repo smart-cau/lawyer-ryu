@@ -20,6 +20,8 @@ Mark each gate `pass`, `fail`, or `approval needed`. Do not call a page complete
 - [ ] Accused and victim guidance is separated when necessary.
 - [ ] The page adds unique value beyond sibling leaves and is not a doorway.
 - [ ] FAQ answers add information rather than repeat sales claims.
+- [ ] The footer CTA names a page-specific situation or decision point and gives one direct next action.
+- [ ] Footer CTA urgency matches the matter and does not become a repeated summary, keyword block, or fear cue.
 
 ## Korean quality
 
