@@ -14,8 +14,8 @@ import { getServerSideURL } from '@/utilities/getURL'
 
 const generateTitle: GenerateTitle<Case> = ({ doc }) => {
   return doc?.title
-    ? `${doc.title} | 법무법인 인유 창원사무소`
-    : '법무법인 인유 창원사무소 | 대표변호사 류남경'
+    ? `${doc.title} | 법무법인 인유 창원분사무소`
+    : '법무법인 인유 창원분사무소 | 대표변호사 류남경'
 }
 
 const generateURL: GenerateURL<Case> = ({ doc }) => {
@@ -85,7 +85,7 @@ export const plugins: Plugin[] = [
     collections: {
       cases: {
         enabled: { find: true, create: true, update: true, delete: true },
-        description: '법무법인 인유 창원사무소 성공사례(Cases) — 제목/슬러그/본문/SEO 메타를 가진 사례 콘텐츠',
+        description: '법무법인 인유 창원분사무소 성공사례(Cases) — 제목/슬러그/본문/SEO 메타를 가진 사례 콘텐츠',
       },
       categories: {
         enabled: { find: true, create: true, update: true, delete: true },

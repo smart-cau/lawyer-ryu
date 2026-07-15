@@ -3,14 +3,16 @@ import { getServerSideURL } from './getURL'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'An open-source website built with Payload and Next.js.',
+  description:
+    '창원·부산 형사사건을 상담하는 법무법인 인유 창원분사무소입니다. 검사 출신 류남경 대표변호사가 직접 상담하고 변론합니다.',
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/backgrounds/office-library-desk.png`,
     },
   ],
-  siteName: 'Payload Website Template',
-  title: 'Payload Website Template',
+  locale: 'ko_KR',
+  siteName: '법무법인 인유 창원분사무소',
+  title: '법무법인 인유 창원분사무소 | 류남경 대표변호사',
 }
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {

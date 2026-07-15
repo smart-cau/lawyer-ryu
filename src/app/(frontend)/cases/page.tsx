@@ -121,6 +121,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 export function generateMetadata(): Metadata {
   return {
-    title: `법무법인 인유 창원사무소 | 성공사례`,
+    title: `법무법인 인유 창원분사무소 | 성공사례`,
   }
 }

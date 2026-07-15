@@ -27,8 +27,8 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | 법무법인 인유 창원사무소'
-    : '법무법인 인유 창원사무소 | 대표변호사 류남경'
+    ? doc?.meta?.title + ' | 법무법인 인유 창원분사무소'
+    : '법무법인 인유 창원분사무소 | 대표변호사 류남경'
 
   return {
     description: doc?.meta?.description,
