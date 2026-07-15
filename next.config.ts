@@ -48,7 +48,28 @@ const nextConfig: NextConfig = {
     return webpackConfig
   },
   reactStrictMode: true,
+  // 기술 스택을 드러내는 `X-Powered-By` 헤더를 제거한다.
+  poweredByHeader: false,
   redirects,
+  // 전역 보안 응답 헤더. CSP는 네이버 지도 SDK·관리자 패널과의 호환성
+  // 검증이 필요해 별도로 다룬다(여기서는 파괴 위험이 없는 헤더만 적용).
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          // 관리자 라이브 프리뷰는 동일 출처 iframe이라 SAMEORIGIN으로 허용된다.
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()',
+          },
+        ],
+      },
+    ]
+  },
   turbopack: {
     root: path.resolve(dirname),
   },

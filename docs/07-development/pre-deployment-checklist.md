@@ -46,16 +46,16 @@
 | COM-04 | 성공사례 사실 확인과 비식별화 검토     | 차단    | 제외     | 해당 없음 |           | 현재 사례 5건은 더미 데이터    |
 | CNT-01 | 공개 연락처 표시와 전화 연결 기준 통일  | 차단    | 필수     | 진행 중  | 류남경 대표변호사 | 검토 완료               |
 | CNT-02 | 카카오톡 상담 CTA 처리          | 배포 전  | 필수     | 완료     |           | 카카오톡 CTA 제거  |
-| INF-01 | Vercel 운영 환경변수 구성       | 차단    | 미결     | 미착수   |           |                     |
+| INF-01 | Vercel 운영 환경변수 구성       | 차단    | 필수     | 완료     |           | Vercel 등록 및 환경별 범위 확인 |
 | INF-02 | 운영 빌드와 마이그레이션 절차 확정     | 차단    | 미결     | 미착수   |           |                     |
 | INF-03 | 운영 데이터, 미디어와 관리자 계정 확인  | 차단    | 미결     | 미착수   |           |                     |
 | INF-04 | 관리자 이메일 발송 구성           | 조건부   | 미결     | 미착수   |           |                     |
-| SEO-01 | 공식 도메인과 canonical 기준 확정 | 차단    | 미결     | 미착수   |           |                     |
+| SEO-01 | 공식 도메인과 canonical 기준 확정 | 차단    | 필수     | 완료    |           | ryulawyer.com 연결·재배포, 전 채널 도메인 일치 검증 |
 | SEO-02 | robots.txt와 사이트맵 수정     | 차단    | 필수     | 완료    |           | Next.js 메타데이터 라우트로 전환 |
 | SEO-03 | 주요 페이지 메타데이터 완성         | 배포 전  | 필수     | 완료     |           | 주요 공개 페이지·사례 상세 메타데이터 완료 |
 | SEO-04 | 템플릿 검색 페이지 처리           | 배포 전  | 제외     | 완료   |           | /cases 검색으로 충분, /search·searchPlugin 완전 제거 |
 | PRV-01 | 개인정보 처리 현황과 처리방침 결정     | 조건부   | 미결     | 미착수   |           |                     |
-| SEC-01 | 운영 보안 헤더와 공개 엔드포인트 점검   | 배포 전  | 미결     | 미착수   |           |                     |
+| SEC-01 | 운영 보안 헤더와 공개 엔드포인트 점검   | 배포 전  | 필수     | 진행 중  |           | 보안 헤더·엔드포인트 위생 완료(배포 대기), CSP는 배포 후 유보 |
 | SEC-02 | Payload MCP 운영 사용 여부 결정 | 배포 전  | 필수     | 진행 중  |           | 프로덕션 사용 결정, 운영 보안 절차 확인 필요 |
 | QA-01  | 현재 사이트 기준 E2E 테스트 재작성   | 차단    | 미결     | 미착수   |           |                     |
 | QA-02  | 운영 배포 전 최종 검증 실행        | 차단    | 미결     | 미착수   |           |                     |
@@ -136,18 +136,19 @@
 ### INF-01. Vercel 운영 환경변수 구성
 
 - **발견 사항**: 기본 `pnpm build`는 빌드 시 사용할 `PAYLOAD_SECRET`이 없어 실패했다. 개발 환경변수를 명시했을 때는 코드 빌드가 성공했다.
+- **확인 결과**: Vercel에 데이터베이스, Vercel Blob, Payload, Cron, Preview와 네이버 지도 관련 환경변수가 등록되어 있으며 Production·Preview·All Environments 범위가 용도에 맞게 구분되어 있다. 민감한 값 자체는 문서에 기록하지 않는다. (2026-07-15)
 - **필수 후보 변수**
-  - [ ] `POSTGRES_URL`
-  - [ ] `PAYLOAD_SECRET`
-  - [ ] `BLOB_READ_WRITE_TOKEN`
-  - [ ] `CRON_SECRET`
-  - [ ] `PREVIEW_SECRET`
-  - [ ] `NEXT_PUBLIC_NAVER_MAP_CLIENT_ID`
-  - [ ] `NEXT_PUBLIC_SERVER_URL`
+  - [x] `POSTGRES_URL`
+  - [x] `PAYLOAD_SECRET`
+  - [x] `BLOB_READ_WRITE_TOKEN`
+  - [x] `CRON_SECRET`
+  - [x] `PREVIEW_SECRET`
+  - [x] `NEXT_PUBLIC_NAVER_MAP_CLIENT_ID`
+  - [x] 운영 URL — Vercel이 제공하는 `VERCEL_PROJECT_PRODUCTION_URL`을 사용하므로 `NEXT_PUBLIC_SERVER_URL`을 별도로 등록하지 않아도 된다.
 - **완료 기준**
-  - [ ] Vercel의 `Preview` 환경과 `Production` 환경을 구분해 값을 등록했다.
-  - [ ] 비밀값은 충분한 길이의 임의 값으로 발급하고 저장소에 커밋하지 않았다.
-  - [ ] `.env.example`에 필요한 변수명과 용도를 최신화했다.
+  - [x] Vercel의 `Preview` 환경과 `Production` 환경을 구분해 값을 등록했다.
+  - [x] 비밀값은 충분한 길이의 임의 값으로 발급하고 저장소에 커밋하지 않았다.
+  - [x] `.env.example`에 필요한 변수명과 용도를 최신화했다.
 
 ### INF-02. 운영 빌드와 마이그레이션 절차 확정
 
@@ -180,10 +181,20 @@
 
 ### SEO-01. 공식 도메인과 canonical 기준 확정
 
+- **결정 (2026-07-15)**: 공식 도메인을 `ryulawyer.com`(루트)으로 확정한다. cafe24 등록 도메인의 네임서버를 Cloudflare(DNS only)로 이전하고, Vercel에 `ryulawyer.com`(대표)과 `www.ryulawyer.com`(루트로 308 리디렉션)을 연결했다. `www`→루트 통일을 canonical 기준으로 삼는다.
 - **완료 기준**
-  - [ ] 공식 도메인을 확정하고 Vercel에 연결했다.
-  - [ ] `NEXT_PUBLIC_SERVER_URL`, `canonical`, Open Graph, 구조화 데이터와 사이트맵이 같은 HTTPS 도메인을 사용한다.
-  - [ ] Vercel `Preview` 배포는 검색엔진에 노출되지 않도록 했다.
+  - [x] 공식 도메인을 확정하고 Vercel에 연결했다.
+  - [x] `NEXT_PUBLIC_SERVER_URL`, `canonical`, Open Graph, 구조화 데이터와 사이트맵이 같은 HTTPS 도메인을 사용한다.
+  - [x] Vercel `Preview` 배포는 검색엔진에 노출되지 않도록 했다.
+- **완료 내역 (2026-07-15)**
+  - 도메인 연결 후 프로덕션 재배포로 `VERCEL_PROJECT_PRODUCTION_URL`이 `ryulawyer.com`으로 갱신됨. 코드는 `getServerSideURL()`·`getConfiguredPublicSiteURL()`에 연동돼 있어 별도 수정 없이 실제 도메인으로 해석된다.
+  - 라이브 검증: `sitemap.xml`·`robots.txt`(Host/Sitemap)·홈 `canonical`·`og:url`·홈/변호사 소개 JSON-LD(@id·url·logo·image)가 모두 `https://ryulawyer.com`으로 출력됨. 사이트맵 14개 URL 전부 200. `www`는 308로 루트 리디렉션.
+  - `NEXT_PUBLIC_SERVER_URL`은 별도 등록하지 않음 — `VERCEL_PROJECT_PRODUCTION_URL`이 빌드·런타임 모두에서 폴백으로 해석되므로 중복 설정을 두지 않는다.
+  - Preview 색인 차단은 `src/utilities/publicSiteURL.ts`의 `isPreviewDeployment()` 가드로 코드상 보장(Preview면 `robots`가 `Disallow: /`).
+- **관련 코드**
+  - `src/utilities/publicSiteURL.ts`
+  - `src/utilities/getURL.ts`
+  - `src/app/(frontend)/layout.tsx` (metadataBase)
 
 ### SEO-02. robots.txt와 사이트맵 수정
 
@@ -266,13 +277,23 @@
 ### SEC-01. 운영 보안 헤더와 공개 엔드포인트 점검
 
 - **발견 사항**: 로컬 응답에는 별도 보안 헤더가 없고 `X-Powered-By: Next.js, Payload`가 노출된다. 관리자, REST API, GraphQL과 GraphQL Playground 라우트가 존재한다.
+- **결정 (2026-07-15)**: 파괴 위험이 없는 보안 응답 헤더는 즉시 적용한다. CSP는 네이버 지도 SDK·관리자 라이브 프리뷰·Blob 이미지와의 호환성 검증이 필요해 **배포 후 별도 하드닝 작업으로 유보**한다(Report-Only 롤아웃 권장).
 - **완료 기준**
-  - [ ] CSP 적용 범위를 네이버 지도와 이미지 저장소를 포함해 설계했다.
-  - [ ] `frame-ancestors` 또는 `X-Frame-Options`, `X-Content-Type-Options`, Referrer Policy, Permissions Policy를 결정했다.
-  - [ ] 운영 HTTPS에서 HSTS 적용 여부를 확인했다.
-  - [ ] `/admin`, REST API, GraphQL과 Playground의 공개 범위를 확인했다.
-  - [ ] 관리자와 비공개 데이터에 익명 접근할 수 없는지 테스트했다.
-  - [ ] 불필요한 기술 식별 헤더를 제거했다.
+  - [ ] CSP 적용 범위를 네이버 지도와 이미지 저장소를 포함해 설계했다. → **배포 후 유보** (아래 참고)
+  - [x] `frame-ancestors` 또는 `X-Frame-Options`, `X-Content-Type-Options`, Referrer Policy, Permissions Policy를 결정했다.
+  - [x] 운영 HTTPS에서 HSTS 적용 여부를 확인했다.
+  - [x] `/admin`, REST API, GraphQL과 Playground의 공개 범위를 확인했다.
+  - [x] 관리자와 비공개 데이터에 익명 접근할 수 없는지 테스트했다.
+  - [x] 불필요한 기술 식별 헤더를 제거했다.
+- **완료 내역 (2026-07-15)** — 코드 반영·로컬 검증 완료, 다음 프로덕션 배포 시 라이브 적용
+  - `next.config.ts`에 `poweredByHeader: false` + 전역 `headers()` 추가: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: SAMEORIGIN`(관리자 라이브 프리뷰는 동일 출처라 정상), `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`.
+  - 로컬 검증: 4개 헤더 적용·`X-Powered-By` 제거 확인, `/admin` 200 정상.
+  - HSTS는 Vercel이 프로덕션 커스텀 도메인에 자동 적용(`strict-transport-security: max-age=63072000`) — 코드 불필요.
+  - 엔드포인트 라이브 점검: `/api/graphql-playground` 404(프로덕션 비활성), `/api/users` 403(비공개 익명 차단), `/api/graphql` 405(GET 불가), `/api/cases` 200(published만 노출되는 의도된 공개 API), `/admin` 200(로그인 페이지 공개·데이터 인증 필요).
+- **잔여 (배포 후 유보): CSP**
+  - Report-Only 헤더로 먼저 롤아웃해 네이버 지도·관리자·Blob의 실제 필요 소스를 수집한 뒤 allowlist를 확정하고 enforce로 전환한다.
+- **관련 코드**
+  - `next.config.ts`
 
 ### SEC-02. Payload MCP 운영 사용 여부 결정
 
@@ -368,3 +389,6 @@
 | 2026-07-15 | SEO-04 검색 기능 제외 결정, /search·searchPlugin 완전 제거 및 drop 마이그레이션 생성 |
 | 2026-07-15 | SEO-02 robots.txt·사이트맵을 Next.js 메타데이터 라우트로 전환하고 Preview·URL 미설정 차단 정책 적용 |
 | 2026-07-15 | SEC-02 Payload MCP 프로덕션 사용 결정 반영, 운영 API 키·권한·교체·폐기 절차를 잔여 항목으로 기록 |
+| 2026-07-15 | INF-01 Vercel 운영 환경변수 등록 확인 및 `.env.example` 최신화로 완료 처리 |
+| 2026-07-15 | SEO-01 공식 도메인 `ryulawyer.com` 확정·연결(cafe24→Cloudflare→Vercel), 재배포 후 도메인 일치 라이브 검증으로 완료 처리 |
+| 2026-07-15 | SEC-01 보안 응답 헤더 적용(`next.config.ts`)·엔드포인트 노출 라이브 점검, CSP는 배포 후 유보 결정 |
