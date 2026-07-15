@@ -1,17 +1,16 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+  // 멱등하게 작성한다. `DROP TABLE "search" CASCADE`가 이미
+  // payload_locked_documents_rels_search_fk 제약을 함께 제거하므로,
+  // 이후 제약·인덱스·컬럼 삭제는 모두 IF EXISTS로 걸어 중복 삭제 실패를 막는다.
   await db.execute(sql`
-   ALTER TABLE "search_categories" DISABLE ROW LEVEL SECURITY;
-  ALTER TABLE "search" DISABLE ROW LEVEL SECURITY;
-  ALTER TABLE "search_rels" DISABLE ROW LEVEL SECURITY;
-  DROP TABLE "search_categories" CASCADE;
-  DROP TABLE "search" CASCADE;
-  DROP TABLE "search_rels" CASCADE;
-  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_search_fk";
-  
-  DROP INDEX "payload_locked_documents_rels_search_id_idx";
-  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "search_id";`)
+  DROP TABLE IF EXISTS "search_categories" CASCADE;
+  DROP TABLE IF EXISTS "search" CASCADE;
+  DROP TABLE IF EXISTS "search_rels" CASCADE;
+  ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_search_fk";
+  DROP INDEX IF EXISTS "payload_locked_documents_rels_search_id_idx";
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN IF EXISTS "search_id";`)
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
