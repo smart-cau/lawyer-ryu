@@ -52,8 +52,8 @@
 | INF-04 | 관리자 이메일 발송 구성           | 조건부   | 미결     | 미착수   |           |                     |
 | SEO-01 | 공식 도메인과 canonical 기준 확정 | 차단    | 미결     | 미착수   |           |                     |
 | SEO-02 | robots.txt와 사이트맵 수정     | 차단    | 미결     | 미착수   |           |                     |
-| SEO-03 | 주요 페이지 메타데이터 완성         | 배포 전  | 미결     | 미착수   |           |                     |
-| SEO-04 | 템플릿 검색 페이지 처리           | 배포 전  | 미결     | 미착수   |           |                     |
+| SEO-03 | 주요 페이지 메타데이터 완성         | 배포 전  | 필수     | 완료     |           | 주요 공개 페이지·사례 상세 메타데이터 완료 |
+| SEO-04 | 템플릿 검색 페이지 처리           | 배포 전  | 제외     | 완료   |           | /cases 검색으로 충분, /search·searchPlugin 완전 제거 |
 | PRV-01 | 개인정보 처리 현황과 처리방침 결정     | 조건부   | 미결     | 미착수   |           |                     |
 | SEC-01 | 운영 보안 헤더와 공개 엔드포인트 점검   | 배포 전  | 미결     | 미착수   |           |                     |
 | SEC-02 | Payload MCP 운영 사용 여부 결정 | 조건부   | 미결     | 미착수   |           |                     |
@@ -208,17 +208,33 @@
   - 사례 상세의 SEO 제목이 없으면 모든 사례가 같은 기본 제목을 사용한다.
   - 사례 상세 Open Graph URL과 기본 이미지에 Payload 템플릿 잔재가 남아 있다.
 - **완료 기준**
-  - [ ] 공개 페이지별 고유 제목과 설명이 있다.
-  - [ ] `canonical`과 Open Graph URL이 올바르다.
-  - [ ] 공유 이미지와 대체 텍스트가 적절하다.
-  - [ ] 사례 상세는 문서 제목 또는 승인된 SEO 제목을 사용한다.
+  - [x] 공개 페이지별 고유 제목과 설명이 있다. (검색 페이지는 SEO-04에서 별도 처리)
+  - [x] `canonical`과 Open Graph URL이 올바르다.
+  - [x] 공유 이미지와 대체 텍스트가 적절하다.
+  - [x] 사례 상세는 문서 제목 또는 승인된 SEO 제목을 사용한다.
+- **사례 상세 보완 내역 (2026-07-15)**: `src/utilities/generateMeta.ts`의 Payload 템플릿 잔재 3건을 수정했다.
+  - SEO 제목이 비면 사무소 기본 제목 대신 사례 문서 제목(`doc.title`)으로 폴백한다.
+  - 사례 상세 Open Graph URL을 `/cases/<slug>`로 정확히 생성한다(기존에는 항상 `/`).
+  - `meta.image`가 없을 때 `website-template-OG.webp` 대신 `mergeOpenGraph`의 사무소 기본 OG 이미지를 사용한다.
+  - 실제 상세 페이지 응답에서 고유 `<title>`·`og:url`·`og:image`가 나오는 것을 확인했다.
+- **관련 코드**
+  - `src/app/(frontend)/services/_data/metadata.ts`
+  - `src/app/(frontend)/services/page.tsx`
+  - `src/app/(frontend)/cases/page.tsx`
 
 ### SEO-04. 템플릿 검색 페이지 처리
 
 - **발견 사항**: `/search`가 영어 `Search`, `No results found.`, `Payload Website Template Search` 상태로 공개된다.
+- **결정 (2026-07-15)**: 전역 `/search`는 `/cases` 목록의 자체 검색·필터와 기능이 중복되고(둘 다 `cases`를 `like`로 조회), 어디서도 링크되지 않는 고아 라우트였다. searchPlugin은 단일 컬렉션 검색 품질을 개선하지 못하므로 검색 기능 자체를 v1에서 제외하고 관련 인프라를 완전히 제거한다.
 - **완료 기준**
-  - [ ] 검색 기능을 유지한다면 한글화하고 현재 사례 카드와 연결했다.
-  - [ ] 사용하지 않는다면 라우트를 제거하거나 검색 제외 처리했다.
+  - [x] 사용하지 않으므로 라우트를 제거했다. (아래 제거 내역)
+- **제거 내역**
+  - `src/app/(frontend)/search/` 라우트와 `src/search/`(Component·beforeSync·fieldOverrides) 삭제.
+  - `src/plugins/index.ts`에서 `searchPlugin`과 관련 import 제거.
+  - `pnpm generate:types`로 `search` 컬렉션 타입 제거.
+  - `search`·`search_rels`·`search_categories` 테이블을 drop하는 마이그레이션 `20260715_021550_remove_search_plugin` 생성(프로덕션 배포 시 적용).
+  - `CollectionArchive`(홈·`/cases` 사용)와 `useDebounce`(`CasesToolbar` 사용)는 유지.
+  - dev 서버 재시작 후 `/search` 404, 주요 라우트 200, lint·타입 검증 통과 확인.
 
 ## 6. 개인정보와 보안
 
@@ -327,4 +343,6 @@
 | 2026-07-15 | 2026-07-14 배포 준비 감사 결과를 체크리스트로 정리 |
 | 2026-07-15 | COM-01·COM-03 완료, COM-04 제외 결정 반영 |
 | 2026-07-15 | CNT-01 공개 번호 표시와 전화 연결 기준 결정 반영   |
-
+| 2026-07-15 | SEO-03 주요 공개 페이지 메타데이터 완료, 사례 상세 SEO 제외 결정 반영 |
+| 2026-07-15 | SEO-03 사례 상세 메타데이터 템플릿 잔재 3건 수정으로 완료 처리 |
+| 2026-07-15 | SEO-04 검색 기능 제외 결정, /search·searchPlugin 완전 제거 및 drop 마이그레이션 생성 |
