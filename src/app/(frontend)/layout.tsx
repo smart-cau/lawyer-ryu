@@ -28,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="ko" suppressHydrationWarning className={notoSerifKR.variable}>
       <head>
+        <meta name="naver-site-verification" content="1e99ad4b3980f317b77d53f0254a70f5d665376c" />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
