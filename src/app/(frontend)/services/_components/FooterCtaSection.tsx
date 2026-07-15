@@ -55,7 +55,7 @@ export const FooterCtaSection: FC<FooterCtaSectionProps> = ({ data }) => {
       >
         <Link href={PHONE_HREF}>
           <Phone className="h-4 w-4" />
-          {data.buttonLabel ?? '전화 상담'}
+          {data.buttonLabel ?? '대표변호사와 상담하기'}
         </Link>
       </Button>
     </SectionContainer>

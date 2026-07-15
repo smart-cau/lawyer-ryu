@@ -25,8 +25,7 @@ export const generalCriminalLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '조사 날짜가 잡혔다면 그 전에 준비해야 합니다',
-    lead: '류남경 대표변호사가 사건 경위와 조사 일정을 직접 듣고 상담합니다.',
-    buttonLabel: '전화 상담',
+    title: '형사 사건으로 조사 일정이 잡혔다면 출석 전에 상담하세요',
+    lead: '류남경 대표변호사가 사건 경위와 조사 일정을 듣고 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

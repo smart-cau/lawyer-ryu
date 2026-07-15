@@ -24,8 +24,7 @@ export const schoolViolenceLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '첫 진술서를 내기 전, 지도 경위와 자료부터 확인합니다',
-    lead: '대표변호사 류남경이 직접 상담합니다.',
-    buttonLabel: '전화 상담',
+    title: '아동학대 신고나 학교폭력 사안, 첫 진술 전에 상담하세요',
+    lead: '류남경 대표변호사가 진술 내용과 학교 절차, 수사 절차에 필요한 자료를 살펴 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

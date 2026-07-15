@@ -25,7 +25,6 @@ export const trafficCrimeLeafContent = {
   },
   footerCta: {
     title: '음주운전·교통사고, 첫 조사 전에 상담하세요',
-    lead: '대표변호사 류남경이 직접 상담합니다.',
-    buttonLabel: '전화 상담',
+    lead: '류남경 대표변호사가 사고 경위와 조사 일정, 면허 처분을 확인해 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

@@ -24,8 +24,7 @@ export const antiCorruptionLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '공직 사건은 첫 답변부터 기록으로 남습니다',
-    lead: '대표변호사 류남경이 사건 구조를 직접 검토합니다.',
-    buttonLabel: '전화 상담',
+    title: '공직선거법이나 뇌물 사건으로 조사를 앞두고 있다면 상담하세요',
+    lead: '류남경 대표변호사가 사건 경위와 제출 자료를 확인해 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

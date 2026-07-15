@@ -29,8 +29,7 @@ export const administrativeLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '처분 통지일과 불복기한부터 확인합니다',
-    lead: '처분서와 사전통지서, 제출한 의견과 관련 기록을 준비해 현재 가능한 절차를 검토해 주세요.',
-    buttonLabel: '전화 상담',
+    title: '행정처분, 불복기한이 지나기 전에 상담하세요',
+    lead: '류남경 대표변호사가 처분 통지일과 제출 자료를 살펴 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

@@ -24,8 +24,7 @@ export const corporateCrimeLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '회사와 대표·임원의 대응을 한 흐름으로 검토합니다',
-    lead: '기관의 연락 내용과 제출 기한, 현재 보유한 자료를 확인해 상담을 준비해 주세요.',
-    buttonLabel: '전화 상담',
+    title: '회사나 임원이 조사기관의 자료 제출을 요청받았다면 상담하세요',
+    lead: '류남경 대표변호사가 연락 내용과 제출 기한, 보유 자료를 살펴 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

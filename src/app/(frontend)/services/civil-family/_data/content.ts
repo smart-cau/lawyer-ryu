@@ -29,8 +29,7 @@ export const civilFamilyLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '계약서와 재산 자료에서 분쟁의 실마리를 확인합니다',
-    lead: '현재 가지고 있는 문서와 상대방의 요구 내용을 바탕으로 청구 범위와 다음 절차를 검토합니다.',
-    buttonLabel: '전화 상담',
+    title: '민사·가사 분쟁, 현재 자료만으로 판단하기 전에 상담하세요',
+    lead: '류남경 대표변호사가 현재 보유한 문서와 상대방의 요구를 바탕으로 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

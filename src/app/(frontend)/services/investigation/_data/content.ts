@@ -57,8 +57,7 @@ export const investigationLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '조사 일정이 정해졌다면 출석 전에 준비해야 합니다',
-    lead: '류남경 대표변호사가 창원·부산 사건의 조사 단계와 준비 자료를 직접 살펴봅니다.',
-    buttonLabel: '전화 상담',
+    title: '경찰·검찰 조사, 출석 전에 상담하세요',
+    lead: '류남경 대표변호사가 현재 조사 단계와 출석 전 준비 자료를 살펴 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

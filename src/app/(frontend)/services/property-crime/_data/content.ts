@@ -24,8 +24,7 @@ export const propertyCrimeLeafContent = {
     items: FAQ_ITEMS,
   },
   footerCta: {
-    title: '송금 전 설명과 송금 후 자금 흐름을 함께 살펴야 합니다',
-    lead: '류남경 대표변호사가 피해 자료와 조사 대응 내용을 직접 검토합니다.',
-    buttonLabel: '전화 상담',
+    title: '투자사기나 금융사기로 피해를 입었거나 조사를 앞두고 있다면 상담하세요',
+    lead: '류남경 대표변호사가 피해 자료와 자금 흐름, 현재 조사 상황을 확인해 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent

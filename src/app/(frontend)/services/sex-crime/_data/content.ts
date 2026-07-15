@@ -25,7 +25,6 @@ export const sexCrimeLeafContent = {
   },
   footerCta: {
     title: '성범죄 수사, 혼자 대응하지 마세요',
-    lead: '대표변호사 류남경이 직접 상담합니다.',
-    buttonLabel: '전화 상담',
+    lead: '류남경 대표변호사가 사건 경위와 조사 일정을 듣고 직접 상담합니다.',
   },
 } satisfies ServiceLeafContent
