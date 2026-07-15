@@ -6,6 +6,7 @@ import { MotionReveal } from '@/components/MotionReveal'
 import { Pagination } from '@/components/Pagination'
 import { PageTitleBar } from '@/components/PageTitleBar'
 import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { CasesToolbar, type CategoryOption } from './_components/CasesToolbar'
@@ -120,7 +121,33 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 }
 
 export function generateMetadata(): Metadata {
+  const title = '성공사례 | 법무법인 인유 창원분사무소'
+  const description =
+    '법무법인 인유 창원분사무소의 주요 성공사례를 분야별로 확인할 수 있습니다. 사건의 쟁점과 대응 결과를 살펴보고 상담 방향을 검토해 보세요.'
+
   return {
-    title: `법무법인 인유 창원분사무소 | 성공사례`,
+    title,
+    description,
+    alternates: {
+      canonical: '/cases',
+    },
+    openGraph: mergeOpenGraph({
+      title,
+      description,
+      siteName: '법무법인 인유 창원분사무소',
+      url: '/cases',
+      images: [
+        {
+          url: '/backgrounds/courthouse-corridor.png',
+          alt: '법무법인 인유 창원분사무소 성공사례 안내 이미지',
+        },
+      ],
+    }),
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/backgrounds/courthouse-corridor.png'],
+    },
   }
 }

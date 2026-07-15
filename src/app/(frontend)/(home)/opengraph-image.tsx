@@ -71,27 +71,27 @@ export default async function OpenGraphImage() {
           style={{
             alignItems: 'center',
             display: 'flex',
-            marginTop: -12,
+            marginTop: -18,
           }}
         >
           <img
             alt=""
             src={toDataUrl(logo, 'image/png')}
-            style={{ height: 104, objectFit: 'contain', width: 99 }}
+            style={{ height: 142, objectFit: 'contain', width: 135 }}
           />
 
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginLeft: 30,
+              marginLeft: 38,
             }}
           >
             <span
               style={{
                 color: '#9a6c25',
-                fontSize: 20,
-                letterSpacing: '0.12em',
+                fontSize: 25,
+                letterSpacing: '0.1em',
                 lineHeight: 1,
               }}
             >
@@ -99,9 +99,9 @@ export default async function OpenGraphImage() {
             </span>
             <span
               style={{
-                fontSize: 58,
+                fontSize: 76,
                 letterSpacing: '-0.045em',
-                lineHeight: 1.35,
+                lineHeight: 1.3,
               }}
             >
               법무법인 인유
@@ -109,8 +109,8 @@ export default async function OpenGraphImage() {
             <span
               style={{
                 color: '#69717d',
-                fontSize: 18,
-                letterSpacing: '0.18em',
+                fontSize: 22,
+                letterSpacing: '0.16em',
                 lineHeight: 1,
               }}
             >
@@ -124,8 +124,8 @@ export default async function OpenGraphImage() {
             background: 'rgba(20,32,51,0.18)',
             display: 'flex',
             height: 1,
-            marginTop: 50,
-            width: 700,
+            marginTop: 44,
+            width: 820,
           }}
         />
 
@@ -134,12 +134,12 @@ export default async function OpenGraphImage() {
             alignItems: 'center',
             display: 'flex',
             flexDirection: 'column',
-            marginTop: 36,
+            marginTop: 32,
           }}
         >
           <span
             style={{
-              fontSize: 28,
+              fontSize: 36,
               letterSpacing: '-0.025em',
             }}
           >
@@ -148,9 +148,9 @@ export default async function OpenGraphImage() {
           <span
             style={{
               color: '#606975',
-              fontSize: 22,
+              fontSize: 28,
               letterSpacing: '-0.025em',
-              marginTop: 12,
+              marginTop: 14,
             }}
           >
             19년 검사 경력 · 대한변협 등록 형사법 전문

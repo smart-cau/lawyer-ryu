@@ -8,6 +8,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   images: [
     {
       url: `${getServerSideURL()}/backgrounds/office-library-desk.png`,
+      alt: '법무법인 인유 창원분사무소 상담 공간',
     },
   ],
   locale: 'ko_KR',
