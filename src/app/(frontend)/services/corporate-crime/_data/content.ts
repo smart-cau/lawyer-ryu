@@ -26,7 +26,6 @@ export const corporateCrimeLeafContent = {
   footerCta: {
     title: '회사와 대표·임원의 대응을 한 흐름으로 검토합니다',
     lead: '기관의 연락 내용과 제출 기한, 현재 보유한 자료를 확인해 상담을 준비해 주세요.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

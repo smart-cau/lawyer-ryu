@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { FC } from 'react'
 
 import { SectionContainer } from '@/components/SectionContainer'
+import { cn } from '@/utilities/ui'
 
 import type { ServiceLeafContent } from '../_data/service-leaf'
 
@@ -70,7 +71,10 @@ export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data, serviceT
               fill
               quality={90}
               sizes="(min-width: 1280px) 27rem, 22rem"
-              className="origin-bottom-right scale-[1.22] object-contain object-right-bottom drop-shadow-[0_20px_35px_rgba(17,20,38,0.16)]"
+              className={cn(
+                'origin-bottom-right scale-[1.22] object-contain object-right-bottom drop-shadow-[0_20px_35px_rgba(17,20,38,0.16)]',
+                data.items.length < 4 && 'translate-y-[9%]',
+              )}
               priority={false}
             />
           </div>

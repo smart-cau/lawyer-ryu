@@ -40,7 +40,7 @@ export const ContactSection: FC = () => {
               <a
                 href={PHONE_HREF}
                 className="underline-offset-4 hover:underline"
-                aria-label={`대표 전화 ${PHONE_DISPLAY}`}
+                aria-label={`상담전화 ${PHONE_DISPLAY}, 055-719-0302로 연결`}
               >
                 {PHONE_DISPLAY}
               </a>

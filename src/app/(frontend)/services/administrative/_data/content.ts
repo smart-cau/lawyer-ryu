@@ -31,7 +31,6 @@ export const administrativeLeafContent = {
   footerCta: {
     title: '처분 통지일과 불복기한부터 확인합니다',
     lead: '처분서와 사전통지서, 제출한 의견과 관련 기록을 준비해 현재 가능한 절차를 검토해 주세요.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

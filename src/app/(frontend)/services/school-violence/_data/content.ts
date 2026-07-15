@@ -26,7 +26,6 @@ export const schoolViolenceLeafContent = {
   footerCta: {
     title: '첫 진술서를 내기 전, 지도 경위와 자료부터 확인합니다',
     lead: '대표변호사 류남경이 직접 상담합니다.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

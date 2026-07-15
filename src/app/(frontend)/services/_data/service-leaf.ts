@@ -72,7 +72,6 @@ export type ServiceLeafContent = {
   footerCta: {
     title: string
     lead: string
-    phoneHref?: string
     buttonLabel?: string
   }
 }

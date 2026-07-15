@@ -46,7 +46,7 @@ export function Logo({ className, priority = false, tone = 'light' }: Props) {
             isDark ? 'text-white/70' : 'text-muted-foreground',
           )}
         >
-          [창원사무소]
+          [창원분사무소]
         </span>
         <span
           className={cn(

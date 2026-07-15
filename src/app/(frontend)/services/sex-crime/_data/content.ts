@@ -26,7 +26,6 @@ export const sexCrimeLeafContent = {
   footerCta: {
     title: '성범죄 수사, 혼자 대응하지 마세요',
     lead: '대표변호사 류남경이 직접 상담합니다.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

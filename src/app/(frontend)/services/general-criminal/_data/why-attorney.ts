@@ -39,7 +39,7 @@ export const WHY_ATTORNEY_ITEMS: AttorneyStrength[] = [
 
 export const ATTORNEY_PROFILE = {
   name: '류남경 대표변호사',
-  affiliation: '법무법인 인유 창원사무소',
+  affiliation: '법무법인 인유 창원분사무소',
   photo: {
     src: '/ryu-profile/1.webp',
     alt: '류남경 대표변호사 프로필 사진',

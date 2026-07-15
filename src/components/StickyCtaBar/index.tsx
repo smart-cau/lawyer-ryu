@@ -6,7 +6,7 @@ import type { ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { KAKAO_TALK_CHAT_URL, NAVER_BLOG_URL, PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
+import { NAVER_BLOG_URL, PHONE_DISPLAY, PHONE_HREF } from '@/lib/contact-links'
 import { cn } from '@/utilities/ui'
 
 type StickyCtaAction = {
@@ -14,7 +14,7 @@ type StickyCtaAction = {
   label: string
   mobileLabel: string
   ariaLabel: string
-  href: string | null
+  href: string
   tooltip: string
   external?: boolean
   icon: ReactNode
@@ -41,26 +41,6 @@ const actions: StickyCtaAction[] = [
       </span>
     ),
     value: PHONE_DISPLAY,
-  },
-  {
-    id: 'kakao',
-    label: '카카오톡',
-    mobileLabel: '카카오톡',
-    ariaLabel: '카카오톡 상담',
-    href: KAKAO_TALK_CHAT_URL,
-    tooltip: KAKAO_TALK_CHAT_URL
-      ? '카카오톡 상담으로 이동'
-      : '카카오톡 채널 링크 확인 후 연결 예정',
-    icon: (
-      <span className="flex size-11 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
-        <Image src="/social/kakaotalk.png" alt="" width={38} height={38} className="size-9" />
-      </span>
-    ),
-    mobileIcon: (
-      <span className="flex size-9 items-center justify-center overflow-hidden rounded-full bg-[#FEE500] ring-1 ring-[#FEE500]">
-        <Image src="/social/kakaotalk.png" alt="" width={32} height={32} className="size-8" />
-      </span>
-    ),
   },
   {
     id: 'blog',
@@ -117,33 +97,19 @@ function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mo
 }
 
 function DesktopAction({ action }: { action: StickyCtaAction }) {
-  const href = action.href
-
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        {href ? (
-          <Button asChild variant="ghost" size="clear" className={desktopActionClass}>
-            <Link
-              href={href}
-              aria-label={action.ariaLabel}
-              target={action.external ? '_blank' : undefined}
-              rel={action.external ? 'noopener noreferrer' : undefined}
-            >
-              <ActionContent action={action} />
-            </Link>
-          </Button>
-        ) : (
-          <span
-            role="link"
-            aria-disabled="true"
-            aria-label={action.tooltip}
-            tabIndex={0}
-            className={cn(desktopActionClass, 'cursor-not-allowed text-muted-foreground')}
+        <Button asChild variant="ghost" size="clear" className={desktopActionClass}>
+          <Link
+            href={action.href}
+            aria-label={action.ariaLabel}
+            target={action.external ? '_blank' : undefined}
+            rel={action.external ? 'noopener noreferrer' : undefined}
           >
             <ActionContent action={action} />
-          </span>
-        )}
+          </Link>
+        </Button>
       </TooltipTrigger>
       <TooltipContent side="left">{action.tooltip}</TooltipContent>
     </Tooltip>
@@ -151,26 +117,10 @@ function DesktopAction({ action }: { action: StickyCtaAction }) {
 }
 
 function MobileAction({ action }: { action: StickyCtaAction }) {
-  const href = action.href
-
-  if (!href) {
-    return (
-      <span
-        role="link"
-        aria-disabled="true"
-        aria-label={action.tooltip}
-        tabIndex={0}
-        className={cn(mobileActionClass, 'cursor-not-allowed text-muted-foreground')}
-      >
-        <ActionContent action={action} mobile />
-      </span>
-    )
-  }
-
   return (
     <Button asChild variant="ghost" size="clear" className={mobileActionClass}>
       <Link
-        href={href}
+        href={action.href}
         aria-label={action.ariaLabel}
         target={action.external ? '_blank' : undefined}
         rel={action.external ? 'noopener noreferrer' : undefined}
@@ -203,7 +153,7 @@ export function StickyCtaBar() {
           aria-label="빠른 상담 링크"
           className="fixed inset-x-0 bottom-0 z-40 border-t border-border/80 bg-background/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-12px_32px_rgba(15,23,42,0.14)] backdrop-blur supports-[backdrop-filter]:bg-background/90 lg:hidden"
         >
-          <nav className="grid grid-cols-3 divide-x divide-border/80" aria-label="빠른 상담">
+          <nav className="grid grid-cols-2 divide-x divide-border/80" aria-label="빠른 상담">
             {actions.map((action) => (
               <MobileAction key={action.id} action={action} />
             ))}

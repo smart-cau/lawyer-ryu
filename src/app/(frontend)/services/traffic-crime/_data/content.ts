@@ -26,7 +26,6 @@ export const trafficCrimeLeafContent = {
   footerCta: {
     title: '음주운전·교통사고, 첫 조사 전에 상담하세요',
     lead: '대표변호사 류남경이 직접 상담합니다.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

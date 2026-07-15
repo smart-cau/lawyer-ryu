@@ -1,5 +1,4 @@
 import type { ServiceLeafContent } from '@/app/(frontend)/services/_data/service-leaf'
-import { PHONE_HREF } from '@/lib/contact-links'
 
 import { FAQ_ITEMS } from './faq'
 import { INVESTIGATION_SUBS } from './sub-categories'
@@ -60,7 +59,6 @@ export const investigationLeafContent = {
   footerCta: {
     title: '조사 일정이 정해졌다면 출석 전에 준비해야 합니다',
     lead: '류남경 대표변호사가 창원·부산 사건의 조사 단계와 준비 자료를 직접 살펴봅니다.',
-    phoneHref: PHONE_HREF,
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: mergeOpenGraph({
     title,
     description,
-    siteName: '법무법인 인유 창원사무소',
+    siteName: '법무법인 인유 창원분사무소',
     url: '/services/corporate-crime',
     images: ['/services/title-bars/corporate-crime.png'],
   }),

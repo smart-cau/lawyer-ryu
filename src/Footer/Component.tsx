@@ -16,7 +16,8 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <Logo tone="dark" />
             <address className="flex flex-col gap-1 text-sm not-italic text-white/80">
-              <span>대표변호사 류남경</span>
+              <span>법무법인 인유 창원분사무소</span>
+              <span>대표변호사: 류남경 · 광고책임변호사: 류남경</span>
               <span>{ADDRESS}</span>
             </address>
           </div>
@@ -66,7 +67,7 @@ export function Footer() {
         <Separator className="my-8 bg-white/10" />
 
         <p className="text-xs text-white/50">
-          © {new Date().getFullYear()} 법무법인 인유 창원사무소. All rights reserved.
+          © {new Date().getFullYear()} 류남경 변호사. All rights reserved.
         </p>
       </div>
     </footer>

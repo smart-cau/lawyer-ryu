@@ -26,7 +26,6 @@ export const antiCorruptionLeafContent = {
   footerCta: {
     title: '공직 사건은 첫 답변부터 기록으로 남습니다',
     lead: '대표변호사 류남경이 사건 구조를 직접 검토합니다.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

@@ -27,7 +27,6 @@ export const generalCriminalLeafContent = {
   footerCta: {
     title: '조사 날짜가 잡혔다면 그 전에 준비해야 합니다',
     lead: '류남경 대표변호사가 사건 경위와 조사 일정을 직접 듣고 상담합니다.',
-    phoneHref: 'tel:0557190302',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent

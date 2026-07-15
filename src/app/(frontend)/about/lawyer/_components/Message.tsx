@@ -15,9 +15,9 @@ const VCARD_HREF = `data:text/vcard;charset=utf-8,${encodeURIComponent(
     'VERSION:3.0',
     'N:류;남경;;;',
     'FN:류남경',
-    'ORG:법무법인 인유 창원사무소',
+    'ORG:법무법인 인유 창원분사무소',
     'TITLE:대표변호사',
-    `TEL;TYPE=WORK,VOICE:${CONTACT.phone}`,
+    `TEL;TYPE=WORK,VOICE:${CONTACT.office}`,
     `EMAIL;TYPE=WORK:${CONTACT.email}`,
     `ADR;TYPE=WORK:;;${CONTACT.address} ${CONTACT.addressSub};창원시;경상남도;;;대한민국`,
     'END:VCARD',
@@ -71,7 +71,7 @@ export const MessageSection: FC = () => {
         </div>
 
         <div className="relative z-10 -mt-14 w-full text-center md:-mt-14 md:text-left lg:-mt-20">
-          <h1 className="text-display-1 font-medium">류남경</h1>
+          <p className="text-display-1 font-medium">류남경</p>
           <p className="mt-5 text-label-1 font-medium text-brand-gold md:text-headline-2">
             대표변호사
           </p>

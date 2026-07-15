@@ -4,10 +4,9 @@ import type { FC } from 'react'
 
 import { SectionContainer } from '@/components/SectionContainer'
 import { Button } from '@/components/ui/button'
+import { PHONE_HREF } from '@/lib/contact-links'
 
 import type { ServiceLeafContent } from '../_data/service-leaf'
-
-const PHONE_HREF = 'tel:01075520301'
 
 type FooterCtaSectionProps = {
   data: ServiceLeafContent['footerCta']
@@ -54,7 +53,7 @@ export const FooterCtaSection: FC<FooterCtaSectionProps> = ({ data }) => {
         size="lg"
         className="gap-2 border border-white/35 bg-black/28 text-white shadow-lg shadow-black/25 backdrop-blur-sm hover:border-white/55 hover:bg-black/38"
       >
-        <Link href={data.phoneHref ?? PHONE_HREF}>
+        <Link href={PHONE_HREF}>
           <Phone className="h-4 w-4" />
           {data.buttonLabel ?? '전화 상담'}
         </Link>

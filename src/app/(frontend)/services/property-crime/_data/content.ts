@@ -26,7 +26,6 @@ export const propertyCrimeLeafContent = {
   footerCta: {
     title: '송금 전 설명과 송금 후 자금 흐름을 함께 살펴야 합니다',
     lead: '류남경 대표변호사가 피해 자료와 조사 대응 내용을 직접 검토합니다.',
-    phoneHref: 'tel:01075520301',
     buttonLabel: '전화 상담',
   },
 } satisfies ServiceLeafContent
