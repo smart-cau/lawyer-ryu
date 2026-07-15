@@ -1,13 +1,10 @@
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
-import { searchPlugin } from '@payloadcms/plugin-search'
 import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { Plugin } from 'payload'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateImage, GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
-import { searchFields } from '@/search/fieldOverrides'
-import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Case } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -67,19 +64,6 @@ export const plugins: Plugin[] = [
     generateURL,
     generateImage,
     uploadsCollection: 'media',
-  }),
-  searchPlugin({
-    collections: ['cases'],
-    beforeSync: beforeSyncWithSearch,
-    searchOverrides: {
-      labels: {
-        singular: '검색 색인',
-        plural: '검색 색인',
-      },
-      fields: ({ defaultFields }) => {
-        return [...defaultFields, ...searchFields]
-      },
-    },
   }),
   mcpPlugin({
     collections: {
