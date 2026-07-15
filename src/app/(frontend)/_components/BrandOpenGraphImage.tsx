@@ -1,0 +1,146 @@
+/* eslint-disable @next/next/no-img-element -- next/og renders embedded image data with a plain img. */
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
+import { ImageResponse } from 'next/og'
+
+export const alt = '법무법인 인유 창원분사무소'
+
+export const size = {
+  width: 1200,
+  height: 630,
+}
+
+export const contentType = 'image/png'
+
+const toDataUrl = (data: Buffer, mimeType: string) =>
+  `data:${mimeType};base64,${data.toString('base64')}`
+
+export default async function BrandOpenGraphImage() {
+  const [font, logo] = await Promise.all([
+    readFile(
+      join(
+        process.cwd(),
+        'node_modules/pretendard/dist/web/static/woff-subset/Pretendard-SemiBold.subset.woff',
+      ),
+    ),
+    readFile(join(process.cwd(), 'public/brand/inyou-logo.png')),
+  ])
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          alignItems: 'center',
+          background: '#f6f4ef',
+          color: '#142033',
+          display: 'flex',
+          flexDirection: 'column',
+          fontFamily: 'Pretendard',
+          fontWeight: 600,
+          height: '100%',
+          justifyContent: 'center',
+          position: 'relative',
+          width: '100%',
+        }}
+      >
+        <div
+          style={{
+            background: '#142033',
+            display: 'flex',
+            height: 14,
+            left: 0,
+            position: 'absolute',
+            top: 0,
+            width: 1200,
+          }}
+        />
+        <div
+          style={{
+            background: '#d79d3e',
+            display: 'flex',
+            height: 4,
+            left: 0,
+            position: 'absolute',
+            top: 14,
+            width: 1200,
+          }}
+        />
+
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+          }}
+        >
+          <img
+            alt=""
+            src={toDataUrl(logo, 'image/png')}
+            style={{ height: 215, objectFit: 'contain', width: 205 }}
+          />
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginLeft: 50,
+            }}
+          >
+            <span
+              style={{
+                color: '#9a6c25',
+                fontSize: 34,
+                letterSpacing: '0.1em',
+                lineHeight: 1,
+              }}
+            >
+              [창원분사무소]
+            </span>
+            <span
+              style={{
+                fontSize: 108,
+                letterSpacing: '-0.045em',
+                lineHeight: 1.25,
+              }}
+            >
+              법무법인 인유
+            </span>
+            <span
+              style={{
+                color: '#69717d',
+                fontSize: 30,
+                letterSpacing: '0.16em',
+                lineHeight: 1,
+              }}
+            >
+              LAWFIRM IN-YOU
+            </span>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#142033',
+            bottom: 0,
+            display: 'flex',
+            height: 14,
+            left: 0,
+            position: 'absolute',
+            width: 1200,
+          }}
+        />
+      </div>
+    ),
+    {
+      ...size,
+      fonts: [
+        {
+          data: font,
+          name: 'Pretendard',
+          style: 'normal',
+          weight: 600,
+        },
+      ],
+    },
+  )
+}

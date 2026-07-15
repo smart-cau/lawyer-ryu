@@ -1,15 +1,39 @@
-import { getServerSideSitemap } from 'next-sitemap'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
+import { getSitemapSiteURL } from '@/utilities/publicSiteURL'
+
+const escapeXML = (value: string) =>
+  value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+
+const createSitemapResponse = (entries: Array<{ loc: string; lastmod?: string }>) => {
+  const urls = entries
+    .map(({ loc, lastmod }) => {
+      const lastModified = lastmod ? `<lastmod>${escapeXML(lastmod)}</lastmod>` : ''
+
+      return `<url><loc>${escapeXML(loc)}</loc>${lastModified}</url>`
+    })
+    .join('')
+
+  return new Response(
+    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`,
+    {
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        'Content-Type': 'application/xml; charset=utf-8',
+      },
+    },
+  )
+}
+
 const getCasesSitemap = unstable_cache(
   async () => {
+    const siteURL = getSitemapSiteURL()
+
+    if (!siteURL) return []
+
     const payload = await getPayload({ config })
-    const SITE_URL =
-      process.env.NEXT_PUBLIC_SERVER_URL ||
-      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-      'https://example.com'
 
     const results = await payload.find({
       collection: 'cases',
@@ -35,7 +59,7 @@ const getCasesSitemap = unstable_cache(
       ? results.docs
           .filter((c) => Boolean(c?.slug))
           .map((c) => ({
-            loc: `${SITE_URL}/cases/${c?.slug}`,
+            loc: new URL(`/cases/${c.slug}`, siteURL).toString(),
             lastmod: c.updatedAt || dateFallback,
           }))
       : []
@@ -51,5 +75,5 @@ const getCasesSitemap = unstable_cache(
 export async function GET() {
   const sitemap = await getCasesSitemap()
 
-  return getServerSideSitemap(sitemap)
+  return createSitemapResponse(sitemap)
 }
