@@ -51,12 +51,12 @@
 | INF-03 | 운영 데이터, 미디어와 관리자 계정 확인  | 차단    | 미결     | 미착수   |           |                     |
 | INF-04 | 관리자 이메일 발송 구성           | 조건부   | 미결     | 미착수   |           |                     |
 | SEO-01 | 공식 도메인과 canonical 기준 확정 | 차단    | 미결     | 미착수   |           |                     |
-| SEO-02 | robots.txt와 사이트맵 수정     | 차단    | 미결     | 미착수   |           |                     |
+| SEO-02 | robots.txt와 사이트맵 수정     | 차단    | 필수     | 완료    |           | Next.js 메타데이터 라우트로 전환 |
 | SEO-03 | 주요 페이지 메타데이터 완성         | 배포 전  | 필수     | 완료     |           | 주요 공개 페이지·사례 상세 메타데이터 완료 |
 | SEO-04 | 템플릿 검색 페이지 처리           | 배포 전  | 제외     | 완료   |           | /cases 검색으로 충분, /search·searchPlugin 완전 제거 |
 | PRV-01 | 개인정보 처리 현황과 처리방침 결정     | 조건부   | 미결     | 미착수   |           |                     |
 | SEC-01 | 운영 보안 헤더와 공개 엔드포인트 점검   | 배포 전  | 미결     | 미착수   |           |                     |
-| SEC-02 | Payload MCP 운영 사용 여부 결정 | 조건부   | 미결     | 미착수   |           |                     |
+| SEC-02 | Payload MCP 운영 사용 여부 결정 | 배포 전  | 필수     | 진행 중  |           | 프로덕션 사용 결정, 운영 보안 절차 확인 필요 |
 | QA-01  | 현재 사이트 기준 E2E 테스트 재작성   | 차단    | 미결     | 미착수   |           |                     |
 | QA-02  | 운영 배포 전 최종 검증 실행        | 차단    | 미결     | 미착수   |           |                     |
 | OPS-01 | 운영 모니터링, 백업과 복구 절차 확인   | 배포 전  | 미결     | 미착수   |           |                     |
@@ -192,13 +192,22 @@
   - 존재하지 않는 `/posts-sitemap.xml`을 참조한다.
   - 사례 사이트맵도 운영 URL이 없으면 `example.com`을 사용한다.
 - **완료 기준**
-  - [ ] `posts-sitemap.xml` 참조를 제거하고 `cases-sitemap.xml`을 연결했다.
-  - [ ] 운영 URL이 없을 때 잘못된 사이트맵을 생성하지 않도록 했다.
-  - [ ] `/admin`, Preview, 내부 API와 검색 제외 대상의 `robots` 정책을 확정했다.
-  - [ ] 생성된 사이트맵의 모든 URL이 200 응답을 반환하는지 확인했다.
+  - [x] `posts-sitemap.xml` 참조를 제거하고 `cases-sitemap.xml`을 연결했다.
+  - [x] 운영 URL이 없을 때 잘못된 사이트맵을 생성하지 않도록 했다.
+  - [x] `/admin`, Preview, 내부 API와 검색 제외 대상의 `robots` 정책을 확정했다.
+  - [x] 생성된 사이트맵의 모든 URL이 200 응답을 반환하는지 확인했다.
+- **보완 내역 (2026-07-15)**
+  - `next-sitemap` 후처리와 `public/robots.txt`·`public/sitemap*.xml` 생성물을 제거하고 Next.js `robots.ts`·`sitemap.ts`로 전환했다.
+  - 운영에서는 `/admin`, `/api`, `/next/preview`, `/next/exit-preview`, `/search`를 차단하고 정적 사이트맵과 `cases-sitemap.xml`을 안내한다.
+  - Vercel Preview 배포 또는 운영 URL 미설정 상태에서는 전체 크롤링을 차단하고 빈 사이트맵을 반환한다.
+  - 로컬 사이트맵의 정적 URL 14개와 게시 사례 URL 5개가 모두 200을 반환하는 것을 확인했다.
+  - 운영·Preview·URL 미설정·로컬 환경 정책을 통합 테스트 4개로 고정했다.
 - **관련 코드**
-  - `next-sitemap.config.cjs`
+  - `src/app/robots.ts`
+  - `src/app/sitemap.ts`
   - `src/app/(frontend)/(sitemaps)/cases-sitemap.xml/route.ts`
+  - `src/utilities/publicSiteURL.ts`
+  - `tests/int/seo.int.spec.ts`
 
 ### SEO-03. 주요 페이지 메타데이터 완성
 
@@ -217,8 +226,13 @@
   - 사례 상세 Open Graph URL을 `/cases/<slug>`로 정확히 생성한다(기존에는 항상 `/`).
   - `meta.image`가 없을 때 `website-template-OG.webp` 대신 `mergeOpenGraph`의 사무소 기본 OG 이미지를 사용한다.
   - 실제 상세 페이지 응답에서 고유 `<title>`·`og:url`·`og:image`가 나오는 것을 확인했다.
+- **서비스 OG 이미지 보완 내역 (2026-07-15)**: 페이지 타이틀 배경용 2048×768 사진을 공유 이미지로 재사용하지 않도록 수정했다.
+  - 홈에서 사용 중인 Next.js `opengraph-image.tsx`·`twitter-image.tsx` 생성기를 `/services` 세그먼트에도 적용했다.
+  - 서비스 허브와 10개 leaf는 1200×630 브랜드 이미지와 대체 텍스트를 공통으로 사용하고, 페이지별 제목·설명·`og:url`은 그대로 유지한다.
 - **관련 코드**
+  - `src/app/(frontend)/_components/BrandOpenGraphImage.tsx`
   - `src/app/(frontend)/services/_data/metadata.ts`
+  - `src/app/(frontend)/services/opengraph-image.tsx`
   - `src/app/(frontend)/services/page.tsx`
   - `src/app/(frontend)/cases/page.tsx`
 
@@ -263,10 +277,16 @@
 ### SEC-02. Payload MCP 운영 사용 여부 결정
 
 - **발견 사항**: MCP 플러그인은 사례, 분류와 미디어에 대한 조회·생성·수정·삭제 기능을 활성화한다.
+- **결정**: Payload MCP를 프로덕션에서도 사용한다. 현재 운영 대상은 `cases`, `categories`, `media` 컬렉션이며, 각 컬렉션의 조회·생성·수정·삭제 기능을 사용한다. (2026-07-15)
+- **작업 상태**: 프로덕션 사용 결정은 완료했다. 운영 전용 API 키, 최소 권한, 비밀 보관, 교체·폐기 절차와 허용·차단 동작 검증은 배포 전에 완료해야 한다.
 - **완료 기준**
-  - [ ] 운영에서 MCP가 필요한지 결정했다.
-  - [ ] 필요하지 않다면 운영 환경에서 비활성화했다.
-  - [ ] 필요하다면 API 키 발급, 권한 범위, 보관, 교체와 폐기 절차를 확인했다.
+  - [x] 운영에서 MCP를 사용하기로 결정했다.
+  - [ ] 운영 전용 API 키를 발급하고 실제 필요한 컬렉션과 작업만 허용했는지 확인했다.
+  - [ ] API 키를 승인된 비밀 저장소에 보관하고 저장소, 문서와 로그에 원문을 남기지 않았다.
+  - [ ] 키 교체 주기와 유출 시 폐기·재발급 절차 및 담당자를 기록했다.
+  - [ ] 운영 환경에서 인증 실패, 허용 작업과 비허용 작업을 각각 검증했다.
+- **관련 코드**
+  - `src/plugins/index.ts`
 
 ## 7. 테스트와 최종 검수
 
@@ -346,3 +366,5 @@
 | 2026-07-15 | SEO-03 주요 공개 페이지 메타데이터 완료, 사례 상세 SEO 제외 결정 반영 |
 | 2026-07-15 | SEO-03 사례 상세 메타데이터 템플릿 잔재 3건 수정으로 완료 처리 |
 | 2026-07-15 | SEO-04 검색 기능 제외 결정, /search·searchPlugin 완전 제거 및 drop 마이그레이션 생성 |
+| 2026-07-15 | SEO-02 robots.txt·사이트맵을 Next.js 메타데이터 라우트로 전환하고 Preview·URL 미설정 차단 정책 적용 |
+| 2026-07-15 | SEC-02 Payload MCP 프로덕션 사용 결정 반영, 운영 API 키·권한·교체·폐기 절차를 잔여 항목으로 기록 |
