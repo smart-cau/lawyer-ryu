@@ -1,0 +1,10 @@
+[mcp_servers.Payload]
+url = "http://127.0.0.1:3000/api/mcp"
+bearer_token_env_var = "PAYLOAD_MCP_API_KEY"
+
+[mcp_servers.shadcn]
+command = "npx"
+args = [
+    "shadcn@latest",
+    "mcp",
+]
