@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import { BRAND_OPEN_GRAPH_IMAGE } from '@/utilities/mergeOpenGraph'
+
 type ServiceMetadataArgs = {
   slug: string
   title: string
@@ -24,11 +26,13 @@ export function createServiceHubMetadata(): Metadata {
       siteName: '법무법인 인유 창원분사무소',
       locale: 'ko_KR',
       url: '/services',
+      images: [BRAND_OPEN_GRAPH_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [BRAND_OPEN_GRAPH_IMAGE.url],
     },
   }
 }
@@ -53,11 +57,13 @@ export function createServiceMetadata({
       siteName: '법무법인 인유 창원분사무소',
       locale: 'ko_KR',
       url: path,
+      images: [BRAND_OPEN_GRAPH_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [BRAND_OPEN_GRAPH_IMAGE.url],
     },
   }
 }

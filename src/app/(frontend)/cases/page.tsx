@@ -6,7 +6,7 @@ import { MotionReveal } from '@/components/MotionReveal'
 import { Pagination } from '@/components/Pagination'
 import { PageTitleBar } from '@/components/PageTitleBar'
 import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-title-bar'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { CasesToolbar, type CategoryOption } from './_components/CasesToolbar'
@@ -136,18 +136,12 @@ export function generateMetadata(): Metadata {
       description,
       siteName: '법무법인 인유 창원분사무소',
       url: '/cases',
-      images: [
-        {
-          url: '/backgrounds/courthouse-corridor.png',
-          alt: '법무법인 인유 창원분사무소 성공사례 안내 이미지',
-        },
-      ],
     }),
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['/backgrounds/courthouse-corridor.png'],
+      images: [BRAND_OPEN_GRAPH_IMAGE.url],
     },
   }
 }

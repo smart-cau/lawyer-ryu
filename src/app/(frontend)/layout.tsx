@@ -8,7 +8,7 @@ import { AdminBar } from '@/components/AdminBar'
 import { StickyCtaBar } from '@/components/StickyCtaBar'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import './globals.css'
@@ -52,5 +52,6 @@ export const metadata: Metadata = {
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
+    images: [BRAND_OPEN_GRAPH_IMAGE.url],
   },
 }

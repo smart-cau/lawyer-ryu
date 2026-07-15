@@ -4,6 +4,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { NAVER_BLOG_URL } from '@/lib/contact-links'
 import { CONTACT, OFFICE_LOCATION } from '@/lib/constants'
 import { getServerSideURL } from '@/utilities/getURL'
+import { BRAND_OPEN_GRAPH_IMAGE } from '@/utilities/mergeOpenGraph'
 
 import {
   CasesSection,
@@ -15,7 +16,7 @@ import {
   UspSection,
 } from './_components'
 
-const title = '창원·부산 형사전문변호사 | 검사 출신 류남경'
+const title = '법무법인 인유 창원분사무소 | 대표변호사 류남경'
 const description =
   '창원·부산 형사사건을 상담하는 법무법인 인유 창원분사무소입니다. 19년 검사 경력의 류남경 대표변호사가 수사 초기부터 재판까지 직접 상담하고 변론합니다.'
 
@@ -32,11 +33,13 @@ export const metadata: Metadata = {
     siteName: '법무법인 인유 창원분사무소',
     locale: 'ko_KR',
     url: '/',
+    images: [BRAND_OPEN_GRAPH_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
+    images: [BRAND_OPEN_GRAPH_IMAGE.url],
   },
 }
 

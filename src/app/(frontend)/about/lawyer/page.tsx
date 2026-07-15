@@ -4,7 +4,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { NAVER_BLOG_URL } from '@/lib/contact-links'
 import { CONTACT } from '@/lib/constants'
 import { getServerSideURL } from '@/utilities/getURL'
-import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
+import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 import { HeaderLightTone, HeroSection, MessageSection, NarrativeSection } from './_components'
 
@@ -25,20 +25,12 @@ export const metadata: Metadata = {
     siteName: '법무법인 인유 창원분사무소',
     locale: 'ko_KR',
     url: '/about/lawyer',
-    images: [
-      {
-        url: '/law-office-blur-bg.png',
-        width: 1672,
-        height: 941,
-        alt: '법무법인 인유 창원분사무소 류남경 대표변호사 소개',
-      },
-    ],
   }),
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: ['/law-office-blur-bg.png'],
+    images: [BRAND_OPEN_GRAPH_IMAGE.url],
   },
 }
 
