@@ -4,13 +4,14 @@ This file provides guidance to coding agents such as Claude Code and Codex when 
 
 ## Project Overview
 
-`lawyer-ryu` is the homepage project for **법무법인 인유 창원사무소 / 대표변호사 류남경 (Attorney Ryu Nam-kyung)** — a Korean-language law firm site. The current state is a 1차 시안 (v1 working draft). 코드에 들어 있는 카피·IA·구조 결정은 모두 **작업 가설(working hypothesis)**이며, 확정된 콘텐츠가 아니다. `docs/` 디렉터리는 작업을 위한 **자료조사 메모(research notes)** 모음이지 확정된 카피·IA 원천이 아니다 — 발췌해서 그대로 페이지에 박을 수 있는 권위를 가지지 않는다. 카피·IA 변경은 사용자 확인을 거쳐 결정한다.
+`lawyer-ryu` is the homepage project for **법무법인 인유 창원분사무소 / 대표변호사 류남경 (Attorney Ryu Nam-kyung)** — a Korean-language law firm site. The current state is a 1차 시안 (v1 working draft). 코드에 들어 있는 카피·IA·구조 결정은 모두 **작업 가설(working hypothesis)**이며, 확정된 콘텐츠가 아니다. `docs/` 디렉터리는 작업을 위한 **자료조사 메모(research notes)** 모음이지 확정된 카피·IA 원천이 아니다 — 발췌해서 그대로 페이지에 박을 수 있는 권위를 가지지 않는다. 카피·IA 변경은 사용자 확인을 거쳐 결정한다.
 
 Project facts:
-- 사무소: 법무법인 인유 창원사무소 (LAWFIRM IN-YOU, Changwon office)
+- 사무소: 법무법인 인유 창원분사무소 (LAWFIRM IN-YOU, Changwon branch office)
 - 대표변호사: 류남경 (사법시험 44회 / 사법연수원 35기 / 검사 19년 / 부부장 출신 / 대한변협 등록 형사법 전문 변호사)
 - 주소: 경남 창원시 성산구 창이대로689번길 4-24, 5층 504호
-- 상담문의: 010-7552-0301
+- 상담문의 표시: 055-719-0302 / 010-7552-0301
+- 전화 연결 원칙: 두 번호는 용도를 나누지 않고 한 묶음으로 표시하되, 전화 버튼·상담 CTA·`tel:` 링크는 055-719-0302로 연결
 - 공식 블로그: https://blog.naver.com/inyou2025
 - 배포: Vercel (예정) — 공식 도메인 미정. 배포 시 `VERCEL_PROJECT_PRODUCTION_URL`이 `NEXT_PUBLIC_SERVER_URL`을 자동으로 덮어씀.
 

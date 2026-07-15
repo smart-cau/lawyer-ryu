@@ -71,6 +71,10 @@ docs/pages/
 | 2026-05-08 | [Task 시스템과 라우트 구조](decisions/2026-05-08-task-system-and-routing.md)                           |
 | 2026-05-08 | [산출물 매핑 룰](decisions/2026-05-08-artifact-mapping.md)                                          |
 
+## 운영 체크리스트
+
+- [홈페이지 배포 전 체크리스트](pre-deployment-checklist.md) — 2026-07-14 감사 결과와 배포 전 의사결정·완료 기준
+
 ## 운영 룰
 
 - **신규 결정**: `decisions/YYYY-MM-DD-<slug>.md` 형식으로 파일 추가, 위 표에 1줄 등록.
