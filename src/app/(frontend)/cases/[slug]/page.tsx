@@ -90,7 +90,7 @@ export default async function Case({ params: paramsPromise }: Args) {
             {(resultLabel || hasCategories) && (
               <div className="mb-5 flex flex-wrap items-center gap-1.5">
                 {resultLabel && (
-                  <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-label-1 font-semibold">
+                  <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-body-1 font-semibold">
                     {resultLabel}
                   </Badge>
                 )}
@@ -100,7 +100,7 @@ export default async function Case({ params: paramsPromise }: Args) {
                       <Badge
                         key={index}
                         variant="outline"
-                        className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-label-1 font-medium"
+                        className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-body-1 font-medium"
                       >
                         {category.title || '미분류'}
                       </Badge>
@@ -118,7 +118,7 @@ export default async function Case({ params: paramsPromise }: Args) {
               <dl className="border-border mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 border-t pt-6">
                 {hasAuthors && (
                   <div className="flex items-center gap-2">
-                    <dt className="text-label-1 text-muted-foreground">작성자</dt>
+                    <dt className="text-body-1 text-muted-foreground">작성자</dt>
                     <dd className="text-body-1 text-foreground font-medium">
                       {formatAuthors(populatedAuthors)}
                     </dd>
@@ -126,7 +126,7 @@ export default async function Case({ params: paramsPromise }: Args) {
                 )}
                 {publishedLabel && (
                   <div className="flex items-center gap-2">
-                    <dt className="text-label-1 text-muted-foreground">게시일</dt>
+                    <dt className="text-body-1 text-muted-foreground">게시일</dt>
                     <dd className="text-body-1 text-foreground font-medium">
                       <time dateTime={publishedAt ?? undefined}>{publishedLabel}</time>
                     </dd>

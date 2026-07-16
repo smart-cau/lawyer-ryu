@@ -72,7 +72,7 @@ export const MessageSection: FC = () => {
 
         <div className="relative z-10 -mt-14 w-full text-center md:-mt-14 md:text-left lg:-mt-20">
           <p className="text-display-1 font-medium">류남경</p>
-          <p className="mt-5 text-label-1 font-medium text-brand-gold md:text-headline-2">
+          <p className="mt-5 text-body-1 font-medium text-brand-gold md:text-headline-2">
             대표변호사
           </p>
 

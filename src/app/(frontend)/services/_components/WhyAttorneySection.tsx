@@ -84,7 +84,7 @@ export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data, serviceT
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <p className="text-heading-2 font-semibold">{data.profile.name}</p>
-              <p className="text-label-1 text-muted-foreground">{data.profile.affiliation}</p>
+              <p className="text-body-1 text-muted-foreground">{data.profile.affiliation}</p>
             </div>
             <Link
               href={data.detailHref ?? '/about/lawyer'}

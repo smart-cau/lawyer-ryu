@@ -52,7 +52,7 @@ export const Card: React.FC<{
         {(resultLabel || (showCategories && hasCategories)) && (
           <div className="mb-4 flex flex-wrap items-center gap-1.5">
             {resultLabel && (
-              <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-label-1 font-semibold">
+              <Badge className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep text-body-1 font-semibold">
                 {resultLabel}
               </Badge>
             )}
@@ -64,7 +64,7 @@ export const Card: React.FC<{
                     <Badge
                       key={index}
                       variant="outline"
-                      className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-label-2 font-medium"
+                      className="border-brand-deep/20 text-brand-deep bg-brand-deep/5 text-body-1 font-medium"
                     >
                       {categoryTitle}
                     </Badge>
@@ -93,7 +93,7 @@ export const Card: React.FC<{
           </p>
         )}
 
-        <div className="text-label-1 text-muted-foreground mt-auto flex items-center justify-between pt-6">
+        <div className="text-body-1 text-muted-foreground mt-auto flex items-center justify-between pt-6">
           {formattedDate ? <time dateTime={publishedAt ?? undefined}>{formattedDate}</time> : <span />}
           <ArrowUpRight
             aria-hidden

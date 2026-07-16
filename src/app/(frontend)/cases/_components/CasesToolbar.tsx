@@ -71,7 +71,7 @@ export const CasesToolbar: React.FC<{ categories: CategoryOption[] }> = ({ categ
         />
         <button
           aria-label="검색"
-          className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep/90 absolute right-2 inline-flex h-11 items-center gap-2 rounded-full px-5 text-label-1 font-semibold transition-colors"
+          className="bg-brand-deep text-brand-deep-foreground hover:bg-brand-deep/90 absolute right-2 inline-flex h-11 items-center gap-2 rounded-full px-5 text-body-1 font-semibold transition-colors"
           type="submit"
         >
           <SearchIcon aria-hidden className="size-4" />

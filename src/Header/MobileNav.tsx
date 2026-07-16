@@ -75,7 +75,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                         <Link
                           href={item.href}
                           className={cn(
-                            'rounded-md border border-border px-3 py-2 text-label-1 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground',
+                            'rounded-md border border-border px-3 py-2 text-body-1 font-semibold transition-colors hover:bg-accent hover:text-accent-foreground',
                             pathname === item.href
                               ? 'bg-accent/60 text-accent-foreground'
                               : 'text-foreground',
@@ -87,7 +87,7 @@ export function MobileNav({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
                       {servicesNav.map((category) => {
                         return (
                           <div key={category.slug} className="flex flex-col gap-1">
-                            <span className="py-2 text-label-1 font-semibold text-foreground">
+                            <span className="py-2 text-body-1 font-semibold text-foreground">
                               {category.label}
                             </span>
                             <ul className="flex flex-col">

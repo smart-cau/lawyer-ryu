@@ -102,7 +102,7 @@ export const HeroSection: FC = () => {
         <div className="motion-entrance relative z-10 -mt-14 w-full text-center [--motion-delay:180ms] md:-mt-14 md:text-left lg:-mt-20">
           <div className="flex flex-wrap items-baseline justify-center gap-x-3 md:justify-start">
             <h1 className="text-display-1 font-medium">류남경</h1>
-            <p className="text-label-1 font-medium text-brand-gold md:text-headline-2">
+            <p className="text-body-1 font-medium text-brand-gold md:text-headline-2">
               대표변호사
             </p>
           </div>
@@ -130,7 +130,7 @@ export const HeroSection: FC = () => {
                 {item.period ? ` (${item.period})` : ''}
               </span>
               {item.fields ? (
-                <span className="mt-1 block text-label-1 font-medium text-black/70">
+                <span className="mt-1 block text-body-1 font-medium text-black/70">
                   {item.fields}
                 </span>
               ) : null}

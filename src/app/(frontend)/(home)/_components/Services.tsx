@@ -47,14 +47,14 @@ const ServiceCard: FC<{ leaf: Leaf }> = ({ leaf }) => {
       <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">
         {leaf.subs.map((sub) => (
           <li key={sub}>
-            <span className="inline-flex rounded-sm border border-border bg-muted/40 px-2.5 py-1 text-label-2 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:bg-background">
+            <span className="inline-flex rounded-sm border border-border bg-muted/40 px-2.5 py-1 text-body-1 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:bg-background">
               {sub}
             </span>
           </li>
         ))}
       </ul>
 
-      <span className="mt-6 flex items-center justify-between border-t border-border pt-4 text-label-1 font-medium transition-colors group-hover:text-foreground">
+      <span className="mt-6 flex items-center justify-between border-t border-border pt-4 text-body-1 font-medium transition-colors group-hover:text-foreground">
         <span>자세히 보기</span>
         <span aria-hidden>→</span>
       </span>

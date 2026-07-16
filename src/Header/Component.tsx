@@ -45,7 +45,7 @@ export function Header() {
       )}
     >
       <div className="container">
-        <div className="flex items-center justify-between gap-6 py-6">
+        <div className="flex items-center justify-between gap-6 py-[18px]">
           <Link
             href="/"
             aria-label="법무법인 인유 홈"

@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react'
 
-// overline 은 필요 시 추가한다 (title 위 작은 라벨 — text-label-1 + text-muted-foreground 또는 text-brand-gold).
+// overline 은 필요 시 추가한다 (title 위 작은 라벨 — text-body-1 + text-muted-foreground 또는 text-brand-gold).
 
 type SectionHeaderProps = {
   title: ReactNode

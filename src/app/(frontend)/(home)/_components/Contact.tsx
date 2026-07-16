@@ -19,7 +19,7 @@ type InfoRowProps = {
 
 const InfoRow: FC<InfoRowProps> = ({ label, children }) => (
   <div className="grid grid-cols-[64px_1fr] items-baseline gap-x-6 py-2 sm:grid-cols-[80px_1fr]">
-    <dt className="text-label-1 text-muted-foreground">{label}</dt>
+    <dt className="text-body-1 text-muted-foreground">{label}</dt>
     <dd className="text-body-1">{children}</dd>
   </div>
 )

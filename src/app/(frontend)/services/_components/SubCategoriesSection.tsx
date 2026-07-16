@@ -44,14 +44,14 @@ export const SubCategoriesSection: FC<SubCategoriesSectionProps> = ({ data }) =>
             <div className="col-span-12 flex flex-col justify-center space-y-3 lg:col-span-4">
               <h3 className="text-title-3 font-semibold">{sub.label}</h3>
               <div className="space-y-2">
-                <p className="text-label-1-reading text-muted-foreground">
+                <p className="text-body-1-reading text-muted-foreground">
                   대표 키워드
                 </p>
                 <ul className="flex flex-wrap gap-2">
                   {sub.keywords.map((keyword) => (
                     <li
                       key={keyword}
-                      className="rounded-md border border-border bg-white px-2.5 py-1 text-label-2 font-medium text-foreground"
+                      className="rounded-md border border-border bg-white px-2.5 py-1 text-body-1 font-medium text-foreground"
                     >
                       {keyword}
                     </li>
@@ -70,7 +70,7 @@ export const SubCategoriesSection: FC<SubCategoriesSectionProps> = ({ data }) =>
               <div className="grid gap-x-8 gap-y-6 border-t border-border pt-6 md:grid-cols-2">
                 {DETAIL_GROUPS.map((group) => (
                   <section key={group.key} className="space-y-3">
-                    <h4 className="text-label-1 font-semibold text-foreground">
+                    <h4 className="text-body-1 font-semibold text-foreground">
                       {data.detailLabels?.[group.key] ?? group.title}
                     </h4>
                     <ul className="list-disc space-y-2 pl-5 marker:text-muted-foreground/50">

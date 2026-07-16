@@ -26,7 +26,7 @@ export const ImmediateActionsSection: FC<ImmediateActionsSectionProps> = ({ data
 
         {data.note ? (
           <aside className="mt-9 max-w-lg border-l-2 border-brand-gold pl-5" aria-label="유의사항">
-            <p className="text-label-1 font-semibold tracking-[0.08em] text-foreground">유의사항</p>
+            <p className="text-body-1 font-semibold tracking-[0.08em] text-foreground">유의사항</p>
             <p className="mt-2 break-keep text-body-2-reading text-muted-foreground">
               {data.note}
             </p>
@@ -41,7 +41,7 @@ export const ImmediateActionsSection: FC<ImmediateActionsSectionProps> = ({ data
             className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-b border-border py-6 last:border-b-0 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-6 sm:py-7"
           >
             <span
-              className="pt-0.5 text-label-1 font-semibold tabular-nums tracking-[0.08em] text-primary"
+              className="pt-0.5 text-body-1 font-semibold tabular-nums tracking-[0.08em] text-primary"
               aria-hidden="true"
             >
               {String(index + 1).padStart(2, '0')}

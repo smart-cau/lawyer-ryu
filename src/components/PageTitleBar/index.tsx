@@ -53,7 +53,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) 
           aria-label="breadcrumb"
           className="pb-6 md:absolute md:right-0 md:bottom-6 md:px-8 md:pb-0"
         >
-          <ol className="flex flex-wrap items-center justify-center gap-2 text-label-1 text-white/70 md:justify-end">
+          <ol className="flex flex-wrap items-center justify-center gap-2 text-body-1 text-white/70 md:justify-end">
             {breadcrumbs.map((bc, i) => {
               const isLast = i === breadcrumbs.length - 1
               return (

@@ -462,19 +462,6 @@
   --text-body-2-reading--line-height: 1.5rem;
   --text-body-2-reading--letter-spacing: 0.0096em;
 
-  /* Label — 메타·캡션·UI 라벨 */
-  --text-label-1: 0.875rem;
-  --text-label-1--line-height: 1.25rem;
-  --text-label-1--letter-spacing: 0.0145em;
-
-  --text-label-1-reading: 0.875rem;
-  --text-label-1-reading--line-height: 1.375rem;
-  --text-label-1-reading--letter-spacing: 0.0145em;
-
-  --text-label-2: 0.8125rem;
-  --text-label-2--line-height: 1.125rem;
-  --text-label-2--letter-spacing: 0.0194em;
-
   /* Caption — 가장 작은 텍스트 */
   --text-caption-1: 0.75rem;
   --text-caption-1--line-height: 1rem;

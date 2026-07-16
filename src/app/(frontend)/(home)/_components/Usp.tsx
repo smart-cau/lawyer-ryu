@@ -92,7 +92,7 @@ export const UspSection: FC = () => {
                     isReversed ? 'lg:col-start-1 lg:row-start-1' : 'lg:col-start-8',
                   )}
                 >
-                  <p className="text-label-1 font-medium uppercase tracking-[0.18em] text-brand-gold">
+                  <p className="text-body-1 font-medium uppercase tracking-[0.18em] text-brand-gold">
                     {item.eyebrow}
                   </p>
                   <h3 className="mt-4 text-title-2 font-semibold">{item.heading}</h3>

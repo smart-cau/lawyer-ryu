@@ -18,13 +18,13 @@ const LeafCard: FC<{ leaf: Leaf }> = ({ leaf }) => (
     <p className="mt-2 text-body-1 text-muted-foreground">{leaf.description}</p>
     <ul className="mt-4 flex-1 space-y-1.5">
       {leaf.subs.map((sub) => (
-        <li key={sub} className="flex gap-2 text-label-1 text-muted-foreground">
+        <li key={sub} className="flex gap-2 text-body-1 text-muted-foreground">
           <span aria-hidden>•</span>
           <span>{sub}</span>
         </li>
       ))}
     </ul>
-    <span className="mt-6 text-label-1 font-medium">자세히 보기 →</span>
+    <span className="mt-6 text-body-1 font-medium">자세히 보기 →</span>
   </Link>
 )
 

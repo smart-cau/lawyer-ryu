@@ -67,7 +67,7 @@ const desktopActionClass =
   'flex w-30 flex-col items-center justify-center gap-3 px-3 py-4 text-center text-foreground transition-[background-color,transform,color] duration-200 [letter-spacing:0] hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
 
 const mobileActionClass =
-  'flex min-h-18 w-full flex-col items-center justify-center gap-1.5 px-2 py-2.5 text-label-2 font-semibold [letter-spacing:0] transition-[background-color,transform,color] duration-200 hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
+  'flex min-h-18 w-full flex-col items-center justify-center gap-1.5 px-2 py-2.5 text-body-1 font-semibold [letter-spacing:0] transition-[background-color,transform,color] duration-200 hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
 
 function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mobile?: boolean }) {
   const valueParts = action.value?.split(' / ')
@@ -78,7 +78,7 @@ function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mo
       {mobile && action.mobileIcon ? action.mobileIcon : action.icon}
       <span className={cn('flex flex-col items-center', hasDesktopValue ? 'gap-1.5' : 'gap-0.5')}>
         <span
-          className={cn(mobile ? 'text-label-2' : 'text-label-1', 'font-semibold leading-tight')}
+          className="text-body-1 font-semibold leading-tight"
         >
           {mobile ? action.mobileLabel : action.label}
         </span>
