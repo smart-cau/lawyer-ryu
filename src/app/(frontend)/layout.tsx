@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Noto_Serif_KR } from 'next/font/google'
 import React from 'react'
 
@@ -43,6 +44,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {children}
         <Footer />
         <StickyCtaBar />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   )
