@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { getServerSideURL } from '@/utilities/getURL'
 import { cn } from '@/utilities/ui'
 
 export type PageTitleBarBreadcrumb = {
@@ -15,6 +16,9 @@ type Props = {
 }
 
 export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) {
+  // schema.org BreadcrumbList의 item은 절대 URL이어야 한다 (상대 경로면 GSC가 경고)
+  const baseUrl = getServerSideURL()
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -22,7 +26,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) 
       '@type': 'ListItem',
       position: i + 1,
       name: bc.label,
-      ...(bc.href ? { item: bc.href } : {}),
+      ...(bc.href ? { item: new URL(bc.href, baseUrl).toString() } : {}),
     })),
   }
 
