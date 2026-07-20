@@ -124,7 +124,8 @@ export const HeroSection: FC = () => {
 
         <ul className="list-disc space-y-4 pl-5 text-black marker:text-brand-gold lg:space-y-5">
           {CAREER.map((item) => (
-            <li key={item.title} className="break-keep">
+            // 같은 청에 두 번 근무한 이력이 있어 title 단독으로는 중복 — period까지 묶어야 유일해진다
+            <li key={`${item.title}-${item.period ?? ''}`} className="break-keep">
               <span className="text-body-1 font-medium text-black">
                 {item.title}
                 {item.period ? ` (${item.period})` : ''}
