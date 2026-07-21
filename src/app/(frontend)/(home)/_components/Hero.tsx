@@ -121,12 +121,12 @@ export const HeroSection: FC = () => {
 
           <aside
             aria-label="대한변호사협회 형사법 전문 등록 인증"
-            className="absolute top-[18%] right-3 z-10 w-[24%] max-w-30 text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.72)] md:top-[16%] md:right-3 md:w-[20%] lg:right-[clamp(4rem,calc(48.5rem_-_50vw),8.5rem)] lg:w-[clamp(6.25rem,calc(12.5vw_-_3.75rem),7.5rem)]"
+            className="absolute top-[18%] right-3 z-10 w-[31.68%] max-w-[9.9rem] translate-x-2 text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.72)] md:top-[16%] md:right-3 md:w-[26.4%] md:translate-x-1 lg:top-[3%] lg:right-[4.75rem] lg:w-[clamp(8.25rem,calc(16.5vw_-_4.95rem),9.9rem)] lg:translate-x-2.5 min-[1152px]:top-[6%]! min-[1152px]:right-[clamp(4rem,calc(48.5rem_-_50vw),8.5rem)]!"
           >
             <p className="break-keep text-body-1 font-bold text-brand-gold lg:text-headline-2">
               형사법전문
             </p>
-            <p className="mt-0.5 whitespace-nowrap text-caption-1 font-semibold text-white md:-ml-8 md:w-[calc(100%+2rem)] md:text-right lg:ml-0 lg:w-auto lg:text-left min-[1440px]:text-body-2">
+            <p className="mt-0.5 whitespace-nowrap text-caption-1 font-semibold text-white min-[1440px]:text-body-2">
               (등록 제2026-229호)
             </p>
             <Image
@@ -134,7 +134,7 @@ export const HeroSection: FC = () => {
               alt="대한변호사협회 형사법 전문분야 등록증서"
               width={595}
               height={841}
-              sizes="(min-width: 1440px) 7.5rem, (min-width: 1024px) 6.25rem, (min-width: 768px) 5.625rem, 22vw"
+              sizes="(min-width: 1440px) 9.9rem, (min-width: 1024px) 8.25rem, (min-width: 768px) 14.5vw, 27.8vw"
               className="mt-1.5 h-auto w-full bg-white p-0.5 shadow-[0_12px_28px_rgba(0,0,0,0.42)] ring-1 ring-white/75 min-[1440px]:mt-0.5"
             />
           </aside>

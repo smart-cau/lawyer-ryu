@@ -64,7 +64,7 @@ const actions: StickyCtaAction[] = [
 ]
 
 const desktopActionClass =
-  'flex w-30 flex-col items-center justify-center gap-3 px-3 py-4 text-center text-foreground transition-[background-color,transform,color] duration-200 [letter-spacing:0] hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
+  'flex w-16 flex-col items-center justify-center gap-0 px-2 py-3 text-center text-foreground transition-[background-color,transform,color] duration-200 [letter-spacing:0] hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px min-[1152px]:w-30 min-[1152px]:gap-3 min-[1152px]:px-3 min-[1152px]:py-4'
 
 const mobileActionClass =
   'flex min-h-18 w-full flex-col items-center justify-center gap-1.5 px-2 py-2.5 text-body-1 font-semibold [letter-spacing:0] transition-[background-color,transform,color] duration-200 hover:bg-accent/70 hover:text-accent-foreground focus-visible:bg-accent focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring active:translate-y-px'
@@ -76,7 +76,12 @@ function ActionContent({ action, mobile = false }: { action: StickyCtaAction; mo
   return (
     <>
       {mobile && action.mobileIcon ? action.mobileIcon : action.icon}
-      <span className={cn('flex flex-col items-center', hasDesktopValue ? 'gap-1.5' : 'gap-0.5')}>
+      <span
+        className={cn(
+          mobile ? 'flex flex-col items-center' : 'hidden flex-col items-center min-[1152px]:flex',
+          hasDesktopValue ? 'gap-1.5' : 'gap-0.5',
+        )}
+      >
         <span
           className="text-body-1 font-semibold leading-tight"
         >
