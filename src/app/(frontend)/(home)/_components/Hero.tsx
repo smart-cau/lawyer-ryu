@@ -86,37 +86,58 @@ export const HeroSection: FC = () => {
           </p>
         </div>
 
-        {/* Portrait — 모바일: 헤드라인과 이름 사이 가운데 정렬(발치 fade),
-            md 이상: 우측 absolute (카피 뒤) */}
-        <div className="motion-entrance-fade pointer-events-none relative mx-auto mt-10 aspect-5/7 w-2/3 max-w-72 [--motion-delay:80ms] md:absolute md:top-24 md:right-0 md:bottom-5 md:z-0 md:mx-0 md:mt-0 md:aspect-auto md:w-[46%] md:max-w-130">
-          <Image
-            src="/ryu-profile/1.webp"
-            alt="대표변호사 류남경 프로필 사진"
-            fill
-            priority
-            quality={90}
-            sizes="(min-width: 768px) 46vw, 66vw"
-            className="object-contain object-bottom mask-b-from-72% md:drop-shadow-[0_28px_48px_rgba(0,0,0,0.45)] md:mask-b-from-88%"
-          />
-
-          {/* 핵심 경력 캡션 — 인물 발치에 스크림(좌우 fade)과 함께 얹어
-              "이 사람의 경력"으로 읽히게 한다. md 미만은 bullet로 대체. */}
-          <div className="absolute inset-x-0 bottom-0 hidden pt-20 pb-7 md:block">
-            {/* 스크림만 좌우 fade — 텍스트에는 마스크가 걸리지 않게 분리 */}
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(4,7,13,0.5)_42%,rgba(4,7,13,0.85)_100%)] [mask-image:linear-gradient(90deg,transparent_0%,black_16%,black_84%,transparent_100%)]"
+        {/* Profile visual — 모든 화면에서 인물 오른쪽에 형사법 전문 인증서를 함께 노출한다. */}
+        <div className="motion-entrance-fade pointer-events-none relative mx-auto mt-1 aspect-6/7 w-full max-w-88 [--motion-delay:80ms] md:absolute md:right-0 md:bottom-5 md:z-0 md:mx-0 md:mt-0 md:aspect-[25/28] md:w-[55%] md:max-w-none xl:w-[52%]">
+          <div className="absolute inset-y-0 left-0 w-[76%] md:w-[80%]">
+            <Image
+              src="/ryu-profile/1.webp"
+              alt="대표변호사 류남경 프로필 사진"
+              fill
+              priority
+              quality={90}
+              sizes="(min-width: 1280px) 42vw, (min-width: 768px) 44vw, 76vw"
+              className="object-contain object-bottom mask-b-from-72% md:drop-shadow-[0_28px_48px_rgba(0,0,0,0.45)] md:mask-b-from-88%"
             />
-            <div className="relative flex flex-col items-center gap-1.5 text-center">
-              <span aria-hidden className="h-px w-12 bg-brand-gold/75" />
-              <p className="break-keep font-serif-kr text-heading-1 font-semibold text-brand-gold lg:text-title-2">
-                검사 재직 19년 · 부부장검사
-              </p>
-              <p className="break-keep px-4 text-headline-2 font-medium text-white/70 lg:text-heading-2">
-                창원지검·부산지검·부산서부지청 각 2회 씩 근무
-              </p>
+
+            {/* 핵심 경력 캡션 — 인물 발치에 스크림(좌우 fade)과 함께 얹어
+                "이 사람의 경력"으로 읽히게 한다. md 미만은 bullet로 대체. */}
+            <div className="absolute inset-x-0 bottom-0 hidden pt-20 pb-7 md:block">
+              {/* 스크림만 좌우 fade — 텍스트에는 마스크가 걸리지 않게 분리 */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(4,7,13,0.5)_42%,rgba(4,7,13,0.85)_100%)] [mask-image:linear-gradient(90deg,transparent_0%,black_16%,black_84%,transparent_100%)]"
+              />
+              <div className="relative flex flex-col items-center gap-1.5 text-center">
+                <span aria-hidden className="h-px w-12 bg-brand-gold/75" />
+                <p className="break-keep font-serif-kr text-heading-1 font-semibold text-brand-gold lg:text-title-2">
+                  검사 재직 19년 · 부부장검사
+                </p>
+                <p className="break-keep px-4 text-headline-2 font-medium text-white/70 lg:text-heading-2">
+                  창원지검·부산지검·부산서부지청 각 2회 씩 근무
+                </p>
+              </div>
             </div>
           </div>
+
+          <aside
+            aria-label="대한변호사협회 형사법 전문 등록 인증"
+            className="absolute top-[18%] right-3 z-10 w-[24%] max-w-30 text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.72)] md:top-[16%] md:right-3 md:w-[20%] lg:right-[clamp(4rem,calc(48.5rem_-_50vw),8.5rem)] lg:w-[clamp(6.25rem,calc(12.5vw_-_3.75rem),7.5rem)]"
+          >
+            <p className="break-keep text-body-1 font-bold text-brand-gold lg:text-headline-2">
+              형사법전문
+            </p>
+            <p className="mt-0.5 whitespace-nowrap text-caption-1 font-semibold text-white md:-ml-8 md:w-[calc(100%+2rem)] md:text-right lg:ml-0 lg:w-auto lg:text-left min-[1440px]:text-body-2">
+              (등록 제2026-229호)
+            </p>
+            <Image
+              src="/trust/criminal-expertise-cert.png"
+              alt="대한변호사협회 형사법 전문분야 등록증서"
+              width={595}
+              height={841}
+              sizes="(min-width: 1440px) 7.5rem, (min-width: 1024px) 6.25rem, (min-width: 768px) 5.625rem, 22vw"
+              className="mt-1.5 h-auto w-full bg-white p-0.5 shadow-[0_12px_28px_rgba(0,0,0,0.42)] ring-1 ring-white/75 min-[1440px]:mt-0.5"
+            />
+          </aside>
         </div>
 
         {/* Cluster 2 — 변호사 신원·약력·CTA (이름 · credentials · 상담 버튼)
