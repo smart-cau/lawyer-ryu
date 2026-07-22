@@ -1,5 +1,7 @@
 import type { Case, Media } from '@/payload-types'
+import type { NextRequest } from 'next/server'
 
+import { GET as redirectLegacyBrandImage } from '@/app/(frontend)/og-image/route'
 import { resolveCaseShareImage } from '@/utilities/caseShareImage'
 import { generateMeta } from '@/utilities/generateMeta'
 
@@ -122,11 +124,22 @@ describe('성공사례 메타데이터의 공유 이미지', () => {
     expect(ogImage?.url).toBe(`${SERVER_URL}/api/media/file/hero.webp`)
   })
 
-  it('이미지가 없으면 브랜드 기본 이미지를 유지한다', async () => {
+  it('이미지가 없으면 메인과 같은 정적 브랜드 이미지를 쓴다', async () => {
     const meta = await generateMeta({ doc: caseDoc() })
 
     const [ogImage] = meta.openGraph?.images as { url: string }[]
 
-    expect(ogImage?.url).toContain('/og-image')
+    expect(ogImage?.url).toMatch(/\/brand\/open-graph\.png$/)
+  })
+})
+
+describe('기본 OG 이미지 호환성', () => {
+  it('기존 동적 URL을 정적 브랜드 이미지로 이동시킨다', () => {
+    const response = redirectLegacyBrandImage({
+      url: `${SERVER_URL}/og-image`,
+    } as NextRequest)
+
+    expect(response.status).toBe(308)
+    expect(response.headers.get('location')).toBe(`${SERVER_URL}/brand/open-graph.png`)
   })
 })

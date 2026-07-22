@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { getServerSideURL } from './getURL'
 
 export const BRAND_OPEN_GRAPH_IMAGE = {
-  url: `${getServerSideURL()}/og-image`,
+  url: `${getServerSideURL()}/brand/open-graph.png`,
   width: 1200,
   height: 630,
   alt: '법무법인 인유 창원분사무소',

@@ -1,5 +1,5 @@
-import BrandOpenGraphImage from '../_components/BrandOpenGraphImage'
+import type { NextRequest } from 'next/server'
 
-export async function GET() {
-  return BrandOpenGraphImage()
+export function GET(request: NextRequest) {
+  return Response.redirect(new URL('/brand/open-graph.png', request.url), 308)
 }
