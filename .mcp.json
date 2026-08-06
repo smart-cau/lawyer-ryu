@@ -14,9 +14,9 @@
         "@colorsandfonts/mcp"
       ]
     },
-    "Payload": {
+    "PayloadLive": {
       "type": "http",
-      "url": "http://127.0.0.1:3000/api/mcp",
+      "url": "https://ryulawyer.com/api/mcp",
       "headers": {
         "Authorization": "Bearer ${PAYLOAD_MCP_API_KEY}"
       }

@@ -13,7 +13,7 @@ Project facts:
 - 상담문의 표시: 055-719-0302 / 010-7552-0301
 - 전화 연결 원칙: 두 번호는 용도를 나누지 않고 한 묶음으로 표시하되, 전화 버튼·상담 CTA·`tel:` 링크는 055-719-0302로 연결
 - 공식 블로그: https://blog.naver.com/inyou2025
-- 배포: Vercel (예정) — 공식 도메인 미정. 배포 시 `VERCEL_PROJECT_PRODUCTION_URL`이 `NEXT_PUBLIC_SERVER_URL`을 자동으로 덮어씀.
+- 배포: Vercel — 공식 도메인 `https://ryulawyer.com`. 배포 시 `VERCEL_PROJECT_PRODUCTION_URL`이 `NEXT_PUBLIC_SERVER_URL`을 자동으로 덮어씀.
 
 Technically, it's a Payload CMS 3 + Next.js 16 (App Router) site. The Payload admin panel and the public-facing Next.js site run in the same process — both live under `src/app/`, and Payload itself is mounted as a set of route groups inside the Next.js app.
 
