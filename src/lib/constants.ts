@@ -4,7 +4,10 @@ export const OFFICE_LOCATION = {
     name: '법무법인 인유 창원분사무소',
   } as const;
   
-export const NAVER_MAP_URL = `https://map.naver.com/v5/search/${OFFICE_LOCATION.name}`;
+// 지도 플레이스 프로필 — 길찾기 CTA와 schema.org sameAs가 함께 사용한다.
+// 검색 URL이 아닌 place ID 고정 URL을 쓴다 (리다이렉트·검색 결과 변동 없음).
+export const NAVER_MAP_URL = 'https://map.naver.com/p/entry/place/1217916308';
+export const GOOGLE_MAP_URL = 'https://www.google.com/maps?cid=15266256443592699957';
 
 export const CONTACT = {
     office: '055-719-0302',

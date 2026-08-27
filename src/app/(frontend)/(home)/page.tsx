@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { JsonLd } from '@/components/JsonLd'
 import { NAVER_BLOG_URL } from '@/lib/contact-links'
-import { CONTACT, OFFICE_LOCATION } from '@/lib/constants'
+import { CONTACT, GOOGLE_MAP_URL, NAVER_MAP_URL, OFFICE_LOCATION } from '@/lib/constants'
 import { getServerSideURL } from '@/utilities/getURL'
 import { BRAND_OPEN_GRAPH_IMAGE } from '@/utilities/mergeOpenGraph'
 
@@ -94,7 +94,7 @@ export default function HomePage() {
           opens: '09:00',
           closes: '22:00',
         },
-        sameAs: [NAVER_BLOG_URL],
+        sameAs: [NAVER_BLOG_URL, NAVER_MAP_URL, GOOGLE_MAP_URL],
         employee: { '@id': `${lawyerUrl}#person` },
       },
       {
