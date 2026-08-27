@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
@@ -103,6 +104,15 @@ export const UspSection: FC = () => {
           )
         })}
       </ol>
+
+      <div className="mt-10 text-center lg:mt-12">
+        <Link
+          href="/about/lawyer"
+          className="text-body-1 font-medium underline-offset-4 hover:underline"
+        >
+          변호사 소개 자세히 보기 →
+        </Link>
+      </div>
     </SectionContainer>
   )
 }

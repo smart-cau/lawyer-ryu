@@ -32,14 +32,17 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
 const ServiceCard: FC<{ leaf: Leaf }> = ({ leaf }) => {
   const Icon = SERVICE_ICONS[leaf.slug] ?? FileWarning
 
+  // stretched-link: 실제 <a> 는 카드 제목만 감싸고, ::after 오버레이가 카드 전체를
+  // 클릭 영역으로 확장한다. 앵커 텍스트를 카드 본문 전체가 아닌 label 로 좁히기 위함.
   return (
-    <Link
-      href={`/services/${leaf.slug}`}
-      className="group flex h-full flex-col p-6 transition-colors hover:bg-accent/30 focus-visible:bg-accent/30"
-    >
+    <div className="group relative flex h-full flex-col p-6 transition-colors hover:bg-accent/30 has-[a:focus-visible]:bg-accent/30">
       <div className="flex items-center gap-2.5">
         <Icon aria-hidden strokeWidth={1.75} className="size-[1.25rem] shrink-0 text-foreground" />
-        <h3 className="text-heading-2 font-semibold">{leaf.label}</h3>
+        <h3 className="text-heading-2 font-semibold">
+          <Link href={`/services/${leaf.slug}`} className="after:absolute after:inset-0">
+            {leaf.label}
+          </Link>
+        </h3>
       </div>
 
       <p className="mt-2 text-body-1 text-muted-foreground">{leaf.description}</p>
@@ -58,7 +61,7 @@ const ServiceCard: FC<{ leaf: Leaf }> = ({ leaf }) => {
         <span>자세히 보기</span>
         <span aria-hidden>→</span>
       </span>
-    </Link>
+    </div>
   )
 }
 
