@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import { MotionReveal } from '@/components/MotionReveal'
 import { SectionContainer } from '@/components/SectionContainer'
 import { SectionHeader } from '@/components/SectionHeader'
+import { cn } from '@/utilities/ui'
 
 type Stage = {
   title: string
@@ -72,36 +73,73 @@ export const ProcessSection: FC = () => {
       />
 
       <div className="mt-12 rounded-2xl border border-border bg-card px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
-        {/* Mobile: vertical timeline (icon left, text right) */}
-        <ol aria-label="단계별 조력 항목" className="md:hidden">
+        {/*
+         * 한 벌의 마크업으로 두 레이아웃을 렌더한다.
+         * - 모바일: 세로 타임라인 (아이콘 왼쪽 / 텍스트 오른쪽 2열 그리드)
+         * - md 이상: 가로 타임라인 (4열 그리드, 아이콘 위 / 텍스트 아래)
+         * 텍스트(h3·bullet)는 DOM에 한 번만 존재한다.
+         * 단, 장식용 dot·line 은 두 벌로 남긴다 — motion-timeline-line-y 가
+         * transform(scaleY) / transform-origin 을 unlayered CSS 로 지정해
+         * 반응형 유틸리티로 md 이상에서 scaleX 로 되돌릴 수 없기 때문이다.
+         * 두 벌 모두 빈 aria-hidden div 라 접근성·SEO 비용은 없다.
+         */}
+        <ol aria-label="단계별 조력 항목" className="md:grid md:grid-cols-4 md:gap-x-0">
           {STAGES.map((stage, idx) => {
             const isLast = idx === STAGES.length - 1
             return (
-              <MotionReveal key={stage.title} asChild delay={idx * 60}>
-                <li className="grid grid-cols-[5rem_1fr] gap-x-5">
+              <MotionReveal key={stage.title} asChild delay={idx * 70}>
+                <li className="grid grid-cols-[5rem_1fr] gap-x-5 md:flex md:flex-col">
                   <div className="flex flex-col items-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={stage.iconSrc}
                       alt={stage.iconAlt}
-                      width={80}
-                      height={80}
-                      className="h-20 w-20 object-contain"
+                      width={96}
+                      height={96}
+                      className="h-20 w-20 object-contain md:h-24 md:w-24"
                     />
+
+                    {/* 모바일 세로 타임라인 (장식) */}
                     <div
                       aria-hidden
-                      className="motion-timeline-dot relative mt-3 h-2.5 w-2.5 rounded-full bg-brand-deep"
+                      className="motion-timeline-dot relative mt-3 h-2.5 w-2.5 rounded-full bg-brand-deep md:hidden"
                     />
                     {!isLast && (
                       <div
                         aria-hidden
-                        className="motion-timeline-line motion-timeline-line-y mt-1 w-px flex-1 bg-border"
+                        className="motion-timeline-line motion-timeline-line-y mt-1 w-px flex-1 bg-border md:hidden"
                       />
                     )}
+
+                    {/* 데스크톱 가로 타임라인 (장식) */}
+                    <div className="relative mt-6 hidden h-2.5 w-full md:block">
+                      {idx > 0 && (
+                        <div
+                          aria-hidden
+                          className="motion-timeline-line absolute left-0 right-1/2 top-1/2 h-px -translate-y-1/2 bg-border"
+                        />
+                      )}
+                      {!isLast && (
+                        <div
+                          aria-hidden
+                          className="motion-timeline-line absolute left-1/2 right-0 top-1/2 h-px -translate-y-1/2 bg-border"
+                        />
+                      )}
+                      <div
+                        aria-hidden
+                        className="motion-timeline-dot absolute left-1/2 top-1/2 z-10 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-deep"
+                      />
+                    </div>
                   </div>
-                  <div className={isLast ? 'pt-2' : 'pb-10 pt-2'}>
-                    <h3 className="text-heading-2 font-bold">{stage.title}</h3>
-                    <ul className="mt-4 space-y-2">
+
+                  <div
+                    className={cn(
+                      isLast ? 'pt-2' : 'pb-10 pt-2',
+                      'md:flex md:flex-col md:items-center md:py-0',
+                    )}
+                  >
+                    <h3 className="text-heading-2 font-bold md:mt-5">{stage.title}</h3>
+                    <ul className="mt-4 space-y-2 md:mt-5 md:self-stretch md:px-3 md:text-left lg:px-4">
                       {stage.bullets.map((bullet) => (
                         <li key={bullet} className="flex gap-2 text-body-2 text-muted-foreground">
                           <span
@@ -117,54 +155,6 @@ export const ProcessSection: FC = () => {
               </MotionReveal>
             )
           })}
-        </ol>
-
-        {/* Desktop: horizontal timeline */}
-        <ol aria-label="단계별 조력 항목" className="hidden md:grid md:grid-cols-4 md:gap-x-0">
-          {STAGES.map((stage, idx) => (
-            <MotionReveal key={stage.title} asChild delay={idx * 70}>
-              <li className="flex flex-col items-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={stage.iconSrc}
-                  alt={stage.iconAlt}
-                  width={96}
-                  height={96}
-                  className="h-24 w-24 object-contain"
-                />
-                <div className="relative mt-6 h-2.5 w-full">
-                  {idx > 0 && (
-                    <div
-                      aria-hidden
-                      className="motion-timeline-line absolute left-0 right-1/2 top-1/2 h-px -translate-y-1/2 bg-border"
-                    />
-                  )}
-                  {idx < STAGES.length - 1 && (
-                    <div
-                      aria-hidden
-                      className="motion-timeline-line absolute left-1/2 right-0 top-1/2 h-px -translate-y-1/2 bg-border"
-                    />
-                  )}
-                  <div
-                    aria-hidden
-                    className="motion-timeline-dot absolute left-1/2 top-1/2 z-10 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-deep"
-                  />
-                </div>
-                <h3 className="mt-5 text-heading-2 font-bold">{stage.title}</h3>
-                <ul className="mt-5 space-y-2 self-stretch text-left md:px-3 lg:px-4">
-                  {stage.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-2 text-body-2 text-muted-foreground">
-                      <span
-                        aria-hidden
-                        className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-muted-foreground"
-                      />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            </MotionReveal>
-          ))}
         </ol>
       </div>
     </SectionContainer>
