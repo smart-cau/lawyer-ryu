@@ -64,20 +64,25 @@ export const HeroSection: FC = () => {
       {/* Inner container — column stack on mobile (헤드라인 → 사진 → 신원),
           md 이상은 좌측 카피 컬럼 + 우측 absolute 사진 (about/lawyer와 동일하게 md에서 분기) */}
       <div className="relative mx-auto flex min-h-144 w-full max-w-7xl flex-col px-6 pt-32 pb-16 sm:px-8 md:min-h-176 md:justify-center md:pt-40 md:pb-24 lg:px-12 xl:px-16">
-        {/* Cluster 1 — 헤드라인 메시지 (eyebrow · h1 · 보조 설명) */}
-        <div className="motion-entrance relative z-10 w-full max-w-160 [--motion-delay:140ms] md:w-[52%]">
-          <p className="text-title-3 font-bold tracking-[0.04em] text-brand-gold">
-            창원·부산 검사 출신 형사 전문 변호사
-          </p>
+        {/* Cluster 1 — 헤드라인 메시지 (h1 · 슬로건 · 보조 설명)
 
-          <h1 className="mt-3.5 text-display-1 font-bold text-white [text-shadow:0_3px_20px_rgba(0,0,0,0.62)]">
+            h1은 "이 페이지가 무엇인가"에 답하는 지역·업종 키워드 줄이 맡는다.
+            시각적으로 가장 큰 슬로건은 문단으로 내렸다 — 헤딩 등급과 시각 위계는
+            별개이며, globals.css가 h1~h6의 font-size/weight를 unset으로 리셋하므로
+            태그를 맞바꿔도 렌더 결과는 동일하다. */}
+        <div className="motion-entrance relative z-10 w-full max-w-160 [--motion-delay:140ms] md:w-[52%]">
+          <h1 className="text-title-3 font-bold tracking-[0.04em] text-brand-gold">
+            창원·부산 검사 출신 형사 전문 변호사
+          </h1>
+
+          <p className="mt-3.5 text-display-1 font-bold text-white [text-shadow:0_3px_20px_rgba(0,0,0,0.62)]">
             <span className="text-success underline underline-offset-[0.2em]">19년 검사 경력</span>
             {'으로'}
             <br />
             수사하고 증거를 찾아
             <br />
             억울함을 해결해드립니다
-          </h1>
+          </p>
 
           <p className="mt-5 max-w-lg text-headline-2 font-medium text-white/80 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
             다년간의 수사와 공판수행으로 판사 · 검사의 심리를 꿰뚫는 변호사
