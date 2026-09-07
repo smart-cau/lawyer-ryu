@@ -20,6 +20,9 @@
       "headers": {
         "Authorization": "Bearer ${PAYLOAD_MCP_API_KEY}"
       }
+    },
+    "human-proofreader": {
+      "url": "https://human-proofreader-mcp.vercel.app/api/mcp"
     }
   }
 }
