@@ -9,6 +9,7 @@ import { getBgImageFromRoute, getBreadcrumbsFromRoute } from '@/utilities/page-t
 import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import { cache } from 'react'
 import { CasesToolbar, type CategoryOption } from './_components/CasesToolbar'
 
 export const dynamic = 'force-dynamic'
@@ -21,14 +22,12 @@ type Args = {
   }>
 }
 
-export default async function Page({ searchParams: searchParamsPromise }: Args) {
-  const { category, page: pageParam, q: query } = await searchParamsPromise
+const SITE_NAME = '법무법인 인유 창원분사무소'
+
+// 목록 본문과 generateMetadata가 같은 요청 안에서 한 번만 조회하도록 cache로 묶는다.
+const queryCategories = cache(async (): Promise<CategoryOption[]> => {
   const payload = await getPayload({ config: configPromise })
-
-  const parsedPage = Number(pageParam)
-  const pageNumber = Number.isInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1
-
-  const categoriesResult = await payload.find({
+  const result = await payload.find({
     collection: 'categories',
     depth: 0,
     limit: 100,
@@ -40,11 +39,25 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     },
   })
 
-  const categories: CategoryOption[] = categoriesResult.docs.map((doc) => ({
+  return result.docs.map((doc) => ({
     id: doc.id,
     title: doc.title,
     slug: doc.slug ?? '',
   }))
+})
+
+const parsePage = (pageParam?: string): number => {
+  const parsed = Number(pageParam)
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 1
+}
+
+export default async function Page({ searchParams: searchParamsPromise }: Args) {
+  const { category, page: pageParam, q: query } = await searchParamsPromise
+  const payload = await getPayload({ config: configPromise })
+
+  const pageNumber = parsePage(pageParam)
+
+  const categories = await queryCategories()
 
   const filters: Where[] = []
   if (category) {
@@ -120,22 +133,46 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   )
 }
 
-export function generateMetadata(): Metadata {
-  const title = '성공사례 | 법무법인 인유 창원분사무소'
-  const description =
-    '법무법인 인유 창원분사무소의 주요 성공사례를 분야별로 확인할 수 있습니다. 사건의 쟁점과 대응 결과를 살펴보고 상담 방향을 검토해 보세요.'
+/**
+ * 목록 메타는 분야 필터·페이지 번호에 따라 달라져야 한다.
+ * `/cases?category=…` URL이 분야 pill 링크로 크롤링되는데, 전부 같은 title·description을
+ * 내보내면 검색엔진이 중복 문서로 묶는다. 검색어(q) 결과는 조합이 무한하므로 색인에서 제외한다.
+ */
+export async function generateMetadata({
+  searchParams: searchParamsPromise,
+}: Args): Promise<Metadata> {
+  const { category, page: pageParam, q: query } = await searchParamsPromise
+  const pageNumber = parsePage(pageParam)
+
+  const categories = await queryCategories()
+  const activeCategory = category ? categories.find((c) => c.slug === category) : undefined
+
+  const pageSuffix = pageNumber > 1 ? ` ${pageNumber}페이지` : ''
+  const canonicalParams = new URLSearchParams()
+  if (activeCategory) canonicalParams.set('category', activeCategory.slug)
+  if (pageNumber > 1) canonicalParams.set('page', String(pageNumber))
+  const canonicalQs = canonicalParams.toString()
+  const canonical = canonicalQs ? `/cases?${canonicalQs}` : '/cases'
+
+  const title = activeCategory
+    ? `${activeCategory.title} 성공사례${pageSuffix} | ${SITE_NAME}`
+    : `성공사례${pageSuffix} | ${SITE_NAME}`
+  const description = activeCategory
+    ? `${SITE_NAME}의 ${activeCategory.title} 분야 성공사례${pageSuffix}입니다. 사건의 쟁점과 대응 결과를 살펴보고 상담 방향을 검토해 보세요.`
+    : `${SITE_NAME}의 주요 성공사례${pageSuffix}를 분야별로 확인할 수 있습니다. 사건의 쟁점과 대응 결과를 살펴보고 상담 방향을 검토해 보세요.`
 
   return {
     title,
     description,
     alternates: {
-      canonical: '/cases',
+      canonical,
     },
+    ...(query ? { robots: { index: false, follow: true } } : {}),
     openGraph: mergeOpenGraph({
       title,
       description,
-      siteName: '법무법인 인유 창원분사무소',
-      url: '/cases',
+      siteName: SITE_NAME,
+      url: canonical,
     }),
     twitter: {
       card: 'summary_large_image',
