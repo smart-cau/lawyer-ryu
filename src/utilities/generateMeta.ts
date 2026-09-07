@@ -6,9 +6,7 @@ import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from './mergeOpenGraph'
 import { resolveCaseShareImage } from './caseShareImage'
 import { getServerSideURL } from './getURL'
 
-export const generateMeta = async (args: {
-  doc: Partial<Case> | null
-}): Promise<Metadata> => {
+export const generateMeta = async (args: { doc: Partial<Case> | null }): Promise<Metadata> => {
   const { doc } = args
 
   // SEO 제목이 비어 있으면 사례 문서 제목으로 폴백해 사례마다 고유 제목을
@@ -29,7 +27,14 @@ export const generateMeta = async (args: {
     // 사례 글은 네이버 블로그 등 외부에서 추적 파라미터가 붙은 주소로 유입된다.
     // canonical이 없으면 그 주소가 별개 URL로 색인돼 사이트맵의 정규 주소와 경쟁한다.
     // 다른 페이지와 같이 상대 경로로 두면 layout의 metadataBase가 절대 URL로 해석한다.
-    ...(doc?.slug ? { alternates: { canonical: `/cases/${doc.slug}` } } : {}),
+    ...(doc?.slug
+      ? {
+          alternates: {
+            canonical: `/cases/${doc.slug}`,
+            types: { 'application/rss+xml': '/cases/feed.xml' },
+          },
+        }
+      : {}),
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',

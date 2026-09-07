@@ -166,6 +166,7 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical,
+      types: { 'application/rss+xml': '/cases/feed.xml' },
     },
     ...(query ? { robots: { index: false, follow: true } } : {}),
     openGraph: mergeOpenGraph({
