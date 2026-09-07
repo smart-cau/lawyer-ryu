@@ -147,8 +147,10 @@ export default async function Case({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
+      {/* 글 제목이 아래 header의 h1이므로 섹션 라벨은 h1이 아닌 p로 낮춘다 */}
       <PageTitleBar
         title={sectionTitle}
+        titleAs="p"
         breadcrumbs={getBreadcrumbsFromRoute('/cases/' + decodedSlug, title)}
         bgImage={getBgImageFromRoute('/cases')}
         className="motion-entrance-fade"
@@ -209,7 +211,12 @@ export default async function Case({ params: paramsPromise }: Args) {
         </MotionReveal>
 
         <MotionReveal>
-          <RichText className="max-w-[48rem] mx-auto" data={caseDoc.content} enableGutter={false} />
+          <RichText
+            className="max-w-[48rem] mx-auto"
+            data={caseDoc.content}
+            enableGutter={false}
+            fallbackImageAlt={`${title} 관련 이미지`}
+          />
         </MotionReveal>
 
         {caseDoc.relatedCases && caseDoc.relatedCases.length > 0 && (

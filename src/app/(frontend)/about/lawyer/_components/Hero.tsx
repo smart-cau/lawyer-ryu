@@ -69,7 +69,8 @@ export const HeroSection: FC = () => {
         <>
           <Image
             src="/law-office-blur-bg.png"
-            alt=""
+            alt="법무법인 인유 창원분사무소 사무실 배경"
+            aria-hidden="true"
             fill
             priority
             sizes="100vw"

@@ -44,7 +44,8 @@ export const HeroSection: FC = () => {
       {/* Full-bleed office library backdrop */}
       <Image
         src="/backgrounds/office-library-desk-blur.png"
-        alt=""
+        alt="법무법인 인유 창원분사무소 사무실 서재 배경"
+        aria-hidden="true"
         fill
         priority
         sizes="100vw"

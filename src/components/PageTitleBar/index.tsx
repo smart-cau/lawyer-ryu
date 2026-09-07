@@ -13,9 +13,16 @@ type Props = {
   title: string
   breadcrumbs: PageTitleBarBreadcrumb[]
   bgImage: string
+  /**
+   * 제목 요소 태그. 페이지가 본문에 자체 h1(예: 성공사례 상세의 글 제목)을 두는 경우
+   * `'p'`로 낮춰 문서에 h1이 하나만 남게 한다.
+   */
+  titleAs?: 'h1' | 'p'
 }
 
-export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) {
+export function PageTitleBar({ title, breadcrumbs, bgImage, className, titleAs = 'h1' }: Props) {
+  const TitleTag = titleAs
+
   // schema.org BreadcrumbList의 item은 절대 URL이어야 한다 (상대 경로면 GSC가 경고)
   const baseUrl = getServerSideURL()
 
@@ -40,7 +47,7 @@ export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={bgImage}
-        alt=""
+        alt={`${title} 페이지 배경 이미지`}
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -48,9 +55,12 @@ export function PageTitleBar({ title, breadcrumbs, bgImage, className }: Props) 
 
       <div className="container relative pt-[6rem]">
         <div className="flex min-h-[15rem] items-center justify-center md:min-h-[22.5rem]">
-          <h1 id="page-title-bar-title" className="text-center text-display-2 font-bold text-white">
+          <TitleTag
+            id="page-title-bar-title"
+            className="text-center text-display-2 font-bold text-white"
+          >
             {title}
-          </h1>
+          </TitleTag>
         </div>
 
         <nav

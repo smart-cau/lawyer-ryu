@@ -52,12 +52,12 @@ const actions: StickyCtaAction[] = [
     external: true,
     icon: (
       <span className="flex size-11 items-center justify-center rounded-full bg-white ring-1 ring-border">
-        <Image src="/social/naver-blog.png" alt="" width={30} height={30} className="size-7" />
+        <Image src="/social/naver-blog.png" alt="네이버 블로그 아이콘" width={30} height={30} className="size-7" />
       </span>
     ),
     mobileIcon: (
       <span className="flex size-9 items-center justify-center rounded-full bg-white ring-1 ring-border">
-        <Image src="/social/naver-blog.png" alt="" width={26} height={26} className="size-6" />
+        <Image src="/social/naver-blog.png" alt="네이버 블로그 아이콘" width={26} height={26} className="size-6" />
       </span>
     ),
   },

@@ -96,7 +96,8 @@ export const Cases: CollectionConfig<'cases'> = {
                     // rootFeatures: defaultLexical의 cases 내부 링크 커스텀 설정을 덮어써서 보존
                     ...defaultFeatures,
                     ...rootFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    // 페이지 h1은 글 제목이 차지하므로 본문에서는 h2부터만 허용한다.
+                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
                     BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),

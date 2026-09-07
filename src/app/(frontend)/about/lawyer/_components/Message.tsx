@@ -45,7 +45,8 @@ export const MessageSection: FC = () => {
         <>
           <Image
             src="/backgrounds/justice.png"
-            alt=""
+            alt="정의의 여신상 배경"
+            aria-hidden="true"
             fill
             priority
             sizes="100vw"

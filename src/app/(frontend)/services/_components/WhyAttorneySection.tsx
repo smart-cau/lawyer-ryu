@@ -67,7 +67,7 @@ export const WhyAttorneySection: FC<WhyAttorneySectionProps> = ({ data, serviceT
           <div className="absolute right-0 bottom-0 h-[88%] w-full">
             <Image
               src="/ryu-profile/2.webp"
-              alt=""
+              alt="류남경 대표변호사 프로필 사진"
               fill
               quality={90}
               sizes="(min-width: 1280px) 27rem, 22rem"
