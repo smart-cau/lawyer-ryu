@@ -49,6 +49,7 @@ export default function HomePage() {
   const lawyerUrl = new URL('/about/lawyer', siteUrl).toString()
   const organizationId = `${homeUrl}#organization`
   const websiteId = `${homeUrl}#website`
+  const personId = `${lawyerUrl}#person`
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -94,11 +95,22 @@ export default function HomePage() {
         openingHoursSpecification: {
           '@type': 'OpeningHoursSpecification',
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '09:00',
-          closes: '22:00',
+          // schema.org Time 예시와 Google 가이드 모두 hh:mm:ss 형식이다.
+          opens: '09:00:00',
+          closes: '22:00:00',
         },
         sameAs: [NAVER_BLOG_URL, NAVER_MAP_URL, GOOGLE_MAP_URL],
-        employee: { '@id': `${lawyerUrl}#person` },
+        employee: { '@id': personId },
+      },
+      {
+        // 검색엔진은 다른 페이지에 정의된 @id를 따라가지 않으므로, employee가 가리키는 Person의
+        // 최소 정의를 같은 문서에 둔다. 전체 정의는 /about/lawyer의 ProfilePage에 있다.
+        '@type': 'Person',
+        '@id': personId,
+        name: CONTACT.representative,
+        jobTitle: '대표변호사',
+        url: lawyerUrl,
+        worksFor: { '@id': organizationId },
       },
       {
         '@type': 'WebPage',

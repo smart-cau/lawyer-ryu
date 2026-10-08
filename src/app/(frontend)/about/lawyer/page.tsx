@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { JsonLd } from '@/components/JsonLd'
 import { NAVER_BLOG_URL } from '@/lib/contact-links'
 import { CONTACT } from '@/lib/constants'
+import { PAGE_UPDATED_AT } from '@/lib/page-updated-at'
 import { getServerSideURL } from '@/utilities/getURL'
 import { BRAND_OPEN_GRAPH_IMAGE, mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
@@ -51,6 +52,8 @@ export default function LawyerAboutPage() {
         name: title,
         description,
         inLanguage: 'ko-KR',
+        // Google ProfilePage 권장 속성. 사이트맵 lastmod와 같은 값을 쓴다.
+        dateModified: PAGE_UPDATED_AT['/about/lawyer'],
         mainEntity: { '@id': personId },
       },
       {
@@ -66,16 +69,33 @@ export default function LawyerAboutPage() {
         email: CONTACT.email,
         worksFor: { '@id': organizationId },
         knowsAbout: ['형사법', '경찰·검찰 수사 대응', '재산범죄', '성범죄', '기업범죄', '금융범죄'],
-        hasCredential: {
-          '@type': 'EducationalOccupationalCredential',
-          name: '대한변호사협회 등록 형사법 전문 변호사',
-          credentialCategory: '전문분야 등록',
-          recognizedBy: {
-            '@type': 'Organization',
-            name: '대한변호사협회',
-            url: 'https://www.koreanbar.or.kr',
+        // 페이지 경력란에 보이는 자격만 적는다. 연도는 경력란의 표기를 따른다.
+        hasCredential: [
+          {
+            '@type': 'EducationalOccupationalCredential',
+            name: '대한변호사협회 등록 형사법 전문 변호사',
+            credentialCategory: '전문분야 등록',
+            recognizedBy: {
+              '@type': 'Organization',
+              name: '대한변호사협회',
+              url: 'https://www.koreanbar.or.kr',
+            },
           },
-        },
+          {
+            '@type': 'EducationalOccupationalCredential',
+            name: '제44회 사법시험 합격',
+            credentialCategory: '국가시험 합격',
+            recognizedBy: { '@type': 'GovernmentOrganization', name: '법무부' },
+            datePublished: '2002',
+          },
+          {
+            '@type': 'EducationalOccupationalCredential',
+            name: '사법연수원 제35기 수료',
+            credentialCategory: '수료',
+            recognizedBy: { '@type': 'EducationalOrganization', name: '사법연수원' },
+            datePublished: '2006',
+          },
+        ],
         sameAs: [NAVER_BLOG_URL],
       },
       {

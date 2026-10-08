@@ -3,23 +3,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 
 import { CRIMINAL_LEAVES, NON_CRIMINAL_LEAVES } from '@/app/(frontend)/services/_data/leaves'
+import { PAGE_UPDATED_AT } from '@/lib/page-updated-at'
 import { getSitemapSiteURL } from '@/utilities/publicSiteURL'
 
-/**
- * 코드로 관리되는 정적 페이지의 마지막 "유의미한 콘텐츠 변경일" (YYYY-MM-DD).
- *
- * 페이지의 카피·구조를 수정하면 해당 항목의 날짜도 함께 갱신한다.
- * 배포 시각이나 `new Date()`를 넣지 말 것 — 바뀌지 않은 페이지까지 매 배포마다
- * 갱신 신호를 보내면 Google이 이 사이트의 lastmod 전체를 신뢰하지 않게 된다.
- * (오래된 날짜는 "그 뒤로 안 바뀜"이라는 정확한 신호이므로 문제가 아니다.)
- */
-const PAGE_UPDATED_AT = {
-  '/': '2026-10-08',
-  '/about/lawyer': '2026-10-08',
-  '/services': '2026-07-16',
-} as const
-
-/** `/services/<slug>` leaf별 콘텐츠 변경일. 위 주석의 갱신 규칙이 동일하게 적용된다. */
+/** `/services/<slug>` leaf별 콘텐츠 변경일. `PAGE_UPDATED_AT`의 갱신 규칙이 동일하게 적용된다. */
 const SERVICE_LEAF_UPDATED_AT: Record<string, string> = {
   'sex-crime': '2026-10-08',
   'corporate-crime': '2026-10-08',

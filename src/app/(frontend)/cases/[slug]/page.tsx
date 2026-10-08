@@ -21,7 +21,6 @@ import { resolveCaseResultLabel } from '@/collections/Cases/resultOptions'
 import { resolveCaseShareImage } from '@/utilities/caseShareImage'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getServerSideURL } from '@/utilities/getURL'
-import { BRAND_OPEN_GRAPH_IMAGE } from '@/utilities/mergeOpenGraph'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 // 게시일 — 한국식 표기(2026. 3. 22.). card의 표기와 톤 통일.
@@ -67,7 +66,9 @@ const buildCaseJsonLd = (caseDoc: Case, caseUrl: string) => {
         headline: caseDoc.title,
         ...(caseDoc.meta?.description ? { description: caseDoc.meta.description } : {}),
         inLanguage: 'ko-KR',
-        image: shareImage?.url ?? BRAND_OPEN_GRAPH_IMAGE.url,
+        // Google Article 가이드: image는 글을 나타내는 사진이어야 하고 로고를 쓰면 안 된다.
+        // 브랜드 OG 이미지는 로고 중심이라 대표 이미지가 없는 글은 image를 비운다.
+        ...(shareImage ? { image: shareImage.url } : {}),
         // publishedAt은 게시 시점에 채워지지만, 미리보기 등 미게시 상태에서는 비어 있다.
         datePublished: caseDoc.publishedAt ?? caseDoc.createdAt,
         dateModified: caseDoc.updatedAt,
