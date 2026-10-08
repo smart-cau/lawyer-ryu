@@ -69,6 +69,12 @@ export default function LawyerAboutPage() {
         hasCredential: {
           '@type': 'EducationalOccupationalCredential',
           name: '대한변호사협회 등록 형사법 전문 변호사',
+          credentialCategory: '전문분야 등록',
+          recognizedBy: {
+            '@type': 'Organization',
+            name: '대한변호사협회',
+            url: 'https://www.koreanbar.or.kr',
+          },
         },
         sameAs: [NAVER_BLOG_URL],
       },

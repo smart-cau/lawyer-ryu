@@ -64,11 +64,13 @@ export default function HomePage() {
       {
         '@type': 'LegalService',
         '@id': organizationId,
-        name: '법무법인 인유 창원분사무소',
-        alternateName: CONTACT.firmName,
+        name: CONTACT.firmName,
+        // Google Organization 가이드: alternateName은 name과 다른 통용 이름. 본사 이름으로 검색하는 경우를 받는다.
+        alternateName: '법무법인 인유',
         description,
         url: homeUrl,
-        logo: new URL('/brand/inyou-logo.png', siteUrl).toString(),
+        // Google 로고 요건: 112px 이상. 헤더용 98px PNG 대신 favicon.svg를 512px로 렌더링한 파일을 쓴다.
+        logo: new URL('/brand/inyou-logo-512.png', siteUrl).toString(),
         image: new URL('/backgrounds/office-library-desk.png', siteUrl).toString(),
         telephone: CONTACT.office.replace(/^0/, '+82-'),
         email: CONTACT.email,
@@ -77,6 +79,7 @@ export default function HomePage() {
           streetAddress: `${CONTACT.address} ${CONTACT.addressSub}`,
           addressLocality: '창원시',
           addressRegion: '경상남도',
+          postalCode: '51542',
           addressCountry: 'KR',
         },
         geo: {

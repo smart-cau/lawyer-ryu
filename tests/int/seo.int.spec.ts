@@ -57,10 +57,7 @@ describe('검색엔진 노출 정책', () => {
         allow: '/',
         disallow: ['/admin', '/api', '/next/preview', '/next/exit-preview', '/search'],
       },
-      sitemap: [
-        'https://lawyer-ryu.test/sitemap.xml',
-        'https://lawyer-ryu.test/cases-sitemap.xml',
-      ],
+      sitemap: ['https://lawyer-ryu.test/sitemap.xml', 'https://lawyer-ryu.test/cases-sitemap.xml'],
       host: 'https://lawyer-ryu.test',
     })
 
@@ -123,15 +120,15 @@ describe('검색엔진 노출 정책', () => {
 
       // 호출할 때마다 달라지면 `new Date()`가 섞여 들어간 것이다.
       expect(lastModifiedOf(first, '/')).toBe(lastModifiedOf(second, '/'))
-      expect(lastModifiedOf(first, '/services/sex-crime')).toBe('2026-07-15')
+      expect(lastModifiedOf(first, '/services/sex-crime')).toBe('2026-10-08')
     })
 
     it('`/cases`는 가장 최근 발행 사례의 updatedAt을 쓴다', async () => {
       const entries = await sitemap()
 
-      expect(
-        entries.find(({ url }) => url === 'https://lawyer-ryu.test/cases')?.lastModified,
-      ).toBe(LATEST_CASE_UPDATED_AT)
+      expect(entries.find(({ url }) => url === 'https://lawyer-ryu.test/cases')?.lastModified).toBe(
+        LATEST_CASE_UPDATED_AT,
+      )
     })
 
     it('사례 조회가 실패해도 나머지 사이트맵은 그대로 생성한다', async () => {

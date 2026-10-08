@@ -2,10 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
-import {
-  CRIMINAL_LEAVES,
-  NON_CRIMINAL_LEAVES,
-} from '@/app/(frontend)/services/_data/leaves'
+import { CRIMINAL_LEAVES, NON_CRIMINAL_LEAVES } from '@/app/(frontend)/services/_data/leaves'
 import { getSitemapSiteURL } from '@/utilities/publicSiteURL'
 
 /**
@@ -17,23 +14,23 @@ import { getSitemapSiteURL } from '@/utilities/publicSiteURL'
  * (오래된 날짜는 "그 뒤로 안 바뀜"이라는 정확한 신호이므로 문제가 아니다.)
  */
 const PAGE_UPDATED_AT = {
-  '/': '2026-08-27',
-  '/about/lawyer': '2026-07-20',
+  '/': '2026-10-08',
+  '/about/lawyer': '2026-10-08',
   '/services': '2026-07-16',
 } as const
 
 /** `/services/<slug>` leaf별 콘텐츠 변경일. 위 주석의 갱신 규칙이 동일하게 적용된다. */
 const SERVICE_LEAF_UPDATED_AT: Record<string, string> = {
-  'sex-crime': '2026-07-15',
-  'corporate-crime': '2026-07-15',
-  'property-crime': '2026-07-15',
-  'traffic-crime': '2026-07-15',
-  'school-violence': '2026-07-15',
-  'general-criminal': '2026-07-15',
-  'anti-corruption': '2026-07-15',
-  investigation: '2026-07-15',
-  'civil-family': '2026-07-15',
-  administrative: '2026-07-15',
+  'sex-crime': '2026-10-08',
+  'corporate-crime': '2026-10-08',
+  'property-crime': '2026-10-08',
+  'traffic-crime': '2026-10-08',
+  'school-violence': '2026-10-08',
+  'general-criminal': '2026-10-08',
+  'anti-corruption': '2026-10-08',
+  investigation: '2026-10-08',
+  'civil-family': '2026-10-08',
+  administrative: '2026-10-08',
 }
 
 /**
@@ -80,7 +77,10 @@ const getCasesListUpdatedAt = async (): Promise<string | undefined> => {
     return docs[0]?.updatedAt ?? undefined
   } catch (error) {
     // 사이트맵 전체를 잃는 것보다 `/cases` 한 줄의 lastmod를 포기하는 편이 낫다.
-    console.error('[sitemap] /cases lastmod 조회 실패 — 해당 항목만 lastmod 없이 생성합니다.', error)
+    console.error(
+      '[sitemap] /cases lastmod 조회 실패 — 해당 항목만 lastmod 없이 생성합니다.',
+      error,
+    )
 
     return undefined
   }
