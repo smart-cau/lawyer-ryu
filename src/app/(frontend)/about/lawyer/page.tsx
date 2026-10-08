@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { JsonLd } from '@/components/JsonLd'
-import { NAVER_BLOG_URL } from '@/lib/contact-links'
+import { KOREAN_BAR_PROFILE_URL, NAVER_BLOG_URL } from '@/lib/contact-links'
 import { CONTACT } from '@/lib/constants'
 import { PAGE_UPDATED_AT } from '@/lib/page-updated-at'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -80,6 +80,8 @@ export default function LawyerAboutPage() {
               name: '대한변호사협회',
               url: 'https://www.koreanbar.or.kr',
             },
+            // 등록 사실을 확인할 수 있는 협회 프로필. 등록증 전용 페이지는 없다.
+            url: KOREAN_BAR_PROFILE_URL,
           },
           {
             '@type': 'EducationalOccupationalCredential',
@@ -96,7 +98,8 @@ export default function LawyerAboutPage() {
             datePublished: '2006',
           },
         ],
-        sameAs: [NAVER_BLOG_URL],
+        // 변호사 개인을 가리키는 외부 프로필. 사무소의 sameAs(블로그·지도)와 구분한다.
+        sameAs: [KOREAN_BAR_PROFILE_URL, NAVER_BLOG_URL],
       },
       {
         '@type': 'LegalService',
